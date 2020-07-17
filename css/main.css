@@ -87,6 +87,9 @@ body{
 .group-fields{
     margin-bottom: 20px;
 }
+.errorText{
+    color: red;
+}
 @media (max-width: 768px) {
     .loginPart{
         padding-top: 2em;

@@ -1,5 +1,6 @@
 <?php
 include_once("doctor.php");
+include_once("patient.php");
 class users{
 
     private $userId;
@@ -27,7 +28,13 @@ class users{
         if($username=="Doctor" && $password=="123")
         {
             $user=new doctor($this->getUserId());
-            $_SESSION["user"]=$user;
+            $_SESSION["user"]=serialize($user);
+            return $user;
+        }
+        else if($username=="Patient" && $password=="123")
+        {
+            $user=new patient($this->getUserId());
+            $_SESSION["user"]=serialize($user);
             return $user;
         }
         else

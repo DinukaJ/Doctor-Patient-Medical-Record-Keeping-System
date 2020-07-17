@@ -1,17 +1,17 @@
 <?php
 session_start();
 include_once("classes/users.php");
-
 if(isset($_POST["emailUsername"]))
 {
     $userLogin=new users();
     $username=$_POST["emailUsername"];
     $password=$_POST["password"];
     $stat=$userLogin->login($username,$password);
-    if(!$stat)
+    
+    if($stat!=false)
     {
-        $user=$_SESSION["user"];
-        
+        //$user=$_SESSION["user"];
+        header("Location: nextPage.php");
     }
 }
 ?>
@@ -30,6 +30,12 @@ if(isset($_POST["emailUsername"]))
             </div>
             <div class="c-12 c-l-3 loginPart">
                 <h1>Login</h1>
+                <?php
+                if(isset($_POST["emailUsername"]) && $stat==false)
+                {
+                    echo "<p class='errorText'>Username or password incorrect!<p>";
+                }
+                ?>
                 <form action="#" method="POST">
                     <div class="group-fields">
                         <label>Email or Username</label>
