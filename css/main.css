@@ -50,6 +50,7 @@ body{
     position:relative;
     z-index:1;
 }
+
 .input-field{
     display: block;
     width: 100%;
