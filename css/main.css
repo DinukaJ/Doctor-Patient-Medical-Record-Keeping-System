@@ -42,6 +42,48 @@ body{
     padding-left: 2.5em !important;
     padding-right: 2.5em !important;
 }
+.sidePanel{
+    background-color: #c9e8e2;
+    height:100vh;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.upperPart{
+    background-color: #c9e8e2;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sidePanel .sideLink{
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background-color: #5cc8b1;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    border-left: 20px solid #5cc8b1;
+}
+.sidePanel .account{
+    height: 150px;
+    padding:20px;
+    border-right: 1px solid white;
+    margin-right: 0px;
+}
+.sidePanel .accountName{
+    margin-bottom: 0px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+.upperPart{
+    border-bottom: 1px solid #ced4da;
+    height: 150px;
+}
+.sidePanel .active{
+    border-left: 20px solid white;
+}
 .mainIMG{
     background-image: url('../images/main.jpg');
     background-repeat:no-repeat;
@@ -50,10 +92,24 @@ body{
     position:relative;
     z-index:1;
 }
-
+.upperFirst{
+    padding-top:5px;
+}
+.upperSecond{
+    margin-top: 18px;
+}
+.totText{
+    text-align: right;
+    padding-top: 10px;
+}
+.patientDataRow{
+    border-bottom: 1px solid #ced4da;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 10px 0px;
+}
 .input-field{
     display: block;
-    width: 100%;
     height: 50px;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -66,6 +122,9 @@ body{
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.fullWidth{
+    width: 100%;
+}
 .input-field:focus{
     background-color: #fff;
     border-color: #abdfd2;
@@ -73,17 +132,41 @@ body{
     box-shadow: 0 0 0 0.2rem #5cc8b1;
 }
 .btn{
-    width: 100%;
     background-color: transparent;
     border: 1px solid transparent;
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
+}
+.btnCancel{
+    background-color: tomato !important;
 }
 .btnLogin{
     background-color: #5cc8b1;
     color: white;
     margin-top: 2em;
     height: 50px;
+    width: 100%;
+}
+.btnNormal{
+    background-color: #5cc8b1;
+    color: white;
+    height: 50px;
+}
+.btnPatient{
+    margin-top: 0.6em;
+    width: 100%;
+}
+.btnPatient.active{
+    background-color: #a2c5be;
+}
+.btnPatientView{
+    border:1px solid #5cc8b1;
+    color: #5cc8b1;
+    transition: 0.5s;
+}
+.btnPatientView:hover{
+    color: white;
+    background-color: #5cc8b1;
 }
 .group-fields{
     margin-bottom: 20px;
@@ -91,6 +174,44 @@ body{
 .errorText{
     color: red;
 }
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 @media (max-width: 768px) {
     .loginPart{
         padding-top: 2em;

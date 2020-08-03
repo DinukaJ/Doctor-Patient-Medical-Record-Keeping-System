@@ -11,7 +11,7 @@ if(isset($_POST["emailUsername"]))
     if($stat!=false)
     {
         //$user=$_SESSION["user"];
-        header("Location: nextPage.php");
+        header("Location: addPatients.php");
     }
 }
 ?>
@@ -39,11 +39,11 @@ if(isset($_POST["emailUsername"]))
                 <form action="#" method="POST">
                     <div class="group-fields">
                         <label>Email or Username</label>
-                        <input type="text" class="input-field" name="emailUsername" id="emailUsername" placeholder="Email or Username" required>
+                        <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Email or Username" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" class="input-field" name="password" id="password" placeholder="Password" required>
+                        <input type="password" class="input-field fullWidth" name="password" id="password" placeholder="Password" required>
                     </div>
                     <button type="submit" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button>
                 </form>
