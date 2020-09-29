@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once("classes/users.php");
-include_once("classes/patient.php");
+include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 
 if(isset($_SESSION["user"]))
 {
@@ -38,7 +38,7 @@ if(isset($_POST["loginBtn"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/fc58a4724c.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Next Page</title>
 </head>
 <body>
@@ -47,11 +47,11 @@ if(isset($_POST["loginBtn"]))
             <div class="c-12 c-l-2 sidePanel">
                 <div class="row account">
                     <div class="c-6">
-                        <img src="images/acc.png" width="80%">
+                        <img src="../images/acc.png" width="80%">
                     </div>
                     <div class="c-6">
                         <p class="accountName">Receptionist</p>
-                        <a href="logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
+                        <a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
                     </div>
                 </div>
                 <a href="" class="sideLink active">Patients</a>

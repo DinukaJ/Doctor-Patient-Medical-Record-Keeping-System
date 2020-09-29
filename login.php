@@ -11,7 +11,7 @@ if(isset($_POST["emailUsername"]))
     if($stat!=false)
     {
         //$user=$_SESSION["user"];
-        header("Location: addPatients.php");
+        header("Location: Receptionist/addPatients.php");
     }
 }
 ?>
