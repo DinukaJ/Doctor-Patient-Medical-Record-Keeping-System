@@ -8,10 +8,21 @@ if(isset($_POST["emailUsername"]))
     $password=$_POST["password"];
     $stat=$userLogin->login($username,$password);
     
-    if($stat!=false)
+    if($stat=="Receptionist")
     {
-        //$user=$_SESSION["user"];
         header("Location: Receptionist/addPatients.php");
+    }
+    if($stat=="Pharmacist")
+    {
+
+    }
+    if($user instanceof doctor)
+    {
+        
+    }
+    if($user instanceof patient)
+    {
+        
     }
 }
 ?>

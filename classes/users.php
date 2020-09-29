@@ -41,9 +41,9 @@ class users{
         // else 
         if($username=="Receptionist" && $password=="123123")
         {
-            $user=new patient($this->getUserId());
-            $_SESSION["user"]=serialize($user);
-            return $user;
+            //$user=new patient($this->getUserId());
+            $_SESSION["user"]="Receptionist";
+            return "Receptionist";
         }
         else
         {

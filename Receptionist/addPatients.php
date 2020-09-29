@@ -2,22 +2,11 @@
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
+include_once(dirname( dirname(__FILE__) ).'/parts/recepSideNav.php');
 
-if(isset($_SESSION["user"]))
+if(!isset($_SESSION["user"]))
 {
-    $user=unserialize($_SESSION["user"]);
-    if($user instanceof doctor)
-    {
-        $word="Doctor";
-    }
-    if($user instanceof patient)
-    {
-        $word="Patient";
-    }
-}
-else
-{
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 
 if(isset($_POST["loginBtn"]))
@@ -36,27 +25,18 @@ if(isset($_POST["loginBtn"]))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/fc58a4724c.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Next Page</title>
+
+    <!-- Header Includes -->
+    <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
+
+    <title>Add Patients</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="c-12 c-l-2 sidePanel">
-                <div class="row account">
-                    <div class="c-6">
-                        <img src="../images/acc.png" width="80%">
-                    </div>
-                    <div class="c-6">
-                        <p class="accountName">Receptionist</p>
-                        <a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
-                    </div>
-                </div>
-                <a href="" class="sideLink active">Patients</a>
-                <a href="" class="sideLink">Doctors</a>
-            </div>
+            <!-- Getting Side Nav -->
+            <?php getSideNav("patient")?>
+
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px">
                 <div class="upperPart">
                     <div class="upperFirst row">
@@ -149,35 +129,35 @@ if(isset($_POST["loginBtn"]))
     ?>
     <!-- The Modal -->
     
+    <!-- Footer Includes -->
+    <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
+
     <script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
+        // Get the modal
+        var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-    // When the user clicks the button, open the modal 
-    //btn.onclick = 
-    function open() {
-    modal.style.display = "block";
-    }
-    if(modal)
-    {   
-        open();
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
-    }
-    }
-    
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-</script>
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal 
+        //btn.onclick = 
+        function open() {
+            modal.style.display = "block";
+        }
+        if(modal)
+        {   
+            open();
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
