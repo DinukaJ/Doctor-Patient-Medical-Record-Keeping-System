@@ -33,8 +33,19 @@ else
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px">
                 <div class="upperPart2">
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-4">
-                            <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD PATIENTS</button></a>
+                        <div class="c-12 c-l-3">
+                            <div class="box">
+                                <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                                <p>Name: </p>
+                                <p>Age: </p>
+                                <a href=""><button type="button" class="btn btnNormal btnPatient" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button></a>
+                            </div>
+                        </div>
+                        <div class="c-12 c-l-3">
+                            <div class="box">
+                                <textarea class="input-field fullWidth" style="height:75px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
+                                <textarea class="input-field fullWidth" style="height:75px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

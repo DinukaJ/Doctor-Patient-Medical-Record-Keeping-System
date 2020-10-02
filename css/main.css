@@ -73,7 +73,7 @@ body{
     margin-right: 0px;
 }
 .sidePanel .account2{
-    height: 200px;
+    height: 210px;
     padding:20px;
     border-right: 1px solid white;
     margin-right: 0px;
@@ -94,10 +94,22 @@ body{
 }
 .upperPart2{
     border-bottom: 1px solid #ced4da;
-    height: 200px;
+    height: 210px;
 }
 .sidePanel .active{
     border-left: 20px solid white;
+    border-bottom:2px solid #16ac86;
+    border-top:2px solid #16ac86;
+    border-right:2px solid #16ac86;
+    font-weight: bold;
+}
+.box{
+    background-color: white;
+    padding: 10px;
+}
+.box p{
+    margin-top: 10px;
+    margin-bottom: 10px
 }
 .mainIMG{
     background-image: url('../images/main.jpg');
