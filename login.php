@@ -16,11 +16,11 @@ if(isset($_POST["emailUsername"]))
     {
 
     }
-    if($user instanceof doctor)
+    if($stat instanceof doctor)
     {
         
     }
-    if($user instanceof patient)
+    if($stat instanceof patient)
     {
         
     }
