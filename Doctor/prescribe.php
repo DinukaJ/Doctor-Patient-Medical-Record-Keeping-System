@@ -31,26 +31,10 @@ else
             <?php getSideNav("prescribe")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px">
-                <div class="upperPart">
+                <div class="upperPart2">
                     <div class="upperFirst row">
-                        <div class="c-l-2">
+                        <div class="c-12 c-l-4">
                             <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD PATIENTS</button></a>
-                        </div>
-                        <div class="c-l-2">
-                            <a href="addedPatients.php"><button type="submit" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW PATIENTS</button></a>
-                        </div>
-                    </div>
-                    <div class="upperSecond row">
-                        <div class="c-l-4">
-                            <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Enter Patient ID or Name" required>
-                        </div>
-                        <div class="c-l-8 totText">
-                            Total Patients: 
-                            <?php 
-                                $c=$patient->getTotalPatients();
-                                $c=mysqli_fetch_array($c)[0];
-                                echo $c;
-                            ?>
                         </div>
                     </div>
                 </div>

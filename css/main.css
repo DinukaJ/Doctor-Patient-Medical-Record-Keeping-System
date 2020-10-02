@@ -48,7 +48,7 @@ body{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.upperPart{
+.upperPart, .upperPart2{
     background-color: #c9e8e2;
     padding-left: 15px;
     padding-right: 15px;
@@ -72,14 +72,29 @@ body{
     border-right: 1px solid white;
     margin-right: 0px;
 }
+.sidePanel .account2{
+    height: 200px;
+    padding:20px;
+    border-right: 1px solid white;
+    margin-right: 0px;
+}
 .sidePanel .accountName{
     margin-bottom: 0px;
     margin-top: 4px;
     font-weight: bold;
 }
+.sidePanel .accountName2{
+    margin-bottom: 0px;
+    margin-top: 30px;
+    font-weight: bold;
+}
 .upperPart{
     border-bottom: 1px solid #ced4da;
     height: 150px;
+}
+.upperPart2{
+    border-bottom: 1px solid #ced4da;
+    height: 200px;
 }
 .sidePanel .active{
     border-left: 20px solid white;
@@ -110,7 +125,7 @@ body{
 }
 .input-field{
     display: block;
-    height: 50px;
+    height: 40px;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;

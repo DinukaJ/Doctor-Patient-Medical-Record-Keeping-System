@@ -106,12 +106,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
 
 INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `age`, `address`) VALUES
 (2, 'Abc', 'Abc', '6543119774', 28, 'Abc'),
-(3, 'Dinuka', 'test2', '1234567890', 22, '224/3, Alubogahalanda'),
 (4, 'Abc', 'Abc', '6543119774', 56, 'Abc'),
 (5, 'Abc', 'Abc', '6543119774', 56, 'Abc'),
-(6, 'Dinuka', 'test2', '1234556', 66, '224/3, Alubogahalanda'),
-(7, 'Dinuka', 'test2', '1234556', 66, '224/3, Alubogahalanda'),
-(8, 'Raveen', 'Jayalath', '0772743126', 88, 'y78o');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
