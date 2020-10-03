@@ -1,6 +1,7 @@
 <?php
 include_once("doctor.php");
 include_once("patient.php");
+include_once("prescription.php");
 include_once("database.php");
 class users{
 
