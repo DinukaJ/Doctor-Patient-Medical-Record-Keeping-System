@@ -33,10 +33,8 @@ else
             <!-- Getting Side Nav -->
             <?php getSideNav("prescribe")?>
 
-            <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px;">
-                <!-- <div class="upperPart2"> -->
-                    <div class="row" style="background-color: #c9e8e2;">
-                <div class="upperPart2">
+            <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
+                <div class="row" style="background-color: #c9e8e2;">
                     <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                              <div class="box ">
@@ -59,7 +57,6 @@ else
                         </div>
                     </div>
                 </div>
-                <!-- </div> -->
                 <?php
                 $res=$patient->getPatients();
                 $i=1;
