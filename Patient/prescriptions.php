@@ -49,31 +49,42 @@ else
                         <div class="c-12 c-l-6">
                             <div class="boxSmall">
                                 <label>No. of Prescriptions:<?php 
-                                $pid = $pres->getUserId();
-                                $res = $pres->getPatientPresNum($pid);
-                                echo"<span>$res</span>"?>
+                                // $pid = $pres->getUserId();
+                                // $res = $pres->getPatientPresNum($pid);
+                                // echo"<span>$res</span>"?>
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-                $res=$patient->getPatients();
-                $i=1;
-                while($row=mysqli_fetch_assoc($res))
-                {
-                    echo '
-                    <div class="row patientDataRow">
-                        <div class="c-11">
-                            '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                        </div>
-                        <div class="c-1">
-                            <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                        </div>
+                <div class="row patientDataRow">
+                    <div class="c-4">
+                        1
                     </div>
-                    ';
-                    $i++;
-                }
+                    <div class="c-7">
+                        1
+                    </div>
+                    <div class="c-1">
+                        <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                    </div>
+                </div>
+                <?php
+                // $res=$patient->getPatients();
+                // $i=1;
+                // while($row=mysqli_fetch_assoc($res))
+                // {
+                //     echo '
+                //     <div class="row patientDataRow">
+                //         <div class="c-11">
+                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
+                //         </div>
+                //         <div class="c-1">
+                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                //         </div>
+                //     </div>
+                //     ';
+                //     $i++;
+                // }
                 ?>           
             </div>
         </div>
