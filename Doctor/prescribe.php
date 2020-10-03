@@ -22,7 +22,7 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescribe</title>
+    <title>Doctor - Prescribe</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -60,6 +60,7 @@ else
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
+                            
                             <div class="box">
                                 <ul>
                                     <li class="title">Recent Reports</li>
