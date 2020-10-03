@@ -16,8 +16,8 @@ function getSideNav($type)
         </div>
         <a href="../Doctor/prescribe.php" class="sideLink ';if($type=="prescribe"){echo 'active';} echo'">Prescribe</a>
         <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="patients"){echo 'active';} echo'">View Patients</a>
-        <a href="" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">View Inventory</a>
-        <a href="" class="sideLink ';if($type=="financial"){echo 'active';} echo'">View Financial Records</a>
+        <a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">View Inventory</a>
+        <a href="../Doctor/viewFinancial.php" class="sideLink ';if($type=="financial"){echo 'active';} echo'">View Financial Records</a>
     </div>';
 }
 ?>

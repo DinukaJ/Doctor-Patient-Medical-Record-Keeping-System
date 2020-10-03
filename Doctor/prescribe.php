@@ -60,7 +60,7 @@ else
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
-                            
+
                             <div class="box">
                                 <ul>
                                     <li class="title">Recent Reports</li>
@@ -100,7 +100,7 @@ else
                                 <td style="width:12%; text-align:center;">3</td>
                                 <td style="width:14%; text-align:center;">After</td>
                                 <td style="width:12%; text-align:center;">3 Weeks</td>
-                                <td style="width:25%; text-align:center;"><button class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
+                                <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
                             </tr>
                             <tr>
                                 <td style="width:2%">2</td>
@@ -109,7 +109,7 @@ else
                                 <td style="width:12%; text-align:center;">3</td>
                                 <td style="width:14%; text-align:center;">After</td>
                                 <td style="width:12%; text-align:center;">3 Weeks</td>
-                                <td style="width:25%; text-align:center;"><button class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
+                                <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
                             </tr>
                         </table>
                     </div>

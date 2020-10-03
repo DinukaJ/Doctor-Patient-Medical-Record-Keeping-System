@@ -22,26 +22,35 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Doctor - View Patients</title>
+    <title>Doctor - View Inventory</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
-            <?php getSideNav("patients")?>
+            <?php getSideNav("inventory")?>
 
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px">
                 <div class="upperPart3">
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
-                            <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                            <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Short Code or Medicine Name">
                         </div>
-                        <div class="c-0 c-l-5">
+                        <div class="c-0 c-l-2">
                             
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>No. of Prescriptions:<?php 
+                                <label>Total Variant Count:<?php 
+                                // $pid = $pres->getUserId();
+                                // $res = $pres->getPatientPresNum($pid);
+                                // echo"<span>$res</span>"?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="c-12 c-l-3">
+                            <div class="boxSmall">
+                                <label>Total Tablet Count:<?php 
                                 // $pid = $pres->getUserId();
                                 // $res = $pres->getPatientPresNum($pid);
                                 // echo"<span>$res</span>"?>
@@ -55,16 +64,16 @@ else
                         1
                     </div>
                     <div class="c-4">
-                        Patient Name
+                        Medicine Name
+                    </div>
+                    <div class="c-2">
+                        QTY
+                    </div>
+                    <div class="c-4">
+                        Price
                     </div>
                     <div class="c-1">
-                        Age
-                    </div>
-                    <div class="c-5">
-                        Address
-                    </div>
-                    <div class="c-1">
-                        <a class="btn btnPatientView" name="viewPatient" id="viewPatient">View</a>
+                        <a class="btn btnPatientView" name="editMedicine" id="editMedicine">Edit</a>
                     </div>
                 </div>  
             </div>
