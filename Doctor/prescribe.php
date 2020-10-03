@@ -86,7 +86,7 @@ else
                         <input type="text" class="input-field" style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                     </div>
                     <div class="c-12 c-l-3">
-                        <button class="btn btnAddPres" name="addToPres" id="addToPres">ADD</button>
+                        <button class="btn btnAddPres" name="addToPres" id="addToPres"><i class="fas fa-plus"></i> ADD</button>
                     </div>
                 </div>  
                 <div class="row patientDataRow" style="border-bottom:none;">
