@@ -250,6 +250,9 @@ body{
 .presTable{
     overflow-y: scroll;
 }
+.addMedicineRow{
+    background-color: #e8e8e8;
+}
 .tableCont{
     max-height: 60vh;
     overflow-y: scroll;
