@@ -96,20 +96,51 @@ body{
     border-bottom: 1px solid #ced4da;
     height: 210px;
 }
-.sidePanel .active{
+.sidePanel .active, .sideLink:hover{
     border-left: 20px solid white;
     border-bottom:2px solid #16ac86;
     border-top:2px solid #16ac86;
     border-right:2px solid #16ac86;
     font-weight: bold;
 }
+.sideLink{
+    transition: 0.5s;
+}
+.upperClick{
+    transition: 0.5s;
+}
+.upperClick:hover{
+    color: white;
+    background-color: #5cc8b1;
+}
 .box{
     background-color: white;
     padding: 10px;
+    height: 198px;
 }
 .box p{
     margin-top: 10px;
     margin-bottom: 10px
+}
+.box ul{
+    list-style: none;
+    padding-left: 0px;
+    margin-top:0px;
+    border-top: 2px solid #ced4da;
+}
+.box li{
+    border-bottom: 2px solid #ced4da;
+    border-left: 2px solid #ced4da;
+    border-right: 2px solid #ced4da;
+    padding:1px
+}
+.box .title{
+    padding-bottom: 5px;
+    text-align: center;
+    background-color: #a9dcd5;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 .mainIMG{
     background-image: url('../images/main.jpg');
@@ -178,6 +209,12 @@ body{
     background-color: #5cc8b1;
     color: white;
     height: 50px;
+    transition: 0.5s;
+}
+.btnNormal:hover{
+    background-color: white;
+    color: #5cc8b1;
+    border:1px solid #5cc8b1;
 }
 .btnPatient{
     margin-top: 0.6em;
@@ -191,9 +228,41 @@ body{
     color: #5cc8b1;
     transition: 0.5s;
 }
+.btnAddPres{
+    background-color: #5cc8b1;
+    color: white;
+    transition: 0.5s;
+    width: 100%;
+    height:40px
+}
+.btnAddPres:hover{
+    background-color: white;
+    color: #5cc8b1;
+    border:1px solid #5cc8b1;
+}
+.addMedicineRow .c-l-3, .addMedicineRow{
+    /* padding: 0px; */
+}
 .btnPatientView:hover{
     color: white;
     background-color: #5cc8b1;
+}
+.presTable{
+    overflow-y: scroll;
+}
+.presTable td{
+    border-bottom: 1px solid #ced4da;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.rightContainer{
+    position: relative;
+}
+.presBottom{
+    border-top: 1px solid #ced4da;
+    position: absolute;
+    bottom: 0px;
+    width: 99%;
 }
 .group-fields{
     margin-bottom: 20px;
