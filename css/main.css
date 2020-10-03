@@ -48,7 +48,7 @@ body{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.upperPart, .upperPart2{
+.upperPart, .upperPart2, .upperPart3{
     background-color: #c9e8e2;
     padding-left: 15px;
     padding-right: 15px;
@@ -96,6 +96,10 @@ body{
     border-bottom: 1px solid #ced4da;
     height: 210px;
 }
+.upperPart3{
+    border-bottom: 1px solid #ced4da;
+    height: 55px;
+}
 .sidePanel .active, .sideLink:hover{
     border-left: 20px solid white;
     border-bottom:2px solid #16ac86;
@@ -117,6 +121,10 @@ body{
     background-color: white;
     padding: 10px;
     height: 198px;
+}
+.boxSmall{
+    background-color: white;
+    padding: 10px;
 }
 .box p{
     margin-top: 10px;

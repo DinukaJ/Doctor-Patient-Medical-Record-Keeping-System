@@ -34,20 +34,20 @@ else
             <?php getSideNav("prescribe")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="row" style="background-color: #c9e8e2;">
+                <div class="upperPart3">
                     <div class="upperFirst row">
                         <div class="c-12 c-l-3">
-                             <div class="box ">
+                             <div class="boxSmall">
                                  <label>Prescription No.</label>
                              </div>
                         </div>
                         <div class="c-12 c-l-3">
-                            <div class="box ">
+                            <div class="boxSmall">
                                  <label>No. of Items</label>
                             </div>
                         </div>
                         <div class="c-12 c-l-6">
-                            <div class="box">
+                            <div class="boxSmall">
                                 <label>No. of Prescriptions:<?php 
                                 $pid = $pres->getUserId();
                                 $res = $pres->getPatientPresNum($pid);
