@@ -50,31 +50,31 @@ else
                             <div class="box">
                                 <label>No. of Reports:<?php 
                                 //TODO: Back End
-                                $pid = $pres->getUserId();
-                                $res = $pres->getPatientPresNum($pid);
-                                echo"<span>$res</span>"?>
+                                // $pid = $pres->getUserId();
+                                // $res = $pres->getPatientPresNum($pid);
+                                // echo"<span>$res</span>"?>
                                 </label>
                             </div>
                         </div>
                     </div>
                 <!-- </div> -->
                 <?php
-                $res=$patient->getPatients();
-                $i=1;
-                while($row=mysqli_fetch_assoc($res))
-                {
-                    echo '
-                    <div class="row patientDataRow">
-                        <div class="c-11">
-                            '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                        </div>
-                        <div class="c-1">
-                            <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                        </div>
-                    </div>
-                    ';
-                    $i++;
-                }
+                // $res=$patient->getPatients();
+                // $i=1;
+                // while($row=mysqli_fetch_assoc($res))
+                // {
+                //     echo '
+                //     <div class="row patientDataRow">
+                //         <div class="c-11">
+                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
+                //         </div>
+                //         <div class="c-1">
+                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                //         </div>
+                //     </div>
+                //     ';
+                //     $i++;
+                // }
                 ?>           
             </div>
         </div>
