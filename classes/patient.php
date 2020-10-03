@@ -15,7 +15,7 @@ class patient extends users
         $db=new Database();
         return $db->getData("select * from patient");
     }
-    public function getPatientPres($pid)
+    public function getPatientPresNum($pid)
     {
         $db=new Database();
         return $db->getData("select count(id) from prescriptions where id=$pid");
