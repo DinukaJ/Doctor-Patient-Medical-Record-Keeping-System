@@ -9,7 +9,7 @@ include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 if(isset($_SESSION["user"]))
 {
     $patient  = new patient();
-    $pres=new prescription();
+    $pres = new prescription();
 }
 else
 {
@@ -25,7 +25,7 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescriptions</title>
+    <title>Lab Reports</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -35,18 +35,18 @@ else
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
                 <!-- <div class="upperPart2"> -->
-                    <div class="row">
-                        <div class="c-12 c-l-3" style="background-color: #c9e8e2;">
+                    <div class="row" style="background-color: #c9e8e2;">
+                        <div class="c-12 c-l-3" >
                              <div class="box ">
                                  <label>Report ID</label>
                              </div>
                         </div>
-                        <div class="c-12 c-l-3" style="background-color: #c9e8e2;">
+                        <div class="c-12 c-l-3" >
                             <div class="box ">
                                  <label>Report Type</label>
                             </div>
                         </div>
-                        <div class="c-12 c-l-6" style="background-color: #c9e8e2;">
+                        <div class="c-12 c-l-6">
                             <div class="box">
                                 <label>No. of Reports:<?php 
                                 //TODO: Back End
