@@ -3,11 +3,12 @@
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
 if(isset($_SESSION["user"]))
 {
-    $patient=new patient();
+    $pres=new prescription();
 }
 else
 {
@@ -47,8 +48,8 @@ else
                         <div class="c-12 c-l-6" style="background-color: #c9e8e2;">
                             <div class="box">
                                 <label>No. of Prescriptions:<?php 
-                                $pid = $patient->getUserId();
-                                $res = $patient->getPatientPresNum($pid);
+                                $pid = $pres->getUserId();
+                                $res = $pres->getPatientPresNum($pid);
                                 echo"<span>$res</span>"?>
                                 </label>
                             </div>
