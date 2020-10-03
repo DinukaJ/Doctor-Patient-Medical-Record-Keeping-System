@@ -90,7 +90,7 @@ else
                     </div>
                 </div>  
                 <div class="row patientDataRow" style="border-bottom:none;">
-                    <div class="c-12">
+                    <div class="c-12 tableCont">
                         <table style="width:100%;" class="presTable">
                             <tr>
                                 <td style="width:2%">1</td>

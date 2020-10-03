@@ -250,6 +250,10 @@ body{
 .presTable{
     overflow-y: scroll;
 }
+.tableCont{
+    max-height: 60vh;
+    overflow-y: scroll;
+}
 .presTable td{
     border-bottom: 1px solid #ced4da;
     padding-top: 8px;
