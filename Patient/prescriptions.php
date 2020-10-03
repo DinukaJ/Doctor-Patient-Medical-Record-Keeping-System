@@ -58,10 +58,10 @@ else
                     </div>
                 </div>
                 <div class="row patientDataRow">
-                    <div class="c-4">
+                    <div class="c-3">
                         1
                     </div>
-                    <div class="c-7">
+                    <div class="c-8">
                         1
                     </div>
                     <div class="c-1">
