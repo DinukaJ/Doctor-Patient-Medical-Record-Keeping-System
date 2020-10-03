@@ -34,39 +34,40 @@ else
             <?php getSideNav("docStatus")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <!-- <div class="upperPart2"> -->
-                    <div class="row" style="background-color: #c9e8e2;">
+                <div class="upperPart3">
+                  <div class="upperFirst row">
                         <div class="c-12 c-l-3">
-                             <div class="box ">
+                             <div class="boxSmall wrapper">
                                  <input class="input-field " placeholder="Enter Doctor Name">
                              </div>
                         </div>
                         <div class="c-12 c-l-3">
-                            <div class="box ">
-                            <input type="date" >
+                            <div class="boxSmall">
+                            <input type="date" class="input-field" >
                             </div>
                         </div>
                         <div class="c-12 c-l-6">
-                            <div class="box">
+                            <div class="boxSmall">
                             <input class="input-field " placeholder="Enter Speciality">
                             </div>
                         </div>
                     </div>
-                <!-- </div> -->
+                  </div>  
+                </div>
                 <?php
-                $res=$patient->getPatients();
-                $i=1;
-                while($row=mysqli_fetch_assoc($res))
-                {
-                    echo '
-                    <div class="row patientDataRow">
-                        <div class="c-11">
-                            '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                        </div>
-                    </div>
-                    ';
-                    $i++;
-                }
+                // $res=$patient->getPatients();
+                // $i=1;
+                // while($row=mysqli_fetch_assoc($res))
+                // {
+                //     echo '
+                //     <div class="row patientDataRow">
+                //         <div class="c-11">
+                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
+                //         </div>
+                //     </div>
+                //     ';
+                //     $i++;
+                // }
                 ?>           
             </div>
         </div>
