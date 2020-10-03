@@ -8,6 +8,7 @@ include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
 if(isset($_SESSION["user"]))
 {
+    $patient  = new patient();
     $pres=new prescription();
 }
 else
@@ -58,7 +59,6 @@ else
                     </div>
                 <!-- </div> -->
                 <?php
-                //TODO: Back End
                 $res=$patient->getPatients();
                 $i=1;
                 while($row=mysqli_fetch_assoc($res))
