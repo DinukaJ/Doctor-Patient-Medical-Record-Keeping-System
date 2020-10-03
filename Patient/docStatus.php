@@ -54,6 +54,14 @@ else
                     </div>
                   </div>  
                 </div>
+                <div class="row patientDataRow">
+                    <div class="c-4">
+                        1
+                    </div>
+                    <div class="c-7">
+                        1
+                    </div>
+                </div>
                 <?php
                 // $res=$patient->getPatients();
                 // $i=1;
