@@ -48,7 +48,7 @@ body{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.upperPart, .upperPart2, .upperPart3{
+.upperPart, .upperPart2, .upperPart3, .upperPart4{
     background-color: #c9e8e2;
     padding-left: 15px;
     padding-right: 15px;
@@ -99,6 +99,10 @@ body{
 .upperPart3{
     border-bottom: 1px solid #ced4da;
     height: 55px;
+}
+.upperPart4{
+    border-bottom: 1px solid #ced4da;
+    height: 70px;
 }
 .sidePanel .active, .sideLink:hover{
     border-left: 20px solid white;
