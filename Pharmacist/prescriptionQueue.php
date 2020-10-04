@@ -4,7 +4,7 @@ session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
-include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
+include_once(dirname( dirname(__FILE__) ).'/parts/pharmSideNav.php');
 
 if(isset($_SESSION["user"]))
 {
@@ -25,13 +25,13 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescriptions</title>
+    <title>Prescription Queue</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
-            <?php getSideNav("prescribe")?>
+            <?php getSideNav("presQueue")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
                 <div class="upperPart3">
@@ -48,7 +48,7 @@ else
                         </div>
                         <div class="c-12 c-l-6">
                             <div class="boxSmall">
-                                <label>No. of Prescriptions:<?php 
+                                <label>No. of Prescriptions in Queue:<?php 
                                 // $pid = $pres->getUserId();
                                 // $res = $pres->getPatientPresNum($pid);
                                 // echo"<span>$res</span>"?>
