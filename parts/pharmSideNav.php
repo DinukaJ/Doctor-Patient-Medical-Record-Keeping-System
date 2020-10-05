@@ -13,9 +13,9 @@ function getSideNav($type)
             </div>
             <div class="c-6"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
         </div>
-        <a href="../Doctor/prescribe.php" class="sideLink ';if($type=="presQueue"){echo 'active';} echo'">Prescription Queue</a>
-        <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="prescriptions"){echo 'active';} echo'">Prescriptions</a>
-        <a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">Inventory</a>
+        <a href="../Pharmacist/prescriptionQueue.php" class="sideLink ';if($type=="presQueue"){echo 'active';} echo'">Prescription Queue</a>
+        <a href="../Pharmacist/prescriptions.php" class="sideLink ';if($type=="prescriptions"){echo 'active';} echo'">Prescriptions</a>
+        <a href="../Pharmacist/inventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">Inventory</a>
     </div>';
 }
 ?>
