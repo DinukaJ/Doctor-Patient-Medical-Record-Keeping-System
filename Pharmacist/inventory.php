@@ -35,7 +35,7 @@ else
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
                 <div class="upperPart4" style="padding-top: 10px;">
-                <input type="button" class="btn btnNormal" value="Add New Medicine">
+                <button type="button" class="btn btnNormal" id="addMed">Add New Medicine</button>
                 </div>
                 <div class="upperPart3">
                     <div class="upperFirst row">
@@ -87,43 +87,85 @@ else
         </div>
     </div>
     <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
+    <div id="modalAddMed" class="modal modal2">
 
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="col-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+           <div class="detailsSection">
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Medicine Name: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medName" id="medName" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        QTY: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Price: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="">
+                    </div>
+                </div>
+           </div>
+           <div class="bottomModel">
+                <div class="row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal" id="addMedCancel">Cancel</button> 
+                        <button type="button" class="btn btnNormal" id="addMedSave">Save</button> 
+                    </div>
+                </div>
+           </div>
         </div>
 
-    </div> -->
+    </div>
 
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+        // Get the modal Add Medicine Model
+        var modalAddMed = document.getElementById("modalAddMed");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
+        function open(modal) {
             modal.style.display = "block";
         }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
+        function close(modal){
             modal.style.display = "none";
-            }
         }
+
+        $(document).ready(function(){
+            //Add Medicine Model
+            $("#addMed").click(()=>{
+                open(modalAddMed);
+            });
+            $(".close").click(()=>{
+                close(modalAddMed);
+            });
+            $("#addMedCancel").click(()=>{
+                close(modalAddMed);
+            });
+        });
         
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modalAddMed) {
+            modalAddMed.style.display = "none";
             }
         }
     </script>

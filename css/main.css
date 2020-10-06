@@ -306,21 +306,47 @@ body{
   
   /* Modal Content */
   .modal-content {
+    position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
   }
-  
+  .modal-content-long {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+  }
+  .modal-content-long .row{
+      margin-bottom: 20px;
+  }
   /* The Close Button */
   .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    right:20px;
+    top:5px;
   }
-  
+  .modal-content-long .detailsSection{
+    padding-top: 50px;
+    padding-bottom: 120px;
+    padding-left: 100px;
+  }
+  .modal-content-long .bottomModel{
+    border-top: 1px solid #aaaaaa;
+    padding-top: 20px;
+    text-align: right;
+  }
+  .modal-content-long .bottomModel button{
+      width: 100px;
+  }
   .close:hover,
   .close:focus {
     color: #000;
