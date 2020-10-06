@@ -86,7 +86,7 @@ else
             </div>
         </div>
     </div>
-    <!-- The Modal -->
+    <!-- The Modal for Add Medicine-->
     <div id="modalAddMed" class="modal modal2">
 
         <!-- Modal content -->
