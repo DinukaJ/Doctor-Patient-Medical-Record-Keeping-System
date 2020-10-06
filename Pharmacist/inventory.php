@@ -110,7 +110,7 @@ else
                         QTY: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="">
+                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="">
                     </div>
                 </div>
                 <div class="row">
