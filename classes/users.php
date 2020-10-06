@@ -27,30 +27,30 @@ class users{
 
     public function login($username, $password)
     {
-        // if($username=="Doctor" && $password=="123")
-        // {
-        //     $user=new doctor($this->getUserId());
-        //     $_SESSION["user"]=serialize($user);
-        //     return $user;
-        // }
-        // else if($username=="Patient" && $password=="123")
-        // {
-        //     $user=new patient($this->getUserId());
-        //     $_SESSION["user"]=serialize($user);
-        //     return $user;
-        // }
-        // else 
-        if($username=="Receptionist" && $password=="123123")
+        $db=new Database();
+        $isDoc=$db->getData("select * from doctor where id='$username' and password='$password'");
+        $isPat=$db->getData("select * from patient where id='$username' and password='$password'");
+        if(mysqli_num_rows($isDoc))
         {
-            //$user=new patient($this->getUserId());
+            $user=new doctor($isDoc);
+            $_SESSION["user"]=serialize($user);
+            return $user;
+        }
+        else if(mysqli_num_rows($isPat))
+        {
+            $user=new patient($isPat);
+            $_SESSION["user"]=serialize($user);
+            return $user;
+        }
+        else if($username=="Receptionist" && $password=="123123")
+        {
             $_SESSION["user"]="Receptionist";
             return "Receptionist";
         }
         else
         {
             return false;
-        }
+        }        
     }
 }
-
 ?>

@@ -1,29 +1,11 @@
 <?php
 session_start();
-include_once("classes/users.php");
+include_once("handlers/loginHandler.php");
 if(isset($_POST["emailUsername"]))
 {
-    $userLogin=new users();
     $username=$_POST["emailUsername"];
     $password=$_POST["password"];
-    $stat=$userLogin->login($username,$password);
-    
-    if($stat=="Receptionist")
-    {
-        header("Location: Receptionist/addPatients.php");
-    }
-    if($stat=="Pharmacist")
-    {
-
-    }
-    if($stat instanceof doctor)
-    {
-        
-    }
-    if($stat instanceof patient)
-    {
-        
-    }
+    $stat=login($username,$password);
 }
 ?>
 <!DOCTYPE html>

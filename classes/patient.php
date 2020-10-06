@@ -1,7 +1,7 @@
 <?php
 class patient extends users
 {
-    public function __construct($id="")
+    public function __construct($data="")
     {
         
     }

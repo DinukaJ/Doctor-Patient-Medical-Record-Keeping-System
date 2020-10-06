@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `phone` varchar(10) NOT NULL,
+  `email` text NULL,
   `password` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `doctor_id_key` (`id`)
@@ -146,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `phone` varchar(10) NOT NULL,
+   `email` text NULL,
   `password` varchar(20) NOT NULL,
   `age` int(2) NOT NULL,
   `address` text NOT NULL,
