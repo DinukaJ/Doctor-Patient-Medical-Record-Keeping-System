@@ -131,8 +131,8 @@ else
                 </div>
            </div>
         </div>
-
     </div>
+    <!-- End of the Modal for Add Medicine-->
 
 
     <!-- Footer Includes -->
