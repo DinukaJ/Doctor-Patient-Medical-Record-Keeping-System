@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `bill`
 --
+CREATE DATABASE groupprojectucsc;
+USE groupprojectucsc;
+
 
 DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
