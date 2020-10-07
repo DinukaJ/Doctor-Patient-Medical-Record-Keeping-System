@@ -167,10 +167,10 @@ else
         <div class="row">
         <div class="c-12 c-m-2">
             </div>
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Medicine Name 
             </div>
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Price
             </div>
         </div>
@@ -182,6 +182,9 @@ else
                 1
             </div>
         </div>
+   </div>
+   <div class="row">
+        Total Amount:
    </div>
    <div class="bottomModel">
         <div class="row">
@@ -227,6 +230,30 @@ else
             });
             $(".close").click(()=>{
                 close(modalViewPres);
+            })
+        })
+        
+        //Model Bill
+        var modal = document.getElementById("modalBill");
+        
+        //open and closing functions
+        function open(modal) {
+            modal.style.display = "block";
+        }
+        function close(modal){
+            modal.style.display = "none";
+        }
+
+        $(document).ready(function(){
+            //click on view
+            $("#billCreate").click(()=>{
+                open(modalBill);
+            });
+            $(".close").click(()=>{
+                close(modalBill);
+            })
+            $("#endBill").click(()=>{
+                close(modalBill);
             })
         })
         
