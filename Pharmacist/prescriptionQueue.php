@@ -143,8 +143,8 @@ else
            <div class="bottomModel">
                 <div class="row">
                     <div class="c-12">
-                        <button type="button" class="btn btnNormal" id="addMedCancel">Print</button> 
-                        <button type="button" class="btn btnNormal" id="addMedSave">Create Bill</button> 
+                        <button type="button" class="btn btnNormal" id="presPrint">Print</button> 
+                        <button type="button" class="btn btnNormal" id="billCreate">Create Bill</button> 
                     </div>
                 </div>
            </div>
@@ -152,6 +152,69 @@ else
     </div>
     <!-- End of the Modal for View Prescription-->
 
+
+<!-- The Modal for Bill-->
+        <div id="modalViewPres" class="modal modal2">
+
+<!-- Modal content -->
+<div class="modal-content-long">
+    <div class="row">
+        <div class="col-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+   <div class="detailsSection">
+        <div class="row">
+        <div class="c-12 c-m-2">
+            </div>
+            <div class="c-12 c-m-2">
+                Medicine Name 
+            </div>
+            <div class="c-12 c-m-2">
+                Amount Per Time 
+            </div>
+            <div class="c-12 c-m-2">
+                Times Per Day 
+            </div>
+            <div class="c-12 c-m-2">
+                Before/ After Meal
+            </div>                    
+            <div class="c-12 c-m-2">
+                Duration 
+            </div>
+        </div>
+        <div class="row patientDataRow">
+            <div class="c-3 c-m-2">
+                1
+            </div>   
+            <div class="c-3 c-m-2">
+                1
+            </div>
+            <div class="c-8 c-m-2">
+                1
+            </div>
+            <div class="c-8 c-m-2">
+                1
+            </div>
+            <div class="c-8 c-m-2">
+                1
+            </div>
+            <div class="c-8 c-m-2">
+                1
+            </div>
+        </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="addMedCancel">Print</button> 
+                <button type="button" class="btn btnNormal" id="addMedSave">Create Bill</button> 
+            </div>
+        </div>
+   </div>
+</div>
+</div>
+<!-- End of the Modal for Bill-->
 
     <!-- The Modal -->
     <!-- <div id="myModal" class="modal">
