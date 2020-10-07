@@ -65,7 +65,7 @@ else
                         1
                     </div>
                     <div class="c-1">
-                        <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                        <button type="button" class="btn btnPatientView" id="viewPres">View</button>
                     </div>
                 </div>
                 <?php
@@ -89,6 +89,70 @@ else
             </div>
         </div>
     </div>
+    <!-- The Modal for View Prescription-->
+    <div id="modalViewPres" class="modal modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content-long">
+            <div class="row">
+                <div class="col-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+           <div class="detailsSection">
+                <div class="row">
+                <div class="c-12 c-m-2">
+                    </div>
+                    <div class="c-12 c-m-2">
+                        Medicine Name 
+                    </div>
+                    <div class="c-12 c-m-2">
+                        Amount Per Time 
+                    </div>
+                    <div class="c-12 c-m-2">
+                        Times Per Day 
+                    </div>
+                    <div class="c-12 c-m-2">
+                        Before/ After Meal
+                    </div>                    
+                    <div class="c-12 c-m-2">
+                        Duration 
+                    </div>
+                </div>
+                <div class="row patientDataRow">
+                    <div class="c-3 c-m-2">
+                        1
+                    </div>   
+                    <div class="c-3 c-m-2">
+                        1
+                    </div>
+                    <div class="c-8 c-m-2">
+                        1
+                    </div>
+                    <div class="c-8 c-m-2">
+                        1
+                    </div>
+                    <div class="c-8 c-m-2">
+                        1
+                    </div>
+                    <div class="c-8 c-m-2">
+                        1
+                    </div>
+                </div>
+           </div>
+           <div class="bottomModel">
+                <div class="row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal" id="addMedCancel">Print</button> 
+                        <button type="button" class="btn btnNormal" id="addMedSave">Create Bill</button> 
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    <!-- End of the Modal for View Prescription-->
+
+
     <!-- The Modal -->
     <!-- <div id="myModal" class="modal">
 
@@ -104,24 +168,26 @@ else
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
+        // Get the Prescription view modal
+       var modal = document.getElementById("modalViewPres");
+        
+        //open and closing functions
+        function open(modal) {
             modal.style.display = "block";
         }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
+        function close(modal){
             modal.style.display = "none";
-            }
         }
+
+        $(document).ready(function(){
+            //click on view
+            $("#viewPres").click(()=>{
+                open(modalViewPres);
+            });
+            $(".close").click(()=>{
+                close(modalViewPres);
+            })
+        })
         
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
