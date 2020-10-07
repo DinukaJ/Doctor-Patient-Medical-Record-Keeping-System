@@ -8,7 +8,7 @@ function getSideNav($type)
                 <img src="../images/acc.png" width="80%">
             </div>
             <div class="c-6">
-                <p class="accountName2">Pharmacist Name</p>
+                <p class="accountName2">Pharmacist</p>
                 
             </div>
             <div class="c-6"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>

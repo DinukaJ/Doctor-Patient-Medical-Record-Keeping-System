@@ -4,7 +4,7 @@ class Database
 	private $server="localhost";
 	private $username="root";
 	private $pass="";
-	private $database="groupprojectucscTest";
+	private $database="groupprojectucsc";
 	private $con="";
 
 	public function __construct()
