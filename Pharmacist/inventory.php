@@ -121,6 +121,14 @@ else
                         <input type="text" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Type: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medType" id="medType" placeholder="">
+                    </div>
+                </div>
            </div>
            <div class="bottomModel">
                 <div class="row">
