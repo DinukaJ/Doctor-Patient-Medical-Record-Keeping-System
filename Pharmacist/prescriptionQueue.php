@@ -153,59 +153,48 @@ else
     <!-- End of the Modal for View Prescription-->
 
 
-<!-- The Modal for Bill-->
-        <div id="modalBill" class="modal modal2">
-
-<!-- Modal content -->
-<div class="modal-content-long">
-    <div class="row">
-        <div class="col-12">
-        <span class="close closeMed">&times;</span>
+    <!-- The Modal for Bill-->
+    <div id="modalBill" class="modal modal2">
+        <!-- Modal content -->
+        <div class="modal-content-long">
+            <div class="row">
+                <div class="col-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+        <div class="detailsSection">
+                <div class="row">
+                <div class="c-12 c-m-2">
+                    </div>
+                    <div class="c-12 c-m-3">
+                        Medicine Name 
+                    </div>
+                    <div class="c-12 c-m-3">
+                        Price
+                    </div>
+                </div>
+                <div class="row patientDataRow">
+                    <div class="c-3 c-m-2">
+                        1
+                    </div>   
+                    <div class="c-3 c-m-2">
+                        1
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+                Total Amount:
+        </div>
+        <div class="bottomModel">
+                <div class="row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal" id="endBill">Print & End Bill</button> 
+                    </div>
+                </div>
+        </div>
         </div>
     </div>
-   <div class="detailsSection">
-        <div class="row">
-        <div class="c-12 c-m-2">
-            </div>
-            <div class="c-12 c-m-3">
-                Medicine Name 
-            </div>
-            <div class="c-12 c-m-3">
-                Price
-            </div>
-        </div>
-        <div class="row patientDataRow">
-            <div class="c-3 c-m-2">
-                1
-            </div>   
-            <div class="c-3 c-m-2">
-                1
-            </div>
-        </div>
-   </div>
-   <div class="row">
-        Total Amount:
-   </div>
-   <div class="bottomModel">
-        <div class="row">
-            <div class="c-12">
-                <button type="button" class="btn btnNormal" id="endBill">Print & End Bill</button> 
-            </div>
-        </div>
-   </div>
-</div>
-</div>
-<!-- End of the Modal for Bill-->
-
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
-
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
+    <!-- End of the Modal for Bill-->
 
 
     <!-- Footer Includes -->

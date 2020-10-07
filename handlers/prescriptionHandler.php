@@ -2,8 +2,12 @@
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 
 //Checking which function to call
-if(isset($_POST["addPres"]))
+if(isset($_POST["addMed"]))
     addMedicineToPrescription();
+if(isset($_POST["addPresNote"]))
+    addPrescriptionNote();
+if(isset($_POST["removeMed"]))
+    removeMedicineToPrescription();
 
 function addPrescription()
 {
