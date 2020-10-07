@@ -154,7 +154,7 @@ else
 
 
 <!-- The Modal for Bill-->
-        <div id="modalViewPres" class="modal modal2">
+        <div id="modalBill" class="modal modal2">
 
 <!-- Modal content -->
 <div class="modal-content-long">
@@ -171,16 +171,7 @@ else
                 Medicine Name 
             </div>
             <div class="c-12 c-m-2">
-                Amount Per Time 
-            </div>
-            <div class="c-12 c-m-2">
-                Times Per Day 
-            </div>
-            <div class="c-12 c-m-2">
-                Before/ After Meal
-            </div>                    
-            <div class="c-12 c-m-2">
-                Duration 
+                Price
             </div>
         </div>
         <div class="row patientDataRow">
@@ -190,25 +181,12 @@ else
             <div class="c-3 c-m-2">
                 1
             </div>
-            <div class="c-8 c-m-2">
-                1
-            </div>
-            <div class="c-8 c-m-2">
-                1
-            </div>
-            <div class="c-8 c-m-2">
-                1
-            </div>
-            <div class="c-8 c-m-2">
-                1
-            </div>
         </div>
    </div>
    <div class="bottomModel">
         <div class="row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="addMedCancel">Print</button> 
-                <button type="button" class="btn btnNormal" id="addMedSave">Create Bill</button> 
+                <button type="button" class="btn btnNormal" id="endBill">Print & End Bill</button> 
             </div>
         </div>
    </div>
