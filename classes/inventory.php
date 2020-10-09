@@ -1,6 +1,6 @@
 <?php
 include_once("database.php");
-class prescription
+class inventory
 {
     public function __construct($id="")
     {
