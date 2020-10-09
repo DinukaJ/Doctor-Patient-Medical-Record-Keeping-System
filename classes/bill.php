@@ -16,5 +16,12 @@ class bill
         return $stat;
     }
 
+    //viewing bill details
+    public function viewBill($billId){
+        $db = new Database();
+        $data = $db->getData("select * from bill where id = '$billId'");
+        return $data;
+    }
+
 }
 ?>
