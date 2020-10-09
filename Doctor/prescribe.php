@@ -35,9 +35,18 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                             <div class="box">
-                                <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
-                                <p>Name: </p>
-                                <p>Age: </p>
+                                <input type="text" class="input-field fullWidth" autocomplete='off' name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                                <div class='text-left mt-4' id='searchResult'>
+                                    <div class='' id='subsresult'>
+                                        <!-- <div class='row c-12  searchr se1'>$row[0]</div>
+                                        <div class='row c-12  searchr se2'>$row[0]</div>
+                                        <div class='row c-12  searchr se3'>$row[0]</div>
+                                        <div class='row c-12  searchr se4'>$row[0]</div> -->
+                                        <input type='hidden' id='secount' value='4'>
+                                    </div>
+                                </div>
+                                <p id="patName">Name: </p>
+                                <p id="patAge">Age: </p>
                                 <a href=""><button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button></a>
                             </div>
                         </div>
@@ -169,5 +178,6 @@ else
             }
         }
     </script>
+    <script src="../js/search.js"></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 <?php
+include_once('users.php');
 class patient extends users
 {
     public function __construct($data="")
     {
         
     }
-    public function addPatient($fname,$lname,$phone,$age,$address)
+    public function addPatient($pid,$fname,$lname,$phone,$age,$address)
     {   
         $db=new Database();
-        return $db->insert_update_delete("insert into patient values(null,'$fname','$lname','$phone','$age','$address')");
+        return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$age','$address')");
     }
     public function getPatients()
     {
@@ -28,7 +29,7 @@ class patient extends users
     public function getPatientsList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname from patient where id='$search' or fname like '%$search%' or lname like '%$search%'");
+        return $db->getData("select id,fname,lname from patient where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
     }   
     public function updatePatient_Allergy_IN($patID,$allergy,$IN)
     {
