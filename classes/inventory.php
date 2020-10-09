@@ -18,5 +18,11 @@ class prescription
         $data = $db->getData("select * from medicine where name='$input' or shortCode='$input");
         return $data;
     }
+
+    public function getPresToday(){
+        $db = new Database();
+        $data = $db->getData("select * from prescriptions where doi= CURDATE()");
+        return $data;
+    }
 }
 ?>
