@@ -103,7 +103,8 @@ function putPatientData()
 ser.addEventListener("blur", function(){
 	// $('#searchResult').addClass('hideser');
 	setTimeout(function(){
-		$('#subsresult').slideUp();
+        $('#subsresult').slideUp();
+        $('#subsresult').html("");
     },300);
     if(!entered)
         ser.value="";

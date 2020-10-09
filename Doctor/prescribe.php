@@ -42,7 +42,7 @@ else
                                         <div class='row c-12  searchr se2'>$row[0]</div>
                                         <div class='row c-12  searchr se3'>$row[0]</div>
                                         <div class='row c-12  searchr se4'>$row[0]</div> -->
-                                        <input type='hidden' id='secount' value='4'>
+                                        <input type='hidden' id='secount' value='0'>
                                     </div>
                                 </div>
                                 <p id="patName">Name: </p>
