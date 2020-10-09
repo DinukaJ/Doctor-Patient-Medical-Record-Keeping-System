@@ -123,10 +123,10 @@ else
                 </div>
                 <div class="row">
                     <div class="c-12 c-m-2">
-                        Type: 
+                        Short Code: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medType" id="medType" placeholder="">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medSc" id="medSc" placeholder="">
                     </div>
                 </div>
            </div>
