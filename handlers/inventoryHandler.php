@@ -4,6 +4,8 @@ if(isset($_POST["type"])){
 
     if($_POST["type"]=="searchMed")
         searchMedic();
+    if($_POST["type"]=="getMed")
+        getMedic();
     if($_POST["type"]=="medData")
         getMedDat();
 }
@@ -19,13 +21,41 @@ function searchMedic()
     {
         while($row=mysqli_fetch_array($searchResult))
         {
-            $output.="<div class='row c-12  searchr se$count'>$row[0] - $row[1]</div>";
+            $output .="<div class='row patientDataRow'>
+                            <div class='c-3' class='medicId'>$row[0]</div>
+                            <div class='c-4' class='medicName'>$row[1]</div>
+                            <div class='c-4' class='medicQty'>$row[2]</div>
+                            <div class='c-1'>
+                                <button type='button' class='btn btnPatientView' name='viewMed' id='viewMed-$row[0]'>View</button>
+                            </div>
+                      </div>";
         }
-        $output.=" <input type='hidden' id='secount' value='$count'>";
     }
     echo $output;
 }
 
+function getMedic(){
+    $output= "";
+    $inventory = new inventory();
+    $medData = $inventory->getMedAll();
+    if(mysqli_num_rows($medData))
+    {
+        while($row=mysqli_fetch_array($medData))
+        {
+            $output .="<div class='row patientDataRow'>
+                            <div class='c-3' class='medicId'>$row[0]</div>
+                            <div class='c-4' class='medicName'>$row[1]</div>
+                            <div class='c-4' class='medicQty'>$row[2]</div>
+                            <div class='c-1'>
+                                <button type='button' class='btn btnPatientView' name='viewMed' id='viewMed-$row[0]'>View</button>
+                            </div>
+                      </div>";
+        }
+    }
+    echo $output;
+}
+
+//getting view clicked med full details
 function getMedDat(){
     $inventory = new inventory();
     $medicID=$_POST["medId"];
