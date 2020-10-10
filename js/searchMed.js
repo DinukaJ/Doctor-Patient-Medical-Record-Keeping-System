@@ -1,8 +1,7 @@
 var ser=document.getElementById("medId");
 var popInfo = document.getElementsByName("viewMed");
-var count=document.getElementById("secount");
 
-
+//getting all info at first load
 setTimeout(function(){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
@@ -14,6 +13,7 @@ setTimeout(function(){
     });
 },100);
 
+//updating list based on the user input
 var a;
 ser.addEventListener("keydown",function(){
 		a=ser.value;
@@ -28,7 +28,7 @@ ser.addEventListener("keydown",function(){
 });
 
 
-//handling getting med data 
+//handling getting med data when view clicked
 function putInventoryData(val)
 {
     var mId=val.split("-");
@@ -39,24 +39,18 @@ function putInventoryData(val)
         data:{medId:meId, type:'medData'}, 
         dataType:'json',
         success:function(data){
-            // var nameVal=$('#patName').html();
+            
             $('.medicId').html(data['id']);
             $('.medicName').html(data['name']);
             $('#medicPrice').html(data['price']);
             $('#medicQty').html(data['qty']);
             $('#medicSc').html(data['shortCode']);
-            // var ageVal=$('#patAge').html();
-            // $('#patAge').html(ageVal+data['age']);
-            // $('#allergies').val(data['allergies']);
-            // $('#imp_Notes').val(data['impNotes']);
-            // $('#patientID').prop('disabled',true);
-            // $('#patientID').css('background-color','#e8e8e8');
         }
         
     });
 }
 
-
+//listening to the view
 popInfo.addEventListener("click",function(e){
    var id = e.target.attr("id");
    putInventoryData(id);
