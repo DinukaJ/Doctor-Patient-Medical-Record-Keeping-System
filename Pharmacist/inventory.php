@@ -41,11 +41,6 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
                                  <input type="text" class="input-field fullWidth" id ="medId" placeholder="Enter Short Code or Medicine Name">       
-                                    <div class='text-left mt-4' id='searchResult'>
-                                        <div class='' id='subsresult'>
-                                            <input type='hidden' id='secount' value='0'>
-                                        </div>
-                                    </div>
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
