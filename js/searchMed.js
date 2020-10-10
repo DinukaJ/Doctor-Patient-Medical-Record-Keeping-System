@@ -1,5 +1,5 @@
 var curr=0;
-var ser=document.getElementById("patientID");
+var ser=document.getElementById("medId");
 
 var count=document.getElementById("secount");
 
@@ -56,9 +56,9 @@ ser.addEventListener("keydown", function(e){
 		
             curr=0;
             $.ajax({
-                url:"../handlers/patientHandler.php",
+                url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
                 method:"POST",
-                data:{patientSearch:a, type:'searchP'},
+                data:{patientSearch:a, type:'searchP'},//type will be added accordingly to the inventory handler
                 success:function(data){
                     if(data!="")
                     {
@@ -67,7 +67,7 @@ ser.addEventListener("keydown", function(e){
                         $('.searchr').click(function(){
                             val=$(this).html();
                             ser.value=val;
-                            putPatientData();
+                            putInventoryData();//TODO:
                             entered=true;
                         });
                     }
@@ -78,24 +78,24 @@ ser.addEventListener("keydown", function(e){
 	}
 });
 
-function putPatientData()
+function putInventoryData()
 {
-    var pId=val.split(" ");
-    pId=pId[0];
+    var mId=val.split(" ");
+    mId=inId[0];
     $.ajax({
         url:"../handlers/patientHandler.php",
         method:"POST",
-        data:{patientID:pId, type:'patientData'},
+        data:{medID:mId, type:'patientData'}, //type will be added accordingly to the inventory handler
         dataType:'json',
         success:function(data){
-            var nameVal=$('#patName').html();
+            // var nameVal=$('#patName').html();
             $('#patName').html(nameVal+data['fname']+" "+data['lname']);
-            var ageVal=$('#patAge').html();
-            $('#patAge').html(ageVal+data['age']);
-            $('#allergies').val(data['allergies']);
-            $('#imp_Notes').val(data['impNotes']);
-            $('#patientID').prop('disabled',true);
-            $('#patientID').css('background-color','#e8e8e8');
+            // var ageVal=$('#patAge').html();
+            // $('#patAge').html(ageVal+data['age']);
+            // $('#allergies').val(data['allergies']);
+            // $('#imp_Notes').val(data['impNotes']);
+            // $('#patientID').prop('disabled',true);
+            // $('#patientID').css('background-color','#e8e8e8');
         }
         
     });
