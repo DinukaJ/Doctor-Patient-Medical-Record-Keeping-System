@@ -3,57 +3,9 @@ var ser=document.getElementById("medId");
 
 var count=document.getElementById("secount");
 
-var val="";
-var entered=false;
-ser.addEventListener("keydown", function(e){
-    entered=false;
-	count=document.getElementById("secount");
-	if(e.keyCode==40 && count.value!=0){
-		//Down Arrow
-		if(curr==count.value)
-		{
-			curr=1;
-		}
-		else
-		{
-			curr=curr+1;
-		}
-		$('.activeser').removeClass('activeser');
-		$('.se'+curr).addClass('activeser');
-		val=$('.se'+curr).html();
-		ser.value=val;
-	}
-	else if(e.keyCode==38 && count.value!=0){
-		//Up Arrow
-		if(curr==1)
-		{
-			curr=count.value;
-		}
-		else
-		{
-			curr=curr-1;
-		}
-		$('.activeser').removeClass('activeser');
-		$('.se'+curr).addClass('activeser');
-		val=$('.se'+curr).html();
-		ser.value=val;
-	}
-	else if(e.keyCode==13)
-	{
-        //Enter
-        if(ser.value==val)
-        {
-            putInventoryData();
-            entered=true;
-        }
-
-	}
-	else
-	{
 		var a;
 		setTimeout(function(){
 			a=ser.value;
-		
             curr=0;
             $.ajax({
                 url:"../handlers/inventoryHandler.php",
@@ -62,8 +14,8 @@ ser.addEventListener("keydown", function(e){
                 success:function(data){
                     if(data!="")
                     {
-                        $('#subsresult').html(data);
-                        $('#subsresult').slideDown();
+                        $('#medInfo').html(data);
+                        $('#medInfo').slideDown();
                         $('.searchr').click(function(){
                             val=$(this).html();
                             ser.value=val;
@@ -75,8 +27,7 @@ ser.addEventListener("keydown", function(e){
                 
             });
 		},100)
-	}
-});
+
 
 //handling getting med data 
 function putInventoryData()
@@ -105,13 +56,3 @@ function putInventoryData()
         
     });
 }
-ser.addEventListener("blur", function(){
-	// $('#searchResult').addClass('hideser');
-	setTimeout(function(){
-        $('#subsresult').slideUp();
-        $('#subsresult').html("");
-    },300);
-    if(!entered)
-        ser.value="";
-	
-});
