@@ -54,15 +54,8 @@ else
                         </div>
                     </div>
                 </div>
-            <div class="medInfo" >
-                <div class="row patientDataRow">
-                    <div class="c-3" class="medicId"></div>
-                    <div class="c-8" class="medicName"></div>
-                    <div class="c-1">
-                        <button type="button" class="btn btnPatientView" name="viewMed" id="viewMed">View</button>
-                    </div>
-                </div>
-            </div>
+            <!-- prints info -->
+            <div class="medInfo" ></div>
                 <?php
                 // $res=$patient->getPatients();
                 // $i=1;
