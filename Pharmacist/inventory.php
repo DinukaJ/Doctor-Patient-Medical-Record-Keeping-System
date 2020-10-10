@@ -40,7 +40,7 @@ else
                 <div class="upperPart3">
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
-                                 <input type="text" class="input-field fullWidth" placeholder="Enter Short Code or Medicine Name">       
+                                 <input type="text" class="input-field fullWidth" id ="medId" placeholder="Enter Short Code or Medicine Name">       
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
@@ -177,5 +177,6 @@ else
             }
         }
     </script>
+    <script src="../js/searchMed.js"></script>
 </body>
 </html>
