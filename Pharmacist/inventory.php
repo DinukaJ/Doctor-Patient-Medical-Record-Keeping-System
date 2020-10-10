@@ -60,12 +60,8 @@ else
                     </div>
                 </div>
                 <div class="row patientDataRow">
-                    <div class="c-3">
-                        1
-                    </div>
-                    <div class="c-8">
-                        1
-                    </div>
+                    <div class="c-3" id="medicId"></div>
+                    <div class="c-8" id="medicName"></div>
                     <div class="c-1">
                         <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
                     </div>
@@ -146,6 +142,61 @@ else
         </div>
     </div>
     <!-- End of the Modal for Add Medicine-->
+
+ <!-- The Modal for View Inventory-->
+ <div id="modalViewMed" class="modal modal2">
+
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="col-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Medicine Name: 
+            </div>
+                <div class="c-12 c-m-10" id="medicId">
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Medicine Name: 
+            </div>
+                <div class="c-12 c-m-10" id="medicName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Price: 
+            </div>
+            <div class="c-12 c-m-10">
+                <div class="c-12 c-m-10" id="medicPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Qty: 
+            </div>
+            <div class="c-12 c-m-10">
+                <div class="c-12 c-m-10" id="medicQty">
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Short Code: 
+            </div>
+            <div class="c-12 c-m-10">
+                <div class="c-12 c-m-10" id="medicSc">
+            </div>
+        </div>
+   </div>
+ </div>
+</div>
+<!-- End of the Modal for Add Medicine-->
+
 
 
     <!-- Footer Includes -->
