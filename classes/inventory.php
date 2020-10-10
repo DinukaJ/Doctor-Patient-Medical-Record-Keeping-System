@@ -30,7 +30,8 @@ class inventory
     //returning the prescriptions belong to today
     public function getPresToday(){
         $db = new Database();
-        $data = $db->getData("select * from prescriptions where doi= CURDATE()");
+        $today=date("Y-m-d");
+        $data = $db->getData("select * from prescriptions where doi='$today'");
         return $data;
     }
 }
