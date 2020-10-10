@@ -43,7 +43,7 @@ ser.addEventListener("keydown", function(e){
         //Enter
         if(ser.value==val)
         {
-            putPatientData();
+            putInventoryData();
             entered=true;
         }
 
@@ -56,9 +56,9 @@ ser.addEventListener("keydown", function(e){
 		
             curr=0;
             $.ajax({
-                url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
+                url:"../handlers/inventoryHandler.php",
                 method:"POST",
-                data:{medSearch:a, type:'searchMed'},//type will be added accordingly to the inventory handler
+                data:{medSearch:a, type:'searchMed'},
                 success:function(data){
                     if(data!="")
                     {
@@ -78,14 +78,15 @@ ser.addEventListener("keydown", function(e){
 	}
 });
 
+//handling getting med data 
 function putInventoryData()
 {
     var mId=val.split(" ");
     mId=inId[0];
     $.ajax({
-        url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
+        url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data:{medID:mId, type:'medData'}, //type will be added accordingly to the inventory handler
+        data:{medId:mId, type:'medData'}, 
         dataType:'json',
         success:function(data){
             // var nameVal=$('#patName').html();
