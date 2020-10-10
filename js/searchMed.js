@@ -13,8 +13,7 @@ var count=document.getElementById("secount");
                 data:{medSearch:a, type:'searchMed'},
                 success:function(data){
                     $('#medInfo').html(data);
-                }
-                
+                }   
             });
 		},100)
 

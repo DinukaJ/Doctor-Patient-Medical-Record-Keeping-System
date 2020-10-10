@@ -14,6 +14,13 @@ class inventory
         return $stat;
     }
 
+    //retrieving all the information of the inventory
+    public function getMedAll(){
+        $db = new Database();
+        $data = $db->getData("select * from medicine");
+        return $data;
+    }
+
     //searching for specific medicine using medicine name or shortCode of the medicine
     public function getMed($input){
         $db = new Database();
