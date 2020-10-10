@@ -12,17 +12,7 @@ var count=document.getElementById("secount");
                 method:"POST",
                 data:{medSearch:a, type:'searchMed'},
                 success:function(data){
-                    if(data!="")
-                    {
-                        $('#medInfo').html(data);
-                        $('#medInfo').slideDown();
-                        $('.searchr').click(function(){
-                            val=$(this).html();
-                            ser.value=val;
-                            putInventoryData();
-                            entered=true;
-                        });
-                    }
+                    $('#medInfo').html(data);
                 }
                 
             });
