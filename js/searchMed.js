@@ -1,12 +1,11 @@
-var curr=0;
 var ser=document.getElementById("medId");
-
+var popInfo = document.getElementsByName("viewMed");
 var count=document.getElementById("secount");
 
+//keydown??
 		var a;
 		setTimeout(function(){
 			a=ser.value;
-            curr=0;
             $.ajax({
                 url:"../handlers/inventoryHandler.php",
                 method:"POST",
@@ -19,7 +18,7 @@ var count=document.getElementById("secount");
 
 
 //handling getting med data 
-function putInventoryData()
+function putInventoryData(val)
 {
     var mId=val.split(" ");
     mId=inId[0];
@@ -45,3 +44,9 @@ function putInventoryData()
         
     });
 }
+
+
+popInfo.addEventListener("click",function(e){
+   var id = e.target.attr("id");
+   putInventoryData(id);
+});
