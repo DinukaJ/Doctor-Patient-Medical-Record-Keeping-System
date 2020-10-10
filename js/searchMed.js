@@ -67,7 +67,7 @@ ser.addEventListener("keydown", function(e){
                         $('.searchr').click(function(){
                             val=$(this).html();
                             ser.value=val;
-                            putInventoryData();//TODO:
+                            putInventoryData();
                             entered=true;
                         });
                     }
@@ -83,13 +83,17 @@ function putInventoryData()
     var mId=val.split(" ");
     mId=inId[0];
     $.ajax({
-        url:"../handlers/patientHandler.php",
+        url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
         method:"POST",
         data:{medID:mId, type:'patientData'}, //type will be added accordingly to the inventory handler
         dataType:'json',
         success:function(data){
             // var nameVal=$('#patName').html();
-            $('#patName').html(nameVal+data['fname']+" "+data['lname']);
+            $('.medicId').html(data['id']);
+            $('.medicName').html(data['name']);
+            $('.medicPrice').html(data['price']);
+            $('.medicQty').html(data['qty']);
+            $('.medicSc').html(data['shortCode']);
             // var ageVal=$('#patAge').html();
             // $('#patAge').html(ageVal+data['age']);
             // $('#allergies').val(data['allergies']);
