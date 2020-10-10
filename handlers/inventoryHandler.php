@@ -28,4 +28,12 @@ function searchMedic()
     }
     echo $output;
 }
+
+function getMedDat(){
+    $inventory = new inventory();
+    $medicID=$_POST["medId"];
+    $medData=$inventory->getMed($medicID);
+    $row=mysqli_fetch_array($medData);
+    echo json_encode($row);
+}
 ?>
