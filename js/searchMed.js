@@ -58,7 +58,7 @@ ser.addEventListener("keydown", function(e){
             $.ajax({
                 url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
                 method:"POST",
-                data:{patientSearch:a, type:'searchP'},//type will be added accordingly to the inventory handler
+                data:{medSearch:a, type:'searchMed'},//type will be added accordingly to the inventory handler
                 success:function(data){
                     if(data!="")
                     {
@@ -85,7 +85,7 @@ function putInventoryData()
     $.ajax({
         url:"../handlers/inventoryHandler.php",//TODO: adding the inventoryHandler.php
         method:"POST",
-        data:{medID:mId, type:'patientData'}, //type will be added accordingly to the inventory handler
+        data:{medID:mId, type:'medData'}, //type will be added accordingly to the inventory handler
         dataType:'json',
         success:function(data){
             // var nameVal=$('#patName').html();
