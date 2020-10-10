@@ -46,7 +46,6 @@ ser.addEventListener("keydown", function(e){
             putPatientData();
             entered=true;
         }
-
 	}
 	else
 	{
