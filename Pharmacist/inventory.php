@@ -60,10 +60,10 @@ else
                     </div>
                 </div>
                 <div class="row patientDataRow">
-                    <div class="c-3" id="medicId"></div>
-                    <div class="c-8" id="medicName"></div>
+                    <div class="c-3" class="medicId"></div>
+                    <div class="c-8" class="medicName"></div>
                     <div class="c-1">
-                        <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                        <button type="button" class="btn btnPatientView" name="viewMed" id="viewMed">View</button>
                     </div>
                 </div>
                 <?php
@@ -155,44 +155,38 @@ else
     </div>
    <div class="detailsSection">
         <div class="row">
-            <div class="c-12 c-m-2">
-                Medicine Name: 
+            <div class="c-12 c-m-4">
+                Medicine ID: 
             </div>
-                <div class="c-12 c-m-10" id="medicId">
-            </div>
+                <div class="c-12 c-m-10" class="medicId"></div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-4">
                 Medicine Name: 
             </div>
-                <div class="c-12 c-m-10" id="medicName">
-            </div>
+                <div class="c-12 c-m-10" class="medicName"></div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-4">
                 Price: 
             </div>
-            <div class="c-12 c-m-10">
-                <div class="c-12 c-m-10" id="medicPrice">
-            </div>
-        </div>
+
+                <div class="c-12 c-m-10" id="medicPrice"></div>
+        </div>                
         <div class="row">
             <div class="c-12 c-m-2">
                 Qty: 
             </div>
-            <div class="c-12 c-m-10">
-                <div class="c-12 c-m-10" id="medicQty">
-            </div>
+                <div class="c-12 c-m-10" id="medicQty"></div>
         </div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Short Code: 
             </div>
-            <div class="c-12 c-m-10">
-                <div class="c-12 c-m-10" id="medicSc">
-            </div>
+                <div class="c-12 c-m-10" id="medicSc"></div>
         </div>
-   </div>
+
+   </div> 
  </div>
 </div>
 <!-- End of the Modal for Add Medicine-->
@@ -223,6 +217,19 @@ else
             });
             $("#addMedCancel").click(()=>{
                 close(modalAddMed);
+            });
+        });
+
+        var modalViewMed = document.getElementById("modalViewMed");
+
+
+        $(document).ready(function(){
+            //Add Medicine Model
+            $("#viewMed").click(()=>{
+                open(modalViewMed);
+            });
+            $(".close").click(()=>{
+                close(modalViewMed);
             });
         });
         
