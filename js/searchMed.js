@@ -92,9 +92,9 @@ function putInventoryData()
             // var nameVal=$('#patName').html();
             $('.medicId').html(data['id']);
             $('.medicName').html(data['name']);
-            $('.medicPrice').html(data['price']);
-            $('.medicQty').html(data['qty']);
-            $('.medicSc').html(data['shortCode']);
+            $('#medicPrice').html(data['price']);
+            $('#medicQty').html(data['qty']);
+            $('#medicSc').html(data['shortCode']);
             // var ageVal=$('#patAge').html();
             // $('#patAge').html(ageVal+data['age']);
             // $('#allergies').val(data['allergies']);
