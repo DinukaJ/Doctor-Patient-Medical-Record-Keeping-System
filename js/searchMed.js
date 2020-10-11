@@ -40,8 +40,8 @@ function putInventoryData(val)
         dataType:'json',
         success:function(data){
             
-            $('.medicId').html(data['id']);
-            $('.medicName').html(data['name']);
+            $('#medicId').html(data['id']);
+            $('#medicName').html(data['name']);
             $('#medicPrice').html(data['price']);
             $('#medicQty').html(data['qty']);
             $('#medicSc').html(data['shortCode']);

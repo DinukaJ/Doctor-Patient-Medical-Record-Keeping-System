@@ -148,13 +148,13 @@ else
             <div class="c-12 c-m-4">
                 Medicine ID: 
             </div>
-                <div class="c-12 c-m-10" class="medicId"></div>
+                <div class="c-12 c-m-10" id="medicId"></div>
         </div>
         <div class="row">
             <div class="c-12 c-m-4">
                 Medicine Name: 
             </div>
-                <div class="c-12 c-m-10" class="medicName"></div>
+                <div class="c-12 c-m-10" id="medicName"></div>
         </div>
         <div class="row">
             <div class="c-12 c-m-4">
