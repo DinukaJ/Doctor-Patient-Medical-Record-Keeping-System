@@ -134,7 +134,7 @@ else
     <!-- End of the Modal for Add Medicine-->
 
  <!-- The Modal for View Inventory-->
- <div id="modalViewMed" class="modal modal2">
+<div id="modalViewMed" class="modal modal2">
 
 <!-- Modal content -->
  <div class="modal-content-long inventoryModal">
