@@ -2,7 +2,7 @@ var ser=document.getElementById("medId");
 var popInfo = document.getElementsByName("viewMed");
 
 //getting all info at first load
-setTimeout(function(){
+$(document).ready(function(){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
@@ -11,7 +11,7 @@ setTimeout(function(){
             $('#medInfo').html(data);
         }   
     });
-},100);
+});
 
 //updating list based on the user input
 var a;
