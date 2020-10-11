@@ -145,19 +145,20 @@ else
     </div>
    <div class="detailsSection">
         <div class="row">
-            <div class="c-12 c-m-4">
+            <div class="c-12 c-m-2">
                 Medicine ID: 
             </div>
-                <div class="c-12 c-m-10" id="medicId"></div>
+            <div class="c-12 c-m-10" id="medicId">
+            </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-4">
+            <div class="c-12 c-m-2">
                 Medicine Name: 
             </div>
                 <div class="c-12 c-m-10" id="medicName"></div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-4">
+            <div class="c-12 c-m-2">
                 Price: 
             </div>
 

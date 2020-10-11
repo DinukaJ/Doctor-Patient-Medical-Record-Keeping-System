@@ -55,10 +55,8 @@ function putInventoryData(id)
             $('#medicSc').html(data['shortCode']);
 
 
-            //View Medicine Model
-            $(".viewMed").click(()=>{
-                open(modalViewMed);
-            });
+            // //View Medicine Model
+            open(modalViewMed);
 
             $(".close").click(()=>{
                 close(modalViewMed);
