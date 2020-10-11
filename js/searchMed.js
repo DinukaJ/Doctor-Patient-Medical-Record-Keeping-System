@@ -17,6 +17,7 @@ $(document).ready(function(){
 //updating list based on the user input
 var a;
 ser.addEventListener("keydown",function(){
+    setTimeout(function(){
 		a=ser.value;
         $.ajax({
             url:"../handlers/inventoryHandler.php",
@@ -26,6 +27,7 @@ ser.addEventListener("keydown",function(){
                 $('#medInfo').html(data);
             }   
         });
+    },100)
 });
 
 
