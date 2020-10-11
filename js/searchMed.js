@@ -1,5 +1,6 @@
 var ser=document.getElementById("medId");
 var popInfo = document.getElementsByName("viewMed");
+var modalViewMed = document.getElementById("modalViewMed");
 
 //getting all info at first load
 $(document).ready(function(){
@@ -29,14 +30,12 @@ ser.addEventListener("keydown",function(){
 
 
 //handling getting med data when view clicked
-function putInventoryData(val)
+function putInventoryData(id)
 {
-    var mId=val.split("-");
-    meId=mId[1];
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data:{medId:meId, type:'medData'}, 
+        data:{medId:id, type:'medData'}, 
         dataType:'json',
         success:function(data){
             
@@ -52,6 +51,27 @@ function putInventoryData(val)
 
 //listening to the view
 popInfo.addEventListener("click",function(e){
-   var id = e.target.attr("id");
-   putInventoryData(id);
+
+   var mId = e.target.id;//getting id of the clicked row
+   medId=mId.split("-");// splitting the id to get the medicine id
+   medId=medId[1]; // assigning the medicine id
+
+   putInventoryData(id); // passing the id to fill the pop up with data
+  
+   function open(modal) {
+    modal.style.display = "block";
+    }
+    function close(modal){
+    modal.style.display = "none";
+    }
+
+         //Add Medicine Model
+       $("mId").click(()=>{
+           open(modalViewMed);
+       });
+
+       $(".close").click(()=>{
+           close(modalViewMed);
+       });
+
 });

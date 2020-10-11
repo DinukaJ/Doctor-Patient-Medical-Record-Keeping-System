@@ -209,20 +209,7 @@ else
                 close(modalAddMed);
             });
         });
-
-        var modalViewMed = document.getElementById("modalViewMed");
-
-
-        $(document).ready(function(){
-            //Add Medicine Model
-            $("#viewMed").click(()=>{
-                open(modalViewMed);
-            });
-            $(".close").click(()=>{
-                close(modalViewMed);
-            });
-        });
-        
+ 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
         if (event.target == modalAddMed) {
