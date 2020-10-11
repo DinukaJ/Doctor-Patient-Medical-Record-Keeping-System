@@ -54,7 +54,7 @@ function putInventoryData(id)
 
             var modalViewMed = document.getElementById("modalViewMed");
 
-            //Add Medicine Model
+            //View Medicine Model
             $(".viewMed").click(()=>{
                 open(modalViewMed);
             });
