@@ -4,6 +4,11 @@ var modalViewMed = document.getElementById("modalViewMed");
 
 //getting all info at first load
 $(document).ready(function(){
+    getAllMed();
+});
+
+function getAllMed()
+{
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
@@ -15,8 +20,7 @@ $(document).ready(function(){
             });
         }   
     });
-});
-
+}
 //updating list based on the user input
 var a;
 ser.addEventListener("keydown",function(){
