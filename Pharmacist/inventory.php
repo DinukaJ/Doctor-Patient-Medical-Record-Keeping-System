@@ -189,6 +189,7 @@ else
     <script>
         // Get the modal Add Medicine Model
         var modalAddMed = document.getElementById("modalAddMed");
+        var modalViewMed = document.getElementById("modalViewMed");
 
         function open(modal) {
             modal.style.display = "block";
@@ -214,6 +215,9 @@ else
         window.onclick = function(event) {
         if (event.target == modalAddMed) {
             modalAddMed.style.display = "none";
+            }
+        if (event.target == modalViewMed) {
+            modalViewMed.style.display = "none";
             }
         }
     </script>

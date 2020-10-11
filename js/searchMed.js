@@ -11,7 +11,7 @@ $(document).ready(function(){
         success:function(data){
             $('#medInfo').html(data);
             $(".viewMed").click(function(){             
-                modalView(this.id);
+                putInventoryData(this.id);
             });
         }   
     });
@@ -29,7 +29,7 @@ ser.addEventListener("keydown",function(){
             success:function(data){
                 $('#medInfo').html(data);
                 $(".viewMed").click(function(){
-                    modalView(this.id);
+                    putInventoryData(this.id);
                 });
             }   
         });
@@ -40,10 +40,12 @@ ser.addEventListener("keydown",function(){
 //handling getting med data when view clicked
 function putInventoryData(id)
 {
+    medId=id.split("-");// splitting the id to get the medicine id
+    medId=medId[1]; // assigning the medicine id
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data:{medId:id, type:'medData'}, 
+        data:{medId:medId, type:'medData'}, 
         dataType:'json',
         success:function(data){
             $('#medicId').html(data['id']);
@@ -52,7 +54,6 @@ function putInventoryData(id)
             $('#medicQty').html(data['qty']);
             $('#medicSc').html(data['shortCode']);
 
-            var modalViewMed = document.getElementById("modalViewMed");
 
             //View Medicine Model
             $(".viewMed").click(()=>{
@@ -65,15 +66,4 @@ function putInventoryData(id)
         }
         
     });
-}
-
-//listening to the view
-// popInfo.addEventListener("click",function(e){
-function modalView(id)
-{
-    //var mId = $(val).attr('id');//getting id of the clicked row
-    medId=id.split("-");// splitting the id to get the medicine id
-    medId=medId[1]; // assigning the medicine id
-
-    putInventoryData(medId); // passing the id to fill the pop up with data
 }
