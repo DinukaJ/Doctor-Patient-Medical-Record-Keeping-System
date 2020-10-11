@@ -14,10 +14,23 @@ class inventory
         return $stat;
     }
 
-    //searching for specific medicine using medicine name or shortCode of the medicine
-    public function searchMed($input){
+    //retrieving all the information of the inventory
+    public function getMedAll(){
         $db = new Database();
-        $data = $db->getData("select * from medicine where name='$input' or shortCode='$input");
+        $data = $db->getData("select * from medicine");
+        return $data;
+    }
+
+    //searching for specific medicine using medicine name or shortCode of the medicine
+    public function getMed($input){
+        $db = new Database();
+        $data = $db->getData("select * from medicine where id='$input'");
+        return $data;
+    }
+
+    public function getMedList($input){
+        $db = new Database();
+        $data = $db->getData("select * from medicine where name like '%$input%' or shortCode like '%$input%'");
         return $data;
     }
 
