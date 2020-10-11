@@ -49,7 +49,7 @@ else
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                 <label>Total Table Count:</label>
+                                 <label>Total Tablet Count:</label>
                             </div>
                         </div>
                     </div>
