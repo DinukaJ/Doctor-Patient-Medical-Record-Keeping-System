@@ -1,6 +1,5 @@
 
 var ser=document.getElementById("medId");
-// var popInfo = document.getElementsByName("viewMed");
 var modalViewMed = document.getElementById("modalViewMed");
 
 //getting all info at first load
@@ -60,7 +59,7 @@ function putInventoryData(id)
             $('#medicSc').html(data['shortCode']);
 
 
-            // //View Medicine Model
+             //View Medicine Model
             open(modalViewMed);
 
             $(".close").click(()=>{
