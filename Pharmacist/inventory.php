@@ -55,7 +55,7 @@ else
                     </div>
                 </div>
             <!-- prints info -->
-            <div class="medInfo" ></div>
+            <div id="medInfo" ></div>
                 <?php
                 // $res=$patient->getPatients();
                 // $i=1;
