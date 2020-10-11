@@ -176,7 +176,7 @@ else
                 <div class="c-12 c-m-10" id="medicSc"></div>
         </div>
 
-   </div> 
+    </div> 
  </div>
 </div>
 <!-- End of the Modal for Add Medicine-->
