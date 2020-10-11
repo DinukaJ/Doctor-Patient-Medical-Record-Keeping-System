@@ -1,5 +1,7 @@
 <?php
 include_once(dirname(dirname(__FILE__)).'/classes/inventory.php');
+
+//function check to call
 if(isset($_POST["type"])){
 
     if($_POST["type"]=="searchMed")
