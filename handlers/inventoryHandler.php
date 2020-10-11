@@ -28,7 +28,7 @@ function searchMedic()
                             <div class='c-4' class='medicName'>$row[1]</div>
                             <div class='c-4' class='medicQty'>$row[2]</div>
                             <div class='c-1'>
-                                <button type='button' class='btn btnPatientView' name='viewMed' id='viewMed-$row[0]'>View</button>
+                                <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
                             </div>
                       </div>";
         }
@@ -49,7 +49,7 @@ function getMedic(){
                             <div class='c-4' class='medicName'>$row[1]</div>
                             <div class='c-4' class='medicQty'>$row[2]</div>
                             <div class='c-1'>
-                                <button type='button' class='btn btnPatientView' name='viewMed' id='viewMed-$row[0]'>View</button>
+                                <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
                             </div>
                       </div>";
         }

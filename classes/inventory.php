@@ -24,7 +24,7 @@ class inventory
     //searching for specific medicine using medicine name or shortCode of the medicine
     public function getMed($input){
         $db = new Database();
-        $data = $db->getData("select * from medicine where name='$input' or shortCode='$input");
+        $data = $db->getData("select * from medicine where id='$input'");
         return $data;
     }
 
