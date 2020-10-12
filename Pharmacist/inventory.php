@@ -261,6 +261,9 @@ else
             $("#addMed").click(()=>{
                 open(modalAddMed);
             });
+            $("#updateMed").click(()=>{
+                open(modalUpdateMed);
+            })
             $(".close").click(()=>{
                 close(modalAddMed);
             });
