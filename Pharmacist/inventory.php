@@ -111,7 +111,7 @@ else
                         Price: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="" required>
+                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -220,7 +220,7 @@ else
                         Price: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpPrice" id="medUpPrice" placeholder="" required>
+                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medUpPrice" id="medUpPrice" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
