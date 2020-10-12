@@ -88,7 +88,7 @@ else
                 </div>
             </div>
 
-        <form action="../handlers/inventoryHandler.php" method="POST" id="medAddForm">
+        <form method="POST" id="medAddForm">
            <div class="detailsSection">
                 <div class="row">
                     <div class="c-12 c-m-2">
