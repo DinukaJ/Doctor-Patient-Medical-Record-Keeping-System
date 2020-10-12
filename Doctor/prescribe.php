@@ -54,9 +54,9 @@ else
                         <div class="c-12 c-l-3">
                             <div class="box" style="line-height:18px !important">
                                 <label for="allergies" style="font-size:0.8em;">Allergies</label>
-                                <textarea class="input-field fullWidth userData disable" disabled="disabled" style="height:60px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
+                                <textarea class="input-field fullWidth userData disable" style="height:60px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
                                 <label for="imp_Notes" style="font-size:0.8em;">Important Notes</label>
-                                <textarea class="input-field fullWidth userData disable" disabled="disabled" style="height:60px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
+                                <textarea class="input-field fullWidth userData disable" style="height:60px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
@@ -88,18 +88,27 @@ else
                 </div>
                 <div class="row patientDataRow addMedicineRow">
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field fullWidth medData disable" disabled="disabled" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
+                        <input type="text" class="input-field fullWidth medData disable" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
+                        <div class='text-left mt-4' id='searchResult'>
+                            <div class='' id='subsresult'>
+                                <!-- <div class='row c-12  searchr se1'>$row[0]</div>
+                                <div class='row c-12  searchr se2'>$row[0]</div>
+                                <div class='row c-12  searchr se3'>$row[0]</div>
+                                <div class='row c-12  searchr se4'>$row[0]</div> -->
+                                <input type='hidden' id='secount' value='0'>
+                            </div>
+                        </div>
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
-                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
+                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
+                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
-                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
+                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
+                        <input type="text" class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                     </div>
                     <div class="c-12 c-l-3">
-                        <button class="btn btnAddPres" name="addToPres" id="addToPres"><i class="fas fa-plus"></i> ADD</button>
+                        <button class="btn btnAddPres medData disable" name="addToPres" id="addToPres"><i class="fas fa-plus"></i> ADD</button>
                     </div>
                 </div>  
                 <div class="row patientDataRow" style="border-bottom:none;">
@@ -128,7 +137,7 @@ else
                 </div>  
                 <div class="row patientDataRow presBottom">
                     <div class="c-12 c-l-8">
-                        <textarea class="input-field fullWidth" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
+                        <textarea class="input-field fullWidth medData disable" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
                         <a href="../"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-times"></i> Cancel</button></a>
@@ -184,6 +193,8 @@ else
     <script src="../js/search.js"></script>
     <script>
         $(document).ready(function(){
+            $('.userData').prop('disabled',true);
+            $('.medData').prop('disabled',true);
             $("#allergies").change(function(){
                 updatePatientData();
             });
