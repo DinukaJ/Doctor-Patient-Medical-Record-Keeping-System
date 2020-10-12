@@ -266,6 +266,7 @@ else
             })
             $(".close").click(()=>{
                 close(modalAddMed);
+                close(modalUpdateMed); //closes update modal
             });
             $(".medCancel").click(()=>{
                 close(modalAddMed);
