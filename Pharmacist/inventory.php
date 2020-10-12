@@ -280,6 +280,9 @@ else
         if (event.target == modalViewMed) {
             modalViewMed.style.display = "none";
             }
+        if(event.target === modalUpdateMed){
+            modalUpdateMed.style.display = "none";
+        }
         }
     </script>
     <script src="../js/searchMed.js"></script>
