@@ -87,6 +87,8 @@ else
                 <span class="close closeMed">&times;</span>
                 </div>
             </div>
+
+        <form action="../handlers/inventoryHandler.php" method="POST">
            <div class="detailsSection">
                 <div class="row">
                     <div class="c-12 c-m-2">
@@ -125,10 +127,12 @@ else
                 <div class="row">
                     <div class="c-12">
                         <button type="button" class="btn btnNormal medCancel" id="addMedCancel">Cancel</button> 
-                        <button type="button" class="btn btnNormal" id="addMedSave">Save</button> 
+                        <button type="submit" class="btn btnNormal" id="addMedSave">Save</button> 
                     </div>
                 </div>
            </div>
+        </form>
+        
         </div>
     </div>
     <!-- End of the Modal for Add Medicine-->
