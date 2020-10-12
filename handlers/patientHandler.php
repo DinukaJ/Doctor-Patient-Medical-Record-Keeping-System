@@ -6,6 +6,8 @@ if(isset($_POST["type"]))
         searchPatient();
     if($_POST["type"]=="patientData")
         getpatientDat();
+    if($_POST["type"]=="upPatientAllergies")
+        updatePatient_Allergy_IN();
 }
 function addPatient()
 {
@@ -43,7 +45,7 @@ function updatePatient_Allergy_IN()
     $patient = new patient();
     $patID=$_POST["patID"];
     $allergy=$_POST["allergy"];
-    $importantNotes=$_POST["importatNotes"];
+    $importantNotes=$_POST["importantNotes"];
     $stat=$patient->updatePatient_Allergy_IN($patID,$allergy,$importantNotes);
 
     echo json_encode(array($stat));

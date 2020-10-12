@@ -47,13 +47,16 @@ else
                                 </div>
                                 <p id="patName">Name: </p>
                                 <p id="patAge">Age: </p>
+                                <input type="hidden" id="patID" value="">
                                 <a href=""><button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button></a>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
-                            <div class="box">
-                                <textarea class="input-field fullWidth" style="height:75px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
-                                <textarea class="input-field fullWidth" style="height:75px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
+                            <div class="box" style="line-height:18px !important">
+                                <label for="allergies" style="font-size:0.8em;">Allergies</label>
+                                <textarea class="input-field fullWidth userData disable" disabled="disabled" style="height:60px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
+                                <label for="imp_Notes" style="font-size:0.8em;">Important Notes</label>
+                                <textarea class="input-field fullWidth userData disable" disabled="disabled" style="height:60px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
@@ -85,15 +88,15 @@ else
                 </div>
                 <div class="row patientDataRow addMedicineRow">
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field fullWidth" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
+                        <input type="text" class="input-field fullWidth medData disable" disabled="disabled" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
+                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
+                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
+                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
+                        <input type="text" class="input-field medData disable" disabled="disabled" style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                     </div>
                     <div class="c-12 c-l-3">
                         <button class="btn btnAddPres" name="addToPres" id="addToPres"><i class="fas fa-plus"></i> ADD</button>
@@ -179,5 +182,26 @@ else
         }
     </script>
     <script src="../js/search.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#allergies").change(function(){
+                updatePatientData();
+            });
+            $("#imp_Notes").change(function(){
+                updatePatientData();
+            });
+            function updatePatientData()
+            {
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:{type:'upPatientAllergies', patID:$("#patID").val(), allergy:$("#allergies").val(), importantNotes:$("#imp_Notes").val()},
+                    success:function(data){
+
+                    }   
+                });
+            }
+        });
+    </script>
 </body>
 </html>

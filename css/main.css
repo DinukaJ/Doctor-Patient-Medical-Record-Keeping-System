@@ -388,6 +388,9 @@ body{
     text-decoration: none;
     cursor: pointer;
   }
+  .disable{
+      background-color: #e8e8e8;
+  }
 @media (max-width: 768px) {
     .loginPart{
         padding-top: 2em;

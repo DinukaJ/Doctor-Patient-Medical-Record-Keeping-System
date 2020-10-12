@@ -87,6 +87,7 @@ function putPatientData()
         data:{patientID:pId, type:'patientData'},
         dataType:'json',
         success:function(data){
+            $("#patID").val(pId);
             var nameVal=$('#patName').html();
             $('#patName').html(nameVal+data['fname']+" "+data['lname']);
             var ageVal=$('#patAge').html();
@@ -94,7 +95,12 @@ function putPatientData()
             $('#allergies').val(data['allergies']);
             $('#imp_Notes').val(data['impNotes']);
             $('#patientID').prop('disabled',true);
-            $('#patientID').css('background-color','#e8e8e8');
+            $('#patientID').addClass('disable');
+            $('.userData').removeClass('disable');
+            $('.userData').prop('disabled',false);
+            $('.medData').removeClass('disable');
+            $('.medData').prop('disabled',false);
+            $('#medicineCode').focus();
         }
         
     });
