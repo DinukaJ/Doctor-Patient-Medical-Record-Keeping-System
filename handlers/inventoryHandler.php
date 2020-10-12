@@ -96,8 +96,8 @@ function addMedData(){
     $price = $_POST["medPrice"];
     $qty = $_POST["medQTY"];
     $shortCode = $_POST["medSc"];
-    $stat = $inventory->addMed(NULL,$name,$price,$qty,$shortCode);
-    return $stat;
+    $stat = $inventory->addMed($name,$price,$qty,$shortCode);
+    echo $stat;
 }
 
 
