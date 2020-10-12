@@ -91,7 +91,6 @@ function getMedDat(){
 
 function addMedData(){
     $inventory = new inventory();
-    echo "check";
     $name = $_POST["medName"];
     $price = $_POST["medPrice"];
     $qty = $_POST["medQTY"];
