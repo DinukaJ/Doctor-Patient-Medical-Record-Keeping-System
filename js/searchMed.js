@@ -95,7 +95,6 @@ $('#medAddForm').on('submit',function(e){
 //Updating Data
 $('#medUpForm').on('submit',function(e){
     e.preventDefault();
-
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
