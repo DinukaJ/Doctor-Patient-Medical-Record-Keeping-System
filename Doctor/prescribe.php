@@ -137,7 +137,7 @@ else
                 </div>  
                 <div class="row patientDataRow presBottom">
                     <div class="c-12 c-l-8">
-                        <textarea class="input-field fullWidth" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
+                        <textarea class="input-field fullWidth medData disable" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
                         <a href="../"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-times"></i> Cancel</button></a>
