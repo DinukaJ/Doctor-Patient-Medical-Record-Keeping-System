@@ -124,7 +124,7 @@ else
            <div class="bottomModel">
                 <div class="row">
                     <div class="c-12">
-                        <button type="button" class="btn btnNormal" id="addMedCancel">Cancel</button> 
+                        <button type="button" class="btn btnNormal medCancel" id="addMedCancel">Cancel</button> 
                         <button type="button" class="btn btnNormal" id="addMedSave">Save</button> 
                     </div>
                 </div>
@@ -231,8 +231,8 @@ else
            <div class="bottomModel">
                 <div class="row">
                     <div class="c-12">
-                        <button type="button" class="btn btnNormal" id="addMedCancel">Cancel</button> 
-                        <button type="button" class="btn btnNormal" id="addMedUpdate">Update</button> 
+                        <button type="button" class="btn btnNormal medCancel" id="updateMedCancel">Cancel</button> 
+                        <button type="button" class="btn btnNormal" id="updateMedSave">Update</button> 
                     </div>
                 </div>
            </div>
@@ -247,6 +247,7 @@ else
         // Get the modal Add Medicine Model
         var modalAddMed = document.getElementById("modalAddMed");
         var modalViewMed = document.getElementById("modalViewMed");
+        var modalUpdateMed = document.getElementById("modalUpdateMed");
 
         function open(modal) {
             modal.style.display = "block";
@@ -263,7 +264,7 @@ else
             $(".close").click(()=>{
                 close(modalAddMed);
             });
-            $("#addMedCancel").click(()=>{
+            $(".medCancel").click(()=>{
                 close(modalAddMed);
             });
         });
