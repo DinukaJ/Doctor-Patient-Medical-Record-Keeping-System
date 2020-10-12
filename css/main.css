@@ -40,7 +40,7 @@ body{
     z-index: 1000;
     background-color: white;
 }
-#subsresult{
+#subsresult, #subsresultMed{
     display: none;
     position: absolute;
     top:5px;

@@ -90,7 +90,7 @@ else
                     <div class="c-12 c-l-3">
                         <input type="text" class="input-field fullWidth medData disable" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
                         <div class='text-left mt-4' id='searchResult'>
-                            <div class='' id='subsresult'>
+                            <div class='' id='subsresultMed'>
                                 <!-- <div class='row c-12  searchr se1'>$row[0]</div>
                                 <div class='row c-12  searchr se2'>$row[0]</div>
                                 <div class='row c-12  searchr se3'>$row[0]</div>
@@ -100,12 +100,30 @@ else
                         </div>
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
-                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
+                        <select class="input-field medData disable" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
+                            <option value="" disabled selected>Amount Per Time</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1 1/2</option>
+                            <option value="2">2</option>
+                        </select>
+                        <select class="input-field medData disable" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
+                            <option value="" disabled selected>Times Per Day</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field medData disable" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
-                        <input type="text" class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
+                        <select class="input-field medData disable" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
+                            <option value="" disabled selected>After/Before Meal</option>
+                            <option value="af">After</option>
+                            <option value="bf">Before</option>
+                        </select>
+                        <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
+                            <option value="" disabled selected>Duration</option>
+                            <option value="1-w">1 Week</option>
+                            <option value="2-w">2 Week</option>
+                        </select>
                     </div>
                     <div class="c-12 c-l-3">
                         <button class="btn btnAddPres medData disable" name="addToPres" id="addToPres"><i class="fas fa-plus"></i> ADD</button>
@@ -191,8 +209,10 @@ else
         }
     </script>
     <script src="../js/search.js"></script>
+    <script src="../js/searchDocMed.js"></script>
     <script>
         $(document).ready(function(){
+            $('#patientID').focus();
             $('.userData').prop('disabled',true);
             $('.medData').prop('disabled',true);
             $("#allergies").change(function(){
@@ -212,6 +232,43 @@ else
                     }   
                 });
             }
+
+            $("#amountPTime").keydown(function(e){
+                if(e.keyCode==39) //Right Arrow
+                {
+                    $("#timesPDay").focus();
+                }
+                if(e.keyCode==37) //Left Arrow
+                {
+                    $("#medicineCode").focus();
+                }
+            });
+            $("#timesPDay").keydown(function(e){
+                if(e.keyCode==39) //Right Arrow
+                {
+                    $("#ABMeal").focus();
+                }
+                if(e.keyCode==37) //Left Arrow
+                {
+                    $("#amountPTime").focus();
+                }
+            });
+            $("#ABMeal").keydown(function(e){
+                if(e.keyCode==39) //Right Arrow
+                {
+                    $("#duration").focus();
+                }
+                if(e.keyCode==37) //Left Arrow
+                {
+                    $("#timesPDay").focus();
+                }
+            });
+            $("#duration").keydown(function(e){
+                if(e.keyCode==37) //Left Arrow
+                {
+                    $("#ABMeal").focus();
+                }
+            });
         });
     </script>
 </body>
