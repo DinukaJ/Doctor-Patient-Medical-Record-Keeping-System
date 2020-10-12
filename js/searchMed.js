@@ -80,3 +80,16 @@ function putInventoryData(id)
     });
 }
 
+//Adding data to the database
+$('form').on('submit',function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data: $('form').serialize(),
+        success:function(){
+            alert("Medicine Information Added");
+        }
+    })
+});
