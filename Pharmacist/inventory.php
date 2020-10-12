@@ -200,7 +200,7 @@ else
                         Medicine Name: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medName" id="medName" placeholder="" required>
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpName" id="medUpName" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -208,7 +208,7 @@ else
                         QTY: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="" required>
+                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medUpQty" id="medUpQty" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -216,7 +216,7 @@ else
                         Price: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="" required>
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpPrice" id="medUpPrice" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -224,7 +224,7 @@ else
                         Short Code: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medSc" id="medSc" placeholder="" required>
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpSc" id="medUpSc" placeholder="" required>
                     </div>
                 </div>
            </div>
@@ -268,8 +268,13 @@ else
                 close(modalAddMed);
                 close(modalUpdateMed); //closes update modal
             });
+            $("#updateMedCancel").click(()=>{
+                close(modalUpdateMed);//closes update modal
+                close(modalViewMed); //closes the view modal with the update
+            })
             $(".medCancel").click(()=>{
                 close(modalAddMed);
+                
             });
         });
  
