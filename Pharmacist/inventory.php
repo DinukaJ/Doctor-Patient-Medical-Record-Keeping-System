@@ -198,6 +198,7 @@ else
                 <span class="close closeMed">&times;</span>
                 </div>
             </div>
+        <form method="POST" id="medUpForm">
            <div class="detailsSection">
                 <div class="row">
                     <div class="c-12 c-m-2">
@@ -240,6 +241,7 @@ else
                     </div>
                 </div>
            </div>
+        </form>
         </div>
     </div>
     <!-- End of the Modal for Update Medicine-->
@@ -271,6 +273,7 @@ else
             $(".close").click(()=>{
                 close(modalAddMed);
                 close(modalUpdateMed); //closes update modal
+                close(modalViewMed);
             });
             $("#updateMedCancel").click(()=>{
                 close(modalUpdateMed);//closes update modal
@@ -296,5 +299,6 @@ else
         }
     </script>
     <script src="../js/searchMed.js"></script>
+    <script src="../js/addUpMed.js"></script>
 </body>
 </html>
