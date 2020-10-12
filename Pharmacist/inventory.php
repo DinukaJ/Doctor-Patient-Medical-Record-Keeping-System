@@ -182,9 +182,63 @@ else
     </div> 
  </div>
 </div>
-<!-- End of the Modal for Add Medicine-->
+<!-- End of the Modal for View Medicine-->
 
+<!-- The Modal for Update Medicine-->
+    <div id="modalUpdateMed" class="modal modal2">
 
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="col-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+           <div class="detailsSection">
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Medicine Name: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medName" id="medName" placeholder="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        QTY: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Price: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-2">
+                        Short Code: 
+                    </div>
+                    <div class="c-12 c-m-10">
+                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medSc" id="medSc" placeholder="" required>
+                    </div>
+                </div>
+           </div>
+           <div class="bottomModel">
+                <div class="row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal" id="addMedCancel">Cancel</button> 
+                        <button type="button" class="btn btnNormal" id="addMedUpdate">Update</button> 
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    <!-- End of the Modal for Update Medicine-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
