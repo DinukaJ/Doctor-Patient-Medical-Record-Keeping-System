@@ -391,6 +391,16 @@ body{
   .disable{
       background-color: #e8e8e8;
   }
+  button.disable{
+    background-color: #e8e8e8;
+    border: 1px solid #ced4da;
+    color: #495057;
+  }
+  button.disable:hover{
+    background-color: #e8e8e8;
+    border: 1px solid #ced4da;
+    color: #495057;
+  }
 @media (max-width: 768px) {
     .loginPart{
         padding-top: 2em;
