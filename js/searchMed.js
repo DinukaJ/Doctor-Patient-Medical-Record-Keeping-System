@@ -2,6 +2,7 @@
 var ser=document.getElementById("medId");
 var modalViewMed = document.getElementById("modalViewMed");
 var modalUpdateMed = document.getElementById("modalUpdateMed");
+var upId;
 
 //getting all info at first load
 $(document).ready(function(){
@@ -59,13 +60,13 @@ function putInventoryData(id)
             $('#medicQty').html(data['qty']);
             $('#medicSc').html(data['shortCode']);
 
-
              //View Medicine Model
             open(modalViewMed);
 
             //values get filled accordingly when the update button clicked
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
+                upId = medId;
                 $('#medUpName').val(data['name']);
                 $('#medUpPrice').val(data['price']);
                 $('#medUpQty').val(data['qty']);
@@ -76,4 +77,34 @@ function putInventoryData(id)
         
     });
 }
+
+//Adding data to the database
+$('#medAddForm').on('submit',function(e){
+    e.preventDefault();
+    $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data: $('#medAddForm').serialize()+"&type=addMed",
+        success:function(data){
+            close(modalAddMed);
+            getAllMed();
+        }
+    });
+});
+
+//Updating Data
+$('#medUpForm').on('submit',function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
+        success:function(data){
+            close(modalUpdateMed);
+            close(modalViewMed);
+            getAllMed();
+        }
+    });
+});
 

@@ -14,6 +14,8 @@ if(isset($_POST["type"])){
         searchDocMedic();
     if($_POST["type"]=="addMed")
         addMedData();
+    if($_POST["type"]=="upMed")
+        upMedData();
 }
 
 
@@ -89,13 +91,26 @@ function getMedDat(){
     echo json_encode($row);
 }
 
+//Adding new med data 
 function addMedData(){
     $inventory = new inventory();
     $name = $_POST["medName"];
     $price = $_POST["medPrice"];
     $qty = $_POST["medQTY"];
     $shortCode = $_POST["medSc"];
-    $stat = $inventory->addMed($name,$price,$qty,$shortCode);
+    $stat = $inventory->addMed($name,$qty,$price,$shortCode);
+    echo $stat;
+}
+
+//Updating existing data
+function upMedData(){
+    $inventory = new inventory();
+    $id = $_POST["id"];
+    $name = $_POST["medUpName"];
+    $price = $_POST["medUpPrice"];
+    $qty = $_POST["medUpQty"];
+    $shortCode = $_POST["medUpSc"];
+    $stat = $inventory->upMed($id,$name,$qty,$price,$shortCode);
     echo $stat;
 }
 

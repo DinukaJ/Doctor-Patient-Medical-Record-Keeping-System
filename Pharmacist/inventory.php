@@ -237,7 +237,7 @@ else
                 <div class="row">
                     <div class="c-12">
                         <button type="button" class="btn btnNormal medCancel" id="updateMedCancel">Cancel</button> 
-                        <button type="button" class="btn btnNormal" id="updateMedSave">Save</button> 
+                        <button type="submit" class="btn btnNormal" id="updateMedSave">Save</button> 
                     </div>
                 </div>
            </div>
@@ -299,6 +299,5 @@ else
         }
     </script>
     <script src="../js/searchMed.js"></script>
-    <script src="../js/addUpMed.js"></script>
 </body>
 </html>

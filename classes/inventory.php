@@ -14,6 +14,13 @@ class inventory
         return $stat;
     }
 
+    //updating existing data
+    public function upMed($id,$medName,$qty,$price,$shortCode){
+        $db = new Database();
+        $stat = $db->insert_update_delete("update medicine set name='$medName',price='$price',qty='$qty',shortCode='$shortCode' where id='$id'"); 
+        return $stat;
+    }
+
     //retrieving all the information of the inventory
     public function getMedAll(){
         $db = new Database();
