@@ -176,7 +176,9 @@ else
             </div>
                 <div class="c-12 c-m-10" id="medicSc"></div>
         </div>
-
+        <div class ="row" style="float: right;">
+                <button type="button" class="btn btnNormal" id="updateMed">Update</button>
+        </div>
     </div> 
  </div>
 </div>
