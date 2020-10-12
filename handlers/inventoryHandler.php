@@ -10,6 +10,8 @@ if(isset($_POST["type"])){
         getMedic();
     if($_POST["type"]=="medData")
         getMedDat();
+    if($_POST["type"]=="addMed")
+        addMedData();
 }
 
 
@@ -65,4 +67,17 @@ function getMedDat(){
     $row=mysqli_fetch_array($medData);
     echo json_encode($row);
 }
+
+function addMedData(){
+    $inventory = new inventory();
+    echo "check";
+    $name = $_POST["medName"];
+    $price = $_POST["medPrice"];
+    $qty = $_POST["medQTY"];
+    $shortCode = $_POST["medSc"];
+    $stat = $inventory->addMed(NULL,$name,$price,$qty,$shortCode);
+    return $stat;
+}
+
+
 ?>
