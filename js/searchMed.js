@@ -107,3 +107,15 @@ $('#medUpForm').on('submit',function(e){
     });
 });
 
+$('#deleteMed').click(function(){
+    $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data: {id:upId,type:delMed},
+        success:function(){
+            close(modalViewMed);
+            getAllMed();
+        }
+    });
+});
+

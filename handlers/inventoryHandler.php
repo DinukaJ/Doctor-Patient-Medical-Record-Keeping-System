@@ -16,6 +16,8 @@ if(isset($_POST["type"])){
         addMedData();
     if($_POST["type"]=="upMed")
         upMedData();
+    if($_POST["type"]=="delMed")
+        delMedData();
 }
 
 
@@ -111,6 +113,14 @@ function upMedData(){
     $qty = $_POST["medUpQty"];
     $shortCode = $_POST["medUpSc"];
     $stat = $inventory->upMed($id,$name,$qty,$price,$shortCode);
+    echo $stat;
+}
+
+//Deleting Data
+function delMedData(){
+    $inventory = new inventory();
+    $id = $_POST["id"];
+    $stat = $inventory->delMed($id);
     echo $stat;
 }
 
