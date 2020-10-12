@@ -1,6 +1,7 @@
 
 var ser=document.getElementById("medId");
 var modalViewMed = document.getElementById("modalViewMed");
+var modalUpdateMed = document.getElementById("modalUpdateMed");
 
 //getting all info at first load
 $(document).ready(function(){
@@ -61,6 +62,15 @@ function putInventoryData(id)
 
              //View Medicine Model
             open(modalViewMed);
+
+            //values get filled accordingly when the update button clicked
+            $("#updateMed").click(()=>{
+                open(modalUpdateMed);
+                $('#medUpName').val(data['name']);
+                $('#medUpPrice').val(data['price']);
+                $('#medUpQty').val(data['qty']);
+                $('#medUpSc').val(data['shortCode']);
+            })
 
             $(".close").click(()=>{
                 close(modalViewMed);
