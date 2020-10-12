@@ -232,7 +232,7 @@ else
                 <div class="row">
                     <div class="c-12">
                         <button type="button" class="btn btnNormal medCancel" id="updateMedCancel">Cancel</button> 
-                        <button type="button" class="btn btnNormal" id="updateMedSave">Update</button> 
+                        <button type="button" class="btn btnNormal" id="updateMedSave">Save</button> 
                     </div>
                 </div>
            </div>
