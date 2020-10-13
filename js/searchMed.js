@@ -98,8 +98,8 @@ $('#medUpForm').on('submit',function(e){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data: $('#medUpForm').serialize()+"&type='upMed'&id=upId",
-        success:function(data){
+        data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
+        success:function(){
             close(modalUpdateMed);
             close(modalViewMed);
             getAllMed();
