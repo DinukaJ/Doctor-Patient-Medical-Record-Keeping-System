@@ -101,7 +101,6 @@ $('#medUpForm').on('submit',function(e){
         data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
         success:function(data){
             close(modalUpdateMed);
-            
             close(modalViewMed);
             getAllMed();
         }
@@ -109,15 +108,22 @@ $('#medUpForm').on('submit',function(e){
 });
 
 $('#deleteMed').click(function(){
-    $.ajax({
+
+    if(confirm("Are You Sure?")){
+     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
         data: {id:upId,type:'delMed'},
         success:function(){
             close(modalViewMed);
-            alert(upId);
             getAllMed();
         }
-    });
+     });
+    }
+  else{
+      return false;
+    }
+
+
 });
 
