@@ -43,6 +43,7 @@ function searchMedic()
     }
     echo $output;
 }
+
 function searchDocMedic()
 {
     $output="<div class='row c-12 disable searchr'>ID - Name QTY</div>";
