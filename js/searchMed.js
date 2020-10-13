@@ -62,11 +62,11 @@ function putInventoryData(id)
 
              //View Medicine Model
             open(modalViewMed);
-
+            upId = medId;
             //values get filled accordingly when the update button clicked
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
-                upId = medId;
+                
                 $('#medUpName').val(data['name']);
                 $('#medUpPrice').val(data['price']);
                 $('#medUpQty').val(data['qty']);
@@ -101,6 +101,7 @@ $('#medUpForm').on('submit',function(e){
         data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
         success:function(data){
             close(modalUpdateMed);
+            
             close(modalViewMed);
             getAllMed();
         }
@@ -111,9 +112,10 @@ $('#deleteMed').click(function(){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data: {id:upId,type:delMed},
+        data: {id:upId,type:'delMed'},
         success:function(){
             close(modalViewMed);
+            alert(upId);
             getAllMed();
         }
     });
