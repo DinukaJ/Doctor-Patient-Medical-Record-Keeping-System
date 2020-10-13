@@ -98,7 +98,7 @@ $('#medUpForm').on('submit',function(e){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
+        data: $('#medUpForm').serialize()+"&type='upMed'&id=upId",
         success:function(data){
             close(modalUpdateMed);
             close(modalViewMed);
@@ -107,6 +107,7 @@ $('#medUpForm').on('submit',function(e){
     });
 });
 
+//Deleting Data
 $('#deleteMed').click(function(){
 
     if(confirm("Are You Sure?")){
