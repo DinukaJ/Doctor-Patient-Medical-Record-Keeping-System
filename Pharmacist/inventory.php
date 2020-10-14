@@ -205,6 +205,7 @@ else
         <form method="POST" id="medUpForm">
             <input type="hidden" value="" id="medUpID" name="medUpID">
            <div class="detailsSection">
+           <div class="alerMSG" id="updateStatus"></div>
                 <div class="row">
                     <div class="c-12 c-m-2">
                         Medicine Name: 
@@ -250,20 +251,6 @@ else
         </div>
     </div>
     <!-- End of the Modal for Update Medicine-->
-
-    <!-- Alert Modal -->
-    <div id="modalUpdateMed" class="modal modal2">
-
-        <!-- Modal content -->
-        <div class="modal-content-long inventoryModal">
-            <div class="row">
-                <div class="col-12">
-                <span class="close closeMed">&times;</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Alert Modal -->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>

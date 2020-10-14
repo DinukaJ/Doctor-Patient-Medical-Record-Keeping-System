@@ -7,6 +7,7 @@ var upId;
 //getting all info at first load
 $(document).ready(function(){
     getAllMed();
+    $("#updateStatus").hide();
 });
 
 function getAllMed()
@@ -100,9 +101,17 @@ $('#medUpForm').on('submit',function(e){
         url:"../handlers/inventoryHandler.php",
         method:"POST",
         data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
-        success:function(){
-            close(modalUpdateMed);
-            close(modalViewMed);
+        success:function(data){
+            // close(modalUpdateMed);
+            if(data==1)
+            {   
+                $("#updateStatus").addClass("success");
+                $("#updateStatus").html("Successfully Updated!");
+                $("#updateStatus").slideDown("slow");
+                setTimeout(function(){
+                    $("#updateStatus").slideUp("slow");
+                },2000);
+            }
             getAllMed();
         }
     });

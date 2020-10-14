@@ -350,6 +350,19 @@ body{
     width: 80%;
     border-radius: 10px;
   }
+  .alerMSG{
+      /* display: none; */
+      padding: 10px;
+      margin-bottom: 40px;
+  }
+  .success{
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .error{
+    background-color: #f8d7da;
+    color: #721c24;
+}
   .modal-content-long {
     position: relative;
     background-color: #fefefe;
