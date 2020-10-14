@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `groupprojectucsc`
 --
+DROP DATABASE `groupprojectucsc`; 
 CREATE DATABASE IF NOT EXISTS `groupprojectucsc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `groupprojectucsc`;
 
