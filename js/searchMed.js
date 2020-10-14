@@ -67,6 +67,7 @@ function putInventoryData(id)
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
                 
+                $('#medUpID').val(data['id']);
                 $('#medUpName').val(data['name']);
                 $('#medUpPrice').val(data['price']);
                 $('#medUpQty').val(data['qty']);

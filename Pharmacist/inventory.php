@@ -203,6 +203,7 @@ else
                 </div>
             </div>
         <form method="POST" id="medUpForm">
+            <input type="hidden" value="" id="medUpID" name="medUpID">
            <div class="detailsSection">
                 <div class="row">
                     <div class="c-12 c-m-2">
