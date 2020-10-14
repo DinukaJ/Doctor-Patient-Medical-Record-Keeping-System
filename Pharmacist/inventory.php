@@ -55,6 +55,14 @@ else
                     </div>
                 </div>
             <!-- prints info -->
+            <div class='row patientDataRow addMedicineRow'>
+                <div class='c-3' class='medicId'>Medicine ID</div>
+                <div class='c-4' class='medicName'>Medicine Name</div>
+                <div class='c-4' class='medicQty'>QTY</div>
+                <div class='c-1'>
+                
+                </div>
+            </div>
             <div id="medInfo" ></div>
                 <?php
                 // $res=$patient->getPatients();
