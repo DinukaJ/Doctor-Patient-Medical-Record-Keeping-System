@@ -75,7 +75,7 @@ function getMedic(){
             $output .="<div class='row patientDataRow'>
                             <div class='c-3' class='medicId'>$row[0]</div>
                             <div class='c-4' class='medicName'>$row[1]</div>
-                            <div class='c-4' class='medicQty'>$row[2]</div>
+                            <div class='c-4' class='medicQty'>$row[3]</div>
                             <div class='c-1'>
                                 <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
                             </div>
