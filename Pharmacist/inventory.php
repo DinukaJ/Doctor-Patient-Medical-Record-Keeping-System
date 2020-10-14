@@ -262,10 +262,12 @@ else
         var modalUpdateMed = document.getElementById("modalUpdateMed");
 
         function open(modal) {
-            modal.style.display = "block";
+            //modal.style.display = "block";
+            $(modal).slideDown();
         }
         function close(modal){
-            modal.style.display = "none";
+            // modal.style.display = "none";
+            $(modal).slideUp();
         }
 
         $(document).ready(function(){
@@ -294,13 +296,16 @@ else
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
         if (event.target == modalAddMed) {
-            modalAddMed.style.display = "none";
+            // modalAddMed.style.display = "none";
+            $(modalAddMed).slideUp();
             }
         if (event.target == modalViewMed) {
-            modalViewMed.style.display = "none";
+            // modalViewMed.style.display = "none";
+            $(modalViewMed).slideUp();
             }
         if(event.target === modalUpdateMed){
-            modalUpdateMed.style.display = "none";
+            // modalUpdateMed.style.display = "none";
+            $(modalUpdateMed).slideUp();
         }
         }
     </script>

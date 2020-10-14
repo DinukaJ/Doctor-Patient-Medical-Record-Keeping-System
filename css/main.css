@@ -354,6 +354,7 @@ body{
       /* display: none; */
       padding: 10px;
       margin-bottom: 40px;
+      border-radius: 5px;
   }
   .success{
     background-color: #d4edda;
