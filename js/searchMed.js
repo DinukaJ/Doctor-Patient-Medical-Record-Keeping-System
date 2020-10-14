@@ -2,7 +2,6 @@
 var ser=document.getElementById("medId");
 var modalViewMed = document.getElementById("modalViewMed");
 var modalUpdateMed = document.getElementById("modalUpdateMed");
-var upId;
 
 //getting all info at first load
 $(document).ready(function(){
@@ -63,7 +62,7 @@ function putInventoryData(id)
 
              //View Medicine Model
             open(modalViewMed);
-            upId = medId;
+
             //values get filled accordingly when the update button clicked
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
@@ -100,7 +99,7 @@ $('#medUpForm').on('submit',function(e){
     $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data: $('#medUpForm').serialize()+"&type=upMed&id=upId",
+        data: $('#medUpForm').serialize()+"&type=upMed",
         success:function(data){
             // close(modalUpdateMed);
             if(data==1)
