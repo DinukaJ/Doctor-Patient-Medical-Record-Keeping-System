@@ -55,6 +55,14 @@ else
                     </div>
                 </div>
             <!-- prints info -->
+            <div class='row patientDataRow addMedicineRow'>
+                <div class='c-3' class='medicId'>Medicine ID</div>
+                <div class='c-4' class='medicName'>Medicine Name</div>
+                <div class='c-4' class='medicQty'>QTY</div>
+                <div class='c-1'>
+                
+                </div>
+            </div>
             <div id="medInfo" ></div>
                 <?php
                 // $res=$patient->getPatients();
@@ -180,7 +188,7 @@ else
             </div>
                 <div class="c-12 c-m-10" id="medicSc"></div>
         </div>
-
+   </div>
         <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="deleteMed">Delete</button>
