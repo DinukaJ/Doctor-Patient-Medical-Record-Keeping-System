@@ -108,7 +108,7 @@ function addMedData(){
 //Updating existing data
 function upMedData(){
     $inventory = new inventory();
-    $id = $_POST["id"];
+    $id = $_POST["medUpID"];
     $name = $_POST["medUpName"];
     $price = $_POST["medUpPrice"];
     $qty = $_POST["medUpQty"];
