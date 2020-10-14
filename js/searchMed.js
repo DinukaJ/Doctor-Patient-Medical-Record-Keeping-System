@@ -112,6 +112,15 @@ $('#medUpForm').on('submit',function(e){
                     $("#updateStatus").slideUp("slow");
                 },2000);
             }
+            else
+            {
+                $("#updateStatus").addClass("error");
+                $("#updateStatus").html("Update Failed!");
+                $("#updateStatus").slideDown("slow");
+                setTimeout(function(){
+                    $("#updateStatus").slideUp("slow");
+                },2000);
+            }
             getAllMed();
         }
     });
