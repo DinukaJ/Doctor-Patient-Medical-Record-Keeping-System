@@ -3,6 +3,7 @@ var ser=document.getElementById("medId");
 var modalViewMed = document.getElementById("modalViewMed");
 var modalUpdateMed = document.getElementById("modalUpdateMed");
 
+
 //getting all info at first load
 $(document).ready(function(){
     getAllMed();
@@ -62,7 +63,7 @@ function putInventoryData(id)
 
              //View Medicine Model
             open(modalViewMed);
-
+            delId = medId;
             //values get filled accordingly when the update button clicked
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
@@ -132,7 +133,7 @@ $('#deleteMed').click(function(){
      $.ajax({
         url:"../handlers/inventoryHandler.php",
         method:"POST",
-        data: {id:upId,type:'delMed'},
+        data: {id:delId,type:'delMed'},
         success:function(){
             close(modalViewMed);
             getAllMed();
