@@ -66,7 +66,7 @@ function putInventoryData(id)
             //values get filled accordingly when the update button clicked
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
-                
+                close(modalViewMed);
                 $('#medUpID').val(data['id']);
                 $('#medUpName').val(data['name']);
                 $('#medUpPrice').val(data['price']);

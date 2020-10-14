@@ -83,7 +83,7 @@ else
         <!-- Modal content -->
         <div class="modal-content-long inventoryModal">
             <div class="row">
-                <div class="col-12">
+                <div class="c-12">
                 <span class="close closeMed">&times;</span>
                 </div>
             </div>
@@ -143,7 +143,7 @@ else
 <!-- Modal content -->
  <div class="modal-content-long inventoryModal">
     <div class="row">
-        <div class="col-12">
+        <div class="c-12">
         <span class="close closeMed">&times;</span>
         </div>
     </div>
@@ -198,7 +198,7 @@ else
         <!-- Modal content -->
         <div class="modal-content-long inventoryModal">
             <div class="row">
-                <div class="col-12">
+                <div class="c-12">
                 <span class="close closeMed">&times;</span>
                 </div>
             </div>
@@ -250,6 +250,20 @@ else
         </div>
     </div>
     <!-- End of the Modal for Update Medicine-->
+
+    <!-- Alert Modal -->
+    <div id="modalUpdateMed" class="modal modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="col-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Alert Modal -->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
