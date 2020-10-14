@@ -348,6 +348,7 @@ body{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 10px;
   }
   .modal-content-long {
     position: relative;
@@ -356,6 +357,7 @@ body{
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
+    border-radius: 10px;
   }
   .modal-content-short {
     position: relative;
