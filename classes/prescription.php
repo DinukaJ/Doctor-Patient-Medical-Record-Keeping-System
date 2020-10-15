@@ -57,6 +57,13 @@ class prescription
         $data = $db->getData("select pm.*, m.name from prescription_medicine pm join medicine m on pm.med_ID=m.id where pm.pres_ID='$id'");
         return $data;
     }
+    public function deletePresAndMeds($id)
+    {
+        $db = new Database();
+        $stat[0] = $db->insert_update_delete("delete from prescription_medicine where pres_ID='$id'");
+        $stat[1] = $db->insert_update_delete("delete from prescriptions where id='$id'");
+        return $stat;
+    }
 
 }
 ?>
