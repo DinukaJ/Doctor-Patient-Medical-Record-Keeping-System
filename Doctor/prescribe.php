@@ -224,6 +224,7 @@ else
             $("#imp_Notes").change(function(){
                 updatePatientData();
             });
+            //Function to update patient data
             function updatePatientData()
             {
                 $.ajax({
@@ -236,6 +237,7 @@ else
                 });
             }
 
+            //Changing text fields when user press arrow keys
             $("#amountPTime").keydown(function(e){
                 if(e.keyCode==39) //Right Arrow
                 {
