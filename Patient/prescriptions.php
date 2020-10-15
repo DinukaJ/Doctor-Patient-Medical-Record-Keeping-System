@@ -128,7 +128,6 @@ else
 
 function getAllPres(){
     var patId = "<?php echo "$patId"?>";
-    var docId="<?php echo "$docid" ?>";
     $.ajax({
         url:"../handlers/patientHandler.php",
         method:"POST",
