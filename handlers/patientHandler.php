@@ -62,7 +62,14 @@ function getPatientPres(){
     // $row= mysql_fetch_array($presData);
     if(mysqli_num_rows($presData)){
         while(mysqli_fetch_array($presData)){
-
+            $output.= "<div class='row patientDataRow'>
+            <div class='c-3' class='presId'>$row[0]</div>
+            <div class='c-4' class='medicName'>$row[1]</div>
+            <div class='c-4' class='medicQty'>$row[2]</div>
+            <div class='c-1'>
+                <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
+            </div>
+      </div>";
         }
     }
 }
