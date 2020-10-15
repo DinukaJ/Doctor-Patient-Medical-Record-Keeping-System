@@ -293,6 +293,8 @@ else
                     }   
                 });
             }
+
+            //Function to get medicine of the prescription
             function getPrescriptionMedicine()
             {
                 $.ajax({
@@ -306,6 +308,7 @@ else
             }
             $("#addToPres").click(function(){
                 addMedicinePrescription();
+                getPrescriptionMedicine();
             });
         });
     </script>

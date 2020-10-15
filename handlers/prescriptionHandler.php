@@ -103,10 +103,10 @@ function getPrescriptionMedicine()
             else
                 $time="After";
 
-            $duration=str_replace($row[5],"w","Week(s)");
+            $duration=str_replace("w","Week(s)",$row[5]);
             $output.='
             <tr>
-                <td style="width:2%">'.$row[0].'</td>
+                <td style="width:2%">'.$row[1].'</td>
                 <td style="width:23%">'.$row[6].'</td>
                 <td style="width:12%; text-align:center;">'.$row[2].'</td>
                 <td style="width:12%; text-align:center;">'.$row[3].'</td>
@@ -118,5 +118,9 @@ function getPrescriptionMedicine()
         }
     }
     echo $output;
+}
+function deletePrescription()
+{
+    
 }
 ?>
