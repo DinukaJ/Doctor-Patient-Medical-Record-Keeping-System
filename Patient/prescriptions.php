@@ -6,7 +6,7 @@ include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
-$patID = "pat_1";
+$patId = "pat_1";
 if(isset($_SESSION["user"]))
 {
     $patient = new patient();
