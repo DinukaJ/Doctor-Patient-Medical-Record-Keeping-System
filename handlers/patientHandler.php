@@ -1,6 +1,7 @@
 <?php
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
 if(isset($_POST["type"]))
 {
     if($_POST["type"]=="searchP")
@@ -9,6 +10,8 @@ if(isset($_POST["type"]))
         getpatientDat();
     if($_POST["type"]=="upPatientAllergies")
         updatePatient_Allergy_IN();
+    if($_POST["type"]=="getPres")
+        getPatientPres();
 }
 function addPatient()
 {
@@ -57,20 +60,25 @@ function updatePatient_Allergy_IN()
 function getPatientPres(){ 
     $output="";
     $prescription = new prescription();
+    $doctor = new doctor();
     $pid = $_POST["patientID"];
-    $presData= $prescription->getPatientPres($pid);
-    // $row= mysql_fetch_array($presData);
+    $presData= $prescription->getPatientPres($pid);//getting prescription data of the patient
+    $presRow= mysqli_fetch_array($presData);
+    // $docId = $presRow[0];//assigning doctor id
+    // $docData= $doctor->getDoc($docId);//getting doctor data
+    // $docRow= mysqli_fetch_array($docData);
+    // $name = $docRow[1].' '.$docRow[2];//concatenating doc name
     if(mysqli_num_rows($presData)){
-        while(mysqli_fetch_array($presData)){
+        while(mysqli_fetch_array($presData)){  
             $output.= "<div class='row patientDataRow'>
-            <div class='c-3' class='presId'>$row[0]</div>
-            <div class='c-4' class='medicName'>$row[1]</div>
-            <div class='c-4' class='medicQty'>$row[2]</div>
+            <div class='c-6' class='docID'>$presRow[0]</div>
+            <div class='c-5' class='presId'>$presRow[2]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";
         }
     }
+    echo $output;
 }
 ?>
