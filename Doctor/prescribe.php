@@ -122,8 +122,8 @@ else
                         </select>
                         <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                             <option value="" disabled selected>Duration</option>
-                            <option value="1-w">1 Week</option>
-                            <option value="2-w">2 Week</option>
+                            <option value="1 w">1 Week</option>
+                            <option value="2 w">2 Week</option>
                         </select>
                     </div>
                     <div class="c-12 c-l-3">
@@ -132,7 +132,7 @@ else
                 </div>  
                 <div class="row patientDataRow" style="border-bottom:none;">
                     <div class="c-12 tableCont">
-                        <table style="width:100%;" class="presTable">
+                        <table style="width:100%;" class="presTable" id="presTable">
                             <tr>
                                 <td style="width:2%">1</td>
                                 <td style="width:23%">Med Name</td>
@@ -282,6 +282,18 @@ else
             {
                 var docId="<?php echo "$docid" ?>";
                 var medId=$("#medicineCode").val().split(" ")[0];
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'addMed', patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                    }   
+                });
+            }
+            function getPrescriptionMedicine()
+            {
                 $.ajax({
                     url:"../handlers/prescriptionHandler.php",
                     method:"POST",

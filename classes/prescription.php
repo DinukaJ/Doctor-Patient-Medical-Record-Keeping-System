@@ -47,8 +47,14 @@ class prescription
     public function getPatientPres()//getting a patient's prescriptions
     {   $usr = new users();
         $db = new Database();
-        $pid= $usr->getUserId();
+        $pid= $usr->getUserId(); //NOTE THIS SHOULD BE TAKEN THROUGH SESSION AFTER ACTIVATING LOGIN SYSTEM
         $data = $db->getData("select * from prescriptions where patientId='$pid'");
+        return $data;
+    }
+    public function getPresMeds($id)//getting medicine of a prescription
+    {  
+        $db = new Database();
+        $data = $db->getData("select pm.*, m.name from prescription_medicine pm join medicine m on pm.med_ID=m.id where pm.pres_ID='$id'");
         return $data;
     }
 
