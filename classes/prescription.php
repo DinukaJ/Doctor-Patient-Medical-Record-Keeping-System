@@ -1,5 +1,6 @@
 <?php
 include_once("database.php");
+include_once("users.php");
 class prescription
 {
     public function __construct($id="")
