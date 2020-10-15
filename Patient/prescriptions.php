@@ -42,7 +42,7 @@ else
                              </div>
                         </div>
                         <div class="c-12 c-l-3">
-                            <div class="boxSmall">
+                             <div class="boxSmall" style="text-align:center">
                                  <label>No. of Items</label>
                             </div>
                         </div>
@@ -58,11 +58,13 @@ else
                     </div>
                 </div>
                 <div class="row patientDataRow">
-                    <div class="c-3">
+                    <div class="c-3" >
                         1
                     </div>
-                    <div class="c-8">
+                    <div class="c-3" style="text-align:center">
                         1
+                    </div>
+                    <div class="c-5">
                     </div>
                     <div class="c-1">
                         <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
