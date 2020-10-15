@@ -4,6 +4,7 @@ include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/docSideNav.php');
 
+$docid="d_1";
 if(isset($_SESSION["user"]))
 {
     $patient=new patient();
@@ -116,8 +117,8 @@ else
                     <div class="c-12 c-l-3">
                         <select class="input-field medData disable" style="width:49%; display:inline;" name="ABMeal" id="ABMeal" placeholder="After/Before meal">
                             <option value="" disabled selected>After/Before Meal</option>
-                            <option value="af">After</option>
-                            <option value="bf">Before</option>
+                            <option value="a">After</option>
+                            <option value="b">Before</option>
                         </select>
                         <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                             <option value="" disabled selected>Duration</option>
@@ -273,6 +274,26 @@ else
                 {
                     $("#ABMeal").focus();
                 }
+            });
+
+
+            //Add Medicine to Prescription
+            function addMedicinePrescription()
+            {
+                var docId="<?php echo "$docid" ?>";
+                var medId=$("#medicineCode").val().split(" ")[0];
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'addMed', patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                    }   
+                });
+            }
+            $("#addToPres").click(function(){
+                addMedicinePrescription();
             });
         });
     </script>

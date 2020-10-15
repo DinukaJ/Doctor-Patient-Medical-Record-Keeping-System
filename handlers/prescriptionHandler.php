@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 
 //Checking which function to call
@@ -42,6 +43,7 @@ function addMedicineToPrescription()
         {
             $presStatus=true;
             $pid=$stat[1];
+            $_SESSION["prescription"]=$pid;
         }
     }
     if($presStatus)
@@ -73,6 +75,18 @@ function removeMedicineToPrescription()
     echo json_encode(array($stat));
 }
 function addPrescriptionNote()
+{
+    $pres=new prescription();
+    if(isset($_SESSION["prescription"]))
+    {
+        $pid=$_SESSION["prescription"];
+        $note=$_POST["presNote"];
+        $stat=$pres->addPrescriptionNote($pid,$note);
+
+        echo json_encode(array($stat));
+    }
+}
+function getPrescriptionMedicine()
 {
     $pres=new prescription();
     if(isset($_SESSION["prescription"]))

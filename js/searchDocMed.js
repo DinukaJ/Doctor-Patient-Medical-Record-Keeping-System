@@ -90,6 +90,6 @@ serMed.addEventListener("blur", function(){
         $('#subsresultMed').html("");
     },300);
     if(!entered)
-    serMed.value="";
+    	serMed.value="";
 	
 });
