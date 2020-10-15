@@ -1,5 +1,6 @@
 <?php
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 if(isset($_POST["type"]))
 {
     if($_POST["type"]=="searchP")
@@ -32,6 +33,7 @@ function searchPatient()
     }
     echo $output;
 }
+
 function getpatientDat()
 {
     $patient = new patient();
@@ -49,5 +51,14 @@ function updatePatient_Allergy_IN()
     $stat=$patient->updatePatient_Allergy_IN($patID,$allergy,$importantNotes);
 
     echo json_encode(array($stat));
+}
+
+
+function getPatientPres(){ 
+    $prescription = new prescription();
+    $pid = $_POST["patientID"];
+    $presData= $prescription->getPatientPres($pid);
+    $row= mysql_fetch_array($presData);
+    echo json_encode($row);
 }
 ?>
