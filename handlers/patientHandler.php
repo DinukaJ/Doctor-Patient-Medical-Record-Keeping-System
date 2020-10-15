@@ -55,10 +55,15 @@ function updatePatient_Allergy_IN()
 
 
 function getPatientPres(){ 
+    $output="";
     $prescription = new prescription();
     $pid = $_POST["patientID"];
     $presData= $prescription->getPatientPres($pid);
-    $row= mysql_fetch_array($presData);
-    echo json_encode($row);
+    // $row= mysql_fetch_array($presData);
+    if(mysqli_num_rows($presData)){
+        while(mysqli_fetch_array($presData)){
+
+        }
+    }
 }
 ?>
