@@ -115,7 +115,7 @@ function getPrescriptionMedicine()
                 <td style="width:12%; text-align:center;">'.$row[3].'</td>
                 <td style="width:14%; text-align:center;">'.$time.'</td>
                 <td style="width:12%; text-align:center;">'.$duration.'</td>
-                <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
+                <td style="width:25%; text-align:center;"><button value="'.$row[1].'" class="btn btnPatientView delMed" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
             </tr>
             ';
         }

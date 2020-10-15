@@ -27,7 +27,7 @@ else
 </head>
 <body>
     <!-- To keep the current prescription id -->
-    <input type="hidden" value="" id="currPID" name="currPId">
+    <input type="hidden" value="2" id="currPID" name="currPId">
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
@@ -161,10 +161,10 @@ else
                         <textarea class="input-field fullWidth medData disable" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
-                        <a href="../"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-times"></i> Cancel</button></a>
+                        <button type="button" class="btn btnNormal btnPatient" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
                     </div>
                     <div class="c-6 c-l-2">
-                        <a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-check"></i> Finish</button></a>
+                        <button type="button" class="btn btnNormal btnPatient" name="finish" id="finish"><i class="fas fa-check"></i> Finish</button>
                     </div>
                 </div>  
             </div>
@@ -279,6 +279,11 @@ else
                 }
             });
             $("#duration").keydown(function(e){
+                if(e.keyCode==39) //Right Arrow
+                {
+                    e.preventDefault();
+                    $("#addToPres").focus();
+                }
                 if(e.keyCode==37) //Left Arrow
                 {
                     e.preventDefault();
@@ -301,6 +306,7 @@ else
                         if($("#currPID").val()=="")
                             $("#currPID").val(data[1]);
                         getPrescriptionMedicine();
+                        clearMedFields();
                     }   
                 });
             }
@@ -316,13 +322,53 @@ else
                         data:{type:'presMed',prescription:$("#currPID").val()},
                         success:function(data){
                             $("#presTable").html(data);
+
+                            //Action to perform when remove med button clicked
+                            $(".delMed").click(function(){
+                                if(confirm("Are you sure to delete?"))
+                                    deleteMed($(this).val());
+                            });
                         }   
                     });
                 }
             }
+            
+            //Clear Medicine Input Fields
+            function clearMedFields()
+            {
+                $("#medicineCode").val("");
+                $("#amountPTime").val("");
+                $("#timesPDay").val("");
+                $("#ABMeal").val("");
+                $("#duration").val("");
+                $("#medicineCode").focus();
+            }
+
+            //Function to delete medicine from prescription
+            function deleteMed(mid)
+            {
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'removeMed', prescription:$("#currPID").val(), medID:mid},
+                    dataType:'json',
+                    success:function(data){
+                        if(data[0]==1)
+                            getPrescriptionMedicine();
+                    }   
+                });   
+            }
+
+            //Action to perform when add med button clicked
             $("#addToPres").click(function(){
                 addMedicinePrescription();
             });
+
+            //Handle Cancel Button Operation
+            $("#cancel").click(function(){
+                
+            });
+            
         });
     </script>
 </body>

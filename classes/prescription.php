@@ -32,6 +32,7 @@ class prescription
     {
         $db=new Database();
         $stat=$db->insert_update_delete("delete from prescription_medicine where pres_ID='$id' and med_ID='$medID'");
+        return $stat;
     }
     public function addPrescriptionNote($id,$note)
     {
