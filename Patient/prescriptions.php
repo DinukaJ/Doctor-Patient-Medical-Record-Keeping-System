@@ -6,7 +6,7 @@ include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
-$patId = "pat_1";
+$patId = "pat45";
 if(isset($_SESSION["user"]))
 {
     $patient = new patient();
@@ -122,16 +122,16 @@ else
             }
         }
 
-        $(document).ready(function(){
+$(document).ready(function(){
     getAllPres();
 });
 
 function getAllPres(){
-    var patId = "<?php echo "$patId"?>";
+    var patID = "<?php echo "$patId"?>";
     $.ajax({
         url:"../handlers/patientHandler.php",
         method:"POST",
-        data:{patientID:patId,type:'getPres'},
+        data:{patientID:patID,type:'getPres'},
         success:function(data){
             $('#presInfo').html(data);
         }

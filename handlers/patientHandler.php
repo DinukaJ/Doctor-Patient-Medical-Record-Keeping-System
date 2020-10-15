@@ -10,6 +10,8 @@ if(isset($_POST["type"]))
         getpatientDat();
     if($_POST["type"]=="upPatientAllergies")
         updatePatient_Allergy_IN();
+    if($_POST["type"]=="getPres")
+        getPatientPres();
 }
 function addPatient()
 {
@@ -62,17 +64,17 @@ function getPatientPres(){
     $pid = $_POST["patientID"];
     $presData= $prescription->getPatientPres($pid);//getting prescription data of the patient
     $presRow= mysqli_fetch_array($presData);
-    $docId = $presRow[0];//assigning doctor id
-    $docData= $doctor->getDoc($docId);//getting doctor data
-    $docRow= mysqli_fetch_array($docData);
-    $name = $docRow[1].' '.$docRow[2];//concatenating doc name
+    // $docId = $presRow[0];//assigning doctor id
+    // $docData= $doctor->getDoc($docId);//getting doctor data
+    // $docRow= mysqli_fetch_array($docData);
+    // $name = $docRow[1].' '.$docRow[2];//concatenating doc name
     if(mysqli_num_rows($presData)){
         while(mysqli_fetch_array($presData)){  
             $output.= "<div class='row patientDataRow'>
-            <div class='c-6' class='docName'>$name</div>
-            <div class='c-5' class='presId'>$row[2]</div>
+            <div class='c-6' class='docID'>$presRow[0]</div>
+            <div class='c-5' class='presId'>$presRow[2]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[2]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";
         }
