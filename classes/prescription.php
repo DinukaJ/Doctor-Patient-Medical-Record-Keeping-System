@@ -46,7 +46,7 @@ class prescription
     public function getPatientPres($pid)//getting a patient's prescriptions
     {
         $db = new Database();
-        $data = $db->getData("select * from prescriptions where id='$pid'");
+        $data = $db->getData("select * from prescriptions where patientId='$pid'");
         return $data;
     }
 
