@@ -121,7 +121,24 @@ else
             modal.style.display = "none";
             }
         }
+
+        $(document).ready(function(){
+    getAllPres();
+});
+
+function getAllPres(){
+    var patId = "<?php echo "$patId"?>";
+    var docId="<?php echo "$docid" ?>";
+    $.ajax({
+        url:"../handlers/patientHandler.php",
+        method:"POST",
+        data:{patientID:patId,type:'getPres'},
+        success:function(data){
+            $('#presInfo').html(data);
+        }
+    });
+}
     </script>
-    <script src="../js/searchPres.js"></script>
+
 </body>
 </html>
