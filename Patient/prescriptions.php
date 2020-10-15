@@ -38,15 +38,16 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                              <div class="boxSmall">
-                                 <label>Prescription No.</label>
+                                 <label>Doctor</label>
                              </div>
                         </div>
                         <div class="c-12 c-l-3">
                              <div class="boxSmall" style="text-align:center">
-                                 <label>No. of Items</label>
+                                 <label>Prescription No.</label>
                             </div>
                         </div>
-                        <div class="c-12 c-l-6">
+                        <div class="c-12 c-l-3"></div>
+                        <div class="c-12 c-l-3">
                             <div class="boxSmall">
                                 <label>No. of Prescriptions:<?php 
                                 // $pid = $pres->getUserId();

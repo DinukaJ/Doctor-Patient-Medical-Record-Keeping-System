@@ -6,5 +6,11 @@ class doctor extends users
     {
         
     }
+
+    public function getDoc(){
+        $db= new Database();
+        $data = $db->getData("select * from doctor");
+        return $data;
+    }
 }
 ?>
