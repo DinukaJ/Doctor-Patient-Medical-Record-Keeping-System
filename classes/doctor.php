@@ -7,9 +7,9 @@ class doctor extends users
         
     }
 
-    public function getDoc(){
+    public function getDoc($docId){
         $db= new Database();
-        $data = $db->getData("select * from doctor");
+        $data = $db->getData("select * from doctor id='$docId'");
         return $data;
     }
 }
