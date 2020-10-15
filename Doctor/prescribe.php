@@ -91,7 +91,7 @@ else
                 </div>
                 <div class="row patientDataRow addMedicineRow">
                     <div class="c-12 c-l-3">
-                        <input type="text" class="input-field fullWidth medData disable" name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
+                        <input type="text" class="input-field fullWidth medData disable" autocomplete='off' name="medicineCode" id="medicineCode" placeholder="Enter Short Code or Medicine Name">
                         <div class='text-left mt-4' id='searchResult'>
                             <div class='' id='subsresultMed'>
                                 <!-- <div class='row c-12  searchr se1'>$row[0]</div>
@@ -400,6 +400,18 @@ else
                 });  
             }
 
+            //When Prescription Note changes update prescription
+            $("#presNote").change(function(){
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'addPresNote', prescription:$("#currPID").val(), presNote:$("#presNote").val()},
+                    dataType:'json',
+                    success:function(data){
+                    }   
+                });  
+            });
+            
             //Action to perform when add med button clicked
             $("#addToPres").click(function(){
                 addMedicinePrescription();
