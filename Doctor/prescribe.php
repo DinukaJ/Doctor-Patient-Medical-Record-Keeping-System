@@ -133,7 +133,7 @@ else
                 <div class="row patientDataRow" style="border-bottom:none;">
                     <div class="c-12 tableCont">
                         <table style="width:100%;" class="presTable" id="presTable">
-                            <tr>
+                            <!-- <tr>
                                 <td style="width:2%">1</td>
                                 <td style="width:23%">Med Name</td>
                                 <td style="width:12%; text-align:center;">5</td>
@@ -150,7 +150,7 @@ else
                                 <td style="width:14%; text-align:center;">After</td>
                                 <td style="width:12%; text-align:center;">3 Weeks</td>
                                 <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>  
@@ -213,6 +213,7 @@ else
     <script src="../js/searchDocMed.js"></script>
     <script>
         $(document).ready(function(){
+            getPrescriptionMedicine();//Getting prescripton medicine
             //Focus on patient id on page load
             $('#patientID').focus();
             //Disable other input fields until a patient is selected
@@ -297,10 +298,9 @@ else
                 $.ajax({
                     url:"../handlers/prescriptionHandler.php",
                     method:"POST",
-                    data:{type:'addMed', patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
-                    dataType:'json',
+                    data:{type:'presMed'},
                     success:function(data){
-                        console.log(data);
+                        $("#presTable").html(data);
                     }   
                 });
             }
