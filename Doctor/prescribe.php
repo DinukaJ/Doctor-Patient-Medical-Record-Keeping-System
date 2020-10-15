@@ -212,9 +212,12 @@ else
     <script src="../js/searchDocMed.js"></script>
     <script>
         $(document).ready(function(){
+            //Focus on patient id on page load
             $('#patientID').focus();
+            //Disable other input fields until a patient is selected
             $('.userData').prop('disabled',true);
             $('.medData').prop('disabled',true);
+            //Update patient data when the doctor change those
             $("#allergies").change(function(){
                 updatePatientData();
             });
