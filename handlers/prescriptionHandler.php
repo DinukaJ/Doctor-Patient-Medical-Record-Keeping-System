@@ -10,7 +10,7 @@ if(isset($_POST["type"]))
     if($_POST["type"]=="addPresNote")
         addPrescriptionNote();
     if($_POST["type"]=="removeMed")
-        removeMedicineToPrescription();
+        removeMedicineFromPrescription();
     if($_POST["type"]=="presMed")
         getPrescriptionMedicine();
 }
@@ -33,9 +33,10 @@ function addMedicineToPrescription()
 {
     $pres=new prescription();
     $presStatus=false;
-    if(isset($_SESSION["prescription"]))
+    $pid=$_POST["prescription"];
+    if($pid!="")
     {
-        $pid=$_SESSION["prescription"];
+        // $pid=$_SESSION["prescription"];
         $presStatus=true;
     }
     else
@@ -45,7 +46,6 @@ function addMedicineToPrescription()
         {
             $presStatus=true;
             $pid=$stat[1];
-            $_SESSION["prescription"]=$pid;
         }
     }
     if($presStatus)
@@ -60,14 +60,15 @@ function addMedicineToPrescription()
     else
         $stat=0;
 
-    echo json_encode(array($stat));
+    echo json_encode(array($stat,$pid));
 }
-function removeMedicineToPrescription()
+function removeMedicineFromPrescription()
 {
     $pres=new prescription();
-    if(isset($_SESSION["prescription"]))
+    $pid=$_POST["prescription"];
+    if($pid!="")
     {
-        $pid=$_SESSION["prescription"];
+        // $pid=$_SESSION["prescription"];
         $medID=$_POST["medID"];
         $stat=$pres->removeMed($pid,$medID);
     }
@@ -79,9 +80,10 @@ function removeMedicineToPrescription()
 function addPrescriptionNote()
 {
     $pres=new prescription();
-    if(isset($_SESSION["prescription"]))
+    $pid=$_POST["prescription"];
+    if($pid!="")
     {
-        $pid=$_SESSION["prescription"];
+        // $pid=$_SESSION["prescription"];
         $note=$_POST["presNote"];
         $stat=$pres->addPrescriptionNote($pid,$note);
 
@@ -92,9 +94,10 @@ function getPrescriptionMedicine()
 {
     $pres=new prescription();
     $output="";
-    if(isset($_SESSION["prescription"]))
+    $pid=$_POST["prescription"];
+    if($pid!="")
     {
-        $pid=$_SESSION["prescription"];
+        // $pid=$_SESSION["prescription"];
         $data=$pres->getPresMeds($pid);
         while($row=mysqli_fetch_array($data))
         {
@@ -121,6 +124,6 @@ function getPrescriptionMedicine()
 }
 function deletePrescription()
 {
-    
+
 }
 ?>

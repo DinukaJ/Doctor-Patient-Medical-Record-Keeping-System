@@ -26,6 +26,8 @@ else
     <title>Doctor - Prescribe</title>
 </head>
 <body>
+    <!-- To keep the current prescription id -->
+    <input type="hidden" value="" id="currPID" name="currPId">
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
@@ -243,36 +245,43 @@ else
             $("#amountPTime").keydown(function(e){
                 if(e.keyCode==39) //Right Arrow
                 {
+                    e.preventDefault();
                     $("#timesPDay").focus();
                 }
                 if(e.keyCode==37) //Left Arrow
                 {
+                    e.preventDefault();
                     $("#medicineCode").focus();
                 }
             });
             $("#timesPDay").keydown(function(e){
                 if(e.keyCode==39) //Right Arrow
                 {
+                    e.preventDefault();
                     $("#ABMeal").focus();
                 }
                 if(e.keyCode==37) //Left Arrow
                 {
+                    e.preventDefault();
                     $("#amountPTime").focus();
                 }
             });
             $("#ABMeal").keydown(function(e){
                 if(e.keyCode==39) //Right Arrow
                 {
+                    e.preventDefault();
                     $("#duration").focus();
                 }
                 if(e.keyCode==37) //Left Arrow
                 {
+                    e.preventDefault();
                     $("#timesPDay").focus();
                 }
             });
             $("#duration").keydown(function(e){
                 if(e.keyCode==37) //Left Arrow
                 {
+                    e.preventDefault();
                     $("#ABMeal").focus();
                 }
             });
@@ -286,10 +295,12 @@ else
                 $.ajax({
                     url:"../handlers/prescriptionHandler.php",
                     method:"POST",
-                    data:{type:'addMed', patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
+                    data:{type:'addMed', prescription:$("#currPID").val(), patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
                     dataType:'json',
                     success:function(data){
-                        console.log(data);
+                        if($("#currPID").val()=="")
+                            $("#currPID").val(data[1]);
+                        getPrescriptionMedicine();
                     }   
                 });
             }
@@ -297,18 +308,20 @@ else
             //Function to get medicine of the prescription
             function getPrescriptionMedicine()
             {
-                $.ajax({
-                    url:"../handlers/prescriptionHandler.php",
-                    method:"POST",
-                    data:{type:'presMed'},
-                    success:function(data){
-                        $("#presTable").html(data);
-                    }   
-                });
+                if($("#currPID").val()!="")
+                {
+                    $.ajax({
+                        url:"../handlers/prescriptionHandler.php",
+                        method:"POST",
+                        data:{type:'presMed',prescription:$("#currPID").val()},
+                        success:function(data){
+                            $("#presTable").html(data);
+                        }   
+                    });
+                }
             }
             $("#addToPres").click(function(){
                 addMedicinePrescription();
-                getPrescriptionMedicine();
             });
         });
     </script>

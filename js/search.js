@@ -85,7 +85,7 @@ function putPatientData()
         url:"../handlers/patientHandler.php",
         method:"POST",
         data:{patientID:pId, type:'patientData'},
-        
+        dataType:'json',
         success:function(data){
             $("#patID").val(pId);
             var nameVal=$('#patName').html();
