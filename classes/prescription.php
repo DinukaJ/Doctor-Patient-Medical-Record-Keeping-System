@@ -44,9 +44,10 @@ class prescription
         $db=new Database();
         return $db->getData("select count(id) from prescriptions where id='$pid'");
     }
-    public function getPatientPres($pid)//getting a patient's prescriptions
-    {
+    public function getPatientPres()//getting a patient's prescriptions
+    {   $usr = new users();
         $db = new Database();
+        $pid= $usr->getUserId();
         $data = $db->getData("select * from prescriptions where patientId='$pid'");
         return $data;
     }
