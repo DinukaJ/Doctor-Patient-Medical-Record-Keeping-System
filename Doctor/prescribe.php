@@ -27,7 +27,7 @@ else
 </head>
 <body>
     <!-- To keep the current prescription id -->
-    <input type="hidden" value="2" id="currPID" name="currPId">
+    <input type="hidden" value="" id="currPID" name="currPId">
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
@@ -290,6 +290,13 @@ else
                     $("#ABMeal").focus();
                 }
             });
+            $("#addToPres").keydown(function(e){
+                if(e.keyCode==37) //Left Arrow
+                {
+                    e.preventDefault();
+                    $("#duration").focus();
+                }
+            });
 
 
             //Add Medicine to Prescription
@@ -359,6 +366,27 @@ else
                 });   
             }
 
+            //Function to cancel prescription
+            function cancelPres()
+            {
+                var stat=0;
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'deletePres', prescription:$("#currPID").val()},
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                        if(data[0]!=1 || data[1]!=1)
+                            alert("An Error Occurred!");   
+                        else
+                            stat=1;
+                            
+                    }   
+                });  
+                return stat;
+            }
+
             //Action to perform when add med button clicked
             $("#addToPres").click(function(){
                 addMedicinePrescription();
@@ -366,7 +394,24 @@ else
 
             //Handle Cancel Button Operation
             $("#cancel").click(function(){
-                
+                if(confirm("Are you sure to cancel?"))
+                {
+                    cancelPres();
+                    $(window).unbind('beforeunload');
+                    location.reload();
+                }
+            });
+
+            //Handle User Page Leave Event to Delete Current Prescription
+            $(window).bind('beforeunload',function(){
+                return "Are you sure to leave?";
+            });
+            $(window).bind('unload', function(){
+                alert("test");
+                if($("#currPID").val()!="")
+                {                    
+                    cancelPres();
+                }
             });
             
         });

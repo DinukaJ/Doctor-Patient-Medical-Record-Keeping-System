@@ -13,6 +13,8 @@ if(isset($_POST["type"]))
         removeMedicineFromPrescription();
     if($_POST["type"]=="presMed")
         getPrescriptionMedicine();
+    if($_POST["type"]=="deletePres")
+        deletePrescription();
 }
 
 
@@ -22,7 +24,7 @@ function addPrescription()
     $patientID=$_POST["patID"];
     $docID=$_POST["docID"];
     $today=date("Y-m-d");
-    $status=0;
+    $status=-1;
     $pid=$pres->getNextPID();
     $stat=$pres->addNewPrescription($docID,$patientID,$pid,$today,$status);
 
@@ -124,6 +126,9 @@ function getPrescriptionMedicine()
 }
 function deletePrescription()
 {
-
+    $pres=new prescription();
+    $pid=$_POST["prescription"];
+    $stat=$pres->deletePresAndMeds($pid);
+    echo json_encode($stat);
 }
 ?>
