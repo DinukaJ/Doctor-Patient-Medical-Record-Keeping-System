@@ -57,19 +57,7 @@ else
                         </div>
                     </div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-3" >
-                        1
-                    </div>
-                    <div class="c-3" style="text-align:center">
-                        1
-                    </div>
-                    <div class="c-5">
-                    </div>
-                    <div class="c-1">
-                        <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                    </div>
-                </div>
+              <div id="presInfo"></div>
                 <?php
                 // $res=$patient->getPatients();
                 // $i=1;
@@ -132,5 +120,6 @@ else
             }
         }
     </script>
+    <script src="../js/searchPres.js"></script>
 </body>
 </html>
