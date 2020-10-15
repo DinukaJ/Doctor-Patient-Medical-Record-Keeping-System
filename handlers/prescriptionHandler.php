@@ -15,6 +15,8 @@ if(isset($_POST["type"]))
         getPrescriptionMedicine();
     if($_POST["type"]=="deletePres")
         deletePrescription();
+    if($_POST["type"]=="finishPres")
+        finishPrescription();
 }
 
 
@@ -129,6 +131,13 @@ function deletePrescription()
     $pres=new prescription();
     $pid=$_POST["prescription"];
     $stat=$pres->deletePresAndMeds($pid);
+    echo json_encode($stat);
+}
+function finishPrescription()
+{
+    $pres=new prescription();
+    $pid=$_POST["prescription"];
+    $stat=$pres->finishPres($pid);
     echo json_encode($stat);
 }
 ?>

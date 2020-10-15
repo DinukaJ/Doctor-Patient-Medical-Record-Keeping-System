@@ -386,6 +386,19 @@ else
                 });  
                 return stat;
             }
+            //Function to cancel prescription
+            function finishPres()
+            {
+                $.ajax({
+                    url:"../handlers/prescriptionHandler.php",
+                    method:"POST",
+                    data:{type:'finishPres', prescription:$("#currPID").val()},
+                    dataType:'json',
+                    success:function(data){
+
+                    }   
+                });  
+            }
 
             //Action to perform when add med button clicked
             $("#addToPres").click(function(){
@@ -397,6 +410,16 @@ else
                 if(confirm("Are you sure to cancel?"))
                 {
                     cancelPres();
+                    $(window).unbind('beforeunload');
+                    location.reload();
+                }
+            });
+
+            //Handle Finish Button Operation
+            $("#finish").click(function(){
+                if(confirm("Are you sure to finish?"))
+                {
+                    finishPres();
                     $(window).unbind('beforeunload');
                     location.reload();
                 }

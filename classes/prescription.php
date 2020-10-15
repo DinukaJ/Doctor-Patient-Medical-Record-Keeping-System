@@ -64,6 +64,12 @@ class prescription
         $stat[1] = $db->insert_update_delete("delete from prescriptions where id='$id'");
         return $stat;
     }
+    public function finishPres($id)
+    {
+        $db = new Database();
+        $stat=$db->insert_update_delete("update prescriptions set status='0'");
+        return $stat;
+    }
 
 }
 ?>
