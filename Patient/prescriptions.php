@@ -93,7 +93,6 @@ else
         </div>
     </div>
 <form method="POST" id="usrDetailUp">
-    <input type="hidden" value="" id="medUpID" name="medUpID">
    <div class="detailsSection">
    <div class="alerMSG" id="updateStatus"></div>
         <div class="row">
@@ -140,7 +139,7 @@ else
    <div class="bottomModel">
         <div class="row">
         <div class="c-12 c-l-6" style="text-align:left">
-            <button type="button" class="btn btnNormal changePass" id="changePAss">Change Password</button> 
+            <button type="button" class="btn btnNormal changePass" id="changePass">Change Password</button> 
         </div>
             <div class="c-12 c-l-6">
                 <button type="button" class="btn btnNormal upCancel" id="upCancel">Cancel</button> 
@@ -153,13 +152,64 @@ else
 </div>
 <!-- End of the Modal for Update User Details-->
 
+<!-- The Modal for Update User Password-->
+<div id="modalUpdatePass" class="modal modal2">
+
+<!-- Modal content -->
+<div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+<form method="POST" id="usrPassUp">
+   <div class="detailsSection">
+   <div class="alerMSG" id="updateStatus"></div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Current Password: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="curPass" id="curPass" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                New Password: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="newPass" id="newPass" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Re-Type New:
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="newRePass" id="newRePass" placeholder="" required>
+            </div>
+        </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal upPassCancel" id="upPassCancel">Cancel</button> 
+                <button type="submit" class="btn btnNormal" id="updatePass">Change</button> 
+            </div>
+        </div>
+   </div>
+</form>
+</div>
+</div>
+<!-- End of the Modal for Update User Password-->
+
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
     var modalUpdateDet = document.getElementById("modalUpdateDet");
-
+    var modalUpdatePass = document.getElementById("modalUpdatePass");
        
         function open(modal) {
             //modal.style.display = "block";
@@ -181,6 +231,13 @@ else
             getAllPres();
             $('.close').click(()=>{
                 close(modalUpdateDet);
+                close(modalUpdatePass);
+            })
+            $('#upCancel').click(()=>{
+                close(modalUpdateDet);
+            })
+            $('#upPassCancel').click(()=>{
+                close(modalUpdatePass);
             })
         });
 
@@ -197,7 +254,6 @@ else
         }
 
         $('#editProfile').click(()=>{
-            
             var patID = "<?php echo "$patId"?>";
             open(modalUpdateDet);
             $.ajax({
@@ -211,6 +267,10 @@ else
                     $('#phone').val(data['phone']);
                     $('#age').val(data['age']);
                     $('#address').val(data['address']);
+
+                    $('#changePass').click(()=>{
+                        open(modalUpdatePass);
+                    })
                 }
             });
         });
