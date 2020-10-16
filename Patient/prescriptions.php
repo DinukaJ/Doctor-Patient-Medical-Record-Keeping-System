@@ -81,49 +81,104 @@ else
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
 
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
+<!-- The Modal for Update User Details-->
+<div id="modalUpdateDet" class="modal modal2">
+
+<!-- Modal content -->
+<div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
         </div>
-
-    </div> -->
+    </div>
+<form method="POST" id="usrDetailUp">
+    <input type="hidden" value="" id="medUpID" name="medUpID">
+   <div class="detailsSection">
+   <div class="alerMSG" id="updateStatus"></div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                First Name: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Last Name: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Phone: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="number" class="input-field" style="width:49%; display:inline;" name="phone" id="phone" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Age: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="number" class="input-field" style="width:49%; display:inline;" name="age" id="age" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Address: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:49%; display:inline;" name="address" id="address" placeholder="" required>
+            </div>
+        </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal upCancel" id="upCancel">Cancel</button> 
+                <button type="submit" class="btn btnNormal" id="updateDetSave">Save</button> 
+            </div>
+        </div>
+   </div>
+</form>
+</div>
+</div>
+<!-- End of the Modal for Update User Details-->
 
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    var modalUpdateDet = document.getElementById("modalUpdateDet");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
+       
+        function open(modal) {
+            //modal.style.display = "block";
+            $(modal).slideDown();
         }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
+        function close(modal){
+            // modal.style.display = "none";
+            $(modal).slideUp();
+        } 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            }
+        if (event.target == modalUpdateDet) {
+              // modalUpdateDet.style.display = "none";
+              $(modalUpdateDet).slideUp();
+        }
         }
 
         $(document).ready(function(){
             getAllPres();
+            $('.close').click(()=>{
+                close(modalUpdateMed);
+            })
         });
 
         function getAllPres(){
@@ -137,6 +192,12 @@ else
                 }
             });
         }
+
+        $('#editProfile').click(()=>{
+            open(modalUpdateDet);
+        });
+
+
     </script>
 
 </body>
