@@ -94,7 +94,8 @@ else
     </div>
 <form method="POST" id="usrDetailUp">
    <div class="detailsSection">
-   <div class="alerMSG" id="updateStatus"></div>
+   <div class="alerMSG" id="updateStatusInfo"></div>
+   <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
         <div class="row">
             <div class="c-12 c-m-2">
                 First Name: 
@@ -164,7 +165,7 @@ else
     </div>
 <form method="POST" id="usrPassUp">
    <div class="detailsSection">
-   <div class="alerMSG" id="updateStatus"></div>
+   <div class="alerMSG" id="updateStatusPass"></div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Current Password: 
@@ -275,7 +276,34 @@ else
             });
         });
 
-
+        $('#usrDetailUp').on('submit',function(e){
+            var patID = "<?php echo "$patId"?>";
+            e.preventDefault();
+            
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:$('#usrDetailUp').serialize()+"&type=upDet",
+                success:function(data){
+                    if(data==1){
+                        $('#updateStatusInfo').addClass("success");
+                        $('#updateStatusInfo').html("Successfully Updated!");
+                        $("#updateStatusInfo").slideDown("slow");
+                        setTimeout(function(){
+                            $("#updateStatusInfo").slideUp("slow");
+                        },2000);
+                    }
+                    else{
+                        $("#updateStatusInfo").addClass("error");
+                        $("#updateStatusInfo").html("Update Failed!");
+                        $("#updateStatusInfo").slideDown("slow");
+                        setTimeout(function(){
+                            $("#updateStatusInfo").slideUp("slow");
+                        },2000);
+            }
+                }
+            });
+        });
     </script>
 
 </body>
