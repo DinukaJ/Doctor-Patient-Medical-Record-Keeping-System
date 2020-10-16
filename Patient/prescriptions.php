@@ -194,7 +194,22 @@ else
         }
 
         $('#editProfile').click(()=>{
+            
+            var patID = "<?php echo "$patId"?>";
             open(modalUpdateDet);
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{patientID:patID,type:'patientData'},
+                dataType:'json',
+                success:function(data){
+                    $('#firstName').val(data['fname']);
+                    $('#lastName').val(data['lname']);
+                    $('#phone').val(data['phone']);
+                    $('#age').val(data['age']);
+                    $('#address').val(data['address']);
+                }
+            });
         });
 
 
