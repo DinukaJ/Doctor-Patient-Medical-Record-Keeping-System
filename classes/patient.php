@@ -39,7 +39,7 @@ class patient extends users
     public function updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address)
     {
         $db = new Database();
-        return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',age='$age',address='$address' where id='$patID");
+        return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',age='$age',address='$address' where id='$patID'");
     }
 }
 ?>
