@@ -12,6 +12,8 @@ if(isset($_POST["type"]))
         updatePatient_Allergy_IN();
     if($_POST["type"]=="getPres")
         getPatientPres();
+    if($_POST["type"]=="upDet")
+        updateDet();
 }
 function addPatient()
 {
@@ -85,5 +87,17 @@ function getPatientPres(){
         }
     }
     echo $output;
+}
+
+function updateDet(){
+    $patient = new patient();
+    $patID = $_POST["patientID"];
+    $fname = $_POST["firstName"];
+    $lname = $_POST["lastName"];
+    $phone = $_POST["phone"];
+    $age = $_POST["age"];
+    $address = $_POST["address"];
+    $stat = $patient->updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address);
+    echo $stat;
 }
 ?>
