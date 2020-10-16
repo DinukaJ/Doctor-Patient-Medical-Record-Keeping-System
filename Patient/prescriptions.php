@@ -95,7 +95,9 @@ else
 <form method="POST" id="usrDetailUp">
    <div class="detailsSection">
    <div class="alerMSG" id="updateStatusInfo"></div>
+
    <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
+   
         <div class="row">
             <div class="c-12 c-m-2">
                 First Name: 
