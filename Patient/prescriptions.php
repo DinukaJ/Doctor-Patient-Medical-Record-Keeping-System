@@ -37,17 +37,17 @@ else
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
                 <div class="upperPart3">
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-4">
                              <div class="boxSmall">
                                  <label>Doctor</label>
                              </div>
                         </div>
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-4">
                              <div class="boxSmall" style="text-align:center">
                                  <label>Prescription No.</label>
                             </div>
                         </div>
-                        <div class="c-12 c-l-3"></div>
+                        <div class="c-12 c-l-1"></div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
                                 <label>No. of Prescriptions:<?php 
@@ -122,21 +122,21 @@ else
             }
         }
 
-$(document).ready(function(){
-    getAllPres();
-});
+        $(document).ready(function(){
+            getAllPres();
+        });
 
-function getAllPres(){
-    var patID = "<?php echo "$patId"?>";
-    $.ajax({
-        url:"../handlers/patientHandler.php",
-        method:"POST",
-        data:{patientID:patID,type:'getPres'},
-        success:function(data){
-            $('#presInfo').html(data);
+        function getAllPres(){
+            var patID = "<?php echo "$patId"?>";
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{patientID:patID,type:'getPres'},
+                success:function(data){
+                    $('#presInfo').html(data);
+                }
+            });
         }
-    });
-}
     </script>
 
 </body>

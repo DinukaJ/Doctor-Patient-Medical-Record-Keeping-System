@@ -63,17 +63,22 @@ function getPatientPres(){
     $doctor = new doctor();
     $pid = $_POST["patientID"];
     $presData= $prescription->getPatientPres($pid);//getting prescription data of the patient
-    $presRow= mysqli_fetch_array($presData);
+    // $presRow= mysqli_fetch_array($presData);
     // $docId = $presRow[0];//assigning doctor id
     // $docData= $doctor->getDoc($docId);//getting doctor data
     // $docRow= mysqli_fetch_array($docData);
     // $name = $docRow[1].' '.$docRow[2];//concatenating doc name
     if(mysqli_num_rows($presData)){
-        while(mysqli_fetch_array($presData)){  
+        while($presRow=mysqli_fetch_array($presData)){
+            $docId = $presRow[0];//assigning doctor id
+            $docData= $doctor->getDoc($docId);//getting doctor data 
+            $docRow= mysqli_fetch_array($docData);
+            $name = $docRow[1].' '.$docRow[2];//concatenating doc name   
             $output.= "<div class='row patientDataRow'>
-            <div class='c-6' class='docID'>$presRow[0]</div>
-            <div class='c-5' class='presId'>$presRow[2]</div>
-            <div class='c-1'>
+            <div class='c-12 c-l-4' class='docID'>$name</div>
+            <div class='c-12 c-l-4' class='presId' style='text-align:center'>$presRow[2]</div>
+            <div class='c-3 c-l-3'></div>
+            <div class='c-12 c-l-1'>
                 <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";
