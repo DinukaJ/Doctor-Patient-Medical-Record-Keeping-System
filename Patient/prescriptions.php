@@ -139,7 +139,10 @@ else
    </div>
    <div class="bottomModel">
         <div class="row">
-            <div class="c-12">
+        <div class="c-12 c-l-6" style="text-align:left">
+            <button type="button" class="btn btnNormal changePass" id="changePAss">Change Password</button> 
+        </div>
+            <div class="c-12 c-l-6">
                 <button type="button" class="btn btnNormal upCancel" id="upCancel">Cancel</button> 
                 <button type="submit" class="btn btnNormal" id="updateDetSave">Save</button> 
             </div>
