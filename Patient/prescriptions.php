@@ -177,7 +177,7 @@ else
         $(document).ready(function(){
             getAllPres();
             $('.close').click(()=>{
-                close(modalUpdateMed);
+                close(modalUpdateDet);
             })
         });
 
