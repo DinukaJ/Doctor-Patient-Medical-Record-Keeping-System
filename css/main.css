@@ -259,10 +259,12 @@ body{
     height: 50px;
     transition: 0.5s;
 }
-.btnNormal:hover{
+.btnNormal:hover, .btnNormal:focus{
     background-color: white;
     color: #5cc8b1;
     border:1px solid #5cc8b1;
+    box-shadow: none;
+    outline: none;
 }
 .btnPatient{
     margin-top: 0.6em;
