@@ -83,7 +83,7 @@ else
     </div>
 
 <!-- The Modal for Update User Details-->
-<div id="modalUpdateDet" class="modal modal2">
+<div id="modalUpdateDet" class="modal modal2" style="padding-top:40px">
 
 <!-- Modal content -->
 <div class="modal-content-long inventoryModal">
@@ -158,7 +158,8 @@ else
                     <h2>Change Profile Picture</h2>
                     <div class="row">
                         <div class="c-12 c-m-5">
-                            Select Profile Picture: 
+                            Select Profile Picture: <br>
+                            <img src="../images/acc.png" class="accPic" width="20%">
                         </div>
                         <div class="c-12 c-m-7">
                             <input type="file" class="input-field popUpInputs" name="profilePic" id="profilePic" placeholder="" required>

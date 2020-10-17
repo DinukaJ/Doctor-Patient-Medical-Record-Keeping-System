@@ -266,6 +266,9 @@ body{
     box-shadow: none;
     outline: none;
 }
+.accPic{
+    border-radius: 50px;
+}
 .btnPatient{
     margin-top: 0.6em;
     width: 100%;
