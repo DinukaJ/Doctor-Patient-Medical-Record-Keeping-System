@@ -57,6 +57,12 @@ class prescription
         $data = $db->getData("select pm.*, m.name from prescription_medicine pm join medicine m on pm.med_ID=m.id where pm.pres_ID='$id'");
         return $data;
     }
+    public function  getPresMedAll($id)//getting all medicine of a prescription
+    {
+        $db = new Database();
+        $data = $db->getData("select * from prescription_medicine where pres_ID='$id'");
+        return $data;
+    }
     public function deletePresAndMeds($id)
     {
         $db = new Database();
