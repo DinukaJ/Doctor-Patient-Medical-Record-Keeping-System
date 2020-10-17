@@ -151,34 +151,62 @@ else
             </form>
         </div>
         <div class="c-12 c-m-6">
-            <form method="POST" id="usrPassUp">
-            <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
-            <h2>Change Password</h2>
             <div class="row">
-                <div class="c-12 c-m-5">
-                    New Password: 
-                </div>
-                <div class="c-12 c-m-7">
-                    <input type="password" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
+                <div class="c-12">
+                    <form method="POST" id="usrPassUp">
+                    <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
+                    <h2>Change Profile Picture</h2>
+                    <div class="row">
+                        <div class="c-12 c-m-5">
+                            Select Profile Picture: 
+                        </div>
+                        <div class="c-12 c-m-7">
+                            <input type="file" class="input-field popUpInputs" name="profilePic" id="profilePic" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-5">
+                    
+                        </div>
+                        <div class="c-12 c-m-7">
+                            <button type="button" class="btn btnNormal btnUp" id="updatePicture">Update Picture</button>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-5">
-                    Confirm New Password: 
-                </div>
-                <div class="c-12 c-m-7">
-                    <input type="password" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
+                <div class="c-12">
+                    <form method="POST" id="usrPassUp">
+                    <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
+                    <h2>Change Password</h2>
+                    <div class="row">
+                        <div class="c-12 c-m-5">
+                            New Password: 
+                        </div>
+                        <div class="c-12 c-m-7">
+                            <input type="password" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-5">
+                            Confirm New Password: 
+                        </div>
+                        <div class="c-12 c-m-7">
+                            <input type="password" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-5">
+                    
+                        </div>
+                        <div class="c-12 c-m-7">
+                            <button type="button" class="btn btnNormal btnUp" id="updatePass">Update Password</button>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="c-12 c-m-5">
-              
-                </div>
-                <div class="c-12 c-m-7">
-                    <button type="button" class="btn btnNormal btnUp" id="updatePass">Update Password</button>
-                </div>
-            </div>
-            </form>
         </div>
     </div>
    </div>
