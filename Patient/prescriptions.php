@@ -97,56 +97,87 @@ else
    <div class="alerMSG" id="updateStatusInfo"></div>
 
    <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
-   
-        <div class="row">
-            <div class="c-12 c-m-2">
-                First Name: 
+    <div class="row">
+        <div class="c-12 c-m-6">
+            <h2>Change User Details</h2>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    First Name: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="text" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+                </div>
             </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    Last Name: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="text" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    Phone: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="number" class="input-field" style="width:49%; display:inline;" name="phone" id="phone" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    Age: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="number" class="input-field" style="width:49%; display:inline;" name="age" id="age" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    Address: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="text" class="input-field" style="width:49%; display:inline;" name="address" id="address" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-l-6">
+                    <center><button type="button" class="btn btnNormal" id="upData">Update Details</button></center>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Last Name: 
+        <div class="c-12 c-m-6">
+            <h2>Change Password</h2>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    New Password: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="password" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+                </div>
             </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    Confirm New Password: 
+                </div>
+                <div class="c-12 c-m-9">
+                    <input type="password" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Phone: 
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="number" class="input-field" style="width:49%; display:inline;" name="phone" id="phone" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Age: 
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="number" class="input-field" style="width:49%; display:inline;" name="age" id="age" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Address: 
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="address" id="address" placeholder="" required>
+            <div class="row">
+                <div class="c-12 c-l-6">
+                    <center><button type="button" class="btn btnNormal" id="upPassword">Update Password</button></center>
+                </div>
             </div>
         </div>
+    </div>
    </div>
    <div class="bottomModel">
         <div class="row">
         <div class="c-12 c-l-6" style="text-align:left">
-            <button type="button" class="btn btnNormal changePass" id="changePass">Change Password</button> 
         </div>
             <div class="c-12 c-l-6">
                 <button type="button" class="btn btnNormal upCancel" id="upCancel">Cancel</button> 
-                <button type="submit" class="btn btnNormal" id="updateDetSave">Save</button> 
             </div>
         </div>
    </div>
