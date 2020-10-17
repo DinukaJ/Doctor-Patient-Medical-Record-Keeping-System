@@ -105,7 +105,7 @@ else
                     First Name: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="text" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
@@ -113,7 +113,7 @@ else
                     Last Name: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="text" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
@@ -121,7 +121,7 @@ else
                     Phone: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="number" class="input-field" style="width:49%; display:inline;" name="phone" id="phone" placeholder="" required>
+                    <input type="number" class="input-field popUpInputs" name="phone" id="phone" placeholder="" required>
                 </div>
             </div>
             <div class="row">
@@ -129,7 +129,7 @@ else
                     Age: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="number" class="input-field" style="width:49%; display:inline;" name="age" id="age" placeholder="" required>
+                    <input type="number" class="input-field popUpInputs" name="age" id="age" placeholder="" required>
                 </div>
             </div>
             <div class="row">
@@ -137,12 +137,15 @@ else
                     Address: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="text" class="input-field" style="width:49%; display:inline;" name="address" id="address" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="address" id="address" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-l-6">
-                    <center><button type="button" class="btn btnNormal" id="upData">Update Details</button></center>
+                <div class="c-12 c-m-3">
+              
+                </div>
+                <div class="c-12 c-m-9">
+                    <button type="button" class="btn btnNormal btnUp" id="upData">Update Details</button>
                 </div>
             </div>
         </div>
@@ -153,7 +156,7 @@ else
                     New Password: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="password" class="input-field" style="width:49%; display:inline;" name="firstName" id="firstName" placeholder="" required>
+                    <input type="password" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
@@ -161,12 +164,15 @@ else
                     Confirm New Password: 
                 </div>
                 <div class="c-12 c-m-9">
-                    <input type="password" class="input-field" style="width:49%; display:inline;" name="lastName" id="lastName" placeholder="" required>
+                    <input type="password" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-l-6">
-                    <center><button type="button" class="btn btnNormal" id="upPassword">Update Password</button></center>
+                <div class="c-12 c-m-3">
+              
+                </div>
+                <div class="c-12 c-m-9">
+                    <button type="button" class="btn btnNormal btnUp" id="upPassword">Update Password</button>
                 </div>
             </div>
         </div>

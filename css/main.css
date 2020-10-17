@@ -417,6 +417,20 @@ body{
   .disable{
       background-color: #e8e8e8;
   }
+  .popUpInputs, .btnUp{
+      width:50%;
+  }
+  @media (max-width:767px)
+  {
+    .popUpInputs, .btnUp{
+        width:100%;
+    }
+    .detailsSection{
+        padding-top: 10px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+  }
   button.disable{
     background-color: #e8e8e8;
     border: 1px solid #ced4da;
