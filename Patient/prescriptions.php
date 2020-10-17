@@ -92,89 +92,93 @@ else
         <span class="close closeMed">&times;</span>
         </div>
     </div>
-<form method="POST" id="usrDetailUp">
-   <div class="detailsSection">
-   <div class="alerMSG" id="updateStatusInfo"></div>
 
-   <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
+   <div class="detailsSection editProfile">
+   <div class="alerMSG" id="updateStatusInfo"></div>
     <div class="row">
         <div class="c-12 c-m-6">
+            <form method="POST" id="usrDetailUp">
+            <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
             <h2>Change User Details</h2>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     First Name: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="text" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     Last Name: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="text" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     Phone: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="number" class="input-field popUpInputs" name="phone" id="phone" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     Age: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="number" class="input-field popUpInputs" name="age" id="age" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     Address: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="text" class="input-field popUpInputs" name="address" id="address" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
               
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <button type="button" class="btn btnNormal btnUp" id="upData">Update Details</button>
                 </div>
             </div>
+            </form>
         </div>
         <div class="c-12 c-m-6">
+            <form method="POST" id="usrPassUp">
+            <input id="patientID" type="hidden" name="patientID" value="<?php echo "$patId"?>">
             <h2>Change Password</h2>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     New Password: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="password" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
                     Confirm New Password: 
                 </div>
-                <div class="c-12 c-m-9">
+                <div class="c-12 c-m-7">
                     <input type="password" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-3">
+                <div class="c-12 c-m-5">
               
                 </div>
-                <div class="c-12 c-m-9">
-                    <button type="button" class="btn btnNormal btnUp" id="upPassword">Update Password</button>
+                <div class="c-12 c-m-7">
+                    <button type="button" class="btn btnNormal btnUp" id="updatePass">Update Password</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
    </div>
@@ -187,62 +191,10 @@ else
             </div>
         </div>
    </div>
-</form>
+
 </div>
 </div>
 <!-- End of the Modal for Update User Details-->
-
-<!-- The Modal for Update User Password-->
-<div id="modalUpdatePass" class="modal modal2">
-
-<!-- Modal content -->
-<div class="modal-content-long inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
-        </div>
-    </div>
-<form method="POST" id="usrPassUp">
-   <div class="detailsSection">
-   <div class="alerMSG" id="updateStatusPass"></div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Current Password: 
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="curPass" id="curPass" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                New Password: 
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="newPass" id="newPass" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Re-Type New:
-            </div>
-            <div class="c-12 c-m-10">
-                <input type="text" class="input-field" style="width:49%; display:inline;" name="newRePass" id="newRePass" placeholder="" required>
-            </div>
-        </div>
-   </div>
-   <div class="bottomModel">
-        <div class="row">
-            <div class="c-12">
-                <button type="button" class="btn btnNormal upPassCancel" id="upPassCancel">Cancel</button> 
-                <button type="submit" class="btn btnNormal" id="updatePass">Change</button> 
-            </div>
-        </div>
-   </div>
-</form>
-</div>
-</div>
-<!-- End of the Modal for Update User Password-->
-
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>

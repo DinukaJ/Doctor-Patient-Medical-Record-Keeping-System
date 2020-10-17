@@ -353,7 +353,7 @@ body{
   .alerMSG{
       /* display: none; */
       padding: 10px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       border-radius: 5px;
   }
   .success{
@@ -396,7 +396,13 @@ body{
   }
   .modal-content-long .detailsSection{
     padding-top: 50px;
-    padding-bottom: 120px;
+    padding-bottom: 80px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .modal-content-long .editProfile{
+    padding-top: 20px;
+    padding-bottom: 80px;
     padding-left: 50px;
     padding-right: 50px;
   }
@@ -418,7 +424,7 @@ body{
       background-color: #e8e8e8;
   }
   .popUpInputs, .btnUp{
-      width:50%;
+      width:80%;
   }
   @media (max-width:767px)
   {
@@ -429,6 +435,10 @@ body{
         padding-top: 10px !important;
         padding-left: 5px !important;
         padding-right: 5px !important;
+        padding-bottom: 10px !important;
+    }
+    .alerMSG{
+        margin-bottom: 0px;
     }
   }
   button.disable{
