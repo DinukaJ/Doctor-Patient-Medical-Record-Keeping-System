@@ -253,13 +253,15 @@ body{
     height: 50px;
     width: 100%;
 }
-.btnNormal{
+.btnNormal, .btnNormal:focus{
     background-color: #5cc8b1;
     color: white;
     height: 50px;
     transition: 0.5s;
+    box-shadow: none;
+    outline: none;
 }
-.btnNormal:hover, .btnNormal:focus{
+.btnNormal:hover{
     background-color: white;
     color: #5cc8b1;
     border:1px solid #5cc8b1;
