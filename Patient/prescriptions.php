@@ -246,10 +246,10 @@ else
          <div class="c-12 c-m-3" id="presDate"></div>            
     </div>
     <div class="row">
-        <div class="c-12 c-m-3">
+        <div class="c-12 c-m-2">
             <b>Prescription No:</b>
          </div>
-        <div class="c-12 c-m-3" id="presNo"></div>  
+        <div class="c-12 c-m-1" id="presNo"></div>  
     </div>
     <div class="row" style="border-bottom:1px solid #ced4da;">
         <div class="c-m-1"></div>
@@ -395,6 +395,7 @@ else
                 data:{presID:presId,type:'presInfo'},
                 success:function(data){
                     $("#presMedDet").html(data);
+                    $("#presNo").html(presId);
                 }
             });
         }
