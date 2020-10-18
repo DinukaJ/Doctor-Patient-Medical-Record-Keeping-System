@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2020 at 06:42 PM
+-- Generation Time: Oct 18, 2020 at 09:30 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -21,15 +21,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `groupprojectucsc`
 --
-DROP DATABASE `groupprojectucsc`; 
-CREATE DATABASE IF NOT EXISTS `groupprojectucsc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `groupprojectucsc`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `bill`
 --
+
+drop database groupprojectucsc;
+create database groupprojectucsc;
+use groupprojectucsc;
 
 CREATE TABLE `bill` (
   `presId` int(11) NOT NULL,
@@ -73,6 +74,13 @@ CREATE TABLE `doctor` (
   `phone` varchar(10) NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `password`) VALUES
+('doc45', 'Rukmal', 'Weerasingha', '0776386325', 'weddada');
 
 -- --------------------------------------------------------
 
@@ -148,6 +156,13 @@ CREATE TABLE `patient` (
   `impNotes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `password`, `age`, `address`, `allergies`, `impNotes`) VALUES
+('pat45', 'Pasindu', 'Dissanayake', '0771697166', 'ghsdfsfas', 23, '12/21,Seeduwa', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -159,9 +174,16 @@ CREATE TABLE `prescriptions` (
   `patientId` varchar(9) NOT NULL,
   `id` int(11) NOT NULL,
   `doi` date NOT NULL,
-  `note` text NOT NULL,
-  `status` int(1) NOT NULL
+  `note` text DEFAULT NULL,
+  `status` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
+('doc45', 'pat45', 123, '2020-10-15', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -177,6 +199,14 @@ CREATE TABLE `prescription_medicine` (
   `beforeAfter` char(20) NOT NULL,
   `duration` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescription_medicine`
+--
+
+INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
+(123, 4, 2, 3, 'After', '3 weeks'),
+(123, 10, 1.5, 2, 'Before', '4 weeks');
 
 --
 -- Indexes for dumped tables
@@ -238,8 +268,8 @@ ALTER TABLE `prescriptions`
 -- Indexes for table `prescription_medicine`
 --
 ALTER TABLE `prescription_medicine`
-  ADD KEY `pres_ID` (`pres_ID`),
-  ADD KEY `med_ID` (`med_ID`);
+  ADD KEY `med_ID` (`med_ID`),
+  ADD KEY `pres_ID` (`pres_ID`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -256,12 +286,6 @@ ALTER TABLE `bill`
 --
 ALTER TABLE `medicine`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `prescriptions`
---
-ALTER TABLE `prescriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
