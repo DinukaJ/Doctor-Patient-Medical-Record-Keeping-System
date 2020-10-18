@@ -148,7 +148,6 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         $(document).ready(function(){
             getAllPres();
             $('.close').click(()=>{
-                // close($(this).parent());
                 close(modalUpdateDet);
                 close(modalViewPres);
             })
