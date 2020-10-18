@@ -22,7 +22,7 @@ function getSideNav($type)
 }
 function getEditProfile($patient)
 {
-    echo '
+    echo'
     <!-- The Modal for Update User Details-->
 <div id="modalUpdateDet" class="modal modal2" style="padding-top:40px">
 
