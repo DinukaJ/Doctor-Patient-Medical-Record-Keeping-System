@@ -105,7 +105,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         <div class="c-12 c-m-4">
             <b>Date: </b><span id="presDate"></span>
         </div>           
-        <div class="c-12 c-m-4">
+        <div class="c-12 c-m-3">
             <b>Prescription No: </b><span id="presNo"></span>
          </div>
     </div>
