@@ -99,20 +99,15 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         </div>
     </div>
     <div class="row">
-        <div class="c-12 c-m-3">
-            <b>Doctor Name:</b>
+        <div class="c-12 c-m-4">
+            <b>Doctor Name: </b><span id="docName"></span>
         </div>
-         <div class="c-12 c-m-3" id="docName"></div>
-        <div class="c-12 c-m-3">
-        <b>Date:</b>
-        </div>
-         <div class="c-12 c-m-3" id="presDate"></div>            
-    </div>
-    <div class="row">
-        <div class="c-12 c-m-2">
-            <b>Prescription No:</b>
+        <div class="c-12 c-m-4">
+            <b>Date: </b><span id="presDate"></span>
+        </div>           
+        <div class="c-12 c-m-4">
+            <b>Prescription No: </b><span id="presNo"></span>
          </div>
-        <div class="c-12 c-m-1" id="presNo"></div>  
     </div>
     <div class="row" style="border-bottom:1px solid #ced4da;">
         <div class="c-m-1"></div>
@@ -134,11 +129,11 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         <div class="c-m-1"></div> 
     </div>
    <div class="presMedDet" id="presMedDet"></div>
-        <div class ="bottomModel row">
+        <!-- <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="viewCancel">Cancel</button>
             </div>
-        </div>
+        </div> -->
     </div> 
  </div>
 </div>
@@ -152,7 +147,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         $(document).ready(function(){
             getAllPres();
             $('.close').click(()=>{
-                close(modalUpdateDet);
+                close($(this).parent());
                 close(modalViewPres);
             })
             $('#upCancel').click(()=>{
@@ -195,9 +190,12 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 url:"../handlers/prescriptionHandler.php",
                 method:"POST",
                 data:{presID:presId,type:'presInfo'},
+                dataType:'JSON',
                 success:function(data){
-                    $("#presMedDet").html(data);
+                    $("#presMedDet").html(data[0]);
                     $("#presNo").html(presId);
+                    $("#docName").html(data[1]);
+                    $("#presDate").html(data[2]);
                 }
             });
         }
