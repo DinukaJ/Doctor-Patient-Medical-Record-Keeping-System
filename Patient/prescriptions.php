@@ -225,12 +225,68 @@ else
 </div>
 <!-- End of the Modal for Update User Details-->
 
+ <!-- The Modal for View Prescriptions-->
+ <div id="modalViewPres" class="modal modal2">
+
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="c-12 c-m-3">
+            <b>Doctor Name:</b>
+        </div>
+         <div class="c-12 c-m-3" id="docName"></div>
+        <div class="c-12 c-m-3">
+        <b>Date:</b>
+        </div>
+         <div class="c-12 c-m-3" id="presDate"></div>            
+    </div>
+    <div class="row">
+        <div class="c-12 c-m-3">
+            <b>Prescription No:</b>
+         </div>
+        <div class="c-12 c-m-3" id="presNo"></div>  
+    </div>
+    <div class="row" style="border-bottom:1px solid #ced4da;">
+        <div class="c-m-1"></div>
+        <div class="c-12 c-m-2">
+            <b>Medicine Name:</b>
+         </div>
+        <div class="c-12 c-m-2">
+            <b>Amount Per Day</b>
+        </div> 
+        <div class="c-12 c-m-2">
+            <b>Times Per Day</b>
+        </div> 
+        <div class="c-12 c-m-2">
+            <b>Before/After</b>
+        </div> 
+        <div class="c-12 c-m-2">
+            <b>Duration</b>
+        </div> 
+        <div class="c-m-1"></div> 
+    </div>
+   <div class="presMedDet" id="presMedDet"></div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="viewCancel">Cancel</button>
+            </div>
+        </div>
+    </div> 
+ </div>
+</div>
+<!-- End of the Modal for View Prescriptions-->
+
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
     var modalUpdateDet = document.getElementById("modalUpdateDet");
-    var modalUpdatePass = document.getElementById("modalUpdatePass");
+    var modalViewPres = document.getElementById("modalViewPres");
        
         function open(modal) {
             //modal.style.display = "block";
@@ -244,7 +300,11 @@ else
         window.onclick = function(event) {
         if (event.target == modalUpdateDet) {
               // modalUpdateDet.style.display = "none";
-              $(modalUpdateDet).slideUp();
+              close(modalUpdateDet);
+        }
+        if (event.target == modalViewPres) {
+              // modalUpdateDet.style.display = "none";
+              close(modalViewPres);
         }
         }
 
@@ -252,13 +312,13 @@ else
             getAllPres();
             $('.close').click(()=>{
                 close(modalUpdateDet);
-                close(modalUpdatePass);
+                close(modalViewPres);
             })
             $('#upCancel').click(()=>{
                 close(modalUpdateDet);
             })
-            $('#upPassCancel').click(()=>{
-                close(modalUpdatePass);
+            $('#viewCancel').click(()=>{
+                close(modalViewPres);
             })
         });
 
@@ -270,6 +330,10 @@ else
                 data:{patientID:patID,type:'getPres'},
                 success:function(data){
                     $('#presInfo').html(data);
+                    $('.viewPres').click(function(){
+                        open(modalViewPres);
+                        getPresInfo(this.id);
+                    });
                 }
             });
         }
@@ -289,9 +353,6 @@ else
                     $('#age').val(data['age']);
                     $('#address').val(data['address']);
 
-                    $('#changePass').click(()=>{
-                        open(modalUpdatePass);
-                    })
                 }
             });
         });
@@ -308,22 +369,35 @@ else
                     if(data==1){
                         $('#updateStatusInfo').addClass("success");
                         $('#updateStatusInfo').html("Successfully Updated!");
-                        $("#updateStatusInfo").slideDown("slow");
+                        $('#updateStatusInfo').slideDown("slow");
                         setTimeout(function(){
-                            $("#updateStatusInfo").slideUp("slow");
+                            $('#updateStatusInfo').slideUp("slow");
                         },2000);
                     }
                     else{
-                        $("#updateStatusInfo").addClass("error");
-                        $("#updateStatusInfo").html("Update Failed!");
-                        $("#updateStatusInfo").slideDown("slow");
+                        $('#updateStatusInfo').addClass("error");
+                        $('#updateStatusInfo').html("Update Failed!");
+                        $('#updateStatusInfo').slideDown("slow");
                         setTimeout(function(){
-                            $("#updateStatusInfo").slideUp("slow");
+                            $('#updateStatusInfo').slideUp("slow");
                         },2000);
             }
                 }
             });
         });
+
+        function getPresInfo(id){
+            presId = id.split("-");
+            presId = presId[1];
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{presID:presId,type:'presInfo'},
+                success:function(data){
+                    $("#presMedDet").html(data);
+                }
+            });
+        }
     </script>
 
 </body>

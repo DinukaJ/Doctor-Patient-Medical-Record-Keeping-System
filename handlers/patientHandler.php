@@ -11,9 +11,11 @@ if(isset($_POST["type"]))
     if($_POST["type"]=="upPatientAllergies")
         updatePatient_Allergy_IN();
     if($_POST["type"]=="getPres")
-        getPatientPres();
+        getPatientPresIn();
     if($_POST["type"]=="upDet")
         updateDet();
+    if($_POST["type"]=="presInfo")
+        getPatientPres();
 }
 function addPatient()
 {
@@ -59,17 +61,12 @@ function updatePatient_Allergy_IN()
 }
 
 
-function getPatientPres(){ 
+function getPatientPresIn(){ 
     $output="";
     $prescription = new prescription();
     $doctor = new doctor();
     $pid = $_POST["patientID"];
     $presData= $prescription->getPatientPres($pid);//getting prescription data of the patient
-    // $presRow= mysqli_fetch_array($presData);
-    // $docId = $presRow[0];//assigning doctor id
-    // $docData= $doctor->getDoc($docId);//getting doctor data
-    // $docRow= mysqli_fetch_array($docData);
-    // $name = $docRow[1].' '.$docRow[2];//concatenating doc name
     if(mysqli_num_rows($presData)){
         while($presRow=mysqli_fetch_array($presData)){
             $docId = $presRow[0];//assigning doctor id
@@ -77,7 +74,7 @@ function getPatientPres(){
             $docRow= mysqli_fetch_array($docData);
             $name = $docRow[1].' '.$docRow[2];//concatenating doc name   
             $output.= "<div class='row patientDataRow'>
-            <div class='c-12 c-l-4' class='docID'>$name</div>
+            <div class='c-12 c-l-4' class='docName' id='docNameF'>$name</div>
             <div class='c-12 c-l-4' class='presId' style='text-align:center'>$presRow[2]</div>
             <div class='c-3 c-l-3'></div>
             <div class='c-12 c-l-1'>
@@ -99,5 +96,26 @@ function updateDet(){
     $address = $_POST["address"];
     $stat = $patient->updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address);
     echo $stat;
+}
+
+function getPatientPres(){ 
+    $output="";
+    $prescription = new prescription();
+    $presId = $_POST["presID"];
+    $presMedData = $prescription->getMedViewData($presId);
+    if(mysqli_num_rows($presMedData)){
+        while($presMedRow=mysqli_fetch_array($presMedData)){ 
+            $output.= "<div class='row patientDataRow'>
+            <div class='c-12 c-m-1'></div>
+            <div class='c-12 c-m-2' class='medName'>$presMedRow[2]</div>
+            <div class='c-12 c-m-2' class='amtPt'>$presMedRow[5]</div>
+            <div class='c-12 c-m-2' class='timePd'>$presMedRow[6]</div>
+            <div class='c-12 c-m-2' class='befAf'>$presMedRow[7]</div>
+            <div class='c-12 c-m-2' class='dura'>$presMedRow[8]</div>
+            <div class='c-12 c-m-1'></div>
+            </div>";
+        }
+    }
+    echo $output;
 }
 ?>
