@@ -173,7 +173,7 @@ function getPatientPres(){
     $prescription = new prescription();
     $presId = $_POST["presID"];
     $presMedData = $prescription->getMedViewData($presId);
-    $docname="";
+    $docName="";
     $presDate="";
     if(mysqli_num_rows($presMedData)){
         while($presMedRow=mysqli_fetch_array($presMedData)){ 
@@ -186,11 +186,11 @@ function getPatientPres(){
             <div class='c-12 c-m-2' class='dura'>$presMedRow[8]</div>
             <div class='c-12 c-m-1'></div>
             </div>";
-            $docname=$presMedRow[0]." ".$presMedRow[1];
+            $docName=$presMedRow[0]." ".$presMedRow[1];
             $presDate=$presMedRow[4];
         }
     }
     //echo $output;
-    echo json_encode(array($output,$docname,$presDate));
+    echo json_encode(array($output,$docName,$presDate));
 }
 ?>
