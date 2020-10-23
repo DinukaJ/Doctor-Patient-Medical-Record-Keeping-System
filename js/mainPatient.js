@@ -53,7 +53,8 @@ $('#usrPassUp').on('submit',function(e){
    
     if($('#newPass').val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/)==null)
     {
-        $('#errorMsg').html('Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters.').css('color','red');
+        $('#errorMsg').addClass('error');
+        $('#errorMsg').html('Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters.');
         $('#errorMsg').slideDown();
         setTimeout(function(){
             $('#errorMsg').slideUp('slow');
@@ -62,7 +63,8 @@ $('#usrPassUp').on('submit',function(e){
     }
     else if($('#newPass').val()!=$('#newPassConfirm').val())
     {
-        $('#errorMsg').html('Passwords Do Not Match').css('color','red');
+        $('#errorMsg').addClass('error');
+        $('#errorMsg').html('Passwords Do Not Match');
         $('#errorMsg').slideDown();
         setTimeout(function(){
             $('#errorMsg').slideUp('slow');
@@ -76,10 +78,11 @@ $('#usrPassUp').on('submit',function(e){
             method:"POST",
             data:{nPass:newPass,pid:patID,type:'upPass'},
             success:function(){
-                $('upMsg').html('Updated Successfully');
-                $('upMsg').slideDown();
+                $('#upMsg').addClass('success');
+                $('#upMsg').html('Updated Successfully').css('color','green');
+                $('#upMsg').slideDown();
                 setTimeout(function(){
-                    $('upMsg').slideUp();
+                    $('#upMsg').slideUp();
                 },2000);
             }
         });
