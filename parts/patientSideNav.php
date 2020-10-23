@@ -120,6 +120,10 @@ function getEditProfile($patient)
                     <form method="POST" id="usrPassUp">
                     <h2>Change Password</h2>
                     <div class="row">
+                    <div type="hidden" id="errorMsg"></div>
+                    <div type="hidden" id="upMsg"></div>
+                    </div>
+                    <div class="row">
                         <div class="c-12 c-m-5">
                             New Password: 
                         </div>
@@ -140,7 +144,7 @@ function getEditProfile($patient)
                     
                         </div>
                         <div class="c-12 c-m-7">
-                            <button type="button" class="btn btnNormal btnUp" id="updatePass">Update Password</button>
+                            <button type="submit" class="btn btnNormal btnUp" id="updatePass">Update Password</button>
                         </div>
                     </div>
                     </form>
