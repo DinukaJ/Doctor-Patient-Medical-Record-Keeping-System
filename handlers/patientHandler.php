@@ -12,6 +12,8 @@ if(isset($_POST["type"]))
         updatePatient_Allergy_IN();
     if($_POST["type"]=="upDet")
         updateDet();
+    if($_POST["type"]=="upPass")
+        updatePass();
 }
 function addPatient()
 {
@@ -65,6 +67,14 @@ function updateDet(){
     $age = $_POST["age"];
     $address = $_POST["address"];
     $stat = $patient->updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address);
+    echo $stat;
+}
+
+function updatePass(){
+    $patient = new patient();
+    $patID=$_POST["pid"];
+    $newPass= $_POST["nPass"];
+    $stat = $patient->updatePatientPass($patID,$newPass);
     echo $stat;
 }
 ?>
