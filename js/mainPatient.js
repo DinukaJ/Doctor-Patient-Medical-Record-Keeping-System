@@ -62,7 +62,7 @@ $('#usrPassUp').on('submit',function(e){
     }
     else if($('#newPass').val()!=$('#newPassConfirm').val())
     {
-        $('#errorMsg').html('Passwords Do Not Match!').css('color','red');
+        $('#errorMsg').html('Passwords Do Not Match').css('color','red');
         $('#errorMsg').slideDown();
         setTimeout(function(){
             $('#errorMsg').slideUp('slow');
