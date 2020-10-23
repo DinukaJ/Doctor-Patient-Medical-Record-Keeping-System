@@ -203,13 +203,17 @@ else
     <script>
         // Get the Prescription view modal
        var modal = document.getElementById("modalViewPres");
+        //Model Bill
+       var modal = document.getElementById("modalBill");
         
         //open and closing functions
         function open(modal) {
-            modal.style.display = "block";
+            // modal.style.display = "block";
+            $(modal).slideDown();
         }
         function close(modal){
-            modal.style.display = "none";
+            // modal.style.display = "none";
+            $(modal).slideUp();
         }
 
         $(document).ready(function(){
@@ -219,37 +223,26 @@ else
             });
             $(".close").click(()=>{
                 close(modalViewPres);
-            })
-        })
-        
-        //Model Bill
-        var modal = document.getElementById("modalBill");
-        
-        //open and closing functions
-        function open(modal) {
-            modal.style.display = "block";
-        }
-        function close(modal){
-            modal.style.display = "none";
-        }
-
-        $(document).ready(function(){
-            //click on view
-            $("#billCreate").click(()=>{
-                open(modalBill);
-            });
-            $(".close").click(()=>{
                 close(modalBill);
             })
+            $("#billCreate").click(()=>{
+                close(modalViewPres);
+                open(modalBill);
+            });
             $("#endBill").click(()=>{
                 close(modalBill);
             })
         })
-        
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modalViewPres) {
+            // modal.style.display = "none";
+                $(modalViewPres).slideUp();
+            }
+        if (event.target == modalBill) {
+            // modal.style.display = "none";
+                $(modalBill).slideUp();
             }
         }
     </script>
