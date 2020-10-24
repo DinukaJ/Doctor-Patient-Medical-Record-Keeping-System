@@ -11,6 +11,7 @@ $('#editProfile').click(()=>{
             $('#firstName').val(data['fname']);
             $('#lastName').val(data['lname']);
             $('#phone').val(data['phone']);
+            $('#email').val(data['email']);
             $('#age').val(data['age']);
             $('#address').val(data['address']);
 

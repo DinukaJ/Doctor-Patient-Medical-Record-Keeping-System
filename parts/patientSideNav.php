@@ -66,6 +66,14 @@ function getEditProfile($patient)
             </div>
             <div class="row">
                 <div class="c-12 c-m-5">
+                    Email: 
+                </div>
+                <div class="c-12 c-m-7">
+                    <input type="email" class="input-field popUpInputs" name="email" id="email" placeholder="" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-5">
                     Age: 
                 </div>
                 <div class="c-12 c-m-7">
