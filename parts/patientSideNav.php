@@ -49,7 +49,7 @@ function getEditProfile($patient)
                     First Name: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="text" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="firstName" id="firstName" placeholder="First Name">
                 </div>
             </div>
             <div class="row">
@@ -57,7 +57,7 @@ function getEditProfile($patient)
                     Last Name: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="text" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="lastName" id="lastName" placeholder="Last Name">
                 </div>
             </div>
             <div class="row">
@@ -65,7 +65,7 @@ function getEditProfile($patient)
                     Phone: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="number" class="input-field popUpInputs" name="phone" id="phone" placeholder="" required>
+                    <input type="number" class="input-field popUpInputs" name="phone" id="phone" placeholder="07******** / 011*******">
                 </div>
             </div>
             <div class="row">
@@ -73,7 +73,7 @@ function getEditProfile($patient)
                     Email: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="email" class="input-field popUpInputs" name="email" id="email" placeholder="">
+                    <input type="text" class="input-field popUpInputs" name="email" id="email" placeholder="Email">
                 </div>
             </div>
             <div class="row">
@@ -81,7 +81,7 @@ function getEditProfile($patient)
                     Age: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="number" class="input-field popUpInputs" name="age" id="age" placeholder="" required>
+                    <input type="number" class="input-field popUpInputs" name="age" id="age" placeholder="Age">
                 </div>
             </div>
             <div class="row">
@@ -89,7 +89,7 @@ function getEditProfile($patient)
                     Address: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="text" class="input-field popUpInputs" name="address" id="address" placeholder="" required>
+                    <input type="text" class="input-field popUpInputs" name="address" id="address" placeholder="Address">
                 </div>
             </div>
             <div class="row">
@@ -133,7 +133,7 @@ function getEditProfile($patient)
                     <h2>Change Password</h2>
                     <div class="row" style="padding:0px; margin:0px;">
                         <div class="c-12" style="padding:0px; margin:0px;">
-                            <div class="alerMSG" id="errorMsg"></div>
+                            <div class="alerMSG" id="errorMsgPass"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -141,7 +141,7 @@ function getEditProfile($patient)
                             New Password: 
                         </div>
                         <div class="c-12 c-m-7">
-                            <input type="password" class="input-field popUpInputs" name="newPass" id="newPass" placeholder="" required>
+                            <input type="password" class="input-field popUpInputs" name="newPass" id="newPass" placeholder="" >
                         </div>
                     </div>
                     <div class="row">
@@ -149,7 +149,7 @@ function getEditProfile($patient)
                             Confirm New Password: 
                         </div>
                         <div class="c-12 c-m-7">
-                            <input type="password" class="input-field popUpInputs" name="newPassConfirm" id="newPassConfirm" placeholder="" required>
+                            <input type="password" class="input-field popUpInputs" name="newPassConfirm" id="newPassConfirm" placeholder="">
                         </div>
                     </div>
                     <div class="row">

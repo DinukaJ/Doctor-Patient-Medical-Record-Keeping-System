@@ -237,6 +237,12 @@ body{
     outline: 0;
     box-shadow: 0 0 0 0.2rem #5cc8b1;
 }
+.errorInput{
+    background-color: #fff;
+    border-color: rgb(199, 97, 97);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #d86d6d;
+}
 .btn{
     background-color: transparent;
     border: 1px solid transparent;

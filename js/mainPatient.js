@@ -22,30 +22,105 @@ $('#editProfile').click(()=>{
 $('#usrDetailUp').on('submit',function(e){
     var patID = $("#patientID").val();
     e.preventDefault();
-    
-    $.ajax({
-        url:"../handlers/patientHandler.php",
-        method:"POST",
-        data:$('#usrDetailUp').serialize()+"&type=upDet&patientID="+patID,
-        success:function(data){
-            if(data==1){
-                $('#updateStatusInfo').addClass("success");
-                $('#updateStatusInfo').html("Successfully Updated!");
-                $('#updateStatusInfo').slideDown("slow");
-                setTimeout(function(){
-                    $('#updateStatusInfo').slideUp("slow");
-                },2000);
-            }
-            else{
-                $('#updateStatusInfo').addClass("error");
-                $('#updateStatusInfo').html("Update Failed!");
-                $('#updateStatusInfo').slideDown("slow");
-                setTimeout(function(){
-                    $('#updateStatusInfo').slideUp("slow");
-                },2000);
+    var errMsg="";
+    var x=0;
+    if($('#firstName').val().match(/^[A-Za-z]+$/)==null)
+    {
+        $('#firstName').addClass('errorInput');
+        errMsg+="First Name Must Contain Only Letters.";
+        x=1;
     }
+    else
+    {
+        $('#firstName').removeClass('errorInput');
+    }
+    if($('#lastName').val().match(/^[A-Za-z]+$/)==null)
+    {
+        $('#lastName').addClass('errorInput');
+        errMsg+="<br>Last Name Must Contain Only Letters.";
+        x=1;
+    }
+    else
+    {
+        $('#lastName').removeClass('errorInput');
+    }
+    if($('#phone').val().length<10 || $('#phone').val().length>10)
+    {
+        $('#phone').addClass('errorInput');
+        errMsg+="<br>Phone Number Must Contain Only 10 Digits. (07******** / 011*******)";
+        x=1;
+    } 
+    else
+    {
+        $('#phone').removeClass('errorInput');
+    }
+    if(($("#email").val()!="") && ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null))
+    {
+        $('#email').addClass('errorInput');
+        errMsg+="<br>Invalid Email.";
+        x=1;
+    }
+    else
+    {
+        $('#email').removeClass('errorInput');
+    }
+    if($('#age').val()=="" || $('#age').val()=="0")
+    {
+        $('#age').addClass('errorInput'); 
+        errMsg+="<br>Invalid Age.";
+        x=1;      
+    } 
+    else
+    {
+        $('#age').removeClass('errorInput');  
+    }
+    if($('#address').val()=="")
+    {
+        $('#address').addClass('errorInput'); 
+        errMsg+="<br>Address Cannot be Empty.";
+        x=1;      
+    } 
+    else
+    {
+        $('#address').removeClass('errorInput');  
+    }
+    if(x==1)
+    {
+        $('#updateStatusInfo').addClass('error');
+        $('#updateStatusInfo').html(errMsg);
+        $('#updateStatusInfo').slideDown();
+        setTimeout(function(){
+            $('#updateStatusInfo').slideUp('slow');
+        },2000);
+        return false;
+    }
+    else
+    {
+        $('#address').removeClass('errorInput');
+        $.ajax({
+            url:"../handlers/patientHandler.php",
+            method:"POST",
+            data:$('#usrDetailUp').serialize()+"&type=upDet&patientID="+patID,
+            success:function(data){
+                if(data==1){
+                    $('#updateStatusInfo').addClass("success");
+                    $('#updateStatusInfo').html("Successfully Updated!");
+                    $('#updateStatusInfo').slideDown("slow");
+                    setTimeout(function(){
+                        $('#updateStatusInfo').slideUp("slow");
+                    },2000);
+                }
+                else{
+                    $('#updateStatusInfo').addClass("error");
+                    $('#updateStatusInfo').html("Update Failed!");
+                    $('#updateStatusInfo').slideDown("slow");
+                    setTimeout(function(){
+                        $('#updateStatusInfo').slideUp("slow");
+                    },2000);
         }
-    });
+            }
+        });
+    }
 });
 
 $('#usrPassUp').on('submit',function(e){
@@ -54,21 +129,24 @@ $('#usrPassUp').on('submit',function(e){
    
     if($('#newPass').val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/)==null)
     {
-        $('#errorMsg').addClass('error');
-        $('#errorMsg').html('Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters.');
-        $('#errorMsg').slideDown();
+        $('#newPass').addClass('errorInput');
+        $('#errorMsgPass').addClass('error');
+        $('#errorMsgPass').html('Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters.');
+        $('#errorMsgPass').slideDown();
         setTimeout(function(){
-            $('#errorMsg').slideUp('slow');
+            $('#errorMsgPass').slideUp('slow');
         },2000);
         return false;
     }
     else if($('#newPass').val()!=$('#newPassConfirm').val())
     {
-        $('#errorMsg').addClass('error');
-        $('#errorMsg').html('Passwords Do Not Match');
-        $('#errorMsg').slideDown();
+        $('#newPass').removeClass('errorInput');
+        $('#newPassConfirm').addClass('errorInput');
+        $('#errorMsgPass').addClass('error');
+        $('#errorMsgPass').html('Passwords Do Not Match');
+        $('#errorMsgPass').slideDown();
         setTimeout(function(){
-            $('#errorMsg').slideUp('slow');
+            $('#errorMsgPass').slideUp('slow');
         },2000);
         return false;
     }
@@ -79,11 +157,11 @@ $('#usrPassUp').on('submit',function(e){
             method:"POST",
             data:{nPass:newPass,pid:patID,type:'upPass'},
             success:function(){
-                $('#errorMsg').addClass('success');
-                $('#errorMsg').html('Updated Successfully');
-                $('#errorMsg').slideDown();
+                $('#errorMsgPass').addClass('success');
+                $('#errorMsgPass').html('Updated Successfully');
+                $('#errorMsgPass').slideDown();
                 setTimeout(function(){
-                    $('#errorMsg').slideUp();
+                    $('#errorMsgPass').slideUp();
                 },2000);
             }
         });
