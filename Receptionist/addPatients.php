@@ -6,7 +6,7 @@ include_once(dirname( dirname(__FILE__) ).'/parts/recepSideNav.php');
 
 if(!isset($_SESSION["user"]))
 {
-    header("Location: ../login.php");
+    // header("Location: ../login.php");
 }
 
 if(isset($_POST["loginBtn"]))
@@ -17,7 +17,7 @@ if(isset($_POST["loginBtn"]))
     $age=$_POST["age"];
     $address=$_POST["address"];
     $patient=new patient();
-    $res=$patient->addPatient($fname,$lname,$phone,$age,$address);
+    $res=$patient->addPatient(null,$fname,$lname,$phone,$age,$address);
 }
 ?>
 <!DOCTYPE html>
