@@ -166,4 +166,106 @@ function getEditProfile($doctor)
     ';
 
 }
+function getFullPatientData()
+{
+    echo'
+    <!-- The Modal for Update User Details-->
+<div id="patientFullData" class="modal modal2" style="padding-top:40px">
+
+<!-- Modal content -->
+<div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+
+   <div class="detailsSection editProfile">
+    <div class="row">
+        <div class="c-12 c-m-4">
+            <h2>Patient Details</h2>
+            <div class="row">
+                <div class="c-12">
+                    First Name: <span id="firstName"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Last Name: <span id="lastName"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Phone: <span id="phone"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Age: <span id="age"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Address: <span id="address"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Allergies: <span id="allergyPopup"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12">
+                    Important Notes: <span id="impPopup"></span>
+                </div>
+            </div>
+        </div>
+        <div class="c-12 c-m-8">
+            <div class="row">
+                <div class="c-12 c-l-5">
+                    <div class="box">
+                        <ul>
+                            <li class="title">Recent Prescriptions</li>
+                            <a><li class="upperClick">Prescription 5</li></a>
+                            <a><li class="upperClick">Prescription 4</li></a>
+                            <a><li class="upperClick">Prescription 3</li></a>
+                            <a><li class="upperClick">Prescription 2</li></a>
+                            <a><li class="upperClick">Prescription 1</li></a>
+                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Prescriptions</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="c-12 c-l-6">
+                    <div class="box">
+                        <ul>
+                            <li class="title">Recent Reports</li>
+                            <a><li class="upperClick">Report 5</li></a>
+                            <a><li class="upperClick">Report 4</li></a>
+                            <a><li class="upperClick">Report 3</li></a>
+                            <a><li class="upperClick">Report 2</li></a>
+                            <a><li class="upperClick">Report 1</li></a>
+                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Reports</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+        <div class="c-12 c-l-6" style="text-align:left">
+        </div>
+            <div class="c-12 c-l-6">
+                <button type="button" class="btn btnNormal upCancel" id="patClose">Close</button> 
+            </div>
+        </div>
+   </div>
+
+</div>
+</div>
+<!-- End of the Modal for Update User Details-->
+    ';
+
+}
 ?>

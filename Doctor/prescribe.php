@@ -53,7 +53,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                                 <p id="patName">Name: </p>
                                 <p id="patAge">Age: </p>
                                 <input type="hidden" id="patID" value="">
-                                <a href=""><button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button></a>
+                                <button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
@@ -177,17 +177,30 @@ echo"<input type='hidden' value='$docid' id='docID'>";
        <?php getEditProfile($doctor)?>
     <!-- End of Edit Profile View -->
 
+    <!-- Patient Full Data Modal -->
+       <?php getFullPatientData()?>
+    <!-- Patient Full Data -->
+
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
     <script>
+        var modalPatient=document.getElementById("patientFullData");
         $(document).ready(function(){
+            $('#viewPatientDetails').click(function(){
+                open(modalPatient);
+            });
+
             $('.close').click(()=>{
                 close(modalUpdateDet);
+                close(modalPatient);
             })
             $('#upCancel').click(()=>{
                 close(modalUpdateDet);
+            })
+            $('#patClose').click(()=>{
+                close(modalPatient);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -195,6 +208,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             if (event.target == modalUpdateDet) {
                     // modalUpdateDet.style.display = "none";
                     close(modalUpdateDet);
+            }
+            if (event.target == modalPatient) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalPatient);
             }
         }
     </script>
