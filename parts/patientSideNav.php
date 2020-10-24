@@ -35,11 +35,15 @@ function getEditProfile($patient)
     </div>
 
    <div class="detailsSection editProfile">
-   <div class="alerMSG" id="updateStatusInfo"></div>
     <div class="row">
         <div class="c-12 c-m-6">
             <form method="POST" id="usrDetailUp">
             <h2>Change User Details</h2>
+            <div class="row" style="padding:0px; margin:0px;">
+                <div class="c-12" style="padding:0px; margin:0px;">
+                    <div class="alerMSG" id="updateStatusInfo"></div>
+                </div>
+            </div>
             <div class="row">
                 <div class="c-12 c-m-5">
                     First Name: 
@@ -69,7 +73,7 @@ function getEditProfile($patient)
                     Email: 
                 </div>
                 <div class="c-12 c-m-7">
-                    <input type="email" class="input-field popUpInputs" name="email" id="email" placeholder="" required>
+                    <input type="email" class="input-field popUpInputs" name="email" id="email" placeholder="">
                 </div>
             </div>
             <div class="row">
@@ -127,9 +131,10 @@ function getEditProfile($patient)
                 <div class="c-12">
                     <form method="POST" id="usrPassUp">
                     <h2>Change Password</h2>
-                    <div class="row">
-                    <div type="hidden" id="errorMsg"></div>
-                    <div type="hidden" id="upMsg"></div>
+                    <div class="row" style="padding:0px; margin:0px;">
+                        <div class="c-12" style="padding:0px; margin:0px;">
+                            <div class="alerMSG" id="errorMsg"></div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="c-12 c-m-5">

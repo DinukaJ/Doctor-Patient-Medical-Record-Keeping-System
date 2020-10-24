@@ -79,11 +79,11 @@ $('#usrPassUp').on('submit',function(e){
             method:"POST",
             data:{nPass:newPass,pid:patID,type:'upPass'},
             success:function(){
-                $('#upMsg').addClass('success');
-                $('#upMsg').html('Updated Successfully').css('color','green');
-                $('#upMsg').slideDown();
+                $('#errorMsg').addClass('success');
+                $('#errorMsg').html('Updated Successfully');
+                $('#errorMsg').slideDown();
                 setTimeout(function(){
-                    $('#upMsg').slideUp();
+                    $('#errorMsg').slideUp();
                 },2000);
             }
         });
