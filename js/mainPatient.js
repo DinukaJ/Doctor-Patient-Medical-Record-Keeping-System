@@ -1,5 +1,6 @@
 var modalUpdateDet = document.getElementById("modalUpdateDet");
 $('#editProfile').click(()=>{
+    $('.editProfile input').removeClass('errorInput');
     var patID = $("#patientID").val();
     open(modalUpdateDet);
     $.ajax({
@@ -86,17 +87,21 @@ $('#usrDetailUp').on('submit',function(e){
     }
     if(x==1)
     {
+        $('#updateStatusInfo').removeClass('error');
+        $('#updateStatusInfo').removeClass('success');
         $('#updateStatusInfo').addClass('error');
         $('#updateStatusInfo').html(errMsg);
         $('#updateStatusInfo').slideDown();
         setTimeout(function(){
             $('#updateStatusInfo').slideUp('slow');
-        },2000);
+        },5000);
         return false;
     }
     else
     {
         $('#address').removeClass('errorInput');
+        $('#updateStatusInfo').removeClass('error');
+        $('#updateStatusInfo').removeClass('success');
         $.ajax({
             url:"../handlers/patientHandler.php",
             method:"POST",
