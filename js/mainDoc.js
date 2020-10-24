@@ -1,32 +1,27 @@
 var modalUpdateDet = document.getElementById("modalUpdateDet");
 $('#editProfile').click(()=>{
     $('.editProfile input').removeClass('errorInput');
-    var patID = $("#patientID").val();
+    var dID = $("#docID").val();
     open(modalUpdateDet);
     $.ajax({
-        url:"../handlers/patientHandler.php",
+        url:"../handlers/doctorHandler.php",
         method:"POST",
-        data:{patientID:patID,type:'patientData'},
+        data:{docID:dID,type:'doctorData'},
         dataType:'json',
         success:function(data){
             $('#firstName').val(data['fname']);
             $('#lastName').val(data['lname']);
             $('#phone').val(data['phone']);
             $('#email').val(data['email']);
-            $('#age').val(data['age']);
-            $('#address').val(data['address']);
-
         }
     });
 });
 
 $('#usrDetailUp').on('submit',function(e){
-    var patID = $("#patientID").val();
+    var dID = $("#docID").val();
     e.preventDefault();
     var errMsg="";
     var x=0;
-    $('#updateStatusInfo').removeClass('error');
-    $('#updateStatusInfo').removeClass('success');
     if($('#firstName').val().match(/^[A-Za-z]+$/)==null)
     {
         $('#firstName').addClass('errorInput');
@@ -67,28 +62,10 @@ $('#usrDetailUp').on('submit',function(e){
     {
         $('#email').removeClass('errorInput');
     }
-    if($('#age').val()=="" || $('#age').val()=="0")
-    {
-        $('#age').addClass('errorInput'); 
-        errMsg+="<br>Invalid Age.";
-        x=1;      
-    } 
-    else
-    {
-        $('#age').removeClass('errorInput');  
-    }
-    if($('#address').val()=="")
-    {
-        $('#address').addClass('errorInput'); 
-        errMsg+="<br>Address Cannot be Empty.";
-        x=1;      
-    } 
-    else
-    {
-        $('#address').removeClass('errorInput');  
-    }
     if(x==1)
     {
+        $('#updateStatusInfo').removeClass('error');
+        $('#updateStatusInfo').removeClass('success');
         $('#updateStatusInfo').addClass('error');
         $('#updateStatusInfo').html(errMsg);
         $('#updateStatusInfo').slideDown();
@@ -99,10 +76,12 @@ $('#usrDetailUp').on('submit',function(e){
     }
     else
     {
+        $('#updateStatusInfo').removeClass('error');
+        $('#updateStatusInfo').removeClass('success');
         $.ajax({
-            url:"../handlers/patientHandler.php",
+            url:"../handlers/doctorHandler.php",
             method:"POST",
-            data:$('#usrDetailUp').serialize()+"&type=upDet&patientID="+patID,
+            data:$('#usrDetailUp').serialize()+"&type=upDet&docID="+dID,
             success:function(data){
                 if(data==1){
                     $('#updateStatusInfo').addClass("success");
@@ -127,7 +106,7 @@ $('#usrDetailUp').on('submit',function(e){
 
 $('#usrPassUp').on('submit',function(e){
     e.preventDefault();
-    var patID = $("#patientID").val();
+    var dID = $("#docID").val();
     $('#errorMsgPass').removeClass('error');
     $('#errorMsgPass').removeClass('success');
     if($('#newPass').val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/)==null)
@@ -156,9 +135,9 @@ $('#usrPassUp').on('submit',function(e){
     else{
         var newPass = $('#newPass').val();
         $.ajax({
-            url:"../handlers/patientHandler.php",
+            url:"../handlers/doctorHandler.php",
             method:"POST",
-            data:{nPass:newPass,pid:patID,type:'upPass'},
+            data:{nPass:newPass,docID:dID,type:'upPass'},
             success:function(){
                 $('#errorMsgPass').addClass('success');
                 $('#errorMsgPass').html('Updated Successfully');

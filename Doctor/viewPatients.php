@@ -83,7 +83,7 @@ else
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
-
+    <script src="../js/mainPatient.js"></script>
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");

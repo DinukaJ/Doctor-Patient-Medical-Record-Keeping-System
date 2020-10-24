@@ -4,15 +4,17 @@ include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/docSideNav.php');
 
-$docid="d_1";
+$docid="doc45";
+$doctor="";
 if(isset($_SESSION["user"]))
 {
-    $patient=new patient();
+    $doctor=new doctor();
 }
 else
 {
     //header("Location: ../login.php");
 }
+echo"<input type='hidden' value='$docid' id='docID'>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,44 +172,29 @@ else
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
 
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
+    <!-- Edit Profile Modal -->
+       <?php getEditProfile($doctor)?>
+    <!-- End of Edit Profile View -->
 
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
-
+    <script src="../js/mainDoc.js"></script>
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
+        $(document).ready(function(){
+            $('.close').click(()=>{
+                close(modalUpdateDet);
+            })
+            $('#upCancel').click(()=>{
+                close(modalUpdateDet);
+            })
+        });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            if (event.target == modalUpdateDet) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalUpdateDet);
             }
         }
     </script>
