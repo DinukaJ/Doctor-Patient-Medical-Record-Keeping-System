@@ -42,7 +42,7 @@ else
                     </div>
                     <div class="upperSecond row">
                         <div class="c-l-4">
-                            <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Enter Patient ID or Name" required>
+                            <input type="text" class="input-field fullWidth" name="searchPat" id="searchPat" placeholder="Enter Patient ID or Name" required>
                         </div>
                         <div class="c-l-8 totText">
                             Total Patients: <span id="totalCountPat"></span>
@@ -104,6 +104,25 @@ else
                     }   
                 });
             }
+            var serPat=document.getElementById("searchPat");
+            serPat.addEventListener("keydown", function(e){
+                setTimeout(function(){
+                    a=serPat.value;
+                
+                    curr=0;
+                    $.ajax({
+                        url:"../handlers/patientHandler.php",
+                        method:"POST",
+                        data:{patientSearch:a, type:'searchPRecep'},
+                        dataType:'json',
+                        success:function(data){
+                            $("#patientData").html(data[0]);
+                            $("#totalCountPat").html(data[1]);
+                        }   
+                        
+                    });
+                },100);
+            });
         });
     </script>
 </body>
