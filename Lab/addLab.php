@@ -65,31 +65,31 @@ else
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>Select Patient</label>
-                                        <input type="text" class="input-field fullWidth" name="patient" id="patient" placeholder="Field 1" required>
+                                        <input type="text" class="input-field fullWidth" name="patient" id="patient" placeholder="Enter Patient ID or Name" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 1</label>
-                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 2" required>
+                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 1" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 2</label>
-                                        <input type="text" class="input-field fullWidth" name="age" id="age" placeholder="Field 3" required>
+                                        <input type="text" class="input-field fullWidth" name="age" id="age" placeholder="Field 2" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 3</label>
-                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 4" required>
+                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 3" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 4</label>
-                                        <input type="number" class="input-field fullWidth" name="age" id="age" placeholder="Age" required>
+                                        <input type="text" class="input-field fullWidth" name="age" id="age" placeholder="Field 4" required>
                                     </div>
                                 </div>
                                 <div class="c-m-6">
