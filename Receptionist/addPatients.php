@@ -56,45 +56,66 @@ if(isset($_POST["loginBtn"]))
                         </div> -->
                     </div>
                 </div>
+                <div class="row" style="padding:0px; margin:0px;">
+                    <div class="c-12" style="padding:0px; margin:0px;">
+                        <div class="alerMSG" id="updateStatusInfo"></div>
+                    </div>
+                </div>
                 <div class="row patientDataRow">
                     <div class='c-12'>
-                        <form action="#" method="POST">
+                        <form action="#" method="POST" id="newPat">
                             <div class="row">
+                                <div class="c-12" style="padding-top:0px">
+                                    <h1>Patient ID:- <span id="patIDDis"></span></h1>
+                                    <input type="hidden" id="patId" name="patId" value="">
+                                </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>First Name</label>
-                                        <input type="text" class="input-field fullWidth" name="firstName" id="firstName" placeholder="First Name" required>
+                                        <input type="text" class="input-field fullWidth" name="firstName" id="firstName" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>Last Name</label>
-                                        <input type="text" class="input-field fullWidth" name="lastName" id="lastName" placeholder="Last Name" required>
+                                        <input type="text" class="input-field fullWidth" name="lastName" id="lastName" placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>Phone No</label>
-                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Phone No" required>
+                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Phone No">
                                     </div>
                                 </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>Age</label>
-                                        <input type="number" class="input-field fullWidth" name="age" id="age" placeholder="Age" required>
+                                        <input type="number" class="input-field fullWidth" name="age" id="age" placeholder="Age">
+                                    </div>
+                                </div>
+                                <div class="c-m-6">
+                                    <div class="group-fields">
+                                        <label>Email</label>
+                                        <input type="text" class="input-field fullWidth" name="email" id="email" placeholder="Email (Optional)">
+                                    </div>
+                                </div>
+                                <div class="c-m-6">
+                                    <div class="group-fields">
+                                        <label>Password</label>
+                                        <input type="password" class="input-field fullWidth" name="pass" id="pass" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Address</label>
-                                        <textarea type="number" class="input-field fullWidth" name="address" id="address" placeholder="Address" required></textarea>
+                                        <textarea type="number" class="input-field fullWidth" name="address" id="address" placeholder="Address"></textarea>
                                     </div>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="submit" class="btn btnLogin" name="loginBtn" id="loginBtn"><i class="fas fa-check"></i> CONFIRM</button>
+                                    <button type="submit" class="btn btnLogin btnNormal" name="loginBtn" id="patSave"><i class="fas fa-check"></i> CONFIRM</button>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="submit" class="btn btnLogin" name="cancelBtn" id="loginBtn"><i class="fas fa-times"></i> CANCEL</button>
+                                    <button type="reset" class="btn btnLogin btnNormal" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
                                 </div>
                             </div>
                         </form>
@@ -104,60 +125,144 @@ if(isset($_POST["loginBtn"]))
             </div>
         </div>
     </div>
-    <?php
-        if(isset($_POST["loginBtn"]))
-        {
-            echo'
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content container">
-                <span class="close">&times;</span>';
-                if($res == 0)
-                {
-                    echo "Something Went Wrong!";
-                }
-                else
-                {
-                    echo "Patient Successfully Added!";
-                }
-                echo '
-                </div>
-
-            </div>';
-        }
-    ?>
-    <!-- The Modal -->
     
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
-
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+        $(document).ready(function(){
+            getId();
+            $('#updateStatusInfo').hide();
+            // Function to get the new patient id
+            function getId()
+            {
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:{type:'getID'},
+                    success:function(data){
+                        if(data=="")
+                        {
+                            $("#patId").val("p-1");
+                            $("#patIDDis").html("p-1");
+                        }
+                        else
+                        {
+                            var arr=data.split("-");
+                            var num=parseInt(arr[1]) + 1;
+                            $("#patId").val("p-"+num);
+                            $("#patIDDis").html("p-"+num);
+                        }
+                    }
+                });
+            }
+        });
+        $('#newPat').on('submit',function(e){
+            e.preventDefault();
+            var errMsg="";
+            var x=0;
+            if($('#firstName').val().match(/^[A-Za-z]+$/)==null)
+            {
+                $('#firstName').addClass('errorInput');
+                errMsg+="First Name Must Contain Only Letters.";
+                x=1;
+            }
+            else
+            {
+                $('#firstName').removeClass('errorInput');
+            }
+            if($('#lastName').val().match(/^[A-Za-z]+$/)==null)
+            {
+                $('#lastName').addClass('errorInput');
+                errMsg+="<br>Last Name Must Contain Only Letters.";
+                x=1;
+            }
+            else
+            {
+                $('#lastName').removeClass('errorInput');
+            }
+            if($('#phone').val().length<10 || $('#phone').val().length>10)
+            {
+                $('#phone').addClass('errorInput');
+                errMsg+="<br>Phone Number Must Contain Only 10 Digits. (07******** / 011*******)";
+                x=1;
+            } 
+            else
+            {
+                $('#phone').removeClass('errorInput');
+            }
+            if(isNaN($('#age').val()) || $("#age").val()<=0 ||  $("#age").val()>=150)
+            {
+                $('#age').addClass('errorInput');
+                errMsg+="<br>Invalid Age";
+                x=1;
+            } 
+            else
+            {
+                $('#age').removeClass('errorInput');
+            }
+            if(($("#email").val()!="") && ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null))
+            {
+                $('#email').addClass('errorInput');
+                errMsg+="<br>Invalid Email.";
+                x=1;
+            }
+            else
+            {
+                $('#email').removeClass('errorInput');
+            }
+            if($("#pass").val()=="")
+            {
+                $('#pass').addClass('errorInput');
+                errMsg+="<br>Password Cannot be Blank";
+                x=1;
+            }
+            else
+            {
+                $('#pass').removeClass('errorInput');
+            }
+            if(x==1)
+            {
+                $('#updateStatusInfo').removeClass('error');
+                $('#updateStatusInfo').removeClass('success');
+                $('#updateStatusInfo').addClass('error');
+                $('#updateStatusInfo').html(errMsg);
+                $('#updateStatusInfo').slideDown();
+                setTimeout(function(){
+                    $('#updateStatusInfo').slideUp('slow');
+                },5000);
+                return false;
+            }
+            else
+            {
+                $('#updateStatusInfo').removeClass('error');
+                $('#updateStatusInfo').removeClass('success');
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:$('#newPat').serialize()+"&type=addPat",
+                    success:function(data){
+                        if(data==1){
+                            $('#updateStatusInfo').addClass("success");
+                            $('#updateStatusInfo').html("Successfully Added!");
+                            $('#updateStatusInfo').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatusInfo').slideUp("slow");
+                            },2000);
+                        }
+                        else{
+                            $('#updateStatusInfo').addClass("error");
+                            $('#updateStatusInfo').html("Failed!");
+                            $('#updateStatusInfo').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatusInfo').slideUp("slow");
+                            },2000);
+                }
+                    }
+                });
+            }
+        });
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            }
-        }
     </script>
+
 </body>
 </html>

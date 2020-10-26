@@ -6,10 +6,15 @@ class patient extends users
     {
         
     }
-    public function addPatient($pid,$fname,$lname,$phone,$age,$address)
+    public function getNewId()
+    {
+        $db=new Database();
+        return $db->getData("select id from patient order by id desc limit 1");
+    }
+    public function addPatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address)
     {   
         $db=new Database();
-        return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$age','$address')");
+        return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$pass','$age','$address','','')");
     }
     public function getPatients()
     {

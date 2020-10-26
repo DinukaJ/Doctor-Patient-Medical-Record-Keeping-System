@@ -4,6 +4,10 @@ include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
 if(isset($_POST["type"]))
 {
+    if($_POST["type"]=="getID")
+        getPatNewId();
+    if($_POST["type"]=="addPat")
+        addPatient();
     if($_POST["type"]=="searchP")
         searchPatient();
     if($_POST["type"]=="patientData")
@@ -17,9 +21,28 @@ if(isset($_POST["type"]))
     if($_POST["type"]=="searchPRecep")
         searchPatientsRecep();
 }
+function getPatNewId()
+{
+    $patient = new patient();
+    $res=$patient->getNewId();
+    if(mysqli_num_rows($res))
+        echo mysqli_fetch_array($res)[0];
+    else
+        echo "";
+}
 function addPatient()
 {
-
+    $patient = new patient();
+    $id=$_POST["patId"];
+    $fname=$_POST["firstName"];
+    $lname=$_POST["lastName"];
+    $phone=$_POST["phone"];
+    $age=$_POST["age"];
+    $email=$_POST["email"];
+    $pass=$_POST["pass"];
+    $address=$_POST["address"];
+    $stat=$patient->addPatient($id,$fname,$lname,$phone,$age,$email,$pass,$address);
+    echo $stat;
 }
 function searchPatient()
 {
