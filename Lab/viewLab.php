@@ -50,5 +50,10 @@ else
                </div>
         </div>
     </div>
+
+    <!-- Footer Includes -->
+    <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
+    
+    <script src="../js/searchRep.js"></script>
 </body>
 </html>
