@@ -3,9 +3,9 @@ include_once("database.php");
 
 class lab{
 
-    public function getAllrep($rid){
+    public function getAllrep(){
         $db = new Database();
-        return $db->getData("select * from labreport where id='$rid'");
+        return $db->getData("select * from labreport");
     }
 
 }
