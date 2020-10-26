@@ -45,76 +45,66 @@ else
                             <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Enter Patient ID or Name" required>
                         </div>
                         <div class="c-l-8 totText">
-                            Total Patients: 
-                            <?php 
-                                $c=$patient->getTotalPatients();
-                                $c=mysqli_fetch_array($c)[0];
-                                echo $c;
-                            ?>
+                            Total Patients: <span id="totalCountPat"></span>
+
                         </div>
                     </div>
                 </div>
-                <?php
-                $res=$patient->getPatients();
-                $i=1;
-                while($row=mysqli_fetch_assoc($res))
-                {
-                    echo '
-                    <div class="row patientDataRow">
-                        <div class="c-11">
-                            '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                        </div>
-                        <div class="c-1">
-                            <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                        </div>
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='patId'>Patient ID</div>
+                    <div class='c-4' class='patFirstName'>First Name</div>
+                    <div class='c-4' class='patLastName'>Last Name</div>
+                    <div class='c-1'>
+                    
                     </div>
-                    ';
-                    $i++;
-                }
-                ?>           
+                </div>
+                <div id="patientData"></div>
+                       
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
-
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
-
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
+    <!-- <script>
+        var modalPatient=document.getElementById("patientFullData");
+        $(document).ready(function(){
+            $('.close').click(()=>{
+                close(modalUpdateDet);
+            })
+            $('#upCancel').click(()=>{
+                close(modalUpdateDet);
+            })
+        });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            if (event.target == modalUpdateDet) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalUpdateDet);
             }
         }
+    </script> -->
+    <script>
+        $(document).ready(function(){
+            getpatients("");
+      
+
+            //Function to get the added patients
+            function getpatients(serVal)
+            {
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:{type:'searchPRecep', patientSearch:serVal},
+                    dataType:'json',
+                    success:function(data){
+                        $("#patientData").html(data[0]);
+                        $("#totalCountPat").html(data[1]);
+                    }   
+                });
+            }
+        });
     </script>
 </body>
 </html>

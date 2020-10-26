@@ -14,6 +14,8 @@ if(isset($_POST["type"]))
         updateDet();
     if($_POST["type"]=="upPass")
         updatePass();
+    if($_POST["type"]=="searchPRecep")
+        searchPatientsRecep();
 }
 function addPatient()
 {
@@ -38,7 +40,32 @@ function searchPatient()
     }
     echo $output;
 }
-
+function searchPatientsRecep()
+{
+    $output="";
+    $patient = new patient();
+    $patientSearch=$_POST["patientSearch"];
+    $searchResult=$patient->getPatientsList($patientSearch);
+    $numRows=mysqli_num_rows($searchResult);
+    if(mysqli_num_rows($searchResult))
+    {
+        while($row=mysqli_fetch_array($searchResult))
+        {
+            $output.="
+            <div class='row patientDataRow'>
+                <div class='c-3' class='$row[0]'>$row[0]</div>
+                <div class='c-4' class='$row[1]'>$row[1]</div>
+                <div class='c-4' class='$row[2]'>$row[2]</div>
+                <div class='c-1'>
+                    <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewPat-$row[0]'>View</button>
+                </div>
+            </div>
+            ";
+        }
+    }
+    //echo $output;
+    echo json_encode(array($output, $numRows));
+}
 function getpatientDat()
 {
     $patient = new patient();
