@@ -114,5 +114,7 @@ else
             </div>
         </div>
     </div>
+    <!-- Footer Includes -->
+    <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 </body>
 </html>
