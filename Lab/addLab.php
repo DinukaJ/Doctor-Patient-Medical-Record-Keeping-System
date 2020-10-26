@@ -32,7 +32,25 @@ else
             <?php getSideNav("addLab")?>
 
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px;">
-            <div class="row patientDataRow">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-2">
+                            <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD PATIENTS</button></a>
+                        </div>
+                        <div class="c-l-2">
+                            <a href="addedPatients.php"><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW PATIENTS</button></a>
+                        </div>
+                    </div>
+                    <div class="upperSecond row">
+                        <div class="c-l-4">
+                            <h1 style="margin-top:5px">Enter Patient Details</h1>
+                        </div>
+                        <!-- <div class="c-l-8 totText">
+                            Total Patients: 10
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row patientDataRow">
                     <div class='c-12'>
                         <form action="#" method="POST">
                             <div class="row">
