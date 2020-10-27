@@ -1,4 +1,4 @@
-
+var ser = getElementById("pnrId");
 
 $(document).ready(function(){
     getAllRep();
@@ -15,3 +15,16 @@ function getAllRep(){
         }
     });
 }
+
+ser.addEventListener("keydown",function(){
+    setTimeout(function(){
+        $.ajax({
+            url:'../handler/labHandler.php',
+            method:'POST',
+            data:{id:ser.value,type:'searchRep'},
+            success:function(data){
+                $('#reportInfo').html(data);
+            }
+        });
+    },100)
+});

@@ -36,7 +36,7 @@ else
                                  <div class="upperFirst row">
                                      <div class="c-12 c-l-8">
                                          <div class="boxSmall">
-                                             <input type="text" class="input-field" style="width:60%; display:inline;" id ="patId" placeholder="Patient ID or Name or Report ID">
+                                             <input type="text" class="input-field" style="width:60%; display:inline;" id ="pnrId" placeholder="Patient ID or Name or Report ID">
                                          </div>
                                      </div>
                                      <div class="c-12 c-l-4">
