@@ -130,31 +130,11 @@ if(isset($_POST["loginBtn"]))
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script>
         $(document).ready(function(){
-            getId();
             $('#updateStatusInfo').hide();
-            // Function to get the new patient id
-            function getId()
-            {
-                $.ajax({
-                    url:"../handlers/patientHandler.php",
-                    method:"POST",
-                    data:{type:'getID'},
-                    success:function(data){
-                        if(data=="")
-                        {
-                            $("#patId").val("p-1");
-                            $("#patIDDis").html("p-1");
-                        }
-                        else
-                        {
-                            var arr=data.split("-");
-                            var num=parseInt(arr[1]) + 1;
-                            $("#patId").val("p-"+num);
-                            $("#patIDDis").html("p-"+num);
-                        }
-                    }
-                });
-            }
+            getId();
+        });
+        $('#phone').change(function(){
+            $("#pass").val($("#phone").val());
         });
         $('#newPat').on('submit',function(e){
             e.preventDefault();
@@ -248,6 +228,7 @@ if(isset($_POST["loginBtn"]))
                             setTimeout(function(){
                                 $('#updateStatusInfo').slideUp("slow");
                             },2000);
+                            resetAll();
                         }
                         else{
                             $('#updateStatusInfo').addClass("error");
@@ -261,7 +242,35 @@ if(isset($_POST["loginBtn"]))
                 });
             }
         });
-
+        //function to reset all.
+        function resetAll()
+        {
+            $("#newPat").trigger("reset");
+            getId();
+        }
+        // Function to get the new patient id
+        function getId()
+            {
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:{type:'getID'},
+                    success:function(data){
+                        if(data=="")
+                        {
+                            $("#patId").val("p-1");
+                            $("#patIDDis").html("p-1");
+                        }
+                        else
+                        {
+                            var arr=data.split("-");
+                            var num=parseInt(arr[1]) + 1;
+                            $("#patId").val("p-"+num);
+                            $("#patIDDis").html("p-"+num);
+                        }
+                    }
+                });
+            }
     </script>
 
 </body>
