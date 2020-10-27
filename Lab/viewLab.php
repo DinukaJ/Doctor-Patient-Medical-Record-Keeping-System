@@ -46,7 +46,15 @@ else
                                      </div>
                                  </div>
                          </div>
-                    <div id="reportInfo"></div>
+                <!-- prints info -->
+                    <div class='row patientDataRow addMedicineRow'>
+                      <div class='c-3' class='patId'>Patient ID</div>
+                      <div class='c-4' class='repId'>Report ID</div>
+                      <div class='c-4' class='repType'>Type</div>
+                      <div class='c-1'></div>
+                    </div> 
+                <!--Adding Reports-->
+                  <div id="reportInfo"></div>
                </div>
         </div>
     </div>
