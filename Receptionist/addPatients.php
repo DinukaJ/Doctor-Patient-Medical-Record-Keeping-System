@@ -112,7 +112,7 @@ if(isset($_POST["loginBtn"]))
                                     </div>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="submit" class="btn btnLogin btnNormal" name="loginBtn" id="patSave"><i class="fas fa-check"></i> CONFIRM</button>
+                                    <button type="submit" class="btn btnLogin btnNormal" name="loginBtn" id="patSave"><i class="fas fa-check"></i> SAVE</button>
                                 </div>
                                 <div class="c-m-6">
                                     <button type="reset" class="btn btnLogin btnNormal" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
@@ -129,10 +129,9 @@ if(isset($_POST["loginBtn"]))
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script>
-        $(document).ready(function(){
-            $('#updateStatusInfo').hide();
-            getId();
-        });
+        $('#updateStatusInfo').hide();
+        getId();
+
         $('#phone').change(function(){
             $("#pass").val($("#phone").val());
         });

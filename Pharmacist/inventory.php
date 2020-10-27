@@ -160,33 +160,33 @@ else
             <div class="c-12 c-m-2">
                 Medicine ID: 
             </div>
-            <div class="c-12 c-m-10" id="medicId">
+            <div class="c-12 c-m-10 answer" id="medicId">
             </div>
         </div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Medicine Name: 
             </div>
-                <div class="c-12 c-m-10" id="medicName"></div>
+                <div class="c-12 c-m-10 answer" id="medicName"></div>
         </div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Price: 
             </div>
 
-                <div class="c-12 c-m-10" id="medicPrice"></div>
+                <div class="c-12 c-m-10 answer" id="medicPrice"></div>
         </div>                
         <div class="row">
             <div class="c-12 c-m-2">
                 Qty: 
             </div>
-                <div class="c-12 c-m-10" id="medicQty"></div>
+                <div class="c-12 c-m-10 answer" id="medicQty"></div>
         </div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Short Code: 
             </div>
-                <div class="c-12 c-m-10" id="medicSc"></div>
+                <div class="c-12 c-m-10 answer" id="medicSc"></div>
         </div>
    </div>
         <div class ="bottomModel row">

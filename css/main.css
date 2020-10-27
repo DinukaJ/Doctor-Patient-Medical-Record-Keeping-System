@@ -252,6 +252,9 @@ body{
 .btnCancel{
     background-color: tomato !important;
 }
+.answer{
+    font-weight: 800;
+}
 .btnLogin{
     background-color: #5cc8b1;
     color: white;

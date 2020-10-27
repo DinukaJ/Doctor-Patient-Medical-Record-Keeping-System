@@ -80,7 +80,7 @@ function searchPatientsRecep()
                 <div class='c-4' class='$row[1]'>$row[1]</div>
                 <div class='c-4' class='$row[2]'>$row[2]</div>
                 <div class='c-1'>
-                    <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewPat-$row[0]'>View</button>
+                    <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='$row[0]'>View</button>
                 </div>
             </div>
             ";

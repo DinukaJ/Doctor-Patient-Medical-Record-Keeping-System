@@ -218,7 +218,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <script src="../js/search.js"></script>
     <script src="../js/searchDocMed.js"></script>
     <script>
-        $(document).ready(function(){
             getPrescriptionMedicine();//Getting prescripton medicine
             //Focus on patient id on page load
             $('#patientID').focus();
@@ -453,7 +452,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 }
             });
             
-        });
     </script>
 </body>
 </html>

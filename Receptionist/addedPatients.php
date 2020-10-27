@@ -63,66 +63,183 @@ else
             </div>
         </div>
     </div>
+    
+     <!-- The Modal for Update User Details-->
+     <div id="patientFullData" class="modal modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="c-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+
+        <div class="detailsSection">
+            <div class="row">
+                <div class="c-12 c-m-4">
+                    <h2>Patient Details</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    First Name:
+                </div>
+                <div class="c-12 c-m-10 answer" id="firstNameData">
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    Last Name:
+                </div>
+                <div class="c-12 c-m-10 answer" id="lastNameData">
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    Phone: 
+                </div>
+                <div class="c-12 c-m-10 answer" id="phoneData">
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    Age:
+                </div>
+                <div class="c-12 c-m-10 answer" id="ageData">
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    Email: 
+                </div>
+                <div class="c-12 c-m-10 answer" id="emailData">
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    Address: 
+                </div>
+                <div class="c-12 c-m-10 answer" id="addressData">
+                </div>
+            </div>
+    
+        <!-- <div class="c-12 c-m-8">
+            <div class="row">
+                <div class="c-12 c-l-5">
+                    <div class="box">
+                        <ul>
+                            <li class="title">Recent Prescriptions</li>
+                            <a><li class="upperClick">Prescription 5</li></a>
+                            <a><li class="upperClick">Prescription 4</li></a>
+                            <a><li class="upperClick">Prescription 3</li></a>
+                            <a><li class="upperClick">Prescription 2</li></a>
+                            <a><li class="upperClick">Prescription 1</li></a>
+                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Prescriptions</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="c-12 c-l-6">
+                    <div class="box">
+                        <ul>
+                            <li class="title">Recent Reports</li>
+                            <a><li class="upperClick">Report 5</li></a>
+                            <a><li class="upperClick">Report 4</li></a>
+                            <a><li class="upperClick">Report 3</li></a>
+                            <a><li class="upperClick">Report 2</li></a>
+                            <a><li class="upperClick">Report 1</li></a>
+                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Reports</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+            
+        </div>
+        <div class="bottomModel">
+                <div class="row">
+                <div class="c-12 c-l-6" style="text-align:left">
+                </div>
+                    <div class="c-12 c-l-6">
+                        <button type="button" class="btn btnNormal upCancel" id="patClose">Close</button> 
+                    </div>
+                </div>
+        </div>
+
+        </div>
+    </div>
+    <!-- End of the Modal for Patient Details-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
-    <!-- <script>
+    <script>
         var modalPatient=document.getElementById("patientFullData");
         $(document).ready(function(){
             $('.close').click(()=>{
-                close(modalUpdateDet);
+                close(modalPatient);
             })
-            $('#upCancel').click(()=>{
-                close(modalUpdateDet);
+            $('#patClose').click(()=>{
+                close(modalPatient);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-            if (event.target == modalUpdateDet) {
+            if (event.target == modalPatient) {
                     // modalUpdateDet.style.display = "none";
-                    close(modalUpdateDet);
+                    close(modalPatient);
             }
         }
-    </script> -->
+    </script>
     <script>
-        $(document).ready(function(){
-            getpatients("");
-      
-
-            //Function to get the added patients
-            function getpatients(serVal)
-            {
-                $.ajax({
-                    url:"../handlers/patientHandler.php",
-                    method:"POST",
-                    data:{type:'searchPRecep', patientSearch:serVal},
-                    dataType:'json',
-                    success:function(data){
-                        $("#patientData").html(data[0]);
-                        $("#totalCountPat").html(data[1]);
-                    }   
-                });
-            }
-            var serPat=document.getElementById("searchPat");
-            serPat.addEventListener("keydown", function(e){
-                setTimeout(function(){
-                    a=serPat.value;
-                
-                    curr=0;
-                    $.ajax({
-                        url:"../handlers/patientHandler.php",
-                        method:"POST",
-                        data:{patientSearch:a, type:'searchPRecep'},
-                        dataType:'json',
-                        success:function(data){
-                            $("#patientData").html(data[0]);
-                            $("#totalCountPat").html(data[1]);
-                        }   
-                        
-                    });
-                },100);
+        getpatients("");
+        
+        //Function to open the patient data modal
+        function patientDataModal(pId)
+        {
+            open(modalPatient);
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{patientID:pId,type:'patientData'},
+                dataType:'json',
+                success:function(data){
+                    $('#firstNameData').html(data[1]);
+                    $('#lastNameData').html(data[2]);
+                    $('#phoneData').html(data[3]);
+                    $('#ageData').html(data[6]);
+                    $('#emailData').html(data[4]);
+                    $('#addressData').html(data[7]);
+                }
             });
+        }
+        //Function to get the added patients
+        function getpatients(serVal)
+        {
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{type:'searchPRecep', patientSearch:serVal},
+                dataType:'json',
+                success:function(data){
+                    $("#patientData").html(data[0]);
+                    $("#totalCountPat").html(data[1]);
+                    //Open patient data modal when click on view
+                    var patientFullData=document.getElementById("patientFullData");
+                    $('.viewMed').click(function(){
+                        var pId=$(this).attr('id');
+
+                        patientDataModal(pId);
+                    });
+                }   
+            });
+        }
+        var serPat=document.getElementById("searchPat");
+        serPat.addEventListener("keydown", function(e){
+            setTimeout(function(){
+                a=serPat.value;
+                getpatients(a);
+            },100);
         });
     </script>
 </body>
