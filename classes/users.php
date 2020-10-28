@@ -27,8 +27,9 @@ class users{
     public function login($username, $password)
     {
         $db=new Database();
-        $isDoc=$db->getData("select * from doctor where id='$username' and password='$password'");
-        $isPat=$db->getData("select * from patient where id='$username' and password='$password'");
+        $passEncry=sha1($password);
+        $isDoc=$db->getData("select * from doctor where id='$username' and password='$passEncry'");
+        $isPat=$db->getData("select * from patient where id='$username' and password='$passEncry'");
         if(mysqli_num_rows($isDoc))
         {
             $user=new doctor($isDoc);
