@@ -39,7 +39,7 @@ else
                                         <input type="text" class="input-field" style="width:60%; display:inline;" id ="pnrId" placeholder="Patient ID or Name or Report ID">
                                     </div>
                                 </div>
-                                <div class="c-12 c-l-4">
+                                <div class="c-12 c-l-4 totText">
                                     <div class="boxSmall">
                                         <label>Total Reports: <span id="totalCount"></span></label>   
                                     </div>
