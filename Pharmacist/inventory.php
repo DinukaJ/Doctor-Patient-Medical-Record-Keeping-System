@@ -149,13 +149,18 @@ else
 <div id="modalViewMed" class="modal modal2">
 
 <!-- Modal content -->
- <div class="modal-content-long inventoryModal">
+ <div class="modal-content-short2 inventoryModal">
     <div class="row">
         <div class="c-12">
         <span class="close closeMed">&times;</span>
         </div>
     </div>
    <div class="detailsSection">
+        <div class="row">
+            <div class="c-12 c-m-4">
+                <h2>Medicine Details</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="c-12 c-m-2">
                 Medicine ID: 
@@ -192,7 +197,7 @@ else
         <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="deleteMed">Delete</button>
-                <button type="button" class="btn btnNormal" id="updateMed">Update</button>
+                <button type="button" class="btn btnNormal" id="updateMed">Edit</button>
             </div>
         </div>
     </div> 
@@ -204,7 +209,7 @@ else
     <div id="modalUpdateMed" class="modal modal2">
 
         <!-- Modal content -->
-        <div class="modal-content-long inventoryModal">
+        <div class="modal-content-short2 inventoryModal">
             <div class="row">
                 <div class="c-12">
                 <span class="close closeMed">&times;</span>
@@ -215,11 +220,16 @@ else
            <div class="detailsSection">
            <div class="alerMSG" id="updateStatus"></div>
                 <div class="row">
+                    <div class="c-12 c-m-5">
+                        <h2>Update Medicine Details</h2>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="c-12 c-m-2">
                         Medicine Name: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpName" id="medUpName" placeholder="" required>
+                        <input type="text" class="input-field" style="width:100%; display:inline;" name="medUpName" id="medUpName" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -227,7 +237,7 @@ else
                         QTY: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="number" class="input-field" style="width:49%; display:inline;" name="medUpQty" id="medUpQty" placeholder="" required>
+                        <input type="number" class="input-field" style="width:100%; display:inline;" name="medUpQty" id="medUpQty" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -235,7 +245,7 @@ else
                         Price: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="number" step="0.01" class="input-field" style="width:49%; display:inline;" name="medUpPrice" id="medUpPrice" placeholder="" required>
+                        <input type="number" step="0.01" class="input-field" style="width:100%; display:inline;" name="medUpPrice" id="medUpPrice" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -243,7 +253,7 @@ else
                         Short Code: 
                     </div>
                     <div class="c-12 c-m-10">
-                        <input type="text" class="input-field" style="width:49%; display:inline;" name="medUpSc" id="medUpSc" placeholder="" required>
+                        <input type="text" class="input-field" style="width:100%; display:inline;" name="medUpSc" id="medUpSc" placeholder="" required>
                     </div>
                 </div>
            </div>
@@ -268,15 +278,6 @@ else
         var modalAddMed = document.getElementById("modalAddMed");
         var modalViewMed = document.getElementById("modalViewMed");
         var modalUpdateMed = document.getElementById("modalUpdateMed");
-
-        function open(modal) {
-            //modal.style.display = "block";
-            $(modal).slideDown();
-        }
-        function close(modal){
-            // modal.style.display = "none";
-            $(modal).slideUp();
-        }
 
         $(document).ready(function(){
             //Add Medicine Model
@@ -305,15 +306,15 @@ else
         window.onclick = function(event) {
         if (event.target == modalAddMed) {
             // modalAddMed.style.display = "none";
-            $(modalAddMed).slideUp();
+                close(modalAddMed);
             }
         if (event.target == modalViewMed) {
             // modalViewMed.style.display = "none";
-            $(modalViewMed).slideUp();
+                close(modalViewMed);
             }
         if(event.target === modalUpdateMed){
             // modalUpdateMed.style.display = "none";
-            $(modalUpdateMed).slideUp();
+            close(modalUpdateMed);
         }
         }
     </script>

@@ -389,7 +389,7 @@ body{
     width: 90%;
     border-radius: 10px;
   }
-  .modal-content-short {
+  .modal-content-short, .modal-content-short2 {
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -397,7 +397,7 @@ body{
     border: 1px solid #888;
     width: 50%;
   }
-  .modal-content-long .row{
+  .modal-content-long .row, .modal-content-short2 .row{
       margin-bottom: 20px;
   }
   /* The Close Button */
@@ -410,24 +410,24 @@ body{
     right:20px;
     top:5px;
   }
-  .modal-content-long .detailsSection{
+  .modal-content-long .detailsSection, .modal-content-short2 .detailsSection{
     padding-top: 50px;
     padding-bottom: 80px;
     padding-left: 50px;
     padding-right: 50px;
   }
-  .modal-content-long .editProfile{
+  .modal-content-long .editProfile, .modal-content-short2 .editProfile{
     padding-top: 20px;
     padding-bottom: 80px;
     padding-left: 50px;
     padding-right: 50px;
   }
-  .modal-content-long .bottomModel{
+  .modal-content-long .bottomModel, .modal-content-short2 .bottomModel{
     border-top: 1px solid #ced4da;
     padding-top: 20px;
     text-align: right;
   }
-  .modal-content-long .bottomModel button{
+  .modal-content-long .bottomModel button, .modal-content-short2 .bottomModel button{
       width: 100px;
   }
   .close:hover,
