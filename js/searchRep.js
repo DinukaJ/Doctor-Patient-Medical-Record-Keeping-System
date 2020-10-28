@@ -1,4 +1,4 @@
-var ser = getElementById("pnrId");
+var ser = document.getElementById("pnrId");
 
 $(document).ready(function(){
     getAllRep();
