@@ -10,8 +10,10 @@ function getAllRep(){
         url:'../handlers/labHandler.php',
         method:'POST',
         data:{type:'getAllRep'},
+        dataType:'json',
         success:function(data){
-            $('#reportInfo').html(data);
+            $('#reportInfo').html(data[0]);
+            $('#totalCount').html(data[1]);
         }
     });
 }
@@ -19,11 +21,13 @@ function getAllRep(){
 ser.addEventListener("keydown",function(){
     setTimeout(function(){
         $.ajax({
-            url:'../handler/labHandler.php',
+            url:'../handlers/labHandler.php',
             method:'POST',
             data:{id:ser.value,type:'searchRep'},
+            dataType:'json',
             success:function(data){
-                $('#reportInfo').html(data);
+                $('#reportInfo').html(data[0]);
+                $('#totalCount').html(data[1]);
             }
         });
     },100)

@@ -13,6 +13,7 @@ function getRepDatAll(){
     $output="";
     $lab = new lab();
     $data = $lab->getAllRep();
+    $numRows=mysqli_num_rows($data);
     if(mysqli_num_rows($data)){
         while($row=mysqli_fetch_array($data)){
 
@@ -26,15 +27,16 @@ function getRepDatAll(){
       </div>";
         }
     }
-    echo $output;
+    echo json_encode(array($output, $numRows));
 }
 
 function repSearch(){
     $output="";
     $lab = new lab();
     $data = $lab->repSearch($_POST["id"]);
+    $numRows=mysqli_num_rows($data);
     if(mysqli_num_rows($data)){
-        while(mysqli_fetch_array($data)){
+        while($row=mysqli_fetch_array($data)){
            
             $output.="<div class='row patientDataRow'>
             <div class='c-3' class='patId'>$row[0]</div>
@@ -46,7 +48,7 @@ function repSearch(){
       </div>";
         }
     }
-    echo $output;
+    echo json_encode(array($output, $numRows));
 }
 
 

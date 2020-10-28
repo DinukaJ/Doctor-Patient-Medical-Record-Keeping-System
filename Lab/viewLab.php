@@ -41,7 +41,7 @@ else
                                 </div>
                                 <div class="c-12 c-l-4">
                                     <div class="boxSmall">
-                                        <label>Total Reports:</label>   
+                                        <label>Total Reports: <span id="totalCount"></span></label>   
                                     </div>
                                 </div>
                             </div>

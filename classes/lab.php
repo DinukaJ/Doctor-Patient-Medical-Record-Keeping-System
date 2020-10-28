@@ -10,9 +10,7 @@ class lab{
 
     public function repSearch($id){
         $db = new Database();
-        $data = $db->getData("select r.* from labreport r
-                                        join patient p on r.patientId = p.id
-                                        where r.patientId='$id' or p.fname='$id' or p.lname='$id' or r.id='$id'");
+        $data = $db->getData("select r.* from labreport r join patient p on r.patientId = p.id where r.patientId like '%$id%' or p.fname like '%$id%' or p.lname like '%$id%' or r.id like '%$id%'");
         return $data;
     }
 
