@@ -14,6 +14,12 @@ class lab{
         return $data;
     }
 
+    public function repDelete($id){
+        $db = new Database();
+        $stat = $db->insert_update_delete("delete from labreport where id='$id'");
+        return $stat;
+    }
+
 }
 
 ?>
