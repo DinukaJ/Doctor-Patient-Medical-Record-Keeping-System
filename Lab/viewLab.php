@@ -144,6 +144,87 @@ else
 </div>
 <!-- End of the Modal for View Report-->
 
+<!-- The Modal for Update Report-->
+<div id="modalUpdateRep" class="modal modal2">
+
+<!-- Modal content -->
+<div class="modal-content-short2 inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+<form method="POST" id="repUpForm">
+    <input type="hidden" value="" id="repUpID" name="repUpID">
+   <div class="detailsSection">
+   <div class="alerMSG" id="updateStatus"></div>
+        <div class="row">
+            <div class="c-12 c-m-5">
+                <h2>Update Report Details</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Type: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpType" id="repUpType" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Field 1: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi1" id="repUpFi1" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Field 2: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi2" id="repUpFi2" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Field 3: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi3" id="repUpFi3" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Field 4: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi4" id="repUpFi4" placeholder="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-2">
+                Field 5: 
+            </div>
+            <div class="c-12 c-m-10">
+                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi5" id="repUpFi5" placeholder="" required>
+            </div>
+        </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal medCancel" id="updateRepCancel">Cancel</button> 
+                <button type="submit" class="btn btnNormal" id="updateRepSave">Save</button> 
+            </div>
+        </div>
+   </div>
+</form>
+</div>
+</div>
+<!-- End of the Modal for Update Report-->
+
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     
@@ -151,10 +232,15 @@ else
     <script>
         // Get the modal Reports
         var modalViewRep = document.getElementById("modalViewRep");
+        var modalUpdateRep = document.getElementById("modalUpdateRep");
 
         $(document).ready(function(){
             $('.close').click(()=>{
                 close(modalViewRep);
+                close(modalUpdateRep);
+            })
+            $('#updateRepCancel').click(()=>{
+                close(modalUpdateRep);
             })
         });
 
@@ -163,6 +249,9 @@ else
             if(event.target==modalViewRep){
                 close(modalViewRep);
             }
+            if(event.target==modalUpdateRep){
+                close(modalUpdateRep);
+            } 
         }
     </script>
 </body>

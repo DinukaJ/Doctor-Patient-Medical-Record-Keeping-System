@@ -11,6 +11,8 @@ if(isset($_POST["type"])){
             getRep();
     if($_POST["type"]=="repDel")
             delRep();
+    if($_POST["type"]=="repUp")
+            upRep();
 }
 
 function getRepDatAll(){
@@ -67,6 +69,20 @@ function getRep(){
 function delRep(){
     $lab = new lab();
     $stat = $lab->repDelete($_POST["repId"]);
+    echo $stat;
+}
+
+//update report data
+function upRep(){
+    $lab = new lab();
+    $rid = $_POST["repUpID"];
+    $type = $_POST["repUpType"];
+    $f1 = $_POST["repUpFi1"];
+    $f2 = $_POST["repUpFi2"];
+    $f3 = $_POST["repUpFi3"];
+    $f4 = $_POST["repUpFi4"];
+    $f5 = $_POST["repUpFi5"];
+    $stat = $lab->repUpdate($rid,$type,$f1,$f2,$f3,$f4,$f5);
     echo $stat;
 }
 

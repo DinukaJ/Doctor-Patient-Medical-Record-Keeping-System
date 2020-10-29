@@ -69,17 +69,22 @@ function putReportData(id)
                 if(confirm("Are You Sure?")){
                     deleteRepData(repId);
                 }
+                else{
+                    return false;
+                }
             });
             
-            // $("#updateMed").click(()=>{
-            //     open(modalUpdateMed);
-            //     close(modalViewMed);
-            //     $('#medUpID').val(data['id']);
-            //     $('#medUpName').val(data['name']);
-            //     $('#medUpPrice').val(data['price']);
-            //     $('#medUpQty').val(data['qty']);
-            //     $('#medUpSc').val(data['shortCode']);
-            // })
+            $("#updateRep").click(()=>{
+                open(modalUpdateRep);
+                close(modalViewRep);
+                $('#repUpID').val(data['id']);
+                $('#repUpType').val(data['type']);
+                $('#repUpFi1').val(data['field1']);
+                $('#repUpFi2').val(data['field2']);
+                $('#repUpFi3').val(data['field3']);
+                $('#repUpFi4').val(data['field4']);
+                $('#repUpFi5').val(data['field5']);
+            })
 
         }
         
@@ -98,3 +103,33 @@ function deleteRepData(id){
     });
 }
 
+$('#repUpForm').on('submit',(e)=>{
+    e.preventDefault();
+    $.ajax({
+        url:'../handlers/labHandler.php',
+        method:'POST',
+        data:$('#repUpForm').serialize()+"&type=repUp",
+        success:function(data){
+            if(data==1)
+            {   
+                $("#updateStatus").addClass("success");
+                $("#updateStatus").html("Successfully Updated!");
+                $("#updateStatus").slideDown("slow");
+                setTimeout(function(){
+                    $("#updateStatus").slideUp("slow");
+                },2000);
+            }
+            else
+            {
+                $("#updateStatus").addClass("error");
+                $("#updateStatus").html("Update Failed!");
+                $("#updateStatus").slideDown("slow");
+                setTimeout(function(){
+                    $("#updateStatus").slideUp("slow");
+                },2000);
+            }
+
+            getAllRep();
+        }
+    });
+});
