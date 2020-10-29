@@ -63,6 +63,13 @@ function putReportData(id)
 
              //View Report Model
             open(modalViewRep);
+
+            //Delete the Report
+            $('#deleteRep').click(()=>{
+                if(confirm("Are You Sure?")){
+                    deleteRepData(repId);
+                }
+            });
             
             // $("#updateMed").click(()=>{
             //     open(modalUpdateMed);
@@ -78,3 +85,16 @@ function putReportData(id)
         
     });
 }
+
+function deleteRepData(id){
+    $.ajax({
+        url:'../handlers/labHandler.php',
+        method:'POST',
+        data:{repId:id, type:'repDel'},
+        success:function(data){
+            close(modalViewRep);
+            getAllRep();
+        }
+    });
+}
+

@@ -153,8 +153,17 @@ else
         var modalViewRep = document.getElementById("modalViewRep");
 
         $(document).ready(function(){
-
+            $('.close').click(()=>{
+                close(modalViewRep);
+            })
         });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event){
+            if(event.target==modalViewRep){
+                close(modalViewRep);
+            }
+        }
     </script>
 </body>
 </html>
