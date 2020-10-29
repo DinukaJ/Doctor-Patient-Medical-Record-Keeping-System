@@ -149,7 +149,12 @@ else
     
     <script src="../js/searchRep.js"></script>
     <script>
+        // Get the modal Reports
+        var modalViewRep = document.getElementById("modalViewRep");
 
+        $(document).ready(function(){
+
+        });
     </script>
 </body>
 </html>
