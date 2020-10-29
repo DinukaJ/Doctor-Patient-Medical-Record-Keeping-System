@@ -35,7 +35,7 @@ else
                 <div class="upperPart">
 
                     <div class="upperFirst row">
-                        <div class="c-l-4">
+                        <div class="c-l-12">
                             <h1 style="margin-top:5px">Add Lab Reports</h1>
                         </div>
                         <!-- <div class="c-l-8 totText">

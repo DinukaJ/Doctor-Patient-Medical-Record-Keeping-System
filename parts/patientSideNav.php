@@ -4,10 +4,10 @@ function getSideNav($type)
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account2">
-            <div class="c-6">
+            <div class="c-5">
                 <img src="../images/acc.png" width="80%">
             </div>
-            <div class="c-6">
+            <div class="c-7">
                 <p class="accountName2">Patient Name</p>
                 
             </div>

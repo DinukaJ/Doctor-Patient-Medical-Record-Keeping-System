@@ -34,10 +34,15 @@ else
             <?php getSideNav("inventory")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart4" style="padding-top: 10px;">
-                    <h1 style="margin-top:5px">Inventory</h1>
-                </div>
-                <div class="upperPart3">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-12">
+                        <h1 style="margin-top:5px">Inventory</h1>
+                        </div>
+                        <!-- <div class="c-l-8 totText">
+                            Total Patients: 10
+                        </div> -->
+                    </div>
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
                                  <input type="text" class="input-field fullWidth" id ="medId" placeholder="Enter Short Code or Medicine Name">       

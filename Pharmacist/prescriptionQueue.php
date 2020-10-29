@@ -34,7 +34,15 @@ else
             <?php getSideNav("presQueue")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart3">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-12">
+                        <h1 style="margin-top:5px">Prescription Queue</h1>
+                        </div>
+                        <!-- <div class="c-l-8 totText">
+                            Total Patients: 10
+                        </div> -->
+                    </div>
                     <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                              <div class="boxSmall">
