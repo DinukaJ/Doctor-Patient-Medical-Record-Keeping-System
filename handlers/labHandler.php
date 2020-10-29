@@ -7,6 +7,8 @@ if(isset($_POST["type"])){
             getRepDatAll();
     if($_POST["type"]=="searchRep")
             repSearch();
+    if($_POST["type"]=="repData")
+            getRep();
 }
 
 function getRepDatAll(){
@@ -51,5 +53,11 @@ function repSearch(){
     echo json_encode(array($output, $numRows));
 }
 
+function getRep(){
+    $lab = new lab();
+    $data = $lab->repSearch($_POST["repId"]);
+    $row = mysqli_fetch_array($data);
+    echo json_encode($row);
+}
 
 ?>
