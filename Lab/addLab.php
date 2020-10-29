@@ -59,6 +59,10 @@ else
                                         <label>Select Report Type</label>
                                         <select class="input-field fullWidth" name="reportType" id="reportType">
                                             <option selected disabled>Select Report Type</option>
+                                            <option value="t1">T1</option>
+                                            <option value="t2">T2</option>
+                                            <option value="t3">T3</option>
+                                            <option value="t4">T4</option>
                                         </select>
                                     </div>
                                 </div>
@@ -71,32 +75,38 @@ else
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 1</label>
-                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 1" required>
+                                        <input type="text" class="input-field fullWidth" name="f1" id="f1" placeholder="Field 1" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 2</label>
-                                        <input type="text" class="input-field fullWidth" name="age" id="age" placeholder="Field 2" required>
+                                        <input type="text" class="input-field fullWidth" name="f2" id="f2" placeholder="Field 2" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 3</label>
-                                        <input type="text" class="input-field fullWidth" name="phone" id="phone" placeholder="Field 3" required>
+                                        <input type="text" class="input-field fullWidth" name="f3" id="f3" placeholder="Field 3" required>
                                     </div>
                                 </div>
                                 <div class="c-m-12">
                                     <div class="group-fields">
                                         <label>Field 4</label>
-                                        <input type="text" class="input-field fullWidth" name="age" id="age" placeholder="Field 4" required>
+                                        <input type="text" class="input-field fullWidth" name="f4" id="f4" placeholder="Field 4" required>
+                                    </div>
+                                </div>
+                                <div class="c-m-12">
+                                    <div class="group-fields">
+                                        <label>Field 5</label>
+                                        <input type="text" class="input-field fullWidth" name="f5" id="f5" placeholder="Field 5" required>
                                     </div>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="submit" class="btn btnLogin" name="loginBtn" id="loginBtn"><i class="fas fa-check"></i> CONFIRM</button>
+                                    <button type="button" class="btn btnLogin" name="cancelBtn" id="cancelBtn"><i class="fas fa-times"></i> CANCEL</button>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="submit" class="btn btnLogin" name="cancelBtn" id="loginBtn"><i class="fas fa-times"></i> CANCEL</button>
+                                    <button type="submit" class="btn btnLogin" name="confirmBtn" id="confirmBtn"><i class="fas fa-check"></i> CONFIRM</button>
                                 </div>
                             </div>
                         </form>
