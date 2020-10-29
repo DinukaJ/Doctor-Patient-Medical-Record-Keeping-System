@@ -20,6 +20,12 @@ class lab{
         return $stat;
     }
 
+    public function repUpdate($id,$type,$f1,$f2,$f3,$f4,$f5){
+        $db = new Database();
+        $stat = $db->insert_update_delete("update labreport set type='$type',field1='$f1',field2='$f2',field3='$f3',field4='$f4',field5='$f5' where id='$id'");
+        return $stat;
+    }
+
 }
 
 ?>
