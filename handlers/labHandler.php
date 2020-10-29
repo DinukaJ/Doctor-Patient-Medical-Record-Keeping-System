@@ -9,6 +9,10 @@ if(isset($_POST["type"])){
             repSearch();
     if($_POST["type"]=="repData")
             getRep();
+    if($_POST["type"]=="repDel")
+            delRep();
+    if($_POST["type"]=="repUp")
+            upRep();
 }
 
 function getRepDatAll(){
@@ -53,11 +57,33 @@ function repSearch(){
     echo json_encode(array($output, $numRows));
 }
 
+//gets report data
 function getRep(){
     $lab = new lab();
     $data = $lab->repSearch($_POST["repId"]);
     $row = mysqli_fetch_array($data);
     echo json_encode($row);
+}
+
+//delete report data
+function delRep(){
+    $lab = new lab();
+    $stat = $lab->repDelete($_POST["repId"]);
+    echo $stat;
+}
+
+//update report data
+function upRep(){
+    $lab = new lab();
+    $rid = $_POST["repUpID"];
+    $type = $_POST["repUpType"];
+    $f1 = $_POST["repUpFi1"];
+    $f2 = $_POST["repUpFi2"];
+    $f3 = $_POST["repUpFi3"];
+    $f4 = $_POST["repUpFi4"];
+    $f5 = $_POST["repUpFi5"];
+    $stat = $lab->repUpdate($rid,$type,$f1,$f2,$f3,$f4,$f5);
+    echo $stat;
 }
 
 ?>
