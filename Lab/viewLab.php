@@ -32,7 +32,15 @@ else
             <!-- Getting Side Nav -->
             <?php getSideNav("viewLab")?>
                <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px;">
-                    <div class="upperPart3">
+                    <div class="upperPart">
+                            <div class="upperFirst row">
+                                <div class="c-l-4">
+                                    <h1 style="margin-top:5px">View Lab Reports</h1>
+                                </div>
+                                <!-- <div class="c-l-8 totText">
+                                    Total Patients: 10
+                                </div> -->
+                            </div>
                             <div class="upperFirst row">
                                 <div class="c-12 c-l-8">
                                     <div class="boxSmall">
@@ -72,67 +80,73 @@ else
     </div>
    <div class="detailsSection">
         <div class="row">
-            <div class="c-12 c-m-4">
+            <div class="c-12">
                 <h2>Report Details</h2>
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
-                Patient ID:
-            </div>
-            <div class="c-12 c-m-10 answer" id="patientId">
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Report ID: 
-            </div>
-                <div class="c-12 c-m-10 answer" id="reportId"></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Date of Issue: 
-            </div>
+            <div class="c-12 c-m-6">
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                        Patient ID:
+                    </div>
+                    <div class="c-12 c-m-6 answer" id="patientId">
+                </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                        Report ID: 
+                    </div>
+                        <div class="c-12 c-m-6 answer" id="reportId"></div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                        Date of Issue: 
+                    </div>
 
-                <div class="c-12 c-m-10 answer" id="doi"></div>
-        </div>                
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Type: 
+                        <div class="c-12 c-m-6 answer" id="doi"></div>
+                </div>                
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                        Type: 
+                    </div>
+                        <div class="c-12 c-m-6 answer" id="rType"></div>
+                </div>
             </div>
-                <div class="c-12 c-m-10 answer" id="rType"></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Field 1: 
+            <div class="c-12 c-m-6">
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                            Field 1: 
+                    </div>
+                    <div class="c-12 c-m-6 answer" id="f1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-6">
+                            Field 2: 
+                        </div>
+                            <div class="c-12 c-m-6 answer" id=f2></div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-6">
+                            Field 3:
+                        </div>
+                            <div class="c-12 c-m-6 answer" id="f3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-6">
+                            Field 4: 
+                        </div>
+                            <div class="c-12 c-m-6 answer" id="f4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12 c-m-6">
+                            Field 5: 
+                        </div>
+                            <div class="c-12 c-m-6 answer" id="f5"></div>
+                    </div>
+                </div>
             </div>
-                <div class="c-12 c-m-10 answer" id="f1"></div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Field 2: 
-            </div>
-                <div class="c-12 c-m-10 answer" id=f2></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Field 3:
-            </div>
-                <div class="c-12 c-m-10 answer" id="f3"></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Field 4: 
-            </div>
-                <div class="c-12 c-m-10 answer" id="f4"></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Field 5: 
-            </div>
-                <div class="c-12 c-m-10 answer" id="f5"></div>
-        </div>
-   </div>
         <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="deleteRep">Delete</button>
@@ -154,7 +168,18 @@ else
 
         $(document).ready(function(){
 
+            $(".close").click(()=>{
+                close(modalViewRep);
+            });
         });
+ 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modalViewRep) {
+            // modalAddMed.style.display = "none";
+                close(modalViewRep);
+            }
+    }
     </script>
 </body>
 </html>

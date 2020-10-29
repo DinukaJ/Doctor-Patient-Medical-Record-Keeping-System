@@ -35,7 +35,7 @@ else
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
                 <div class="upperPart4" style="padding-top: 10px;">
-                <button type="button" class="btn btnNormal" id="addMed">Add New Medicine</button>
+                    <h1 style="margin-top:5px">Inventory</h1>
                 </div>
                 <div class="upperPart3">
                     <div class="upperFirst row">
@@ -50,6 +50,11 @@ else
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
                                  <label>Total Tablet Count:</label>
+                            </div>
+                        </div>
+                        <div class="c-12 c-l-2">
+                            <div class="boxSmall">
+                                <button type="button" class="btn btnNormal" id="addMed">Add New Medicine</button>
                             </div>
                         </div>
                     </div>
@@ -89,7 +94,7 @@ else
     <div id="modalAddMed" class="modal modal2">
 
         <!-- Modal content -->
-        <div class="modal-content-long inventoryModal">
+        <div class="modal-content-short2 inventoryModal">
             <div class="row">
                 <div class="c-12">
                 <span class="close closeMed">&times;</span>
@@ -99,34 +104,39 @@ else
         <form method="POST" id="medAddForm">
            <div class="detailsSection">
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12">
+                        <h2>Add Medicine</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-3">
                         Medicine Name: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-9">
                         <input type="text" class="input-field" style="width:49%; display:inline;" name="medName" id="medName" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-3">
                         QTY: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-9">
                         <input type="number" class="input-field" style="width:49%; display:inline;" name="medQTY" id="medQTY" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-3">
                         Price: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-9">
                         <input type="number" step="0.01" class="input-field" style="width:49%; display:inline;" name="medPrice" id="medPrice" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-3">
                         Short Code: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-9">
                         <input type="text" class="input-field" style="width:49%; display:inline;" name="medSc" id="medSc" placeholder="" required>
                     </div>
                 </div>
@@ -157,41 +167,41 @@ else
     </div>
    <div class="detailsSection">
         <div class="row">
-            <div class="c-12 c-m-4">
+            <div class="c-12">
                 <h2>Medicine Details</h2>
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Medicine ID: 
             </div>
-            <div class="c-12 c-m-10 answer" id="medicId">
+            <div class="c-12 c-m-9 answer" id="medicId">
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Medicine Name: 
             </div>
-                <div class="c-12 c-m-10 answer" id="medicName"></div>
+                <div class="c-12 c-m-9 answer" id="medicName"></div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Price: 
             </div>
 
-                <div class="c-12 c-m-10 answer" id="medicPrice"></div>
+                <div class="c-12 c-m-9 answer" id="medicPrice"></div>
         </div>                
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Qty: 
             </div>
-                <div class="c-12 c-m-10 answer" id="medicQty"></div>
+                <div class="c-12 c-m-9 answer" id="medicQty"></div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-2">
+            <div class="c-12 c-m-3">
                 Short Code: 
             </div>
-                <div class="c-12 c-m-10 answer" id="medicSc"></div>
+                <div class="c-12 c-m-9 answer" id="medicSc"></div>
         </div>
    </div>
         <div class ="bottomModel row">
@@ -220,7 +230,7 @@ else
            <div class="detailsSection">
            <div class="alerMSG" id="updateStatus"></div>
                 <div class="row">
-                    <div class="c-12 c-m-5">
+                    <div class="c-12">
                         <h2>Update Medicine Details</h2>
                     </div>
                 </div>
