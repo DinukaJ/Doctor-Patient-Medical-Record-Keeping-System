@@ -53,18 +53,23 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                                 <p id="patName">Name: </p>
                                 <p id="patAge">Age: </p>
                                 <input type="hidden" id="patID" value="">
-                                <button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
+                                <!-- <button type="button" class="btn btnAddPres" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button> -->
                             </div>
                         </div>
-                        <div class="c-12 c-l-3">
+                        <!-- <div class="c-12 c-l-3">
                             <div class="box" style="line-height:18px !important">
                                 <label for="allergies" style="font-size:0.8em;">Allergies</label>
-                                <textarea class="input-field fullWidth userData disable" style="height:60px" name="allergies" id="allergies" placeholder="Allergies"></textarea><br>
+                                <div class="input-field fullWidth userData disable patientData" style="height:60px; max-height:60px; overflow-y:scroll;" name="allergies" id="allergies">No Data</div><br>
                                 <label for="imp_Notes" style="font-size:0.8em;">Important Notes</label>
-                                <textarea class="input-field fullWidth userData disable" style="height:60px" name="imp_Notes" id="imp_Notes" placeholder="Important Notes"></textarea>
+                                <div class="input-field fullWidth userData disable patientData" style="height:60px; max-height:60px; overflow-y:scroll;" name="imp_Notes" id="imp_Notes">No Data</div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="c-12 c-l-3">
+                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
+                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
+                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                        </div>
+                        <!-- <div class="c-12 c-l-3">
                             <div class="box">
                                 <ul>
                                     <li class="title">Recent Prescriptions</li>
@@ -88,7 +93,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                                     <a><li class="upperClick">Report 1</li></a>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="row patientDataRow addMedicineRow">
@@ -181,20 +186,29 @@ echo"<input type='hidden' value='$docid' id='docID'>";
        <?php getFullPatientData()?>
     <!-- Patient Full Data -->
 
+    <!-- Patient Prescription Modal -->
+       <?php getPatientPrescriptions()?>
+    <!-- Patient Prescription Data -->
+
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
+        var patientPrescription=document.getElementById("patientPrescription");
         $(document).ready(function(){
             $('#viewPatientDetails').click(function(){
                 open(modalPatient);
+            });
+            $('#viewPatientPrescription').click(function(){
+                open(patientPrescription);
             });
 
             $('.close').click(()=>{
                 close(modalUpdateDet);
                 close(modalPatient);
+                close(patientPrescription);
             })
             $('#upCancel').click(()=>{
                 close(modalUpdateDet);
@@ -213,6 +227,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     // modalUpdateDet.style.display = "none";
                     close(modalPatient);
             }
+            if (event.target == patientPrescription) {
+                    // modalUpdateDet.style.display = "none";
+                    close(patientPrescription);
+            }
         }
     </script>
     <script src="../js/search.js"></script>
@@ -224,25 +242,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             //Disable other input fields until a patient is selected
             $('.userData').prop('disabled',true);
             $('.medData').prop('disabled',true);
-            //Update patient data when the doctor change those
-            $("#allergies").change(function(){
-                updatePatientData();
-            });
-            $("#imp_Notes").change(function(){
-                updatePatientData();
-            });
-            //Function to update patient data
-            function updatePatientData()
-            {
-                $.ajax({
-                    url:"../handlers/patientHandler.php",
-                    method:"POST",
-                    data:{type:'upPatientAllergies', patID:$("#patID").val(), allergy:$("#allergies").val(), importantNotes:$("#imp_Notes").val()},
-                    success:function(data){
-
-                    }   
-                });
-            }
 
             //Changing text fields when user press arrow keys
             $("#amountPTime").keydown(function(e){

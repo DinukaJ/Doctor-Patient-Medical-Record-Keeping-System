@@ -12,8 +12,6 @@ if(isset($_POST["type"]))
         searchPatient();
     if($_POST["type"]=="patientData")
         getpatientDat();
-    if($_POST["type"]=="upPatientAllergies")
-        updatePatient_Allergy_IN();
     if($_POST["type"]=="upDet")
         updateDet();
     if($_POST["type"]=="upPass")
@@ -97,16 +95,7 @@ function getpatientDat()
     $row=mysqli_fetch_array($patientData);
     echo json_encode($row);
 }
-function updatePatient_Allergy_IN()
-{
-    $patient = new patient();
-    $patID=$_POST["patID"];
-    $allergy=$_POST["allergy"];
-    $importantNotes=$_POST["importantNotes"];
-    $stat=$patient->updatePatient_Allergy_IN($patID,$allergy,$importantNotes);
 
-    echo json_encode(array($stat));
-}
 
 function updateDet(){
     $patient = new patient();

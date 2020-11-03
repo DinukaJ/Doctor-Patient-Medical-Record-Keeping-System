@@ -92,8 +92,6 @@ function putPatientData()
             $('#patName').html(nameVal+data['fname']+" "+data['lname']);
             var ageVal=$('#patAge').html();
             $('#patAge').html(ageVal+data['age']);
-            $('#allergies').val(data['allergies']);
-            $('#imp_Notes').val(data['impNotes']);
             $('#patientID').prop('disabled',true);
             $('#patientID').addClass('disable');
             $('.userData').removeClass('disable');
@@ -101,6 +99,12 @@ function putPatientData()
             $('.medData').removeClass('disable');
             $('.medData').prop('disabled',false);
             $('#medicineCode').focus();
+            //Patient Data Modal
+            $("#pfirstName").html(data['fname']);
+            $("#plastName").html(data['lname']);
+            $("#pphone").html(data['phone']);
+            $("#age").html(data['age']);
+            $("#address").html(data['address']);
         }
         
     });

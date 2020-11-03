@@ -17,6 +17,18 @@ body{
     font-weight: 400;
     line-height: 1.5;
 }
+.scrollBox{
+    height:40vh;
+    max-height:40vh;
+    overflow-y: scroll;
+    border: 1px solid #ced4da;
+}
+.scrollBox2{
+    height:65vh;
+    max-height:65vh;
+    overflow-y: scroll;
+    border: 1px solid #ced4da;
+}
 .container, .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -113,6 +125,24 @@ body{
     padding:20px;
     border-right: 1px solid white;
     margin-right: 0px;
+    padding-right: 0px;
+}
+.sidePanel .dp{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.sidePanel .name{
+    padding-left: 0px;
+    font-size: 0.9em;
+}
+.sidePanel .usrBtns{
+    padding-left: 1px;
+    padding-right: 4px;
+}
+.sidePanel .usrBtns .btnNormal{
+    padding:2px 5px !important;
+    font-size: 0.7em !important;
+    height: 40px;
 }
 .sidePanel .accountName{
     margin-bottom: 0px;
@@ -214,6 +244,19 @@ body{
     margin-right: 1px;
     padding: 10px 0px;
 }
+.patientDataRow2{
+    border-bottom: 1px solid #ced4da;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 5px 0px;
+    font-size: 0.8em;
+    margin-bottom: 0px !important;
+    transition: 0.5s;
+}
+.patientDataRow2.active, .patientDataRow2:hover{
+    color: white;
+    background-color: #5cc8b1;
+}
 .input-field{
     display: block;
     height: 40px;
@@ -307,10 +350,20 @@ body{
     color: #5cc8b1;
     transition: 0.5s;
 }
+.btnPatientView2{
+    border:1px solid #5cc8b1;
+    color: #5cc8b1;
+    transition: 0.5s;
+    font-size: 0.9em;
+    padding: 4px;
+}
 .delMed{
     border:1px solid rgb(199, 97, 97);
     color: rgb(199, 97, 97);
     transition: 0.5s;
+}
+.patientData{
+    font-size: 0.8em;
 }
 .btnAddPres{
     background-color: #5cc8b1;
@@ -327,7 +380,7 @@ body{
 .addMedicineRow .c-l-3, .addMedicineRow{
     /* padding: 0px; */
 }
-.btnPatientView:hover{
+.btnPatientView:hover, .btnPatientView2:hover{
     color: white;
     background-color: #5cc8b1;
 }
@@ -343,6 +396,10 @@ body{
 }
 .tableCont{
     max-height: 60vh;
+    overflow-y: scroll;
+}
+.tableCont2{
+    max-height: 55vh;
     overflow-y: scroll;
 }
 .presTable td{

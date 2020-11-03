@@ -4,20 +4,20 @@ function getSideNav($type)
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account2">
-            <div class="c-5">
+            <div class="c-5 dp">
                 <img src="../images/acc.png" width="80%">
             </div>
-            <div class="c-7">
+            <div class="c-7 name">
                 <p class="accountName2">Doctor Name</p>
                 
             </div>
-            <div class="c-6"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-user-edit"></i> Edit Profile</button></div>
-            <div class="c-6"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
+            <div class="c-6 usrBtns"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-user-edit"></i> Edit Profile</button></div>
+            <div class="c-6 usrBtns"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
         </div>
         <a href="../Doctor/prescribe.php" class="sideLink ';if($type=="prescribe"){echo 'active';} echo'">Prescribe</a>
-        <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="patients"){echo 'active';} echo'">View Patients</a>
-        <a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">View Inventory</a>
-        <a href="../Doctor/viewFinancial.php" class="sideLink ';if($type=="financial"){echo 'active';} echo'">View Financial Records</a>
+        <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="patients"){echo 'active';} echo'">Patients</a>
+        <a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">Inventory</a>
+        <a href="../Doctor/viewFinancial.php" class="sideLink ';if($type=="financial"){echo 'active';} echo'">Financial Records</a>
     </div>';
 }
 function getEditProfile($doctor)
@@ -180,75 +180,202 @@ function getFullPatientData()
         </div>
     </div>
 
-   <div class="detailsSection editProfile">
+   <div class="detailsSection editProfile" style="padding-bottom:0px">
     <div class="row">
         <div class="c-12 c-m-4">
             <h2>Patient Details</h2>
             <div class="row">
                 <div class="c-12">
-                    First Name: <span id="firstName"></span>
+                    First Name: <b><span id="pfirstName"></span></b>
                 </div>
             </div>
             <div class="row">
                 <div class="c-12">
-                    Last Name: <span id="lastName"></span>
+                    Last Name: <b><span id="plastName"></span></b>
                 </div>
             </div>
             <div class="row">
                 <div class="c-12">
-                    Phone: <span id="phone"></span>
+                    Phone: <b><span id="pphone"></span></b>
                 </div>
             </div>
             <div class="row">
                 <div class="c-12">
-                    Age: <span id="age"></span>
+                    Age: <b><span id="age"></span></b>
                 </div>
             </div>
             <div class="row">
                 <div class="c-12">
-                    Address: <span id="address"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="c-12">
-                    Allergies: <span id="allergyPopup"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="c-12">
-                    Important Notes: <span id="impPopup"></span>
+                    Address: <b><span id="address"></span></b>
                 </div>
             </div>
         </div>
         <div class="c-12 c-m-8">
             <div class="row">
-                <div class="c-12 c-l-5">
-                    <div class="box">
-                        <ul>
-                            <li class="title">Recent Prescriptions</li>
-                            <a><li class="upperClick">Prescription 5</li></a>
-                            <a><li class="upperClick">Prescription 4</li></a>
-                            <a><li class="upperClick">Prescription 3</li></a>
-                            <a><li class="upperClick">Prescription 2</li></a>
-                            <a><li class="upperClick">Prescription 1</li></a>
-                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Prescriptions</button></li>
-                        </ul>
+                <div class="c-12 c-l-6">
+                    <h2>Allergies</h2>
+                    <div class="row">
+                        <div class="c-11" style="padding-right:4px">
+                            <input type="text" class="input-field fullWidth" placeholder="Enter New Allergy">
+                        </div>
+                        <div class="c-1" style="padding:0px">
+                        <button type="button" class="btn btnAddPres" style="padding:0px;" name="addAllergy" id="addAllergy"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12" style="padding-right:0px;">
+                            <div class="scrollBox" id="allergyBox">
+                                <div class="row patientDataRow2">
+                                    <div class="c-11" style="padding-right:0px;">
+                                        Allergy 1
+                                    </div>
+                                    <div class="c-1" style="padding-left:2px;">
+                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div> 
+                                <div class="row patientDataRow2">
+                                    <div class="c-11" style="padding-right:0px;">
+                                        Allergy 2
+                                    </div>
+                                    <div class="c-1" style="padding-left:2px;">
+                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="c-12 c-l-6">
-                    <div class="box">
-                        <ul>
-                            <li class="title">Recent Reports</li>
-                            <a><li class="upperClick">Report 5</li></a>
-                            <a><li class="upperClick">Report 4</li></a>
-                            <a><li class="upperClick">Report 3</li></a>
-                            <a><li class="upperClick">Report 2</li></a>
-                            <a><li class="upperClick">Report 1</li></a>
-                            <li><button type="button" class="btn btnAddPres" style="" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Reports</button></li>
-                        </ul>
+                    <h2>Important Notes</h2>
+                    <div class="row">
+                        <div class="c-11" style="padding-right:4px">
+                            <input type="text" class="input-field fullWidth" placeholder="Enter New Note">
+                        </div>
+                        <div class="c-1" style="padding:0px">
+                        <button type="button" class="btn btnAddPres" style="padding:0px;" name="addImportantNote" id="addImportantNote"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12" style="padding-right:0px;">
+                            <div class="scrollBox" id="allergyBox">
+                                <div class="row patientDataRow2">
+                                    <div class="c-11" style="padding-right:0px;">
+                                        Note 1
+                                    </div>
+                                    <div class="c-1" style="padding-left:2px;">
+                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div> 
+                                <div class="row patientDataRow2">
+                                    <div class="c-11" style="padding-right:0px;">
+                                        Note 2
+                                    </div>
+                                    <div class="c-1" style="padding-left:2px;">
+                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+        <div class="c-12 c-l-6" style="text-align:left">
+        </div>
+            <div class="c-12 c-l-6">
+                <button type="button" class="btn btnNormal upCancel" id="patClose">Close</button> 
+            </div>
+        </div>
+   </div>
+
+</div>
+</div>
+<!-- End of the Modal for Update User Details-->
+    ';
+
+}
+function getPatientPrescriptions()
+{
+    echo'
+    <!-- The Modal for Update User Details-->
+<div id="patientPrescription" class="modal modal2" style="padding-top:40px">
+
+<!-- Modal content -->
+<div class="modal-content-long inventoryModal" style="padding-bottom:5px;">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+
+   <div class="detailsSection editProfile" style="padding-bottom:0px">
+   <div class="row">
+        <div class="c-12">
+            <h2 style="margin:0px;">Prescriptions</h2>
+        </div>
+   </div>
+    <div class="row">
+        <div class="c-12 c-m-3">
+            <div class="scrollBox2">
+                <div class="row patientDataRow2 active">
+                    <div class="c-12" style="padding-right:0px;">
+                        <b>ID: </b><span>124</span><br>
+                        <b>Date: </b><span>2020/11/5</span><br>
+                    </div>
+                </div> 
+                <div class="row patientDataRow2">
+                    <div class="c-12" style="padding-right:0px;">
+                        <b>ID: </b><span>123</span><br>
+                        <b>Date: </b><span>2020/11/1</span><br>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
+            <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-l-6">
+                    <b>Prescription No: <span id="presNo"><b>
+                </div>
+                <div class="c-l-6">
+                    <b>Date: <span id="presDate"><b>
+                </div>
+            </div>
+            <div class="row patientDataRow" style="border-bottom:none;">
+                <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
+                    <table style="width:100%; font-size:0.8em !important;" class="presTable" id="presTableDetails">
+                        <tr>
+                            <th style="width:2%">No</th>
+                            <th style="width:23%">Name</th>
+                            <th style="width:12%; text-align:center;">Amount Per Time</th>
+                            <th style="width:12%; text-align:center;">Amount Per Day</th>
+                            <th style="width:14%; text-align:center;">After/Before Meal</th>
+                            <th style="width:12%; text-align:center;">Duration</th>
+                        </tr>
+                        <div id="patPresData">
+                            <tr>
+                                <td style="width:2%">1</td>
+                                <td style="width:23%">Med Name</td>
+                                <td style="width:12%; text-align:center;">5</td>
+                                <td style="width:12%; text-align:center;">3</td>
+                                <td style="width:14%; text-align:center;">After</td>
+                                <td style="width:12%; text-align:center;">3 Weeks</td>
+                            </tr>
+                            <tr>
+                                <td style="width:2%">2</td>
+                                <td style="width:23%">Med Name</td>
+                                <td style="width:12%; text-align:center;">5</td>
+                                <td style="width:12%; text-align:center;">3</td>
+                                <td style="width:14%; text-align:center;">After</td>
+                                <td style="width:12%; text-align:center;">3 Weeks</td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+            </div>  
         </div>
     </div>
    </div>
