@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 28, 2020 at 08:24 AM
+-- Generation Time: Nov 03, 2020 at 10:51 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -183,8 +183,34 @@ CREATE TABLE IF NOT EXISTS `patient` (
 --
 
 INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `allergies`, `impNotes`) VALUES
-('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'ghsdfsfas', 25, '12/21,Seeduwa', '', ''),
+('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'ghsdfsfas', 25, '12/21,Seeduwa', 'test\n\n\n\n\n\n\n\n', 'tesssff\ndjj\n'),
 ('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientallergy`
+--
+
+DROP TABLE IF EXISTS `patientallergy`;
+CREATE TABLE IF NOT EXISTS `patientallergy` (
+  `id` varchar(9) NOT NULL,
+  `allergy` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`,`allergy`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientimpnotes`
+--
+
+DROP TABLE IF EXISTS `patientimpnotes`;
+CREATE TABLE IF NOT EXISTS `patientimpnotes` (
+  `id` varchar(9) NOT NULL,
+  `impNote` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`,`impNote`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -210,7 +236,10 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
 --
 
 INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
-('doc45', 'p-1', 123, '2020-10-15', NULL, NULL);
+('doc45', 'p-1', 123, '2020-10-15', NULL, 0),
+('doc45', 'p-1', 124, '2020-10-29', '', 0),
+('doc45', 'p-1', 125, '2020-10-30', '', -1),
+('doc45', 'p-1', 126, '2020-10-30', '', -1);
 
 -- --------------------------------------------------------
 
@@ -237,7 +266,11 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
 
 INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
 (123, 4, 2, 3, 'After', '3 weeks'),
-(123, 10, 1.5, 2, 'Before', '4 weeks');
+(123, 10, 1.5, 2, 'Before', '4 weeks'),
+(124, 6, 1, 3, 'b', '1 w'),
+(124, 11, 1.5, 2, 'a', '1 w'),
+(125, 6, 1, 2, 'b', '2 w'),
+(126, 5, 1.5, 2, 'b', '1 w');
 
 --
 -- Constraints for dumped tables
