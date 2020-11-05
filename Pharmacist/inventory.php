@@ -59,7 +59,7 @@ else
                         </div>
                         <div class="c-12 c-l-2">
                             <div class="boxSmall">
-                                <button type="button" class="btn btnNormal" id="addMed">Add New Medicine</button>
+                                <button type="button" class="btn btnNormal" id="addMed"><i class="fas fa-plus"></i> Add New Medicine</button>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ else
             <div class='row patientDataRow addMedicineRow'>
                 <div class='c-3' class='medicId'>Medicine ID</div>
                 <div class='c-4' class='medicName'>Medicine Name</div>
-                <div class='c-4' class='medicQty'>QTY</div>
+                <div class='c-4' class='medicQty'>Short Code</div>
                 <div class='c-1'>
                 
                 </div>
@@ -113,7 +113,12 @@ else
                         <h2>Add Medicine</h2>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="padding:0px; margin:0px;">
+                    <div class="c-12" style="padding:0px; margin:0px;">
+                        <div class="alerMSG" id="addMedStatus"></div>
+                    </div>
+                </div>
+                <!-- <div class="row">
                     <div class="c-12 c-m-3">
                         Medicine Name: 
                     </div>
@@ -144,13 +149,47 @@ else
                     <div class="c-12 c-m-9">
                         <input type="text" class="input-field" style="width:49%; display:inline;" name="medSc" id="medSc" placeholder="" required>
                     </div>
+                </div> -->
+                <div class="row">
+                    <div class="c-m-6">
+                        <label for="medname">Medicine Name: </label>
+                        <input type="text" class="input-field" style="width:100%;" name="medName" id="medNameAdd" placeholder="">
+                    </div>
+                    <div class="c-m-6">
+                        <label for="medSc">Short Code: </label>
+                        <input type="text" class="input-field" style="width:100%;" name="medSc" id="medScAdd" placeholder="">
+                    </div>
+                    <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
+                        <h4 style="display:inline; margin-right:20px;">Types</h4>
+                        <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed addType" name="addType" id="addType"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="c-12" id="typeRowSection">
+                        <div class="typeRow row">
+                            <div class="c-m-4">
+                                <label for="medname">Type Name: </label>
+                                <input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder="(Optional)">
+                            </div>
+                            <div class="c-m-3">
+                                <label for="medname">QTY: </label>
+                                <input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder="">
+                            </div>
+                            <div class="c-m-4">
+                                <label for="medname">Price: </label>
+                                <input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder="">
+                            </div>
+                            <div class="c-m-1">
+                            <label for="medname"></label>
+                                <!-- <button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
            </div>
            <div class="bottomModel">
                 <div class="row">
                     <div class="c-12">
                         <button type="button" class="btn btnNormal medCancel" id="addMedCancel">Cancel</button> 
-                        <button type="submit" class="btn btnNormal" id="addMedSave">Save</button> 
+                        <button type="button" class="btn btnNormal" id="addMedSave">Save</button> 
                     </div>
                 </div>
            </div>
@@ -334,5 +373,6 @@ else
         }
     </script>
     <script src="../js/searchMed.js"></script>
+    <script src="../js/mainPharmacist.js"></script>
 </body>
 </html>

@@ -22,16 +22,16 @@ class prescription
         $stat=$db->insert_update_delete("insert into prescriptions values('$docId','$patId','$id','$doi','','$status')");
         return $stat;
     }
-    public function addMed($pid,$medID,$amountPerTime,$timesPerDay,$afterBefore,$duration)
+    public function addMed($pid,$medID,$medType,$amountPerTime,$timesPerDay,$afterBefore,$duration)
     {
         $db=new Database();
-        $stat=$db->insert_update_delete("insert into prescription_medicine values('$pid','$medID','$amountPerTime','$timesPerDay','$afterBefore','$duration')");
+        $stat=$db->insert_update_delete("insert into prescription_medicine values('$pid','$medID','$medType','$amountPerTime','$timesPerDay','$afterBefore','$duration')");
         return $stat;
     }
-    public function removeMed($id,$medID)
+    public function removeMed($id,$medID,$medType)
     {
         $db=new Database();
-        $stat=$db->insert_update_delete("delete from prescription_medicine where pres_ID='$id' and med_ID='$medID'");
+        $stat=$db->insert_update_delete("delete from prescription_medicine where pres_ID='$id' and med_ID='$medID' and medType_ID='$medType'");
         return $stat;
     }
     public function addPrescriptionNote($id,$note)
@@ -54,7 +54,7 @@ class prescription
     public function getPresMeds($id)//getting medicine of a prescription
     {  
         $db = new Database();
-        $data = $db->getData("select pm.*, m.name from prescription_medicine pm join medicine m on pm.med_ID=m.id where pm.pres_ID='$id'");
+        $data = $db->getData("select pm.*, m.name from prescription_medicine pm join medtypes mt on pm.med_ID=mt.id and pm.medType_ID=mt.type join medicine m on mt.id=m.id where pm.pres_ID='$id'");
         return $data;
     }
     public function  getPresMedAll($id)//getting all medicine of a prescription

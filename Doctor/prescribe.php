@@ -306,10 +306,11 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             {
                 var docId="<?php echo "$docid" ?>";
                 var medId=$("#medicineCode").val().split(" ")[0];
+                var medType=$("#medicineCode").val().split("-")[2];
                 $.ajax({
                     url:"../handlers/prescriptionHandler.php",
                     method:"POST",
-                    data:{type:'addMed', prescription:$("#currPID").val(), patID:$("#patID").val(), docID:docId, medID:medId, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
+                    data:{type:'addMed', prescription:$("#currPID").val(), patID:$("#patID").val(), docID:docId, medID:medId, medT:medType, amountPT:$("#amountPTime").val(), timesPD:$("#timesPDay").val(), afterBefore:$("#ABMeal").val(), duration:$("#duration").val()},
                     dataType:'json',
                     success:function(data){
                         if($("#currPID").val()=="")
@@ -356,10 +357,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             //Function to delete medicine from prescription
             function deleteMed(mid)
             {
+                var mID=mid.split("-")[0];
+                var mType=mid.split("-")[1];
                 $.ajax({
                     url:"../handlers/prescriptionHandler.php",
                     method:"POST",
-                    data:{type:'removeMed', prescription:$("#currPID").val(), medID:mid},
+                    data:{type:'removeMed', prescription:$("#currPID").val(), medID:mID, medT:mType},
                     dataType:'json',
                     success:function(data){
                         if(data[0]==1)

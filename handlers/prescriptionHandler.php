@@ -59,11 +59,12 @@ function addMedicineToPrescription()
     if($presStatus)
     {
         $medID=$_POST["medID"];
+        $medType=$_POST["medT"];
         $amountPerTime=$_POST["amountPT"];
         $timesPerDay=$_POST["timesPD"];
         $afterBefore=$_POST["afterBefore"];
         $duration=$_POST["duration"];
-        $stat=$pres->addMed($pid,$medID,$amountPerTime,$timesPerDay,$afterBefore,$duration);
+        $stat=$pres->addMed($pid,$medID,$medType,$amountPerTime,$timesPerDay,$afterBefore,$duration);
     }
     else
         $stat=0;
@@ -78,7 +79,8 @@ function removeMedicineFromPrescription()
     {
         // $pid=$_SESSION["prescription"];
         $medID=$_POST["medID"];
-        $stat=$pres->removeMed($pid,$medID);
+        $medType=$_POST["medT"];
+        $stat=$pres->removeMed($pid,$medID,$medType);
     }
     else 
         $stat=0;
@@ -109,21 +111,21 @@ function getPrescriptionMedicine()
         $data=$pres->getPresMeds($pid);
         while($row=mysqli_fetch_array($data))
         {
-            if($row[4]=="b")
+            if($row[5]=="b")
                 $time="Before";
             else
                 $time="After";
 
-            $duration=str_replace("w","Week(s)",$row[5]);
+            $duration=str_replace("w","Week(s)",$row[6]);
             $output.='
             <tr>
                 <td style="width:2%">'.$row[1].'</td>
-                <td style="width:23%">'.$row[6].'</td>
-                <td style="width:12%; text-align:center;">'.$row[2].'</td>
+                <td style="width:23%">'.$row[7].' - '.$row[2].'</td>
                 <td style="width:12%; text-align:center;">'.$row[3].'</td>
+                <td style="width:12%; text-align:center;">'.$row[4].'</td>
                 <td style="width:14%; text-align:center;">'.$time.'</td>
                 <td style="width:12%; text-align:center;">'.$duration.'</td>
-                <td style="width:25%; text-align:center;"><button value="'.$row[1].'" class="btn delMed" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
+                <td style="width:25%; text-align:center;"><button value="'.$row[1].'-'.$row[2].'" class="btn delMed" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
             </tr>
             ';
         }

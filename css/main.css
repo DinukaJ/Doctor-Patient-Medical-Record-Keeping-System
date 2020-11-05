@@ -427,7 +427,7 @@ body{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 40px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -477,10 +477,12 @@ body{
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
+    border-radius: 10px;
   }
   .modal-content-long .row, .modal-content-short2 .row{
       margin-bottom: 20px;
   }
+
   /* The Close Button */
   .close {
     color: #aaaaaa;
@@ -492,10 +494,10 @@ body{
     top:5px;
   }
   .modal-content-long .detailsSection, .modal-content-short2 .detailsSection{
-    padding-top: 50px;
-    padding-bottom: 80px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .modal-content-long .editProfile, .modal-content-short2 .editProfile{
     padding-top: 20px;
@@ -516,6 +518,13 @@ body{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+  .typeRow{
+      position: relative;
+  }
+  .delType{
+      position: absolute;
+      bottom: 5px;
   }
   .disable{
       background-color: #e8e8e8;

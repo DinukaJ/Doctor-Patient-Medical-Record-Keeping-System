@@ -4,12 +4,12 @@ function getSideNav($type)
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account">
-            <div class="c-5">
-                <img src="../images/acc.png" width="100%">
+            <div class="c-5 dp">
+                <img src="../images/acc.png" width="80%">
             </div>
-            <div class="c-7">
+            <div class="c-7 name">
                 <p class="accountName">Pharmacist</p>
-                <a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
+                <div class="usrBtns"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
             </div>
         </div>
         <a href="../Pharmacist/prescriptionQueue.php" class="sideLink ';if($type=="presQueue"){echo 'active';} echo'">Prescription Queue</a>
