@@ -114,6 +114,7 @@ $("#addMedSave").click(function(){
                     $('#addMedStatus').addClass("success");
                     $('#addMedStatus').html("Successfully Updated!");
                     $('#addMedStatus').slideDown("slow");
+                    getAllMed();
                     setTimeout(function(){
                         $('#addMedStatus').slideUp("slow");
                     },2000);
@@ -166,4 +167,16 @@ function addMedTypes(id)
 function clearFields()
 {
 
+}
+//Updating existing records after data adding
+function getAllMed()
+{
+    $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data:{type:'getMed'},
+        success:function(data){
+            $('#medInfo').html(data);
+        }   
+    });
 }
