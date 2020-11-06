@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 03, 2020 at 10:51 AM
+-- Generation Time: Nov 06, 2020 at 04:48 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -138,24 +138,51 @@ DROP TABLE IF EXISTS `medicine`;
 CREATE TABLE IF NOT EXISTS `medicine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `price` int(5) NOT NULL,
-  `qty` int(4) NOT NULL,
   `shortCode` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `medicine`
 --
 
-INSERT INTO `medicine` (`id`, `name`, `price`, `qty`, `shortCode`) VALUES
-(4, 'yef', 578, 4353, 'ye4'),
-(5, 'dyds', 448, 123, 'dddy4'),
-(6, 'gdioe', 843, 6324, 'gd45'),
-(7, 'gfde', 345, 34, 'gf56'),
-(9, 'hurenis', 532, 234, 'hu76'),
-(10, 'weteihof', 459, 6574, 'we342'),
-(11, 'getfjig', 46, 4867, 'ge587');
+INSERT INTO `medicine` (`id`, `name`, `shortCode`) VALUES
+(4, 'yef', 'ye4'),
+(17, 'Test 1', 'T1'),
+(18, 'Test 2', 't2'),
+(19, 'Test 3', 't3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medtypes`
+--
+
+DROP TABLE IF EXISTS `medtypes`;
+CREATE TABLE IF NOT EXISTS `medtypes` (
+  `id` int(11) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `price` int(5) NOT NULL,
+  `qty` int(4) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `medtypes`
+--
+
+INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
+(4, '', 10, 10, 1),
+(17, '', 200, 20, 1),
+(18, 'type 1 ', 200, 10, 1),
+(18, 'type 4', 10, 20, 1),
+(18, 'type 2', 100, 5, 1),
+(18, 'type 3 ', 15, 5, 1),
+(19, 'type 1', 10, 100, 1),
+(19, 'type 2', 15, 200, 1),
+(19, 'type 4', 15, 150, 1),
+(19, 'type 3', 10, 1000, 1);
 
 -- --------------------------------------------------------
 
@@ -251,11 +278,12 @@ DROP TABLE IF EXISTS `prescription_medicine`;
 CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   `pres_ID` int(11) NOT NULL,
   `med_ID` int(11) NOT NULL,
+  `medType_ID` varchar(10) NOT NULL,
   `amtPerTime` float NOT NULL,
   `timesPerDay` int(1) NOT NULL,
   `beforeAfter` char(20) NOT NULL,
   `duration` varchar(15) NOT NULL,
-  PRIMARY KEY (`pres_ID`,`med_ID`),
+  PRIMARY KEY (`pres_ID`,`med_ID`,`medType_ID`),
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -264,13 +292,13 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
 -- Dumping data for table `prescription_medicine`
 --
 
-INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(123, 4, 2, 3, 'After', '3 weeks'),
-(123, 10, 1.5, 2, 'Before', '4 weeks'),
-(124, 6, 1, 3, 'b', '1 w'),
-(124, 11, 1.5, 2, 'a', '1 w'),
-(125, 6, 1, 2, 'b', '2 w'),
-(126, 5, 1.5, 2, 'b', '1 w');
+INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
+(123, 4, '0', 2, 3, 'After', '3 weeks'),
+(123, 10, '0', 1.5, 2, 'Before', '4 weeks'),
+(124, 6, '0', 1, 3, 'b', '1 w'),
+(124, 11, '0', 1.5, 2, 'a', '1 w'),
+(125, 6, '0', 1, 2, 'b', '2 w'),
+(126, 5, '0', 1.5, 2, 'b', '1 w');
 
 --
 -- Constraints for dumped tables
