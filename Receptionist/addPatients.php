@@ -38,7 +38,7 @@ if(!isset($_SESSION["user"]))
                         </div>
                     </div>
                     <div class="upperSecond row">
-                        <div class="c-l-4">
+                        <div class="c-l-12">
                             <h1 style="margin-top:5px">Enter Patient Details</h1>
                         </div>
                         <!-- <div class="c-l-8 totText">

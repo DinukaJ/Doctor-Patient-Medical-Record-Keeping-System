@@ -48,7 +48,7 @@ class prescription
     public function getPatientPres($pid)//getting a patient's prescriptions
     {  
         $db = new Database();
-        $data = $db->getData("select * from prescriptions where patientId='$pid'");
+        $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1')");
         return $data;
     }
     public function getPresMeds($id)//getting medicine of a prescription
@@ -66,12 +66,13 @@ class prescription
     public function getMedViewData($id)//getting medicine data for view using pres_ID
     {
         $db = new Database();
-        $data = $db->getData("select d.fname,d.lname,m.name,p.id,p.doi,pm.amtPerTime,pm.timesPerDay,pm.beforeAfter,pm.duration
+        $data = $db->getData("select d.fname,d.lname,m.name,p.id,p.doi,pm.amtPerTime,pm.timesPerDay,pm.beforeAfter,pm.duration,mt.type
                               from doctor d
                               join prescriptions p on d.id=p.docId 
                               join prescription_medicine pm on pm.pres_ID=p.id
                               join medicine m on m.id=pm.med_ID
-                              where p.id=$id");
+                              join medtypes mt on m.id=mt.id
+                              where p.id=$id and (status='0' or status='1')");
         return $data;
     }
     public function deletePresAndMeds($id)

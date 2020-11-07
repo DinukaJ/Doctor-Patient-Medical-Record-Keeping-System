@@ -87,7 +87,7 @@ class patient extends users
     public function getPatientsList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname from patient where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
+        return $db->getData("select id,fname,lname,age from patient where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
     }   
     public function updatePatient_Allergy_IN($patID,$allergy,$IN)
     {

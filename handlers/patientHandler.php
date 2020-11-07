@@ -85,8 +85,8 @@ function searchPatientsRecep()
             $output.="
             <div class='row patientDataRow'>
                 <div class='c-3' class='$row[0]'>$row[0]</div>
-                <div class='c-4' class='$row[1]'>$row[1]</div>
-                <div class='c-4' class='$row[2]'>$row[2]</div>
+                <div class='c-5' class='$row[1]'>$row[1] $row[2]</div>
+                <div class='c-3' class='$row[2]'>$row[3]</div>
                 <div class='c-1'>
                     <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='$row[0]'>View</button>
                 </div>

@@ -52,8 +52,8 @@ else
                 </div>
                 <div class='row patientDataRow addMedicineRow'>
                     <div class='c-3' class='patId'>Patient ID</div>
-                    <div class='c-4' class='patFirstName'>First Name</div>
-                    <div class='c-4' class='patLastName'>Last Name</div>
+                    <div class='c-5' class='patFirstName'>Name</div>
+                    <div class='c-3' class='patLastName'>Age</div>
                     <div class='c-1'>
                     
                     </div>

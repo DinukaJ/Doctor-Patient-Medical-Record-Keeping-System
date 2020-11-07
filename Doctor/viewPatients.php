@@ -35,42 +35,30 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             <?php getSideNav("patients")?>
 
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px">
-                <div class="upperPart3">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-12">
+                            <h1 style="margin-top:5px">Patients</h1>
+                        </div>
+                    </div>
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
-                            <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                            <input type="text" class="input-field fullWidth" name="searchPat" id="searchPat" placeholder="Enter Patient ID or Name">
                         </div>
-                        <div class="c-0 c-l-5">
-                            
-                        </div>
-                        <div class="c-12 c-l-3">
-                            <div class="boxSmall">
-                                <label>No. of Prescriptions:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
-                                </label>
-                            </div>
+                        <div class="c-l-8 totText">
+                            Total Patients: <span id="totalCountPat"></span>
                         </div>
                     </div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-1">
-                        1
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='patId'>Patient ID</div>
+                    <div class='c-5' class='patFirstName'>Name</div>
+                    <div class='c-3' class='patLastName'>Age</div>
+                    <div class='c-1'>
+                    
                     </div>
-                    <div class="c-4">
-                        Patient Name
-                    </div>
-                    <div class="c-1">
-                        Age
-                    </div>
-                    <div class="c-5">
-                        Address
-                    </div>
-                    <div class="c-1">
-                        <a class="btn btnPatientView" name="viewPatient" id="viewPatient">View</a>
-                    </div>
-                </div>  
+                </div>
+                <div id="patientData"></div>
             </div>
         </div>
     </div>
@@ -89,31 +77,96 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainPatient.js"></script>
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
+        var modalPatient=document.getElementById("patientFullData");
+        var modalPatientUpdate=document.getElementById("modalUpdatePat");
+        $(document).ready(function(){
+            $('.close').click(()=>{
+                close(modalPatient);
+                close(modalPatientUpdate);
+            })
+            $('#patClose').click(()=>{
+                close(modalPatient);
+            })
+        });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            if (event.target == modalPatient) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalPatient);
+            }
+            if (event.target == modalPatientUpdate) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalPatientUpdate);
             }
         }
+    </script>
+    <script>
+        getpatients("");
+        // $('#updateStatus').hide();
+        // $("#updateMed").click(function(){
+        //     close(modalPatient);
+        //     open(modalPatientUpdate);
+        // });
+
+        //Function to open the patient data modal
+        // function patientDataModal(pId)
+        // {
+        //     open(modalPatient);
+        //     $.ajax({
+        //         url:"../handlers/patientHandler.php",
+        //         method:"POST",
+        //         data:{patientID:pId,type:'patientData'},
+        //         dataType:'json',
+        //         success:function(data){
+        //             $('#patUpID').val(data[0]);
+        //             $('#firstNameData').html(data[1]);
+        //             $('#patUpFname').val(data[1]);
+
+        //             $('#lastNameData').html(data[2]);
+        //             $('#patUpLname').val(data[2]);
+
+        //             $('#phoneData').html(data[3]);
+        //             $('#patUpPhone').val(data[3]);
+
+        //             $('#ageData').html(data[6]);
+        //             $('#patUpAge').val(data[6]);
+
+        //             $('#emailData').html(data[4]);
+        //             $('#patUpEmail').val(data[4]);
+
+        //             $('#addressData').html(data[7]);
+        //             $('#patUpAddress').val(data[7]);
+        //         }
+        //     });
+        // }
+        //Function to get the added patients
+        function getpatients(serVal)
+        {
+            $.ajax({
+                url:"../handlers/patientHandler.php",
+                method:"POST",
+                data:{type:'searchPRecep', patientSearch:serVal},
+                dataType:'json',
+                success:function(data){
+                    $("#patientData").html(data[0]);
+                    $("#totalCountPat").html(data[1]);
+                    //Open patient data modal when click on view
+                    // var patientFullData=document.getElementById("patientFullData");
+                    // $('.viewMed').click(function(){
+                    //     var pId=$(this).attr('id');
+
+                    //     patientDataModal(pId);
+                    // });
+                }   
+            });
+        }
+        var serPat=document.getElementById("searchPat");
+        serPat.addEventListener("keydown", function(e){
+            setTimeout(function(){
+                a=serPat.value;
+                getpatients(a);
+            },100);
+        });
     </script>
 </body>
 </html>
