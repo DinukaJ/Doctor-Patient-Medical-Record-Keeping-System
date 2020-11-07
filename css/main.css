@@ -253,6 +253,15 @@ body{
     margin-bottom: 0px !important;
     transition: 0.5s;
 }
+.allergyRow{
+    border-bottom: 1px solid #ced4da;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 5px 0px;
+    font-size: 0.8em;
+    margin-bottom: 0px !important;
+    transition: 0.5s;
+}
 .patientDataRow2.active, .patientDataRow2:hover{
     color: white;
     background-color: #5cc8b1;

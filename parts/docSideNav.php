@@ -230,7 +230,7 @@ function getFullPatientData()
                     <div class="row">
                         <div class="c-12" style="padding-right:0px;">
                             <div class="scrollBox" id="allergyBox">
-                                <div class="row patientDataRow2">
+                                <div class="row allergyRow">
                                     <div class="c-11" style="padding-right:0px;">
                                         Allergy 1
                                     </div>
@@ -238,7 +238,7 @@ function getFullPatientData()
                                         <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
                                     </div>
                                 </div> 
-                                <div class="row patientDataRow2">
+                                <div class="row allergyRow">
                                     <div class="c-11" style="padding-right:0px;">
                                         Allergy 2
                                     </div>
@@ -263,7 +263,7 @@ function getFullPatientData()
                     <div class="row">
                         <div class="c-12" style="padding-right:0px;">
                             <div class="scrollBox" id="allergyBox">
-                                <div class="row patientDataRow2">
+                                <div class="row allergyRow">
                                     <div class="c-11" style="padding-right:0px;">
                                         Note 1
                                     </div>
@@ -271,7 +271,7 @@ function getFullPatientData()
                                         <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
                                     </div>
                                 </div> 
-                                <div class="row patientDataRow2">
+                                <div class="row allergyRow">
                                     <div class="c-11" style="padding-right:0px;">
                                         Note 2
                                     </div>
