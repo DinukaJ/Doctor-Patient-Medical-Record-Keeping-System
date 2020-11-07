@@ -2,7 +2,7 @@
 include_once('users.php');
 class doctor extends users
 {
-    public function __construct($data)
+    public function __construct($data="")
     {
         // $row=mysqli_fetch_array($data);
         // $this->setUserId($row[0]);
