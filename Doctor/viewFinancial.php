@@ -4,14 +4,18 @@ include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/docSideNav.php');
 
+$docid="doc45";
+$doctor="";
 if(isset($_SESSION["user"]))
 {
-    $patient=new patient();
+    // $doctor=unserialize($_SESSION['user']);
+    // $docid=$doctor->getUserId();
 }
 else
 {
     //header("Location: ../login.php");
 }
+echo"<input type='hidden' value='$docid' id='docID'>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

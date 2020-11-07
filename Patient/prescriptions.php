@@ -10,8 +10,8 @@ $patId = "pat45";
 $patient="";
 if(isset($_SESSION["user"]))
 {
-    $patient = new patient();
-    $pres=new prescription();
+    // $patient=unserialize($_SESSION['user']);
+    // $patient=$patient->getUserId();
 }
 else
 {

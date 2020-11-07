@@ -1,14 +1,19 @@
 <?php
 function getSideNav($type)
 {
+    //$user=unserialize($_SESSION['user']);
+    $name="Patient Name";//$user->getFname().' '.$user->getLName();
+    $dp="acc.png";
+    // if($user->getDP())
+    //     $dp=$user->getDP();
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account2">
             <div class="c-5 dp">
-                <img src="../images/acc.png" width="80%">
+                <img src="../images/'.$dp.'" width="80%">
             </div>
             <div class="c-7 name">
-                <p class="accountName2">Patient Name</p>
+                <p class="accountName2">'.$name.'</p>
                 
             </div>
             <div class="c-6 usrBtns"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-user-edit"></i> Edit Profile</button></div>

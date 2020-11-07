@@ -7,10 +7,11 @@ include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
 $patId = "pat45";
+$patient="";
 if(isset($_SESSION["user"]))
 {
-    $patient = new patient();
-    $pres=new prescription();
+    // $patient=unserialize($_SESSION['user']);
+    // $patient=$patient->getUserId();
 }
 else
 {

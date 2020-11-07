@@ -2,9 +2,13 @@
 include_once('users.php');
 class patient extends users
 {
-    public function __construct($data="")
+    public function __construct($data)
     {
-        
+        // $row=mysqli_fetch_array($data);
+        // $this->setUserId($row[0]);
+        // $this->setFName($row[1]);
+        // $this->setLName($row[2]);
+        // $this->setDP($row[6]);
     }
     public function getNewId()
     {
