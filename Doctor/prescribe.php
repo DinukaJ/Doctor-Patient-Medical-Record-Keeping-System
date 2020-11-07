@@ -1,14 +1,15 @@
 <?php
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
-include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/docSideNav.php');
 
 $docid="doc45";
 $doctor="";
 if(isset($_SESSION["user"]))
 {
-    $doctor=new doctor();
+    // $doctor=unserialize($_SESSION['user']);
+    // $docid=$doctor->getUserId();
 }
 else
 {
@@ -38,7 +39,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px">
                 <div class="upperPart2">
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-4">
                             <div class="box">
                                 <input type="text" class="input-field fullWidth" autocomplete='off' name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
                                 <div class='text-left mt-4' id='searchResult'>

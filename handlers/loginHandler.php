@@ -1,10 +1,10 @@
 <?php
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
-include_once('token.php');
+// include_once('token.php');
 function login($username,$pass)
 {
     $userLogin=new users();
-    $passEncrypted=sh1salt($pass);
+    // $passEncrypted=sh1salt($pass);
     $stat=$userLogin->login($username,$pass);
     if($stat=="Receptionist")
     {
@@ -12,15 +12,15 @@ function login($username,$pass)
     }
     else if($stat=="Pharmacist")
     {
-
+        header("Location: Pharmacist/prescriptionQueue.php");
     }
     else if($stat instanceof doctor)
     {
-        
+        header("Location: Doctor/prescribe.php");
     }
     else if($stat instanceof patient)
     {
-        
+        header("Location: Patient/prescriptions.php");
     }
     else if($stat==false)
     {

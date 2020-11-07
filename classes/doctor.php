@@ -2,11 +2,18 @@
 include_once('users.php');
 class doctor extends users
 {
-    public function __construct($data="")
+    public function __construct($data)
     {
-        
+        // $row=mysqli_fetch_array($data);
+        // $this->setUserId($row[0]);
+        // $this->setFName($row[1]);
+        // $this->setLName($row[2]);
+        // $this->setDP($row[6]);
     }
-
+    public function disname()
+    {
+        return $this->getFName();
+    }
     public function getDoc($docId){
         $db= new Database();
         $data = $db->getData("select * from doctor where id='$docId'");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 06, 2020 at 04:48 AM
+-- Generation Time: Nov 07, 2020 at 05:10 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS `docspecialdays`;
 CREATE TABLE IF NOT EXISTS `docspecialdays` (
   `docId` varchar(9) NOT NULL,
   `date` date DEFAULT NULL,
+  `status` int(11) NOT NULL,
   KEY `docId` (`docId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `phone` varchar(10) NOT NULL,
   `email` text NOT NULL,
   `password` text NOT NULL,
+  `dp` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -85,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`) VALUES
-('doc45', 'Rukmal', 'Weerasinghe', '0776386324', '', 'Doctor123');
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`) VALUES
+('doc45', 'Rukmal', 'Weerasinghe', '0776386324', '', 'c7162aebf2f225aa12236473f82222a9b088126b', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,6 +204,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `address` text NOT NULL,
   `allergies` text,
   `impNotes` text,
+  `dp` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -209,9 +212,9 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `allergies`, `impNotes`) VALUES
-('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'ghsdfsfas', 25, '12/21,Seeduwa', 'test\n\n\n\n\n\n\n\n', 'tesssff\ndjj\n'),
-('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', '', '');
+INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `allergies`, `impNotes`, `dp`) VALUES
+('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'ghsdfsfas', 25, '12/21,Seeduwa', 'test\n\n\n\n\n\n\n\n', 'tesssff\ndjj\n', NULL),
+('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', '', '', NULL);
 
 -- --------------------------------------------------------
 

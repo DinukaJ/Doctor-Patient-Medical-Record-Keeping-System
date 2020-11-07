@@ -9,16 +9,6 @@ if(!isset($_SESSION["user"]))
     // header("Location: ../login.php");
 }
 
-if(isset($_POST["loginBtn"]))
-{
-    $fname=$_POST["firstName"];
-    $lname=$_POST["lastName"];
-    $phone=$_POST["phone"];
-    $age=$_POST["age"];
-    $address=$_POST["address"];
-    $patient=new patient();
-    $res=$patient->addPatient(null,$fname,$lname,$phone,$age,$address);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
