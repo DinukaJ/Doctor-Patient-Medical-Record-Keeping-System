@@ -219,9 +219,14 @@ function getFullPatientData()
             <div class="row">
                 <div class="c-12 c-l-6">
                     <h2>Allergies</h2>
+                    <div class="row" style="padding:0px; margin:0px;">
+                        <div class="c-12" style="padding:0px; margin:0px;">
+                            <div class="alerMSG" id="allergyStatus"></div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="c-11" style="padding-right:4px">
-                            <input type="text" class="input-field fullWidth" placeholder="Enter New Allergy">
+                            <input type="text" class="input-field fullWidth" id="newAllergy" placeholder="Enter New Allergy">
                         </div>
                         <div class="c-1" style="padding:0px">
                         <button type="button" class="btn btnAddPres" style="padding:0px;" name="addAllergy" id="addAllergy"><i class="fas fa-plus"></i></button>
@@ -252,9 +257,14 @@ function getFullPatientData()
                 </div>
                 <div class="c-12 c-l-6">
                     <h2>Important Notes</h2>
+                    <div class="row" style="padding:0px; margin:0px;">
+                        <div class="c-12" style="padding:0px; margin:0px;">
+                            <div class="alerMSG" id="impStatus"></div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="c-11" style="padding-right:4px">
-                            <input type="text" class="input-field fullWidth" placeholder="Enter New Note">
+                            <input type="text" class="input-field fullWidth" id="newImp" placeholder="Enter New Note">
                         </div>
                         <div class="c-1" style="padding:0px">
                         <button type="button" class="btn btnAddPres" style="padding:0px;" name="addImportantNote" id="addImportantNote"><i class="fas fa-plus"></i></button>
@@ -262,7 +272,7 @@ function getFullPatientData()
                     </div>
                     <div class="row">
                         <div class="c-12" style="padding-right:0px;">
-                            <div class="scrollBox" id="allergyBox">
+                            <div class="scrollBox" id="impBox">
                                 <div class="row allergyRow">
                                     <div class="c-11" style="padding-right:0px;">
                                         Note 1

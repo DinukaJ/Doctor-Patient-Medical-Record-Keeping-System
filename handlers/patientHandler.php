@@ -18,6 +18,16 @@ if(isset($_POST["type"]))
         updatePass();
     if($_POST["type"]=="searchPRecep")
         searchPatientsRecep();
+    if($_POST["type"]=="getAllergy")
+        getAllergy();
+    if($_POST["type"]=="addAllergy")
+        addAllergy();
+    if($_POST["type"]=="addImp")
+        addImp();
+    if($_POST["type"]=="delAllergy")
+        delAllergy();
+    if($_POST["type"]=="delImp")
+        delImp();
 }
 function getPatNewId()
 {
@@ -95,7 +105,75 @@ function getpatientDat()
     $row=mysqli_fetch_array($patientData);
     echo json_encode($row);
 }
+function getAllergy()
+{
+    $patient = new patient();
+    $patientID=$_POST["patientID"];
+    $allergy=$patient->getAllergy($patientID);
+    $impNotes=$patient->getImpNotes($patientID);
+    $output1="";
+    $output2="";
+    while($row=mysqli_fetch_array($allergy))
+    {
+        $output1.='
+        <div class="row allergyRow">
+            <div class="c-11" style="padding-right:0px;">
+                '.$row[1].'
+            </div>
+            <div class="c-1" style="padding-left:2px;">
+                <button class="btn btnPatientView2 delAllergy" name="delAllergy" id="'.$row[1].'"><i class="fas fa-times"></i></button>
+            </div>
+        </div>  
+        ';
+    }
+    while($row=mysqli_fetch_array($impNotes))
+    {
+        $output2.='
+        <div class="row allergyRow">
+            <div class="c-11" style="padding-right:0px;">
+                '.$row[1].'
+            </div>
+            <div class="c-1" style="padding-left:2px;">
+                <button class="btn btnPatientView2 delImp" name="delImp" id="'.$row[1].'"><i class="fas fa-times"></i></button>
+            </div>
+        </div>  
+        ';
+    }
+    echo json_encode(array($output1,$output2));
+}
 
+function addAllergy()
+{
+    $patient = new patient();
+    $patientID=$_POST["patientID"];
+    $allergy=$_POST["allergy"];
+    $stat=$patient->addAllergy($patientID,$allergy);
+    echo $stat;
+}
+function delAllergy()
+{
+    $patient = new patient();
+    $patientID=$_POST["patientID"];
+    $allergy=$_POST["allergy"];
+    $stat=$patient->delAllergy($patientID,$allergy);
+    echo $stat;
+}
+function addImp()
+{
+    $patient = new patient();
+    $patientID=$_POST["patientID"];
+    $imp=$_POST["imp"];
+    $stat=$patient->addImp($patientID,$imp);
+    echo $stat;
+}
+function delImp()
+{
+    $patient = new patient();
+    $patientID=$_POST["patientID"];
+    $imp=$_POST["imp"];
+    $stat=$patient->delImp($patientID,$imp);
+    echo $stat;
+}
 
 function updateDet(){
     $patient = new patient();

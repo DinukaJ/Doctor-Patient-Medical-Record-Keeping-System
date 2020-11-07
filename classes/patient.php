@@ -35,7 +35,55 @@ class patient extends users
     {
         $db=new Database();
         return $db->getData("select * from patient where id='$id'");
-    }   
+    }
+    public function getAllergy($id)
+    {
+        $db=new Database();
+        return $db->getData("select * from patientallergy where id='$id'");
+    }
+    public function getImpNotes($id)
+    {
+        $db=new Database();
+        return $db->getData("select * from patientimpnotes where id='$id'");
+    }
+    public function addAllergy($id,$allergy)
+    {
+        $db=new Database();
+        $res=$db->getData("select * from patientallergy where id='$id' and allergy='$allergy'");
+        if(mysqli_num_rows($res))
+        {
+            return -1; 
+        }
+        else
+        {
+            return $db->insert_update_delete("insert into patientallergy values('$id','$allergy')");
+        }
+        return $res;
+    }
+    public function delAllergy($id,$allergy)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("delete from patientallergy where id='$id' and allergy='$allergy'");
+    }
+    public function addImp($id,$imp)
+    {
+        $db=new Database();
+        $res=$db->getData("select * from patientimpnotes where id='$id' and impNote='$imp'");
+        if(mysqli_num_rows($res))
+        {
+            return -1; 
+        }
+        else
+        {
+            return $db->insert_update_delete("insert into patientimpnotes values('$id','$imp')");
+        }
+        return $res;
+    }
+    public function delImp($id,$imp)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("delete from patientimpnotes where id='$id' and impNote='$imp'");
+    }
     public function getPatientsList($search)
     {
         $db=new Database();

@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $("#allergyStatus").hide();
+    $("#impStatus").hide();
+});
 var curr=0;
 var ser=document.getElementById("patientID");
 
@@ -105,6 +109,146 @@ function putPatientData()
             $("#pphone").html(data['phone']);
             $("#age").html(data['age']);
             $("#address").html(data['address']);
+            getAllergyIMDetails(pId);
+        }
+        
+    });
+}
+
+function getAllergyIMDetails(pId)
+{
+    $.ajax({
+        url:"../handlers/patientHandler.php",
+        method:"POST",
+        data:{patientID:pId, type:'getAllergy'},
+        dataType:'json',
+        success:function(data){
+            $("#allergyBox").html(data[0]);
+            $("#impBox").html(data[1]);
+
+            $(".delAllergy").click(function(){
+                delAllergy(pId,$(this).attr("id"));
+            });
+            $(".delImp").click(function(){
+                delImp(pId,$(this).attr("id"));
+            });
+        }
+        
+    });
+}
+$("#addAllergy").click(function(){
+    var pId=val.split(" ");
+    pId=pId[0];
+    if($("#newAllergy").val()=="")
+    {
+        $("#newAllergy").addClass('errorInput');
+    }
+    else
+    {
+        $.ajax({
+            url:"../handlers/patientHandler.php",
+            method:"POST",
+            data:{patientID:pId, type:'addAllergy', allergy:$("#newAllergy").val()},
+            success:function(data){
+                if(data==-1)
+                {
+                    $('#allergyStatus').removeClass('error');
+                    $('#allergyStatus').removeClass('success');
+                    $('#allergyStatus').addClass('error');
+                    $('#allergyStatus').html("Allergy Already Added");
+                    $('#allergyStatus').slideDown();
+                    setTimeout(function(){
+                        $('#allergyStatus').slideUp("slow");
+                    },2000);
+                }
+                else if(data==0)
+                {
+                    $('#allergyStatus').removeClass('error');
+                    $('#allergyStatus').removeClass('success');
+                    $('#allergyStatus').addClass('error');
+                    $('#allergyStatus').html("Something Went Wrong.");
+                    $('#allergyStatus').slideDown();
+                    setTimeout(function(){
+                        $('#allergyStatus').slideUp("slow");
+                    },2000);
+                }
+                else
+                {
+                    getAllergyIMDetails(pId);
+                    $("#newAllergy").val("");
+                }
+            }
+            
+        });
+    }
+});
+$("#addImportantNote").click(function(){
+    var pId=val.split(" ");
+    pId=pId[0];
+    if($("#newImp").val()=="")
+    {
+        $("#newImp").addClass('errorInput');
+    }
+    else
+    {
+        $.ajax({
+            url:"../handlers/patientHandler.php",
+            method:"POST",
+            data:{patientID:pId, type:'addImp', imp:$("#newImp").val()},
+            success:function(data){
+                if(data==-1)
+                {
+                    $('#impStatus').removeClass('error');
+                    $('#impStatus').removeClass('success');
+                    $('#impStatus').addClass('error');
+                    $('#impStatus').html("Note Already Added");
+                    $('#impStatus').slideDown();
+                    setTimeout(function(){
+                        $('#impStatus').slideUp("slow");
+                    },2000);
+                }
+                else if(data==0)
+                {
+                    $('#impStatus').removeClass('error');
+                    $('#impStatus').removeClass('success');
+                    $('#impStatus').addClass('error');
+                    $('#impStatus').html("Something Went Wrong.");
+                    $('#impStatus').slideDown();
+                    setTimeout(function(){
+                        $('#impStatus').slideUp("slow");
+                    },2000);
+                }
+                else
+                {
+                    getAllergyIMDetails(pId);
+                    $("#newImp").val("");
+                }
+            }
+            
+        });
+    }
+});
+
+function delAllergy(id,allergy)
+{
+    $.ajax({
+        url:"../handlers/patientHandler.php",
+        method:"POST",
+        data:{patientID:id, type:'delAllergy', allergy:allergy},
+        success:function(data){
+            getAllergyIMDetails(id);
+        }
+        
+    });
+}
+function delImp(id,impNotes)
+{
+    $.ajax({
+        url:"../handlers/patientHandler.php",
+        method:"POST",
+        data:{patientID:id, type:'delImp', imp:impNotes},
+        success:function(data){
+            getAllergyIMDetails(id)
         }
         
     });
