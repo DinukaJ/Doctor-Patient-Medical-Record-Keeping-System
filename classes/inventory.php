@@ -47,7 +47,7 @@ class inventory
     //searching for specific medicine using medicine name or shortCode of the medicine
     public function getMed($input){
         $db = new Database();
-        $data = $db->getData("select m.*, mt.type, mt.price, mt.qty from medicine m join medtypes mt on m.id=mt.id where id='$input' and mt.status=1");
+        $data = $db->getData("select m.*, mt.type, mt.price, mt.qty from medicine m join medtypes mt on m.id=mt.id where m.id='$input' and mt.status=1");
         return $data;
     }
 

@@ -39,24 +39,11 @@ else
                         <div class="c-l-12">
                         <h1 style="margin-top:5px">Prescription Queue</h1>
                         </div>
-                        <!-- <div class="c-l-8 totText">
-                            Total Patients: 10
-                        </div> -->
                     </div>
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-3">
-                             <div class="boxSmall">
-                                 <label>Prescription No.</label>
-                             </div>
-                        </div>
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-12">
                             <div class="boxSmall">
-                                 <label>No. of Items</label>
-                            </div>
-                        </div>
-                        <div class="c-12 c-l-6">
-                            <div class="boxSmall">
-                                <label>No. of Prescriptions in Queue:<?php 
+                                <label>No. of Prescriptions in Queue: 10<?php 
                                 // $pid = $pres->getUserId();
                                 // $res = $pres->getPatientPresNum($pid);
                                 // echo"<span>$res</span>"?>
@@ -65,12 +52,23 @@ else
                         </div>
                     </div>
                 </div>
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='medicId'>Prescription No</div>
+                    <div class='c-4' class='medicName'>Patient Name</div>
+                    <div class='c-4' class='medicQty'>Item Count</div>
+                    <div class='c-1'>
+                    
+                    </div>
+                </div>
                 <div class="row patientDataRow">
                     <div class="c-3">
                         1
                     </div>
-                    <div class="c-8">
-                        1
+                    <div class="c-4">
+                        Pasindu Dissanayake
+                    </div>
+                    <div class="c-4">
+                        10
                     </div>
                     <div class="c-1">
                         <button type="button" class="btn btnPatientView" id="viewPres">View</button>
@@ -213,16 +211,6 @@ else
        var modal = document.getElementById("modalViewPres");
         //Model Bill
        var modal = document.getElementById("modalBill");
-        
-        //open and closing functions
-        function open(modal) {
-            // modal.style.display = "block";
-            $(modal).slideDown();
-        }
-        function close(modal){
-            // modal.style.display = "none";
-            $(modal).slideUp();
-        }
 
         $(document).ready(function(){
             //click on view

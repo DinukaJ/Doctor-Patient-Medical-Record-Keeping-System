@@ -6,7 +6,7 @@ include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
-$patId = "pat45";
+$patId = "p-1";
 $patient="";
 if(isset($_SESSION["user"]))
 {
@@ -37,28 +37,27 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
             <?php getSideNav("prescribe")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart3">
+                <div class="upperPart">
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-4">
-                             <div class="boxSmall">
-                                 <label>Doctor</label>
-                             </div>
+                        <div class="c-l-12">
+                        <h1 style="margin-top:5px">Prescriptions</h1>
                         </div>
-                        <div class="c-12 c-l-4">
-                             <div class="boxSmall" style="text-align:center">
-                                 <label>Prescription No.</label>
-                            </div>
-                        </div>
-                        <div class="c-12 c-l-1"></div>
+                    </div>
+                    <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>No. of Prescriptions:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
-                                </label>
+                                <label>No. of Prescriptions: <span id="noOfPres"></span></label>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='medicId'>Prescription No</div>
+                    <div class='c-4' class='medicName'>Doctor Name</div>
+                    <div class='c-2' class='medicQty'>Item Count</div>
+                    <div class='c-2' class='medicQty'>Date</div>
+                    <div class='c-1'>
+                    
                     </div>
                 </div>
               <div id="presInfo"></div>
@@ -175,8 +174,10 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 url:"../handlers/prescriptionHandler.php",
                 method:"POST",
                 data:{patientID:patID,type:'getPres'},
+                dataType:'json',
                 success:function(data){
-                    $('#presInfo').html(data);
+                    $('#presInfo').html(data[0]);
+                    $('#noOfPres').html(data[1]);
                     $('.viewPres').click(function(){
                         open(modalViewPres);
                         getPresInfo(this.id);

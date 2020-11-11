@@ -54,7 +54,7 @@ else
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                 <label>Total Tablet Count:</label>
+                                 <!-- <label>Total Tablet Count:</label> -->
                             </div>
                         </div>
                         <div class="c-12 c-l-2">
@@ -201,7 +201,6 @@ else
 
  <!-- The Modal for View Inventory-->
 <div id="modalViewMed" class="modal modal2">
-
 <!-- Modal content -->
  <div class="modal-content-short2 inventoryModal">
     <div class="row">
@@ -217,35 +216,31 @@ else
         </div>
         <div class="row">
             <div class="c-12 c-m-3">
-                Medicine ID: 
+                Medicine ID: <span class="answer" id="medicId"></span>
             </div>
-            <div class="c-12 c-m-9 answer" id="medicId">
+            <div class="c-12 c-m-6">
+                Medicine Name: <span class="answer" id="medicName"></span>
             </div>
-        </div>
-        <div class="row">
             <div class="c-12 c-m-3">
-                Medicine Name: 
+                Short Code: <span class="answer" id="medicSc"></span>
             </div>
-                <div class="c-12 c-m-9 answer" id="medicName"></div>
+            <div class="c-12"><hr></div>
         </div>
+              
         <div class="row">
-            <div class="c-12 c-m-3">
-                Price: 
+            <div class="c-12 c-m-6">
+                <b>Type</b>
             </div>
+            <div class="c-12 c-m-3">
+                <b>QTY</b>
+            </div>
+            <div class="c-12 c-m-3">
+                <b>Price</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="medTypes">
 
-                <div class="c-12 c-m-9 answer" id="medicPrice"></div>
-        </div>                
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Qty: 
-            </div>
-                <div class="c-12 c-m-9 answer" id="medicQty"></div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Short Code: 
-            </div>
-                <div class="c-12 c-m-9 answer" id="medicSc"></div>
         </div>
    </div>
         <div class ="bottomModel row">
@@ -338,6 +333,8 @@ else
             $("#addMed").click(()=>{
                 open(modalAddMed);
             });
+            //View Medicine
+            
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
             })
@@ -373,6 +370,5 @@ else
         }
     </script>
     <script src="../js/searchMed.js"></script>
-    <script src="../js/mainPharmacist.js"></script>
 </body>
 </html>

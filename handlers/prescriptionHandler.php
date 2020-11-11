@@ -156,19 +156,21 @@ function getPatientPresIn(){
         while($presRow=mysqli_fetch_array($presData)){
             $docId = $presRow[0];//assigning doctor id
             $docData= $doctor->getDoc($docId);//getting doctor data 
+            $itemCount=$prescription->getPresMedCount($presRow[2]);
             $docRow= mysqli_fetch_array($docData);
             $name = $docRow[1].' '.$docRow[2];//concatenating doc name   
             $output.= "<div class='row patientDataRow'>
+            <div class='c-12 c-l-3' class='presId' style='text-align:center'>$presRow[2]</div>
             <div class='c-12 c-l-4' class='docName' id='docNameF'>$name</div>
-            <div class='c-12 c-l-4' class='presId' style='text-align:center'>$presRow[2]</div>
-            <div class='c-3 c-l-3'></div>
+            <div class='c-12 c-l-2'>$itemCount</div>
+            <div class='c-3 c-l-2'>$presRow[3]</div>
             <div class='c-12 c-l-1'>
                 <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";
         }
     }
-    echo $output;
+    echo json_encode(array($output,$prescription->getPatientPresNum($pid)));
 }
 function getPatientPres(){ 
     $output="";

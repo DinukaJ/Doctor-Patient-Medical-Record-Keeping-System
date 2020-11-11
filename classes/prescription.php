@@ -43,13 +43,22 @@ class prescription
     public function getPatientPresNum($pid)
     {
         $db=new Database();
-        return $db->getData("select count(id) from prescriptions where id='$pid'");
+        $result=$db->getData("select count(id) from prescriptions where patientId='$pid'");
+        $row=mysqli_fetch_array($result)[0];
+        return $row;
     }
     public function getPatientPres($pid)//getting a patient's prescriptions
     {  
         $db = new Database();
         $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1')");
         return $data;
+    }
+    public function getPresMedCount($pid)
+    {
+        $db=new Database();
+        $data=$db->getData("select count(med_ID) from prescription_medicine where pres_ID='$pid'");
+        $row=mysqli_fetch_array($data)[0];
+        return $row;
     }
     public function getPresMeds($id)//getting medicine of a prescription
     {  

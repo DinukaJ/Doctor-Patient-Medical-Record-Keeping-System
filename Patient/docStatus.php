@@ -37,7 +37,12 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
             <?php getSideNav("docStatus")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart3">
+                <div class="upperPart">
+                <div class="upperFirst row">
+                    <div class="c-l-12">
+                    <h1 style="margin-top:5px">Doctor Status</h1>
+                    </div>
+                </div>
                   <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                              <div class="boxSmall wrapper">

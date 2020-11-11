@@ -37,36 +37,39 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
             <?php getSideNav("labRep")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart3">
+                <div class="upperPart">
+                <div class="upperFirst row">
+                        <div class="c-l-12">
+                        <h1 style="margin-top:5px">Lab Reports</h1>
+                        </div>
+                    </div>
                    <div class="upperFirst row">  
-                        <div class="c-12 c-l-3" >
-                             <div class="boxSmall">
-                                 <label>Report ID</label>
-                             </div>
-                        </div>
-                        <div class="c-12 c-l-3" >
-                            <div class="boxSmall">
-                                 <label>Report Type</label>
-                            </div>
-                        </div>
                         <div class="c-12 c-l-6">
                             <div class="boxSmall">
-                                <label>No. of Reports:<?php 
-                                //TODO: Back End
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
-                                </label>
+                                <label>No. of Reports: <span id="noOfReports"></span></label>
                             </div>
                         </div>
                   </div>  
                 </div>
+
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='medicId'>Report Id</div>
+                    <div class='c-4' class='medicName'>Report Type</div>
+                    <div class='c-4' class='medicQty'>Date</div>
+                    <div class='c-1'>
+                    
+                    </div>
+                </div>
+
                 <div class="row patientDataRow">
                     <div class="c-3">
                         1
                     </div>
-                    <div class="c-8">
-                        1
+                    <div class="c-4">
+                        Blood Report
+                    </div>
+                    <div class="c-4">
+                        2020-11-01
                     </div>
                     <div class="c-1">
                         <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>

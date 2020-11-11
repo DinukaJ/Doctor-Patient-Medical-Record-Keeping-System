@@ -92,8 +92,30 @@ function getMedDat(){
     $inventory = new inventory();
     $medicID=$_POST["medId"];
     $medData=$inventory->getMed($medicID);
-    $row=mysqli_fetch_array($medData);
-    echo json_encode($row);
+    $medid="";
+    $medName="";
+    $shortCode="";
+    $output="";
+    while($row=mysqli_fetch_array($medData))
+    {
+        $medid=$row[0];
+        $medName=$row[1];
+        $shortCode=$row[2];
+        $output.='
+        <div class="row">
+            <div class="c-12 c-m-6">
+                '.$row[3].'
+            </div>
+            <div class="c-12 c-m-3">
+                '.$row[5].'
+            </div>
+            <div class="c-12 c-m-3">
+                '.$row[4].'
+            </div>
+        </div>
+        ';
+    }
+    echo json_encode(array($medid,$medName,$shortCode,$output));
 }
 
 //Adding new med data 

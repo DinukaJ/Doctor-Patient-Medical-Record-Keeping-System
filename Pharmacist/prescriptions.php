@@ -44,12 +44,7 @@ else
                         </div> -->
                     </div>
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-3">
-                             <div class="boxSmall">
-                                 <label>Prescription No.</label>
-                             </div>
-                        </div>
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-12">
                             <div class="boxSmall">
                                  <label>No. of Items</label>
                             </div>
@@ -57,15 +52,30 @@ else
                     </div>
                 </div>
                 
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='medicId'>Prescription No</div>
+                    <div class='c-4' class='medicName'>Patient Name</div>
+                    <div class='c-2' class='medicQty'>Item Count</div>
+                    <div class='c-2' class='medicQty'>Date</div>
+                    <div class='c-1'>
+                    
+                    </div>
+                </div>
                 <div class="row patientDataRow">
                     <div class="c-3">
                         1
                     </div>
-                    <div class="c-8">
-                        1
+                    <div class="c-4">
+                        Pasindu Dissanayake
+                    </div>
+                    <div class="c-2">
+                        10
+                    </div>
+                    <div class="c-2">
+                        2020-11-01
                     </div>
                     <div class="c-1">
-                        <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
+                        <button type="button" class="btn btnPatientView" id="viewPres">View</button>
                     </div>
                 </div>
                 <?php
@@ -89,15 +99,6 @@ else
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
-
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
 
 
     <!-- Footer Includes -->
