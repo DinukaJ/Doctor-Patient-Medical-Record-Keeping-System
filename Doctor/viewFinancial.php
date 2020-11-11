@@ -88,44 +88,21 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
 
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
+    <!-- Edit Profile Modal -->
+    <?php getEditProfile($doctor)?>
+    <!-- End of Edit Profile View -->
 
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
+    <script src="../js/mainDoc.js"></script>
     <script src="../js/mainPatient.js"></script>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
+      <script>
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            if (event.target == modalUpdateDet) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalUpdateDet);
             }
         }
     </script>

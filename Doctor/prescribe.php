@@ -207,12 +207,8 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             });
 
             $('.close').click(()=>{
-                close(modalUpdateDet);
                 close(modalPatient);
                 close(patientPrescription);
-            })
-            $('#upCancel').click(()=>{
-                close(modalUpdateDet);
             })
             $('#patClose').click(()=>{
                 close(modalPatient);

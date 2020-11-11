@@ -62,19 +62,14 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             </div>
         </div>
     </div>
-    <!-- The Modal -->
-    <!-- <div id="myModal" class="modal">
 
-        <div class="modal-content container">
-        <span class="close">&times;</span>
-           
-        </div>
-
-    </div> -->
-
+    <!-- Edit Profile Modal -->
+    <?php getEditProfile($doctor)?>
+    <!-- End of Edit Profile View -->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
+    <script src="../js/mainDoc.js"></script>
     <script src="../js/mainPatient.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
@@ -90,6 +85,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modalUpdateDet) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalUpdateDet);
+            }
             if (event.target == modalPatient) {
                     // modalUpdateDet.style.display = "none";
                     close(modalPatient);

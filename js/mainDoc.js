@@ -1,4 +1,12 @@
 var modalUpdateDet = document.getElementById("modalUpdateDet");
+$(document).ready(function(){
+    $('.close').click(()=>{
+        close(modalUpdateDet);
+    })
+    $('#upCancel').click(()=>{
+        close(modalUpdateDet);
+    })
+});
 $('#editProfile').click(()=>{
     $('.editProfile input').removeClass('errorInput');
     var dID = $("#docID").val();
