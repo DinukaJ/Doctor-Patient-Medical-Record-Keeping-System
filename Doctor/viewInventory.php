@@ -35,7 +35,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             <?php getSideNav("inventory")?>
 
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px">
-                <div class="upperPart3">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-12">
+                            <h1 style="margin-top:5px">Inventory</h1>
+                        </div>
+                    </div>
                     <div class="upperFirst row">
                         <div class="c-12 c-l-4">
                             <input type="text" class="input-field fullWidth" name="patientID" id="patientID" placeholder="Enter Short Code or Medicine Name">
@@ -63,8 +68,15 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div>
                     </div>
                 </div>
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-2' class='patId'>Med ID</div>
+                    <div class='c-4' class='patFirstName'>Name</div>
+                    <div class='c-2' class='patLastName'>Age</div>
+                    <div class='c-4'>Price</div>
+                    <div class='c-1'></div>
+                </div>
                 <div class="row patientDataRow">
-                    <div class="c-1">
+                    <div class="c-2">
                         1
                     </div>
                     <div class="c-4">
@@ -73,7 +85,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     <div class="c-2">
                         QTY
                     </div>
-                    <div class="c-4">
+                    <div class="c-3">
                         Price
                     </div>
                     <div class="c-1">

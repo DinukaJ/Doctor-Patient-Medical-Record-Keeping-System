@@ -35,7 +35,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             <?php getSideNav("financial")?>
 
             <div class="c-12 c-l-10 rightContainer" style="padding-left:0px; padding-right:0px">
-                <div class="upperPart3">
+                <div class="upperPart">
+                    <div class="upperFirst row">
+                        <div class="c-l-12">
+                            <h1 style="margin-top:5px">Financial Records</h1>
+                        </div>
+                    </div>
                     <div class="upperFirst row">
                         <div class="c-12 c-l-2">
                             <label>Select Month: </label>
