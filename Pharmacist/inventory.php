@@ -166,8 +166,8 @@ else
                     <div class="c-12" id="typeRowSection">
                         <div class="typeRow row">
                             <div class="c-m-4">
-                                <label for="medname">Weight Per Unit: </label>
-                                <input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder="200(mg)">
+                                <label for="medname">Weight Per Unit/Vol: </label>
+                                <input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder="200(mg/ml)">
                             </div>
                             <div class="c-m-3">
                                 <label for="medname">QTY: </label>
