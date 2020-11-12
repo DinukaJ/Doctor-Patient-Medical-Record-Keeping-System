@@ -31,11 +31,11 @@ class inventory
     //     return $stat;
     // }
 
-    // public function delMed($id){
-    //     $db = new Database();
-    //     $stat = $db->insert_update_delete("delete from medicine where id='$id'");
-    //     return $stat;
-    // }
+    public function delMed($id){
+        $db = new Database();
+        $stat = $db->insert_update_delete("delete from medicine where id='$id'");
+        return $stat;
+    }
 
     //retrieving all the information of the inventory
     public function getMedAll(){

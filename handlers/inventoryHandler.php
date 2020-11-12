@@ -18,8 +18,8 @@ if(isset($_POST["type"])){
         addMedTypes();
     // if($_POST["type"]=="upMed")
     //     upMedData();
-    // if($_POST["type"]=="delMed")
-    //     delMedData();
+    if($_POST["type"]=="delMed")
+        delMedData();
 }
 
 
@@ -149,13 +149,13 @@ function addMedTypes(){
 //     echo $stat;
 // }
 
-// //Deleting Data
-// function delMedData(){
-//     $inventory = new inventory();
-//     $id = $_POST["id"];
-//     $stat = $inventory->delMed($id);
-//     echo $stat;
-// }
+//Deleting Data
+function delMedData(){
+    $inventory = new inventory();
+    $id = $_POST["id"];
+    $stat = $inventory->delMed($id);
+    echo $stat;
+}
 
 
 ?>
