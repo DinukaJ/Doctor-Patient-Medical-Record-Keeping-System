@@ -16,8 +16,8 @@ if(isset($_POST["type"])){
         addMedData();
     if($_POST["type"]=="addMedTypes")
         addMedTypes();
-    // if($_POST["type"]=="upMed")
-    //     upMedData();
+    if($_POST["type"]=="upMed")
+        upMedData();
     if($_POST["type"]=="delMed")
         delMedData();
 }
@@ -96,6 +96,7 @@ function getMedDat(){
     $medName="";
     $shortCode="";
     $output="";
+    $upOutput="";
     while($row=mysqli_fetch_array($medData))
     {
         $medid=$row[0];
@@ -114,8 +115,21 @@ function getMedDat(){
             </div>
         </div>
         ';
+        $upOutput.="
+        <div class='row'>
+            <div class='c-12 c-m-4'>
+                <input type='text' class='input-field medUpType' style='width:100%;' name='medUpType' placeholder='' value='$row[3]'>
+            </div>
+            <div class='c-12 c-m-4'>
+                <input type='text' class='input-field medUpQty' style='width:100%;' name='medUpQty' placeholder='' value='$row[5]'>
+            </div>
+            <div class='c-12 c-m-4'>
+                <input type='text' class='input-field medUpPrice' style='width:100%;' name='medUpPrice' placeholder='' value='$row[4]'>
+            </div>
+        </div>
+        ";
     }
-    echo json_encode(array($medid,$medName,$shortCode,$output));
+    echo json_encode(array($medid,$medName,$shortCode,$output,$upOutput));
 }
 
 //Adding new med data 
@@ -137,17 +151,15 @@ function addMedTypes(){
     echo $stat;
 }
 
-// //Updating existing data
-// function upMedData(){
-//     $inventory = new inventory();
-//     $id = $_POST["medUpID"];
-//     $name = $_POST["medUpName"];
-//     $price = $_POST["medUpPrice"];
-//     $qty = $_POST["medUpQty"];
-//     $shortCode = $_POST["medUpSc"];
-//     $stat = $inventory->upMed($id,$name,$qty,$price,$shortCode);
-//     echo $stat;
-// }
+//Updating existing data
+function upMedData(){
+    $inventory = new inventory();
+    $id = $_POST["medID"];
+    $name = $_POST["medName"];
+    $shortCode = $_POST["medSc"];
+    $stat = $inventory->upMed($id,$name,$shortCode);
+    echo $stat;
+}
 
 //Deleting Data
 function delMedData(){

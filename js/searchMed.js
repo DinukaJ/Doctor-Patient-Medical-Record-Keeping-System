@@ -67,11 +67,10 @@ function putInventoryData(id)
             $("#updateMed").click(()=>{
                 open(modalUpdateMed);
                 close(modalViewMed);
-                $('#medUpID').val(data['id']);
-                $('#medUpName').val(data['name']);
-                $('#medUpPrice').val(data['price']);
-                $('#medUpQty').val(data['qty']);
-                $('#medUpSc').val(data['shortCode']);
+                $('#medUpID').val(data[0]);
+                $('#medUpName').val(data[1]);
+                $('#medUpSc').val(data[2]);
+                $('#medUpTypes').html(data[4]);
             })
 
         }
@@ -153,6 +152,13 @@ $(document).ready(function(){
 //Add More Types
 $("#addType").click(function(){
     $("#typeRowSection").append('<div class="typeRow row"><div class="c-m-4"><label for="medname">Type Name: </label><input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder=""></div><div class="c-m-3"><label for="medname">QTY: </label><input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder=""></div><div class="c-m-4"><label for="medname">Price: </label><input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button></div></div>');
+    $(".delMed").click(function(){
+        $(this).parent().parent().remove();
+    });
+});
+//Add More Types Update
+$("#upAddType").click(function(){
+    $("#medUpTypes").append("<div class='typeRow row'> <div class='c-12 c-m-4'> <input type='text' class='input-field medUpType' style='width:100%;' name='medUpType' placeholder='' value=''> </div> <div class='c-12 c-m-4'> <input type='text' class='input-field medUpQty' style='width:100%;' name='medUpQty' placeholder='' value=''> </div> <div class='c-12 c-m-3'> <input type='text' class='input-field medUpPrice' style='width:100%;' name='medUpPrice' placeholder='' value=''></div><div class='c-12 c-m-1'><button type='button' value='' class='btn delType delMed' name='delUpType'><i class='fas fa-times'></i></button></div></div>");
     $(".delMed").click(function(){
         $(this).parent().parent().remove();
     });
@@ -312,6 +318,155 @@ function addMedTypes(id)
         });
     });
 }
+
+$("upMedSave").click(function(){
+    var errMsg="";
+    var x=0;
+    if($("#medUpName").val()=="")
+    {
+        $('#medUpName').addClass('errorInput');
+        x=1;
+    }
+    else
+    {
+        $('#medUpName').removeClass('errorInput');
+    }
+    if($("#medUpSc").val()=="")
+    {
+        $('#medUpSc').addClass('errorInput');
+        x=1;
+    }
+    else
+    {
+        $('#medUpSc').removeClass('errorInput');
+    }
+    if($(".typeRow").length>1)
+    {
+        var z=0;
+        $('.medUpType').each(function(i, obj) {
+            if($(obj).val()=="")
+            {
+                $(obj).addClass('errorInput');
+                z=1;
+            }
+            else
+                $(obj).removeClass('errorInput');
+        });
+        $('.medUpQty').each(function(i, obj) {
+            if($(obj).val()=="")
+            {
+                $(obj).addClass('errorInput');
+                z=1;
+            }
+            else
+                $(obj).removeClass('errorInput');
+        });
+        $('.medUpPrice').each(function(i, obj) {
+            if($(obj).val()=="")
+            {
+                $(obj).addClass('errorInput');
+                z=1;
+            }
+            else
+                $(obj).removeClass('errorInput');
+        });
+        if(z==1)
+        {
+            x=1;
+        }
+    }
+    // else
+    // {
+    //     $(".medType").removeClass('errorInput');
+    //     if($(".medQTY").val()=="")
+    //     {
+    //         $(".medQTY").addClass('errorInput');
+    //         x=1;
+    //     }
+    //     else
+    //         $(".medQTY").removeClass('errorInput');
+    //     if($(".medPrice").val()=="")
+    //     {
+    //         $(".medPrice").addClass('errorInput');
+    //         x=1;
+    //     }
+    //     else
+    //         $(".medPrice").removeClass('errorInput');
+    // }
+
+    if(x==1)
+    {
+        $('#updateStatus').removeClass('error');
+        $('#updateStatus').removeClass('success');
+        $('#updateStatus').addClass('error');
+        $('#updateStatus').html("These Fields Cannot be Empty.");
+        $('#updateStatus').slideDown();
+        setTimeout(function(){
+            $('#updateStatus').slideUp('slow');
+        },5000);
+    }
+    else
+    {
+        $('#updateStatus').removeClass('error');
+        $('#updateStatus').removeClass('success');
+        $.ajax({
+            url:"../handlers/inventoryHandler.php",
+            method:"POST",
+            data:{type:'upMed',medID:$("#medUpID").val(),medName:$("#medUpName").val(),medSc:$("#medUpSc").val()},//TODO: edit
+            success:function(data){
+                if(data){
+                    addMedTypes(medID);
+                    $('#updateStatus').addClass("success");
+                    $('#updateStatus').html("Successfully Updated!");
+                    $('#updateStatus').slideDown("slow");
+                    getAllMed();
+                    setTimeout(function(){
+                        $('#updateStatus').slideUp("slow");
+                    },2000);
+                }
+                else{
+                    $('#updateStatus').addClass("error");
+                    $('#updateStatus').html("Update Failed!");
+                    $('#updateStatus').slideDown("slow");
+                    setTimeout(function(){
+                        $('#updateStatus').slideUp("slow");
+                    },2000);
+                }
+            }
+        });
+    }
+});
+
+//Function to update medicine types
+function upMedTypes(id)
+{
+    $('#medUpTypes').each(function(i, obj) {
+        $.ajax({
+            url:"../handlers/inventoryHandler.php",
+            method:"POST",
+            data:{type:'upMedTypes',medId:id,medType:$(obj).find(".medUpType").val(),price:$(obj).find(".medUpPrice").val(),qty:$(obj).find(".medUpQty").val()},
+            success:function(data){
+                if(data!=1){
+                    $('#addMedStatus').addClass("error");
+                    $('#addMedStatus').html("Update Failed!");
+                    $('#addMedStatus').slideDown("slow");
+                    setTimeout(function(){
+                        $('#addMedStatus').slideUp("slow");
+                    },2000);
+                }
+                if(i==0)
+                {
+                    $(obj).find(".medType").val("");
+                    $(obj).find(".medPrice").val("");
+                    $(obj).find(".medQTY").val("");
+                }
+                else
+                    $(obj).remove();
+            }
+        });
+    });
+}
+
 //Clear after adding
 function clearFields()
 {
