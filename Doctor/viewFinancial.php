@@ -25,8 +25,13 @@ echo"<input type='hidden' value='$docid' id='docID'>";
 
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
-
+    <link rel="stylesheet" href="../css/Chart/Chart.min.css">
     <title>Doctor - View Financial Records</title>
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -68,23 +73,30 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div>
                     </div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-1">
-                        1
+                <div class="tableCont3">
+                    <div class="row">
+                        <div class="c-12">
+                            <canvas id="myChart" width="100" height="30vh"></canvas>
+                        </div>
                     </div>
-                    <div class="c-4">
-                        Bill No
-                    </div>
-                    <div class="c-2">
-                        No of Items
-                    </div>
-                    <div class="c-4">
-                        Bill Amount
-                    </div>
-                    <div class="c-1">
-                        <a class="btn btnPatientView" name="viewBill" id="viewBill">View</a>
-                    </div>
-                </div>  
+                    <div class="row patientDataRow">
+                        <div class="c-1">
+                            1
+                        </div>
+                        <div class="c-4">
+                            Bill No
+                        </div>
+                        <div class="c-2">
+                            No of Items
+                        </div>
+                        <div class="c-4">
+                            Bill Amount
+                        </div>
+                        <div class="c-1">
+                            <a class="btn btnPatientView" name="viewBill" id="viewBill">View</a>
+                        </div>
+                    </div>  
+                </div>
             </div>
         </div>
     </div>
@@ -98,6 +110,46 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
     <script src="../js/mainPatient.js"></script>
+    <script src="../js/Chart/Chart.bundle.min.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
       <script>
         window.onclick = function(event) {
             if (event.target == modalUpdateDet) {

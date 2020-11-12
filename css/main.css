@@ -407,6 +407,11 @@ body{
     max-height: 60vh;
     overflow-y: scroll;
 }
+.tableCont3{
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 .tableCont2{
     max-height: 55vh;
     overflow-y: scroll;
