@@ -283,11 +283,11 @@ else
         <div class="row">
             <div class="c-m-6">
                 <label for="medname">Medicine Name: </label>
-                <input type="text" class="input-field" style="width:100%;" name="medUpName" id="medUpName" placeholder="">
+                <input type="text" class="input-field medName" style="width:100%;" name="medUpName" id="medUpName" placeholder="">
             </div>
             <div class="c-m-6">
                 <label for="medSc">Short Code: </label>
-                <input type="text" class="input-field" style="width:100%;" name="medUpSc" id="medUpSc" placeholder="">
+                <input type="text" class="input-field medSc" style="width:100%;" name="medUpSc" id="medUpSc" placeholder="">
             </div>
         </div>
 
@@ -307,9 +307,8 @@ else
             </div>
             <div class="c-12"><hr></div>
         </div>
-        <div id="medUpTypes">
-            <div class="c-12" id="typeUpRowSection">
-        </div>
+        <div id="medUpTypes"></div>
+        <div id="addMedUpTypes"></div>
    </div>
    <div class="bottomModel">
         <div class="row">

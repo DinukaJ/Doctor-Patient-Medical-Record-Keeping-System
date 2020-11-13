@@ -16,6 +16,8 @@ if(isset($_POST["type"])){
         addMedData();
     if($_POST["type"]=="addMedTypes")
         addMedTypes();
+    if($_POST["type"]=="upMedTypes")
+        upMedTypes();
     if($_POST["type"]=="upMed")
         upMedData();
     if($_POST["type"]=="delMed")
@@ -121,7 +123,7 @@ function getMedDat(){
                 <input type='text' class='input-field medUpType' style='width:100%;' name='medUpType' placeholder='' value='$row[3]'>
             </div>
             <div class='c-12 c-m-4'>
-                <input type='text' class='input-field medUpQty' style='width:100%;' name='medUpQty' placeholder='' value='$row[5]'>
+                <input type='text' class='input-field medUpQTY' style='width:100%;' name='medUpQTY' placeholder='' value='$row[5]'>
             </div>
             <div class='c-12 c-m-4'>
                 <input type='text' class='input-field medUpPrice' style='width:100%;' name='medUpPrice' placeholder='' value='$row[4]'>
@@ -166,6 +168,17 @@ function delMedData(){
     $inventory = new inventory();
     $id = $_POST["id"];
     $stat = $inventory->delMed($id);
+    echo $stat;
+}
+
+//Updating med types data 
+function upMedTypes(){
+    $inventory = new inventory();
+    $medId = $_POST["medId"];
+    $type = $_POST["medType"];
+    $price = $_POST["price"];
+    $qty = $_POST["qty"];
+    $stat = $inventory->upMedType($medId,$type,$qty,$price);
     echo $stat;
 }
 

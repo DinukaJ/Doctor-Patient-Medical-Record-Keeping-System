@@ -23,13 +23,18 @@ class inventory
         $stat  = $db->insert_update_delete("insert into medtypes values ('$id','$type','$price','$qty','1')");
         return $stat;
     }
-
-    // //updating existing data
-    // public function upMed($id,$medName,$qty,$price,$shortCode){
-    //     $db = new Database();
-    //     $stat = $db->insert_update_delete("update medicine set name='$medName',price='$price',qty='$qty',shortCode='$shortCode' where id='$id'"); 
-    //     return $stat;
-    // }
+ 
+    public function upMed($id,$medName,$shortCode){
+        $db = new Database();
+        $stat = $db->insert_update_delete("update medicine set name='$medName',shortCode='$shortCode' where id='$id'"); 
+        return $stat;
+    }
+    
+    public function upMedTypes($id,$type,$qty,$price){
+        $db = new Database();
+        $stat = $db->insert_update_delete("update medtypes set type='$type',price='$price',qty='$qty' where id='$id'");
+        return $stat;
+    }
 
     public function delMed($id){
         $db = new Database();
