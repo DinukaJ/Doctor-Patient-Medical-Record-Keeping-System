@@ -162,6 +162,12 @@ $("#upAddType").click(function(){
     $(".delMed").click(function(){
         $(this).parent().parent().remove();
     });
+    
+    if($("#medUpTypes").find(".typeUpRow").eq(0).find(".medUpType").val()=="")
+    {
+        $("#medUpTypes").find(".typeUpRow").eq(0).find(".medUpType").removeAttr("disabled");
+        $("#medUpTypes").find(".typeUpRow").eq(0).find(".medUpType").removeClass("disable");
+    }
 });
 //Remove Types
 $(".delMed").click(function(){
@@ -312,7 +318,7 @@ $("#upMedSave").click(function(){
     }
 
     //Existing types check
-    if($(".typeUpRow").length>1)
+    if($(".typeUpRow").length>1 || ($(".typeUpRow").length==1 && $(".typeRow2").length>=1))
     {
         var z=0;
         $('.medUpType').each(function(i, obj) {
@@ -347,9 +353,38 @@ $("#upMedSave").click(function(){
             x=1;
         }
     }
+    else if($(".typeUpRow").length==1)
+    {
+        var z=0;
+        $('.medUpType').each(function(i, obj) {
+            $(obj).removeClass('errorInput');
+        });
+        $('.medUpQTY').each(function(i, obj) {
+            if($(obj).val()=="")
+            {
+                $(obj).addClass('errorInput');
+                z=1;
+            }
+            else
+                $(obj).removeClass('errorInput');
+        });
+        $('.medUpPrice').each(function(i, obj) {
+            if($(obj).val()=="")
+            {
+                $(obj).addClass('errorInput');
+                z=1;
+            }
+            else
+                $(obj).removeClass('errorInput');
+        });
+        if(z==1)
+        {
+            x=1;
+        }
+    }
 
     //Add More Part check
-    if($(".typeRow2").length>1)
+    if($(".typeRow2").length>=1)
     {
         var z=0;
         $('.medType').each(function(i, obj) {
