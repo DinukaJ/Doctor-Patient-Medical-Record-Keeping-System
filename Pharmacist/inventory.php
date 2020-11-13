@@ -99,7 +99,7 @@ else
     <div id="modalAddMed" class="modal modal2">
 
         <!-- Modal content -->
-        <div class="modal-content-short2 inventoryModal">
+        <div class="modal-content-long inventoryModal">
             <div class="row">
                 <div class="c-12">
                 <span class="close closeMed">&times;</span>
@@ -202,7 +202,7 @@ else
  <!-- The Modal for View Inventory-->
 <div id="modalViewMed" class="modal modal2">
 <!-- Modal content -->
- <div class="modal-content-short2 inventoryModal">
+ <div class="modal-content-long inventoryModal">
     <div class="row">
         <div class="c-12">
         <span class="close closeMed">&times;</span>
@@ -258,7 +258,7 @@ else
 <div id="modalUpdateMed" class="modal modal2">
 
 <!-- Modal content -->
-<div class="modal-content-short2 inventoryModal">
+<div class="modal-content-long inventoryModal">
     <div class="row">
         <div class="c-12">
         <span class="close closeMed">&times;</span>

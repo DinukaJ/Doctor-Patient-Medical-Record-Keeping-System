@@ -32,7 +32,7 @@ class inventory
     
     public function upMedTypes($id,$type,$qty,$price){
         $db = new Database();
-        $stat = $db->insert_update_delete("update medtypes set type='$type',price='$price',qty='$qty' where id='$id'");
+        $stat = $db->insert_update_delete("update medtypes set price='$price',qty='$qty' where id='$id' and type='$type'");
         return $stat;
     }
 
