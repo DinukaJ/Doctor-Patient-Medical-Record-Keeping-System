@@ -286,7 +286,7 @@ else
             close(modalPatient);
             open(modalPatientUpdate);
         });
-
+        var pId="";
         //Function to open the patient data modal
         function patientDataModal(pId)
         {
@@ -332,7 +332,7 @@ else
                     //Open patient data modal when click on view
                     var patientFullData=document.getElementById("patientFullData");
                     $('.viewMed').click(function(){
-                        var pId=$(this).attr('id');
+                         pId=$(this).attr('id');
 
                         patientDataModal(pId);
                     });
@@ -345,6 +345,26 @@ else
                 a=serPat.value;
                 getpatients(a);
             },100);
+        });
+    
+            var pId = document.getElementById("patID");
+    
+        $('#deleteMed').click(function(){
+           if(confirm("Are You Sure?")){
+            $.ajax({
+               url:"../handlers/patientHandler.php",
+               method:"POST",
+               data: {id:pId,type:'delPat'},
+               success:function(){
+                   close(modalPatient);
+                   getpatients("");
+               }
+            });
+           }
+           else{
+             return false;
+           }
+           
         });
     </script>
 </body>

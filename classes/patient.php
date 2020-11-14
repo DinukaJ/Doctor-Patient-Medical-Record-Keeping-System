@@ -84,6 +84,11 @@ class patient extends users
         $db=new Database();
         return $db->insert_update_delete("delete from patientimpnotes where id='$id' and impNote='$imp'");
     }
+    public function delPat($id)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("delete from patient where id='$id'");
+    }
     public function getPatientsList($search)
     {
         $db=new Database();

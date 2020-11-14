@@ -28,6 +28,8 @@ if(isset($_POST["type"]))
         delAllergy();
     if($_POST["type"]=="delImp")
         delImp();
+    if($_POST["type"]=="delPat")
+        delPat();
 }
 function getPatNewId()
 {
@@ -84,7 +86,7 @@ function searchPatientsRecep()
         {
             $output.="
             <div class='row patientDataRow'>
-                <div class='c-3' class='$row[0]'>$row[0]</div>
+                <div class='c-3' class='$row[0]' id='patID'>$row[0]</div>
                 <div class='c-5' class='$row[1]'>$row[1] $row[2]</div>
                 <div class='c-3' class='$row[2]'>$row[3]</div>
                 <div class='c-1'>
@@ -173,6 +175,13 @@ function delImp()
     $imp=$_POST["imp"];
     $stat=$patient->delImp($patientID,$imp);
     echo $stat;
+}
+//deletes patient
+function delPat(){
+    $patient = new patient();
+    $patientID=$_POST["id"];
+    $stat=$patient->delPat($patientID);
+    echo $stat; 
 }
 
 function updateDet(){
