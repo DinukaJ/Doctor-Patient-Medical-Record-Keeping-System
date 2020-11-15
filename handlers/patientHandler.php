@@ -51,7 +51,7 @@ function addPatient()
     $email=$_POST["email"];
     $pass=$_POST["pass"];
     $address=$_POST["address"];
-    $stat=$patient->addPatient($id,$fname,$lname,$phone,$age,$email,$pass,$address);
+    $stat=$patient->addPatient($id,$fname,$lname,$phone,$age,$email,$pass,$address,1);
     echo $stat;
 }
 function searchPatient()
