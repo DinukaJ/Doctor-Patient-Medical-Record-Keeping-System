@@ -67,17 +67,31 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <?php getEditProfile($doctor)?>
     <!-- End of Edit Profile View -->
 
+    <!-- Patient Full Data Modal -->
+    <?php getFullPatientData()?>
+    <!-- Patient Full Data -->
+
+    <!-- Patient Prescription Modal -->
+    <?php getPatientPrescriptions()?>
+    <!-- Patient Prescription Data -->
+
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
     <script src="../js/mainPatient.js"></script>
+    <script src="../js/search.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
         var modalPatientUpdate=document.getElementById("modalUpdatePat");
+        var patientPrescription=document.getElementById("patientPrescription");
         $(document).ready(function(){
+            $('#viewPatientPrescription2').click(function(){
+                open(patientPrescription);
+                close(modalPatient);
+            });
             $('.close').click(()=>{
                 close(modalPatient);
-                close(modalPatientUpdate);
+                open(patientPrescription);
             })
             $('#patClose').click(()=>{
                 close(modalPatient);
@@ -93,9 +107,9 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     // modalUpdateDet.style.display = "none";
                     close(modalPatient);
             }
-            if (event.target == modalPatientUpdate) {
+            if (event.target == patientPrescription) {
                     // modalUpdateDet.style.display = "none";
-                    close(modalPatientUpdate);
+                    close(patientPrescription);
             }
         }
     </script>
@@ -150,12 +164,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     $("#patientData").html(data[0]);
                     $("#totalCountPat").html(data[1]);
                     //Open patient data modal when click on view
-                    // var patientFullData=document.getElementById("patientFullData");
-                    // $('.viewMed').click(function(){
-                    //     var pId=$(this).attr('id');
-
-                    //     patientDataModal(pId);
-                    // });
+                    var patientFullData=document.getElementById("patientFullData");
+                    $('.viewMed').click(function(){
+                        var pId=$(this).attr('id');
+                        putPatientData2(pId);
+                        open(modalPatient);
+                    });
                 }   
             });
         }

@@ -9,6 +9,7 @@ var count=document.getElementById("secount");
 
 var val="";
 var entered=false;
+if(ser!=null){
 ser.addEventListener("keydown", function(e){
     entered=false;
 	count=document.getElementById("secount");
@@ -80,6 +81,7 @@ ser.addEventListener("keydown", function(e){
 		},100)
 	}
 });
+}
 
 function putPatientData()
 {
@@ -103,6 +105,29 @@ function putPatientData()
             $('.medData').removeClass('disable');
             $('.medData').prop('disabled',false);
             $('#medicineCode').focus();
+            //Patient Data Modal
+            $("#pfirstName").html(data['fname']);
+            $("#plastName").html(data['lname']);
+            $("#pphone").html(data['phone']);
+            $("#age").html(data['age']);
+            $("#address").html(data['address']);
+            getAllergyIMDetails(pId);
+        }
+        
+    });
+}
+//For Patients Page
+function putPatientData2(pidVal)
+{
+    val=pidVal;
+    var pId=pidVal.split(" ");
+    pId=pId[0];
+    $.ajax({
+        url:"../handlers/patientHandler.php",
+        method:"POST",
+        data:{patientID:pId, type:'patientData'},
+        dataType:'json',
+        success:function(data){
             //Patient Data Modal
             $("#pfirstName").html(data['fname']);
             $("#plastName").html(data['lname']);
@@ -253,6 +278,7 @@ function delImp(id,impNotes)
         
     });
 }
+if(ser!=null){
 ser.addEventListener("blur", function(){
 	// $('#searchResult').addClass('hideser');
 	setTimeout(function(){
@@ -263,3 +289,4 @@ ser.addEventListener("blur", function(){
         ser.value="";
 	
 });
+}

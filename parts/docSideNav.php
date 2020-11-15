@@ -214,6 +214,12 @@ function getFullPatientData()
                     Address: <b><span id="address"></span></b>
                 </div>
             </div>
+            <div class="row">
+                <div class="c-12">
+                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientPrescription2" id="viewPatientPrescription2"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
+                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientDetails2" id="viewPatientDetails2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                </div>
+            </div>
         </div>
         <div class="c-12 c-m-8">
             <div class="row">

@@ -205,6 +205,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             $('#viewPatientPrescription').click(function(){
                 open(patientPrescription);
             });
+            $('#viewPatientPrescription2').click(function(){
+                open(patientPrescription);
+                close(modalPatient);
+            });
 
             $('.close').click(()=>{
                 close(modalPatient);

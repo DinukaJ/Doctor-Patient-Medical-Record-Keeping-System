@@ -82,45 +82,45 @@ else
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     First Name:
                 </div>
-                <div class="c-12 c-m-10 answer" id="firstNameData">
+                <div class="c-12 c-m-8 answer" id="firstNameData">
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     Last Name:
                 </div>
-                <div class="c-12 c-m-10 answer" id="lastNameData">
+                <div class="c-12 c-m-8 answer" id="lastNameData">
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     Phone: 
                 </div>
-                <div class="c-12 c-m-10 answer" id="phoneData">
+                <div class="c-12 c-m-8 answer" id="phoneData">
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     Age:
                 </div>
-                <div class="c-12 c-m-10 answer" id="ageData">
+                <div class="c-12 c-m-8 answer" id="ageData">
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     Email: 
                 </div>
-                <div class="c-12 c-m-10 answer" id="emailData">
+                <div class="c-12 c-m-8 answer" id="emailData">
                 </div>
             </div>
             <div class="row">
-                <div class="c-12 c-m-2">
+                <div class="c-12 c-m-4">
                     Address: 
                 </div>
-                <div class="c-12 c-m-10 answer" id="addressData">
+                <div class="c-12 c-m-8 answer" id="addressData">
                 </div>
             </div>
     
@@ -191,50 +191,50 @@ else
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         First Name: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <input type="text" class="input-field" style="width:100%; display:inline;" name="patUpFname" id="patUpFname" placeholder="First Name">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         Last Name: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <input type="text" class="input-field" style="width:100%; display:inline;" name="patUpLname" id="patUpLname" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         Phone: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <input type="number" class="input-field" style="width:100%; display:inline;" name="patUpPhone" id="patUpPhone" placeholder="Phone">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         Age: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <input type="number" class="input-field" style="width:100%; display:inline;" name="patUpAge" id="patUpAge" placeholder="Age">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         Email: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <input type="text" class="input-field" style="width:100%; display:inline;" name="patUpEmail" id="patUpEmail" placeholder="Email">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="c-12 c-m-2">
+                    <div class="c-12 c-m-4">
                         Address: 
                     </div>
-                    <div class="c-12 c-m-10">
+                    <div class="c-12 c-m-8">
                         <textarea type="number" class="input-field fullWidth" name="patUpAddress" id="patUpAddress" placeholder="Address"></textarea>
                     </div>
                 </div>
