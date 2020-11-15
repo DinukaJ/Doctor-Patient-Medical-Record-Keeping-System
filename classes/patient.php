@@ -15,26 +15,26 @@ class patient extends users
         $db=new Database();
         return $db->getData("select id from patient order by id desc limit 1");
     }
-    public function addPatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address)
+    public function addPatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address,$status)
     {   
         $db=new Database();
         $passEncry=sha1($pass);
-        return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','','')");
+        return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','','',$status)");
     }
     public function getPatients()
     {
         $db=new Database();
-        return $db->getData("select * from patient");
+        return $db->getData("select * from patient where status=1");
     }
     public function getTotalPatients()
     {
         $db=new Database();
-        return $db->getData("select count(id) from patient");
+        return $db->getData("select count(id) from patient where status=1");
     }
     public function getPatientData($id)
     {
         $db=new Database();
-        return $db->getData("select * from patient where id='$id'");
+        return $db->getData("select * from patient where id='$id' and status=1");
     }
     public function getAllergy($id)
     {
@@ -87,12 +87,12 @@ class patient extends users
     public function delPat($id)
     {
         $db=new Database();
-        return $db->insert_update_delete("delete from patient where id='$id'");
+        return $db->insert_update_delete("update patient set status='0' where id='$id'");
     }
     public function getPatientsList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname,age from patient where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
+        return $db->getData("select id,fname,lname,age from patient where status=1 and (id like '%$search%' or fname like '%$search%' or lname like '%$search%')");
     }   
     public function updatePatient_Allergy_IN($patID,$allergy,$IN)
     {
