@@ -73,24 +73,33 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div>
                     </div>
                 </div>
+                
                 <div class="tableCont3">
                     <div class="row">
                         <div class="c-12">
                             <canvas id="myChart" width="100" height="30vh"></canvas>
                         </div>
                     </div>
+                </div>
+
+                <div class='row patientDataRow addMedicineRow'>
+                    <div class='c-3' class='patId'>Bill No</div>
+                    <div class='c-5' class='patFirstName'>No of Items</div>
+                    <div class='c-3' class='patLastName'>Bill Amount</div>
+                    <div class='c-1'>
+                    
+                    </div>
+                </div>
+                <div id="billData">
                     <div class="row patientDataRow">
-                        <div class="c-1">
+                        <div class="c-3">
                             1
                         </div>
-                        <div class="c-4">
-                            Bill No
+                        <div class="c-5">
+                            10
                         </div>
-                        <div class="c-2">
-                            No of Items
-                        </div>
-                        <div class="c-4">
-                            Bill Amount
+                        <div class="c-3">
+                            Rs.500
                         </div>
                         <div class="c-1">
                             <a class="btn btnPatientView" name="viewBill" id="viewBill">View</a>
