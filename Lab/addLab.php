@@ -35,18 +35,25 @@ else
                 <div class="upperPart">
 
                     <div class="upperFirst row">
-                        <div class="c-l-12">
+                        <div class="c-l-8">
                             <h1 style="margin-top:5px">Add Lab Reports</h1>
                         </div>
-                        <!-- <div class="c-l-8 totText">
-                            Total Patients: 10
-                        </div> -->
+                        <div class="c-12 c-l-4 boxS">
+                                <p id="patName">Name: </p>
+                                <p id="patAge">Age: </p>
+                                <input type="hidden" id="patID" value="">
+                        </div>
                     </div>
                 </div>
                 <div class="row patientDataRow">
                     <div class='c-12'>
-                        <form action="#" method="POST">
                             <div class="row">
+                                <div class="c-m-6">
+                                    <div class="group-fields">
+                                        <label>Select Patient</label>
+                                        <input type="text" class="input-field fullWidth" autocomplete='off' name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                                    </div>
+                                </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
                                         <label>Select Report Type</label>
@@ -59,61 +66,63 @@ else
                                         </select>
                                     </div>
                                 </div>
-                                <div class="c-m-6">
-                                    <div class="group-fields">
-                                        <label>Select Patient</label>
-                                        <input type="text" class="input-field fullWidth" name="patient" id="patient" placeholder="Enter Patient ID or Name" required>
+                            </div>
+                            <div class="row ">
+                                <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
+                                    <h4 style="display:inline; margin-right:20px;"> Add More</h4>
+                                    <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="c-m-4">
+                                    <b>Test Name</b>
+                                </div>
+                                <div class="c-m-2">
+                                    <b>Result</b>
+                                </div>
+                                <div class="c-m-3">
+                                    <b>Units</b>
+                                </div>
+                                <div class="c-m-3">
+                                    <b>Range</b>
+                                </div>
+                                <div class="c-12"><hr></div>
+                                
+                                <div class="c-12" id="typeRowSection">
+                                    <div class="typeRow row">
+                                      <div class="c-m-4">
+                                          <input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder="">
+                                      </div>
+                                      <div class="c-m-2">
+                                          <input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
+                                      </div>
+                                      <div class="c-m-3">                                          
+                                          <input type="text" class="input-field repUnit" style="width:100%;" name="repUnit" placeholder="">
+                                      </div>
+                                      <div class="c-m-3">                                          
+                                          <input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder="">
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Field 1</label>
-                                        <input type="text" class="input-field fullWidth" name="f1" id="f1" placeholder="Field 1" required>
-                                    </div>
+                    </div>
+                                <div id="medUpTypes"></div><!--//TODO:Edit-->
+                                <div id="addMedUpTypes"></div>
+                            </div>
+                            
+                                                        
+                    </div>
+                            <div class="row">
+                                <div class="c-m-8" style="padding-top:5px">
+                                    <textarea class="input-field fullWidth repComment" style="height:75px" name="repComment" id="repComment" placeholder="Comment"></textarea>
                                 </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Field 2</label>
-                                        <input type="text" class="input-field fullWidth" name="f2" id="f2" placeholder="Field 2" required>
-                                    </div>
-                                </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Field 3</label>
-                                        <input type="text" class="input-field fullWidth" name="f3" id="f3" placeholder="Field 3" required>
-                                    </div>
-                                </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Field 4</label>
-                                        <input type="text" class="input-field fullWidth" name="f4" id="f4" placeholder="Field 4" required>
-                                    </div>
-                                </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Field 5</label>
-                                        <input type="text" class="input-field fullWidth" name="f5" id="f5" placeholder="Field 5" required>
-                                    </div>
-                                </div>
-                                <div class="c-m-6">
+                                <div class="c-m-2">
                                     <button type="button" class="btn btnLogin" name="cancelBtn" id="cancelBtn"><i class="fas fa-times"></i> CANCEL</button>
                                 </div>
-                                <div class="c-m-6">
+                                <div class="c-m-2">
                                     <button type="submit" class="btn btnLogin" name="confirmBtn" id="confirmBtn"><i class="fas fa-check"></i> CONFIRM</button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
                 </div>
-                <!-- <div class="row patientDataRow presBottom">
-                    <div class="c-12 c-l-8"></div>
-                    <div class="c-6 c-l-2">
-                        <button type="button" class="btn btnNormal btnPatient" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
-                    </div>
-                    <div class="c-6 c-l-2">
-                        <button type="button" class="btn btnNormal btnPatient" name="finish" id="finish"><i class="fas fa-check"></i> Finish</button>
-                    </div>
-                </div>          -->
+
+                        
             </div>
         </div>
     </div>
