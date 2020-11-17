@@ -158,7 +158,7 @@ $("#addType").click(function(){
 });
 //Add More Types Update
 $("#upAddType").click(function(){
-    $("#addMedUpTypes").append("<div class='typeRow2 row'> <div class='c-12 c-m-4'> <input type='text' class='input-field medType' style='width:100%;' name='medUpType' placeholder='' value=''> </div> <div class='c-12 c-m-4'> <input type='text' class='input-field medQTY' style='width:100%;' name='medUpQTY' placeholder='' value=''> </div> <div class='c-12 c-m-3'> <input type='text' class='input-field medPrice' style='width:100%;' name='medUpPrice' placeholder='' value=''></div><div class='c-12 c-m-1'><button type='button' value='' class='btn delType delMed' name='delUpType'><i class='fas fa-times'></i></button></div></div>");
+    $("#addMedUpTypes").append("<div class='typeRow2 row'> <div class='c-12 c-m-4'> <input type='text' class='input-field medType2' style='width:100%;' name='medUpType' placeholder='' value=''> </div> <div class='c-12 c-m-4'> <input type='text' class='input-field medQTY2' style='width:100%;' name='medUpQTY' placeholder='' value=''> </div> <div class='c-12 c-m-3'> <input type='text' class='input-field medPrice2' style='width:100%;' name='medUpPrice' placeholder='' value=''></div><div class='c-12 c-m-1'><button type='button' value='' class='btn delType delMed' name='delUpType'><i class='fas fa-times'></i></button></div></div>");
     $(".delMed").click(function(){
         $(this).parent().parent().remove();
     });
@@ -387,7 +387,7 @@ $("#upMedSave").click(function(){
     if($(".typeRow2").length>=1)
     {
         var z=0;
-        $('.medType').each(function(i, obj) {
+        $('.medType2').each(function(i, obj) {
             if($(obj).val()=="")
             {
                 $(obj).addClass('errorInput');
@@ -396,7 +396,7 @@ $("#upMedSave").click(function(){
             else
                 $(obj).removeClass('errorInput');
         });
-        $('.medQTY').each(function(i, obj) {
+        $('.medQTY2').each(function(i, obj) {
             if($(obj).val()=="")
             {
                 $(obj).addClass('errorInput');
@@ -405,7 +405,7 @@ $("#upMedSave").click(function(){
             else
                 $(obj).removeClass('errorInput');
         });
-        $('.medPrice').each(function(i, obj) {
+        $('.medPrice2').each(function(i, obj) {
             if($(obj).val()=="")
             {
                 $(obj).addClass('errorInput');
@@ -472,7 +472,7 @@ function addMedTypes(id,num)
         $.ajax({
             url:"../handlers/inventoryHandler.php",
             method:"POST",
-            data:{type:'addMedTypes',medId:id,medType:$(obj).find(".medType").val(),price:$(obj).find(".medPrice").val(),qty:$(obj).find(".medQTY").val()},
+            data:{type:'addMedTypes',medId:id,medType:$(obj).find(".medType"+num).val(),price:$(obj).find(".medPrice"+num).val(),qty:$(obj).find(".medQTY"+num).val()},
             success:function(data){
                 if(data!=1){
                     $('#updateStatus').addClass("error");
