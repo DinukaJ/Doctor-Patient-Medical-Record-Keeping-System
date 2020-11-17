@@ -26,6 +26,13 @@ class lab{
         return $stat;
     }
 
+    public function repAdd($id,$type,$test,$res,$range,$doi)
+    {
+        $db = new Database();
+        $stat = $db->insert_update_delete("insert into labreport values ('$id',null,'$doi','$type','$test','$res','$range')");
+        return $stat;
+    }
+
 }
 
 ?>
