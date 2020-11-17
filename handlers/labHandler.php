@@ -28,9 +28,10 @@ function getRepDatAll(){
         while($row=mysqli_fetch_array($data)){
 
             $output.="<div class='row patientDataRow'>
-            <div class='c-3' class='patId'>$row[0]</div>
-            <div class='c-4' class='repId'>$row[1]</div>
-            <div class='c-4' class='repType'>$row[3]</div>
+            <div class='c-2' class='patId'>$row[0]</div>
+            <div class='c-2' class='repId'>$row[1]</div>
+            <div class='c-3' class='repType'>$row[3]</div>
+            <div class='c-4' class='repType'>$row[2]</div>
             <div class='c-1'>
                 <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[1]'>View</button>
             </div>
@@ -49,9 +50,10 @@ function repSearch(){
         while($row=mysqli_fetch_array($data)){
            
             $output.="<div class='row patientDataRow'>
-            <div class='c-3' class='patId'>$row[0]</div>
-            <div class='c-4' class='repId'>$row[1]</div>
-            <div class='c-4' class='repType'>$row[3]</div>
+            <div class='c-2' class='patId'>$row[0]</div>
+            <div class='c-2' class='repId'>$row[1]</div>
+            <div class='c-3' class='repType'>$row[3]</div>
+            <div class='c-4' class='repType'>$row[2]</div>
             <div class='c-1'>
                 <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[1]'>View</button>
             </div>
@@ -64,9 +66,27 @@ function repSearch(){
 //gets report data
 function getRep(){
     $lab = new lab();
+    $patId=""; $name=""; $repId=""; $type=""; $date="";
     $data = $lab->repSearch($_POST["repId"]);
-    $row = mysqli_fetch_array($data);
-    echo json_encode($row);
+    $output="";
+    while($row = mysqli_fetch_array($data))
+    {
+        $patId=$row[0]; $name=$row[4]." ".$row[5]; $repId=$row[1]; $type=$row[3]; $date=$row[2];
+        $output.='
+        <div class="row">
+        <div class="c-4 c-m-4">
+            '.$row[7].'
+        </div>
+        <div class="c-4 c-m-4">
+            '.$row[8].'
+        </div>
+        <div class="c-4 c-m-4">
+            '.$row[9].'
+        </div>
+    </div>
+        ';
+    }
+    echo json_encode(array($patId,$name,$repId,$type,$data,$output));
 }
 
 //delete report data

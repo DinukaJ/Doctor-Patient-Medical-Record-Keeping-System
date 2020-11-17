@@ -16,7 +16,7 @@ function getAllRep(){
             $('#reportInfo').html(data[0]);
             $('#totalCount').html(data[1]);
             $('.viewRep').click(function(){
-            putReportData(this.id);
+                putReportData(this.id);
             });
         }
     });
@@ -51,40 +51,37 @@ function putReportData(id)
         data:{repId:repId, type:'repData'}, 
         dataType:'json',
         success:function(data){
-            $('#patientId').html(data['patientId']);
-            $('#reportId').html(data['id']);
-            $('#doi').html(data['doi']);
-            $('#rType').html(data['type']);
-            $('#f1').html(data['field1']);
-            $('#f2').html(data['field2']);
-            $('#f3').html(data['field3']);
-            $('#f4').html(data['field4']);
-            $('#f5').html(data['field5']);
+            console.log(data);
+            $('#patientId').html(data[0]);
+            $('#reportId').html(data[2]);
+            $('#doi').html(data[4]);
+            $('#rType').html(data[3]);
+            $('#repTypes').html(data[5]);
 
              //View Report Model
             open(modalViewRep);
 
             //Delete the Report
-            $('#deleteRep').click(()=>{
-                if(confirm("Are You Sure?")){
-                    deleteRepData(repId);
-                }
-                else{
-                    return false;
-                }
-            });
+            // $('#deleteRep').click(()=>{
+            //     if(confirm("Are You Sure?")){
+            //         deleteRepData(repId);
+            //     }
+            //     else{
+            //         return false;
+            //     }
+            // });
             
-            $("#updateRep").click(()=>{
-                open(modalUpdateRep);
-                close(modalViewRep);
-                $('#repUpID').val(data['id']);
-                $('#repUpType').val(data['type']);
-                $('#repUpFi1').val(data['field1']);
-                $('#repUpFi2').val(data['field2']);
-                $('#repUpFi3').val(data['field3']);
-                $('#repUpFi4').val(data['field4']);
-                $('#repUpFi5').val(data['field5']);
-            })
+            // $("#updateRep").click(()=>{
+            //     open(modalUpdateRep);
+            //     close(modalViewRep);
+            //     $('#repUpID').val(data['id']);
+            //     $('#repUpType').val(data['type']);
+            //     $('#repUpFi1').val(data['field1']);
+            //     $('#repUpFi2').val(data['field2']);
+            //     $('#repUpFi3').val(data['field3']);
+            //     $('#repUpFi4').val(data['field4']);
+            //     $('#repUpFi5').val(data['field5']);
+            // })
 
         }
         

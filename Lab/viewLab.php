@@ -24,7 +24,7 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescriptions</title>
+    <title>Lab Reports</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -57,9 +57,10 @@ else
                          
                 <!-- prints info -->
                     <div class='row patientDataRow addMedicineRow'>
-                      <div class='c-3' class='patId'>Patient ID</div>
-                      <div class='c-4' class='repId'>Report ID</div>
-                      <div class='c-4' class='repType'>Type</div>
+                      <div class='c-2' class='patId'>Patient ID</div>
+                      <div class='c-2' class='repId'>Report ID</div>
+                      <div class='c-3' class='repType'>Type</div>
+                      <div class='c-4' class='repType'>Date</div>
                       <div class='c-1'></div>
                     </div> 
                 <!--Adding Reports-->
@@ -72,7 +73,7 @@ else
 <div id="modalViewRep" class="modal modal2">
 
 <!-- Modal content -->
- <div class="modal-content-short2 inventoryModal">
+ <div class="modal-content-long inventoryModal">
     <div class="row">
         <div class="c-12">
         <span class="close closeMed">&times;</span>
@@ -85,72 +86,40 @@ else
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-6">
-                <div class="row">
-                    <div class="c-12 c-m-6">
-                        Patient ID:
-                    </div>
-                    <div class="c-12 c-m-6 answer" id="patientId">
-                </div>
-                </div>
-                <div class="row">
-                    <div class="c-12 c-m-6">
-                        Report ID: 
-                    </div>
-                        <div class="c-12 c-m-6 answer" id="reportId"></div>
-                </div>
-                <div class="row">
-                    <div class="c-12 c-m-6">
-                        Date of Issue: 
-                    </div>
+            <div class="c-12 c-m-3">
+                Patient ID: <span class="answer" id="patientId"></span>
+            </div>
+            <div class="c-12 c-m-3">
+                Report ID: <span class="answer" id="reportId"></span>
+            </div>
+            <div class="c-12 c-m-3">
+                Type: <span class="answer" id="rType"></span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi"></span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-4">
+                <b>Test Name</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>Result</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>Range</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="repTypes">
 
-                        <div class="c-12 c-m-6 answer" id="doi"></div>
-                </div>                
-                <div class="row">
-                    <div class="c-12 c-m-6">
-                        Type: 
-                    </div>
-                        <div class="c-12 c-m-6 answer" id="rType"></div>
-                </div>
-            </div>
-            <div class="c-12 c-m-6">
-                <div class="row">
-                    <div class="c-12 c-m-6">
-                            Field 1: 
-                    </div>
-                    <div class="c-12 c-m-6 answer" id="f1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="c-12 c-m-6">
-                            Field 2: 
-                        </div>
-                            <div class="c-12 c-m-6 answer" id=f2></div>
-                    </div>
-                    <div class="row">
-                        <div class="c-12 c-m-6">
-                            Field 3:
-                        </div>
-                            <div class="c-12 c-m-6 answer" id="f3"></div>
-                    </div>
-                    <div class="row">
-                        <div class="c-12 c-m-6">
-                            Field 4: 
-                        </div>
-                            <div class="c-12 c-m-6 answer" id="f4"></div>
-                    </div>
-                    <div class="row">
-                        <div class="c-12 c-m-6">
-                            Field 5: 
-                        </div>
-                            <div class="c-12 c-m-6 answer" id="f5"></div>
-                    </div>
-                </div>
-            </div>
+        </div>    
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="deleteRep">Delete</button>
-                <button type="button" class="btn btnNormal" id="updateRep">Edit</button>
+                <!-- <button type="button" class="btn btnNormal" id="updateRep">Edit</button> -->
             </div>
         </div>
     </div> 
