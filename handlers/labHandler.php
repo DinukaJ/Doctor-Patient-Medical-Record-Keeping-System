@@ -86,7 +86,7 @@ function getRep(){
     </div>
         ';
     }
-    echo json_encode(array($patId,$name,$repId,$type,$data,$output));
+    echo json_encode(array($patId,$name,$repId,$type,$date,$output));
 }
 
 //delete report data
