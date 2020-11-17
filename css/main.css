@@ -416,6 +416,10 @@ body{
     max-height: 55vh;
     overflow-y: scroll;
 }
+#typeRowSection{
+    max-height: 50vh;
+    overflow-y: scroll;
+}
 .presTable td{
     border-bottom: 1px solid #ced4da;
     padding-top: 8px;
