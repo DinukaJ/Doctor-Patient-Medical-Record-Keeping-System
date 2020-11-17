@@ -24,7 +24,7 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescriptions</title>
+    <title>Lab Reports</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -116,34 +116,34 @@ else
             <div class="c-12 c-m-6">
                 <div class="row">
                     <div class="c-12 c-m-6">
-                            Field 1: 
+                            Test Name: 
                     </div>
                     <div class="c-12 c-m-6 answer" id="f1"></div>
                     </div>
                     <div class="row">
                         <div class="c-12 c-m-6">
-                            Field 2: 
+                            Result: 
                         </div>
                             <div class="c-12 c-m-6 answer" id=f2></div>
                     </div>
                     <div class="row">
                         <div class="c-12 c-m-6">
-                            Field 3:
+                            Units:
                         </div>
                             <div class="c-12 c-m-6 answer" id="f3"></div>
                     </div>
                     <div class="row">
                         <div class="c-12 c-m-6">
-                            Field 4: 
+                            Range: 
                         </div>
                             <div class="c-12 c-m-6 answer" id="f4"></div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="c-12 c-m-6">
                             Field 5: 
                         </div>
                             <div class="c-12 c-m-6 answer" id="f5"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

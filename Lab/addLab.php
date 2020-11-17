@@ -23,7 +23,7 @@ else
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Prescriptions</title>
+    <title>Lab Reports</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -75,10 +75,10 @@ else
                             <label>Select Report Type</label>
                             <select class="input-field fullWidth" name="reportType" id="reportType">
                                 <option selected disabled>Select Report Type</option>
-                                <option value="t1">Lipid Profile</option>
-                                <option value="t2">ESR</option>
-                                <option value="t3">Urine Report</option>
-                                <option value="t4">Liver Profile</option>
+                                <option value="Lipid Profile">Lipid Profile</option>
+                                <option value="ESR">ESR</option>
+                                <option value="Urine Report">Urine Report</option>
+                                <option value="Liver Profile">Liver Profile</option>
                             </select>
                         </div>
                     </div>
