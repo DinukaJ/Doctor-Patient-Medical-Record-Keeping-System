@@ -38,7 +38,7 @@ class inventory
 
     public function delMed($id){
         $db = new Database();
-        $stat = $db->insert_update_delete("delete from medicine where id='$id'");
+        $stat = $db->insert_update_delete("update medtypes set status='0' where id='$id'");
         return $stat;
     }
 
