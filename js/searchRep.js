@@ -53,6 +53,7 @@ function putReportData(id)
         success:function(data){
             console.log(data);
             $('#patientId').html(data[0]);
+            $('#patientName').html(data[1]);
             $('#reportId').html(data[2]);
             $('#doi').html(data[4]);
             $('#rType').html(data[3]);
