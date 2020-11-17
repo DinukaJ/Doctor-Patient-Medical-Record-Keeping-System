@@ -75,10 +75,10 @@ else
                             <label>Select Report Type</label>
                             <select class="input-field fullWidth" name="reportType" id="reportType">
                                 <option selected disabled>Select Report Type</option>
-                                <option value="t1">T1</option>
-                                <option value="t2">T2</option>
-                                <option value="t3">T3</option>
-                                <option value="t4">T4</option>
+                                <option value="t1">Lipid Profile</option>
+                                <option value="t2">ESR</option>
+                                <option value="t3">Urine Report</option>
+                                <option value="t4">Liver Profile</option>
                             </select>
                         </div>
                     </div>
