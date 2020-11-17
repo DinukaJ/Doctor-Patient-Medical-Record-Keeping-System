@@ -419,6 +419,8 @@ body{
 #typeRowSection{
     max-height: 50vh;
     overflow-y: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .presTable td{
     border-bottom: 1px solid #ced4da;
