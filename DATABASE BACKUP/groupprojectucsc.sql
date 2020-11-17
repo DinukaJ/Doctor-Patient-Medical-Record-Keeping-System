@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 17, 2020 at 07:37 AM
+-- Generation Time: Nov 17, 2020 at 09:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -101,7 +101,7 @@ CREATE TABLE `docusualdays` (
 
 CREATE TABLE `labreport` (
   `patientId` varchar(9) NOT NULL,
-  `id` varchar(9) NOT NULL,
+  `id` int(11) NOT NULL,
   `doi` date NOT NULL,
   `type` text NOT NULL,
   `test` varchar(20) NOT NULL,
@@ -169,7 +169,8 @@ INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (21, '100', 45, 6000, 1),
 (23, '250', 80, 400, 1),
 (26, '300mg', 23, 500, 1),
-(26, '100mg', 15, 400, 1);
+(26, '100mg', 15, 400, 1),
+(21, '200', 12, 5000, 1);
 
 -- --------------------------------------------------------
 
@@ -354,6 +355,12 @@ ALTER TABLE `prescription_medicine`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `labreport`
+--
+ALTER TABLE `labreport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
