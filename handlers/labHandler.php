@@ -13,8 +13,10 @@ if(isset($_POST["type"])){
             delRep();
     if($_POST["type"]=="repUp")
             upRep();
-    if($_POST["type"]=="repUp")
+    if($_POST["type"]=="repAdd")
             addRep();    
+    if($_POST["type"]=="repAddData")
+            addRepData();    
 }
 
 function getRepDatAll(){
@@ -92,11 +94,18 @@ function addRep(){
     $lab = new lab();
     $pid = $_POST["patId"];
     $repType = $_POST["repType"];
+    $today=date("Y-m-d");
+    $stat = $lab->repAdd($pid,$repType,$today);
+    echo $stat;
+}
+function addRepData()
+{
+    $lab = new lab();
+    $rId = $_POST["rId"];
     $repTest = $_POST["repTest"];
     $repRes = $_POST["repRes"];
     $repRange = $_POST["repRange"];
-    $today=date("Y-m-d");
-    $stat = $lab->repAdd($pid,$repType,$repTest,$repRes,$repRange,$today);
+    $stat = $lab->repAddData($rId,$repTest,$repRes,$repRange);
     echo $stat;
 }
 

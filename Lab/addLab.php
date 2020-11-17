@@ -49,75 +49,67 @@ else
                         </div>
                     </div>
                 </div>
+                <div class="row" style="padding:0px; margin:0px;">
+                    <div class="c-12" style="padding:0px; margin:0px;">
+                        <div class="alerMSG" id="addRepStatus"></div>
+                    </div>
+                <div class="row" style="padding:0px; margin:0px;">
+                    <div class="c-12" style="padding:0px; margin:0px;">
+                        <div class="alerMSG" id="updateStatus"></div>
+                    </div>
+                </div>
                 <div class="row patientDataRow" style="border-bottom:none;">
-                    <div class="row" style="padding:0px; margin:0px;">
-                        <div class="c-12" style="padding:0px; margin:0px;">
-                            <div class="alerMSG" id="addRepStatus"></div>
+                    <div class="c-m-6">
+                        <div class="group-fields">
+                            <label>Select Patient</label>
+                            <input type="text" class="input-field fullWidth" autocomplete='off' name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
+                            <div class='text-left mt-4' id='searchResult'>
+                            <div class='' id='subsresult'>
+                                <input type='hidden' id='secount' value='0'>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <div class="row" style="padding:0px; margin:0px;">
-                        <div class="c-12" style="padding:0px; margin:0px;">
-                            <div class="alerMSG" id="updateStatus"></div>
+                    <div class="c-m-6">
+                        <div class="group-fields">
+                            <label>Select Report Type</label>
+                            <select class="input-field fullWidth" name="reportType" id="reportType">
+                                <option selected disabled>Select Report Type</option>
+                                <option value="t1">T1</option>
+                                <option value="t2">T2</option>
+                                <option value="t3">T3</option>
+                                <option value="t4">T4</option>
+                            </select>
                         </div>
-                    </div> 
-                    <div class='c-12'>
-                        <div class="row">
-                            <div class="c-m-6">
-                                <div class="group-fields">
-                                    <label>Select Patient</label>
-                                    <input type="text" class="input-field fullWidth" autocomplete='off' name="patientID" id="patientID" placeholder="Enter Patient ID or Name">
-                                    <div class='text-left mt-4' id='searchResult'>
-                                    <div class='' id='subsresult'>
-                                        <input type='hidden' id='secount' value='0'>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="c-m-6">
-                                <div class="group-fields">
-                                    <label>Select Report Type</label>
-                                    <select class="input-field fullWidth" name="reportType" id="reportType">
-                                        <option selected disabled>Select Report Type</option>
-                                        <option value="t1">T1</option>
-                                        <option value="t2">T2</option>
-                                        <option value="t3">T3</option>
-                                        <option value="t4">T4</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
-                                <h4 style="display:inline; margin-right:20px;"> Add More</h4>
-                                <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
-                            </div>
+                    </div>
+                    <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
+                        <h4 style="display:inline; margin-right:20px;"> Add More</h4>
+                        <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="c-m-5">
+                        <b>Test Name</b>
+                    </div>
+                    <div class="c-m-3">
+                        <b>Result</b>
+                    </div>
+                    <div class="c-m-3">
+                        <b>Range</b>
+                    </div>
+                    <div class="c-12"><hr></div>
+                    
+                    <div class="c-12" id="typeRowSection">
+                        <div class="typeRow row">
                             <div class="c-m-5">
-                                <b>Test Name</b>
+                                <input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder="">
                             </div>
                             <div class="c-m-3">
-                                <b>Result</b>
+                                <input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
                             </div>
-                            <div class="c-m-3">
-                                <b>Range</b>
-                            </div>
-                            <div class="c-12"><hr></div>
-                            
-                            <div class="c-12" id="typeRowSection">
-                                <div class="typeRow row">
-                                    <div class="c-m-5">
-                                        <input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder="">
-                                    </div>
-                                    <div class="c-m-3">
-                                        <input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
-                                    </div>
-                                    <div class="c-m-3">                                          
-                                        <input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder="">
-                                    </div>
-                                </div>
+                            <div class="c-m-3">                                          
+                                <input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder="">
                             </div>
                         </div>
-                    </div>
-                            
+                    </div>                            
                                                         
                 </div>
                 <div class="row patientDataRow presBottom">

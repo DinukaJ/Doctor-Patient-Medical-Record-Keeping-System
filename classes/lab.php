@@ -26,10 +26,25 @@ class lab{
         return $stat;
     }
 
-    public function repAdd($id,$type,$test,$res,$range,$doi)
+    public function repAdd($id,$type,$doi)
     {
         $db = new Database();
-        $stat = $db->insert_update_delete("insert into labreport values ('$id',null,'$doi','$type','$test','$res','$range')");
+        $stat = $db->insert_update_delete("insert into labreport values ('$id',null,'$doi','$type')");
+        if($stat==1)
+        {
+            $newId=$db->getData("select id from labreport order by id desc limit 1");
+            $newId=mysqli_fetch_array($newId)[0];
+            return $newId;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    public function repAddData($rId,$repTest,$repRes,$repRange)
+    {
+        $db = new Database();
+        $stat = $db->insert_update_delete("insert into labreportdetails values ('$rId','$repTest','$repRes','$repRange')");
         return $stat;
     }
 
