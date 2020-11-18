@@ -102,7 +102,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                             Rs.500
                         </div>
                         <div class="c-1">
-                            <a class="btn btnPatientView" name="viewBill" id="viewBill">View</a>
+                            <a class="btn btnPatientView viewBill" name="viewBill" id="viewBill">View</a>
                         </div>
                     </div>  
                 </div>
@@ -114,6 +114,79 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <?php getEditProfile($doctor)?>
     <!-- End of Edit Profile View -->
 
+    <!-- The Modal for Bill-->
+<div id="modalBill" class="modal modal2">
+
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12">
+                <h2>Bill</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-3">
+                Prescription ID: <span class="answer" id="predId">1</span>
+            </div>
+            <div class="c-12 c-m-2">
+                Patient ID: <span class="answer" id="patientId">p-1</span>
+            </div>
+            <div class="c-12 c-m-4">
+                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi">2020-11-17</span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-4">
+                <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>QTY</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>Price</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="billVals">
+            <div class="row">
+                <div class="c-4 c-m-4">
+                    Amoxicillin
+                </div>
+                <div class="c-4 c-m-4">
+                    20
+                </div>
+                <div class="c-4 c-m-4">
+                    250
+                </div>
+            </div>
+        </div>  
+        <div class="row" style="margin-top:50px;">
+            <div class="c-12"><hr></div>
+            <div class="c-12">
+                <b>Total Amount:- <span id="totalAmount">Rs.250</span></b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        </div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <!-- <button type="button" class="btn btnNormal" id="endBill" style="width:auto;">Print & End Bill</button>   -->
+            </div>
+        </div>
+    </div> 
+ </div>
+</div>
+<!-- End of the Modal for Bill-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -160,10 +233,23 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         });
     </script>
       <script>
+        var modalBill=document.getElementById("modalBill");
+        $(document).ready(function(){
+            $('.viewBill').click(function(){
+                open(modalBill);
+            });
+            $('.close').click(()=>{
+                close(modalBill);
+            })
+        });
         window.onclick = function(event) {
             if (event.target == modalUpdateDet) {
                     // modalUpdateDet.style.display = "none";
                     close(modalUpdateDet);
+            }
+            if (event.target == modalBill) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalBill);
             }
         }
     </script>

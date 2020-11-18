@@ -14,6 +14,10 @@ function login($username,$pass)
     {
         header("Location: Pharmacist/prescriptionQueue.php");
     }
+    else if($stat=="Lab")
+    {
+        header("Location: Lab/addLab.php");
+    }
     else if($stat instanceof doctor)
     {
         header("Location: Doctor/prescribe.php");
