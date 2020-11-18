@@ -16,7 +16,7 @@ function getSideNav($type)
                 <p class="accountName2">'.$name.'</p>
                 
             </div>
-            <div class="c-6 usrBtns"><button type="button" class="btn btnNormal btnPatient" name="editProfile" id="editProfile"><i class="fas fa-user-edit"></i> Edit Profile</button></div>
+            <div class="c-6 usrBtns"><button type="button" class="btn btnNormal btnPatient" name="editProfilePat" id="editProfilePat"><i class="fas fa-user-edit"></i> Edit Profile</button></div>
             <div class="c-6 usrBtns"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
         </div>
         <a href="../Patient/prescriptions.php" class="sideLink ';if($type=="prescribe"){echo 'active';} echo'">Prescriptions</a>
@@ -42,7 +42,7 @@ function getEditProfile($patient)
    <div class="detailsSection editProfile">
     <div class="row">
         <div class="c-12 c-m-6">
-            <form method="POST" id="usrDetailUp">
+            <form method="POST" id="usrDetailUpPat">
             <h2>Change User Details</h2>
             <div class="row" style="padding:0px; margin:0px;">
                 <div class="c-12" style="padding:0px; margin:0px;">
@@ -134,7 +134,7 @@ function getEditProfile($patient)
             </div>
             <div class="row">
                 <div class="c-12">
-                    <form method="POST" id="usrPassUp">
+                    <form method="POST" id="usrPassUpPat">
                     <h2>Change Password</h2>
                     <div class="row" style="padding:0px; margin:0px;">
                         <div class="c-12" style="padding:0px; margin:0px;">

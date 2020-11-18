@@ -13,7 +13,7 @@ if(isset($_SESSION["user"]))
 }
 else
 {
-    //header("Location: ../login.php");
+    header("Location: ../login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@ else
                         10
                     </div>
                     <div class="c-1">
-                        <button type="button" class="btn btnPatientView" id="viewPres">View</button>
+                        <button type="button" class="btn btnPatientView viewPres" id="viewPres">View</button>
                     </div>
                 </div>
                 <?php
@@ -96,111 +96,158 @@ else
         </div>
     </div>
     <!-- The Modal for View Prescription-->
-    <div id="modalViewPres" class="modal modal2">
+<div id="modalViewPres" class="modal modal2">
 
-        <!-- Modal content -->
-        <div class="modal-content-long">
-            <div class="row">
-                <div class="col-12">
-                <span class="close closeMed">&times;</span>
-                </div>
-            </div>
-           <div class="detailsSection">
-                <div class="row">
-                <div class="c-12 c-m-2">
-                    </div>
-                    <div class="c-12 c-m-2">
-                        Medicine Name 
-                    </div>
-                    <div class="c-12 c-m-2">
-                        Amount Per Time 
-                    </div>
-                    <div class="c-12 c-m-2">
-                        Times Per Day 
-                    </div>
-                    <div class="c-12 c-m-2">
-                        Before/ After Meal
-                    </div>                    
-                    <div class="c-12 c-m-2">
-                        Duration 
-                    </div>
-                </div>
-                <div class="row patientDataRow">
-                    <div class="c-3 c-m-2">
-                        1
-                    </div>   
-                    <div class="c-3 c-m-2">
-                        1
-                    </div>
-                    <div class="c-8 c-m-2">
-                        1
-                    </div>
-                    <div class="c-8 c-m-2">
-                        1
-                    </div>
-                    <div class="c-8 c-m-2">
-                        1
-                    </div>
-                    <div class="c-8 c-m-2">
-                        1
-                    </div>
-                </div>
-           </div>
-           <div class="bottomModel">
-                <div class="row">
-                    <div class="c-12">
-                        <button type="button" class="btn btnNormal" id="presPrint">Print</button> 
-                        <button type="button" class="btn btnNormal" id="billCreate">Create Bill</button> 
-                    </div>
-                </div>
-           </div>
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
         </div>
     </div>
-    <!-- End of the Modal for View Prescription-->
-
-
-    <!-- The Modal for Bill-->
-    <div id="modalBill" class="modal modal2">
-        <!-- Modal content -->
-        <div class="modal-content-long">
-            <div class="row">
-                <div class="col-12">
-                <span class="close closeMed">&times;</span>
-                </div>
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12">
+                <h2>Prescription Details</h2>
             </div>
-        <div class="detailsSection">
-                <div class="row">
-                <div class="c-12 c-m-2">
-                    </div>
-                    <div class="c-12 c-m-3">
-                        Medicine Name 
-                    </div>
-                    <div class="c-12 c-m-3">
-                        Price
-                    </div>
-                </div>
-                <div class="row patientDataRow">
-                    <div class="c-3 c-m-2">
-                        1
-                    </div>   
-                    <div class="c-3 c-m-2">
-                        1
-                    </div>
-                </div>
         </div>
         <div class="row">
-                Total Amount:
+            <div class="c-12 c-m-3">
+                Prescription ID: <span class="answer" id="predId">1</span>
+            </div>
+            <div class="c-12 c-m-2">
+                Patient ID: <span class="answer" id="patientId">p-1</span>
+            </div>
+            <div class="c-12 c-m-4">
+                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi">2020-11-17</span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-3">
+                <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Amount Per Time</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Times Per Day</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Before / After Meal</b>
+            </div>
+            <div class="c-4 c-m-3">
+                <b>Duration</b>
+            </div>
+            <div class="c-12"><hr></div>
         </div>
-        <div class="bottomModel">
-                <div class="row">
-                    <div class="c-12">
-                        <button type="button" class="btn btnNormal" id="endBill">Print & End Bill</button> 
-                    </div>
+        <div id="presVals">
+            <div class="row">
+                <div class="c-4 c-m-3">
+                    Amoxicillin
                 </div>
+                <div class="c-4 c-m-2">
+                    2
+                </div>
+                <div class="c-4 c-m-2">
+                    3
+                </div>
+                <div class="c-4 c-m-2">
+                    After
+                </div>
+                <div class="c-4 c-m-3">
+                    1 Week(s)
+                </div>
+            </div>
+        </div>    
         </div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="presPrint">Print</button> 
+                <button type="button" class="btn btnNormal" id="billCreate">Create Bill</button> 
+            </div>
+        </div>
+    </div> 
+ </div>
+</div>
+<!-- End of the Modal for View Prescription-->
+
+    <!-- The Modal for Bill-->
+<div id="modalBill" class="modal modal2">
+
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
         </div>
     </div>
-    <!-- End of the Modal for Bill-->
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12">
+                <h2>Bill</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-3">
+                Prescription ID: <span class="answer" id="predId">1</span>
+            </div>
+            <div class="c-12 c-m-2">
+                Patient ID: <span class="answer" id="patientId">p-1</span>
+            </div>
+            <div class="c-12 c-m-4">
+                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi">2020-11-17</span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-4">
+                <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>QTY</b>
+            </div>
+            <div class="c-4 c-m-4">
+                <b>Price</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="billVals">
+            <div class="row">
+                <div class="c-4 c-m-4">
+                    Amoxicillin
+                </div>
+                <div class="c-4 c-m-4">
+                    20
+                </div>
+                <div class="c-4 c-m-4">
+                    250
+                </div>
+            </div>
+        </div>  
+        <div class="row" style="margin-top:50px;">
+            <div class="c-12"><hr></div>
+            <div class="c-12">
+                <b>Total Amount:- <span id="totalAmount">Rs.250</span></b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        </div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="endBill" style="width:auto;">Print & End Bill</button>  
+            </div>
+        </div>
+    </div> 
+ </div>
+</div>
+<!-- End of the Modal for Bill-->
 
 
     <!-- Footer Includes -->
@@ -214,7 +261,7 @@ else
 
         $(document).ready(function(){
             //click on view
-            $("#viewPres").click(()=>{
+            $(".viewPres").click(()=>{
                 open(modalViewPres);
             });
             $(".close").click(()=>{

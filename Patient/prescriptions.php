@@ -6,16 +6,16 @@ include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
-$patId = "p-1";
+$patId ="";//"p-1";
 $patient="";
 if(isset($_SESSION["user"]))
 {
-    // $patient=unserialize($_SESSION['user']);
-    // $patient=$patient->getUserId();
+    $patient=unserialize($_SESSION['user']);
+    $patId=$patient->getUserId();
 }
 else
 {
-    //header("Location: ../login.php");
+    header("Location: ../login.php");
 }
 echo"<input type='hidden' value='$patId' id='patientID'>";
 ?>
@@ -87,9 +87,8 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
     <?php getEditProfile($patient)?>
     <!-- End of Edit Profile View -->
 
-
- <!-- The Modal for View Prescriptions-->
- <div id="modalViewPres" class="modal modal2">
+<!-- The Modal for View Prescription-->
+<div id="modalViewPres" class="modal modal2">
 
 <!-- Modal content -->
  <div class="modal-content-long inventoryModal">
@@ -98,46 +97,74 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         <span class="close closeMed">&times;</span>
         </div>
     </div>
-    <div class="row">
-        <div class="c-12 c-m-4">
-            <center><b>Doctor Name: </b><span id="docName"></span></center>
-        </div>
-        <div class="c-12 c-m-4">
-            <center><b>Date: </b><span id="presDate"></span></center>
-        </div>           
-        <div class="c-12 c-m-3">
-            <center><b>Prescription No: </b><span id="presNo"></span></center>
-         </div>
-    </div>
-    <div class="row" style="border-bottom:1px solid #ced4da;">
-        <div class="c-m-1"></div>
-        <div class="c-12 c-m-2">
-            <b>Medicine Name:</b>
-         </div>
-        <div class="c-12 c-m-2">
-            <b>Amount Per Day</b>
-        </div> 
-        <div class="c-12 c-m-2">
-            <b>Times Per Day</b>
-        </div> 
-        <div class="c-12 c-m-2">
-            <b>Before/After</b>
-        </div> 
-        <div class="c-12 c-m-2">
-            <b>Duration</b>
-        </div> 
-        <div class="c-m-1"></div> 
-    </div>
-   <div class="presMedDet" id="presMedDet"></div>
-        <!-- <div class ="bottomModel row">
+   <div class="detailsSection">
+        <div class="row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="viewCancel">Cancel</button>
+                <h2>Prescription Details</h2>
             </div>
-        </div> -->
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-3">
+                Prescription ID: <span class="answer" id="predId">1</span>
+            </div>
+            <div class="c-12 c-m-2">
+                Patient ID: <span class="answer" id="patientId">p-1</span>
+            </div>
+            <div class="c-12 c-m-4">
+                Doctor Name: <span class="answer" id="patientName">Rukmal Weerasinghe</span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi">2020-11-17</span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-3">
+                <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Amount Per Time</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Times Per Day</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Before / After Meal</b>
+            </div>
+            <div class="c-4 c-m-3">
+                <b>Duration</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="presVals">
+            <div class="row">
+                <div class="c-4 c-m-3">
+                    Amoxicillin
+                </div>
+                <div class="c-4 c-m-2">
+                    2
+                </div>
+                <div class="c-4 c-m-2">
+                    3
+                </div>
+                <div class="c-4 c-m-2">
+                    After
+                </div>
+                <div class="c-4 c-m-3">
+                    1 Week(s)
+                </div>
+            </div>
+        </div>    
+        </div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="closePres">Close</button> 
+            </div>
+        </div>
     </div> 
  </div>
 </div>
-<!-- End of the Modal for View Prescriptions-->
+<!-- End of the Modal for View Prescription-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -148,6 +175,9 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
             getAllPres();
             $('.close').click(()=>{
                 close(modalUpdateDet);
+                close(modalViewPres);
+            })
+            $('#closePres').click(()=>{
                 close(modalViewPres);
             })
             $('#upCancel').click(()=>{

@@ -13,7 +13,7 @@ if(isset($_SESSION["user"]))
 }
 else
 {
-    //header("Location: ../login.php");
+    header("Location: ../login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -75,7 +75,7 @@ else
                         2020-11-01
                     </div>
                     <div class="c-1">
-                        <button type="button" class="btn btnPatientView" id="viewPres">View</button>
+                        <button type="button" class="btn btnPatientView viewPres" id="viewPres">View</button>
                     </div>
                 </div>
                 <?php
@@ -99,35 +99,110 @@ else
             </div>
         </div>
     </div>
+<!-- The Modal for View Prescription-->
+<div id="modalViewPres" class="modal modal2">
 
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12">
+                <h2>Prescription Details</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-3">
+                Prescription ID: <span class="answer" id="predId">1</span>
+            </div>
+            <div class="c-12 c-m-2">
+                Patient ID: <span class="answer" id="patientId">p-1</span>
+            </div>
+            <div class="c-12 c-m-4">
+                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+            </div>
+            <div class="c-12 c-m-3">
+                Date: <span class="answer" id="doi">2020-11-17</span>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>  
+        <div class="row">
+            <div class="c-4 c-m-3">
+                <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Amount Per Time</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Times Per Day</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Before / After Meal</b>
+            </div>
+            <div class="c-4 c-m-3">
+                <b>Duration</b>
+            </div>
+            <div class="c-12"><hr></div>
+        </div>
+        <div id="presVals">
+            <div class="row">
+                <div class="c-4 c-m-3">
+                    Amoxicillin
+                </div>
+                <div class="c-4 c-m-2">
+                    2
+                </div>
+                <div class="c-4 c-m-2">
+                    3
+                </div>
+                <div class="c-4 c-m-2">
+                    After
+                </div>
+                <div class="c-4 c-m-3">
+                    1 Week(s)
+                </div>
+            </div>
+        </div>    
+        </div>
+        <div class ="bottomModel row">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="closePres">Close</button> 
+            </div>
+        </div>
+    </div> 
+ </div>
+</div>
+<!-- End of the Modal for View Prescription-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+        // Get the Prescription view modal
+       var modal = document.getElementById("modalViewPres");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks the button, open the modal 
-        //btn.onclick = 
-        function open() {
-            modal.style.display = "block";
-        }
-        if(modal)
-        {   
-            open();
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
-            }
-        }
-        
+        $(document).ready(function(){
+            //click on view
+            $(".viewPres").click(()=>{
+                open(modalViewPres);
+            });
+            $("#closePres").click(()=>{
+                close(modalViewPres);
+            });
+            $(".close").click(()=>{
+                close(modalViewPres);
+            })
+        })
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modalViewPres) {
+            // modal.style.display = "none";
+                $(modalViewPres).slideUp();
             }
         }
     </script>

@@ -6,16 +6,16 @@ include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/parts/patientSideNav.php');
 
-$patId = "pat45";
+$patId ="";// "pat45";
 $patient="";
 if(isset($_SESSION["user"]))
 {
-    // $patient=unserialize($_SESSION['user']);
-    // $patient=$patient->getUserId();
+    $patient=unserialize($_SESSION['user']);
+    $patId=$patient->getUserId();
 }
 else
 {
-    //header("Location: ../login.php");
+    header("Location: ../login.php");
 }
 echo"<input type='hidden' value='$patId' id='patientID'>";
 ?>

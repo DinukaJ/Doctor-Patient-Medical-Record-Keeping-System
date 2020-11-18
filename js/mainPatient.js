@@ -1,5 +1,5 @@
 var modalUpdateDet = document.getElementById("modalUpdateDet");
-$('#editProfile').click(()=>{
+$('#editProfilePat').click(()=>{
     $('.editProfile input').removeClass('errorInput');
     var patID = $("#patientID").val();
     open(modalUpdateDet);
@@ -20,7 +20,7 @@ $('#editProfile').click(()=>{
     });
 });
 
-$('#usrDetailUp').on('submit',function(e){
+$('#usrDetailUpPat').on('submit',function(e){
     var patID = $("#patientID").val();
     e.preventDefault();
     var errMsg="";
@@ -102,7 +102,7 @@ $('#usrDetailUp').on('submit',function(e){
         $.ajax({
             url:"../handlers/patientHandler.php",
             method:"POST",
-            data:$('#usrDetailUp').serialize()+"&type=upDet&patientID="+patID,
+            data:$('#usrDetailUpPat').serialize()+"&type=upDet&patientID="+patID,
             success:function(data){
                 if(data==1){
                     $('#updateStatusInfo').addClass("success");
@@ -125,7 +125,7 @@ $('#usrDetailUp').on('submit',function(e){
     }
 });
 
-$('#usrPassUp').on('submit',function(e){
+$('#usrPassUpPat').on('submit',function(e){
     e.preventDefault();
     var patID = $("#patientID").val();
     $('#errorMsgPass').removeClass('error');

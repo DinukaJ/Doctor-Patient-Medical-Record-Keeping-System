@@ -25,21 +25,21 @@ if(!isset($_SESSION["user"]))
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
-            <?php getSideNav("patient")?>
+            <?php getSideNav("doctor")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px">
                 <div class="upperPart">
                     <div class="upperFirst row">
                         <div class="c-l-2">
-                            <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD PATIENTS</button></a>
+                            <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
                         </div>
                         <div class="c-l-2">
-                            <a href="addedPatients.php"><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW PATIENTS</button></a>
+                            <a href="addedPatients.php"><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
                         </div>
                     </div>
                     <div class="upperSecond row">
                         <div class="c-l-12">
-                            <h1 style="margin-top:5px">Enter Patient Details</h1>
+                            <h1 style="margin-top:5px">Enter Doctor Details</h1>
                         </div>
                         <!-- <div class="c-l-8 totText">
                             Total Patients: 10
@@ -56,7 +56,7 @@ if(!isset($_SESSION["user"]))
                         <form action="#" method="POST" id="newPat">
                             <div class="row">
                                 <div class="c-12" style="padding-top:0px">
-                                    <h1>Patient ID:- <span id="patIDDis"></span></h1>
+                                    <h1>Doctor ID:- <span id="patIDDis"></span></h1>
                                     <input type="hidden" id="patId" name="patId" value="">
                                 </div>
                                 <div class="c-m-6">

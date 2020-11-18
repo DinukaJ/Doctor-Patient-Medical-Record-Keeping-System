@@ -10,7 +10,7 @@ if(isset($_SESSION["user"]))
 }
 else
 {
-    //header("Location: ../login.php");
+    header("Location: ../login.php");
 }
 
 ?>
@@ -87,13 +87,13 @@ else
         </div>
         <div class="row">
             <div class="c-12 c-m-2">
+                Report ID: <span class="answer" id="reportId"></span>
+            </div>
+            <div class="c-12 c-m-2">
                 Patient ID: <span class="answer" id="patientId"></span>
             </div>
             <div class="c-12 c-m-3">
                 Name: <span class="answer" id="patientName"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Report ID: <span class="answer" id="reportId"></span>
             </div>
             <div class="c-12 c-m-3">
                 Type: <span class="answer" id="rType"></span>
