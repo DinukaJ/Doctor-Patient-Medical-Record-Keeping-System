@@ -20,6 +20,12 @@ if(!isset($_SESSION["user"]))
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
     <title>Add Patients</title>
+    <style>
+        #rightScroll{
+            max-height:80vh;
+            overflow-y:scroll;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -51,7 +57,7 @@ if(!isset($_SESSION["user"]))
                         <div class="alerMSG" id="updateStatusInfo"></div>
                     </div>
                 </div>
-                <div class="row patientDataRow">
+                <div class="row patientDataRow" id="rightScroll">
                     <div class='c-12'>
                         <form action="#" method="POST" id="newPat">
                             <div class="row">
@@ -79,12 +85,6 @@ if(!isset($_SESSION["user"]))
                                 </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
-                                        <label>Age</label>
-                                        <input type="number" class="input-field fullWidth" name="age" id="age" placeholder="Age">
-                                    </div>
-                                </div>
-                                <div class="c-m-6">
-                                    <div class="group-fields">
                                         <label>Email</label>
                                         <input type="text" class="input-field fullWidth" name="email" id="email" placeholder="Email (Optional)">
                                     </div>
@@ -95,11 +95,47 @@ if(!isset($_SESSION["user"]))
                                         <input type="password" class="input-field fullWidth" name="pass" id="pass" placeholder="Password">
                                     </div>
                                 </div>
-                                <div class="c-m-12">
-                                    <div class="group-fields">
-                                        <label>Address</label>
-                                        <textarea type="number" class="input-field fullWidth" name="address" id="address" placeholder="Address"></textarea>
+                                <div class="c-m-6">
+                                </div>
+                                <div class="c-12 c-l-6">
+                                    <h2>Specialties</h2>
+                                    <div class="row" style="padding:0px; margin:0px;">
+                                        <div class="c-12" style="padding:0px; margin:0px;">
+                                            <div class="alerMSG" id="specialtyStatus"></div>
+                                        </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="c-11" style="padding-right:4px">
+                                            <input type="text" class="input-field fullWidth" id="newAllergy" placeholder="Enter New Specialty">
+                                        </div>
+                                        <div class="c-1" style="padding:0px">
+                                        <button type="button" class="btn btnAddPres" style="padding:0px;" name="addAllergy" id="addAllergy"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="c-12" style="padding-right:0px;">
+                                            <div class="scrollBox" id="allergyBox">
+                                                <div class="row allergyRow">
+                                                    <div class="c-11" style="padding-right:0px;">
+                                                        Specialty 1
+                                                    </div>
+                                                    <div class="c-1" style="padding-left:2px;">
+                                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                                    </div>
+                                                </div> 
+                                                <div class="row allergyRow">
+                                                    <div class="c-11" style="padding-right:0px;">
+                                                    Specialty 2
+                                                    </div>
+                                                    <div class="c-1" style="padding-left:2px;">
+                                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-m-6">
                                 </div>
                                 <div class="c-m-6">
                                     <button type="reset" class="btn btnLogin btnNormal" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
@@ -120,7 +156,8 @@ if(!isset($_SESSION["user"]))
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script>
         $('#updateStatusInfo').hide();
-        getId();
+        $('#specialtyStatus').hide();
+
 
         $('#phone').change(function(){
             $("#pass").val($("#phone").val());
