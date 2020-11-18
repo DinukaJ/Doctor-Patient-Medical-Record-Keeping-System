@@ -151,7 +151,7 @@ $(document).ready(function(){
 });
 //Add More Types
 $("#addType").click(function(){
-    $("#typeRowSection").append('<div class="typeRow row"><div class="c-m-4"><label for="medname">Type Name: </label><input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder=""></div><div class="c-m-3"><label for="medname">QTY: </label><input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder=""></div><div class="c-m-4"><label for="medname">Price: </label><input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button></div></div>');
+    $("#typeRowSection").append('<div class="typeRow typeRowRemove row"><div class="c-m-4"><label for="medname"></label><input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder=""></div><div class="c-m-3"><label for="medname"></label><input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder=""></div><div class="c-m-4"><label for="medname"></label><input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button></div></div>');
     $(".delMed").click(function(){
         $(this).parent().parent().remove();
     });
@@ -500,6 +500,13 @@ function addMedTypes(id,num)
                             }
                             
                         });
+                    }
+                    else if(num=="")
+                    {
+                        $(".typeRowRemove").remove();
+                        $(".typeRow").find(".medType").val("");
+                        $(".typeRow").find(".medPrice").val("");
+                        $(".typeRow").find(".medQTY").val("");
                     }
                 }
             }

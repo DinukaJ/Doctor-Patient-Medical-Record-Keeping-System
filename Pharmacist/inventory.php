@@ -163,18 +163,30 @@ else
                         <h4 style="display:inline; margin-right:20px;">Types</h4>
                         <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed addType" name="addType" id="addType"><i class="fas fa-plus"></i></button>
                     </div>
+                    <div class="c-12 c-m-4">
+                        <b>Weight</b>
+                    </div>
+                    <div class="c-12 c-m-3">
+                        <b>QTY</b>
+                    </div>
+                    <div class="c-12 c-m-4">
+                        <b>Price</b>
+                    </div>
+                    <div class="c-12 c-m-1">
+                    </div>
+                    <div class="c-12"><hr></div>
                     <div class="c-12" id="typeRowSection">
                         <div class="typeRow row">
                             <div class="c-m-4">
-                                <label for="medname">Weight Per Unit/Vol: </label>
+                                <label for="medname"></label>
                                 <input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder="200(mg/ml)">
                             </div>
                             <div class="c-m-3">
-                                <label for="medname">QTY: </label>
+                                <label for="medname"></label>
                                 <input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder="">
                             </div>
                             <div class="c-m-4">
-                                <label for="medname">Price: </label>
+                                <label for="medname"></label>
                                 <input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder="">
                             </div>
                             <div class="c-m-1">
