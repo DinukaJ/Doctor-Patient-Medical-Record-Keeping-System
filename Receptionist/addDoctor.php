@@ -98,7 +98,7 @@ if(!isset($_SESSION["user"]))
                                 <div class="c-m-6">
                                 </div>
                                 <div class="c-12 c-l-6">
-                                    <h2>Specialties</h2>
+                                    <h4>Specialties</h4>
                                     <div class="row" style="padding:0px; margin:0px;">
                                         <div class="c-12" style="padding:0px; margin:0px;">
                                             <div class="alerMSG" id="specialtyStatus"></div>
@@ -136,6 +136,21 @@ if(!isset($_SESSION["user"]))
                                     </div>
                                 </div>
                                 <div class="c-m-6">
+                                    <h4>Usual Attending Days</h4>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Monday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Tuesday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Wednesday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Thursday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Friday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Saturday</label><br>
+                                    <input type="checkbox" id="atMon" name="day" value="Monday">
+                                    <label for="atMon"> Sunday</label><br>
                                 </div>
                                 <div class="c-m-6">
                                     <button type="reset" class="btn btnLogin btnNormal" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
