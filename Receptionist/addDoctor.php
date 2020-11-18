@@ -37,10 +37,10 @@ if(!isset($_SESSION["user"]))
                 <div class="upperPart">
                     <div class="upperFirst row">
                         <div class="c-l-2">
-                            <a href="addPatients.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
+                            <a href="addDoctor.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
                         </div>
                         <div class="c-l-2">
-                            <a href="addedPatients.php"><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
+                            <a href=""><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
                         </div>
                     </div>
                     <div class="upperSecond row">
