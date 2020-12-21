@@ -43,7 +43,7 @@ else
                             <label for="patName"><b>Name:  </b><span id="patName" name="patName"></span></label>
                             </div>
                             <div class="patAge">
-                            <label for="patAge"><b>Age:  </b><span id="patAge" name="patAge"></span></lable>
+                            <label for="patAge"><b>Age:  </b><span id="patAge" name="patAge"></span></label>
                             </div> 
                                 <input type="hidden" id="patID" value="">
                         </div>
