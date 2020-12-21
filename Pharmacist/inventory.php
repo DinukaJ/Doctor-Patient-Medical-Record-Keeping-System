@@ -325,7 +325,7 @@ else
    <div class="bottomModel">
         <div class="row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal medCancel" id="upMedCancel">Cancel</button> 
+                <button type="button" class="btn btnNormal medCancel btnCancel" id="upMedCancel">Cancel</button> 
                 <button type="button" class="btn btnNormal" id="upMedSave">Save</button> 
             </div>
         </div>
