@@ -196,6 +196,12 @@ body{
     color: white;
     background-color: #5cc8b1;
 }
+.centerItems{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    vertical-align: middle;
+}
 .box{
     background-color: white;
     padding: 10px;

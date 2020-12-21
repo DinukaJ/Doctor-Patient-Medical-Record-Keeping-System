@@ -1,11 +1,11 @@
 <?php
 function getSideNav($type)
 {
-    //$user=unserialize($_SESSION['user']);
-    $name="Doctor Name";//$user->getFname().' '.$user->getLName();
+    $user=unserialize($_SESSION['user']);
+    $name=/*"Doctor Name";*/$user->getFname().' '.$user->getLName();
     $dp="acc.png";
-    // if($user->getDP())
-    //     $dp=$user->getDP();
+    if($user->getDP())
+        $dp=$user->getDP();
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account2">
