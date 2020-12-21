@@ -161,7 +161,7 @@ else
                 <div class="c-12 c-l-6" style="text-align:left">
                 </div>
                     <div class="c-12 c-l-6">
-                        <button type="button" class="btn btnNormal" id="deleteMed">Delete</button>
+                        <button type="button" class="btn btnNormal btnCancel" id="deleteMed">Delete</button>
                         <button type="button" class="btn btnNormal" id="updateMed">Edit</button> 
                     </div>
                 </div>

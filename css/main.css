@@ -138,9 +138,16 @@ body{
 .sidePanel .name{
     padding-left: 0px;
     font-size: 0.9em;
+}
+.sidePanel .account2 .name{
     display:flex;
     justify-content:center;
     align-items:center;
+    vertical-align: middle;
+}
+.sidePanel .account .name{
+    margin-top: auto;
+    margin-bottom: auto;
     vertical-align: middle;
 }
 .sidePanel .usrBtns{
@@ -148,6 +155,11 @@ body{
     padding-right: 4px;
 }
 .sidePanel .usrBtns .btnNormal{
+    padding:2px 5px !important;
+    font-size: 0.7em !important;
+    height: 40px;
+}
+.sidePanel .usrBtns2 .btnNormal{
     padding:2px 5px !important;
     font-size: 0.7em !important;
     height: 40px;

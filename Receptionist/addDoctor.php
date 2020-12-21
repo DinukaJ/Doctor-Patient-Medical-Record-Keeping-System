@@ -153,7 +153,7 @@ if(!isset($_SESSION["user"]))
                                     <label for="atMon"> Sunday</label><br>
                                 </div>
                                 <div class="c-m-6">
-                                    <button type="reset" class="btn btnLogin btnNormal" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
+                                    <button type="reset" class="btn btnLogin btnNormal btnCancel" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
                                 </div>
                                 <div class="c-m-6">
                                     <button type="submit" class="btn btnLogin btnNormal" name="loginBtn" id="patSave"><i class="fas fa-check"></i> SAVE</button>

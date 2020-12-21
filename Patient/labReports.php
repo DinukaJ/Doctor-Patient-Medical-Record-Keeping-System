@@ -163,7 +163,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="closeReport">Close</button>
+                <button type="button" class="btn btnNormal btnCancel" id="closeReport">Close</button>
                 <!-- <button type="button" class="btn btnNormal" id="updateRep">Edit</button> -->
             </div>
         </div>

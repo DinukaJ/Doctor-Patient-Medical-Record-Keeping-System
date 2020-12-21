@@ -170,7 +170,7 @@ else
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="closePres">Close</button> 
+                <button type="button" class="btn btnNormal btnCancel" id="closePres">Close</button> 
             </div>
         </div>
     </div> 
