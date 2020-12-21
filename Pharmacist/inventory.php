@@ -49,7 +49,7 @@ else
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                 <label>Total Variety Count:</label>
+                                <label>Total Variant Count: <span id="totVariant"></span></label>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
@@ -211,129 +211,128 @@ else
     </div>
     <!-- End of the Modal for Add Medicine-->
 
- <!-- The Modal for View Inventory-->
-<div id="modalViewMed" class="modal modal2">
-<!-- Modal content -->
- <div class="modal-content-long inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
+    <!-- The Modal for View Inventory-->
+    <div id="modalViewMed" class="modal modal2">
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="c-12">
+                <span class="close closeMed">&times;</span>
+                </div>
+            </div>
+        <div class="detailsSection">
+                <div class="row">
+                    <div class="c-12">
+                        <h2>Medicine Details</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c-12 c-m-3">
+                        Medicine ID: <span class="answer" id="medicId"></span>
+                    </div>
+                    <div class="c-12 c-m-6">
+                        Medicine Name: <span class="answer" id="medicName"></span>
+                    </div>
+                    <div class="c-12 c-m-3">
+                        Short Code: <span class="answer" id="medicSc"></span>
+                    </div>
+                    <div class="c-12"><hr></div>
+                </div>
+                    
+                <div class="row">
+                    <div class="c-12 c-m-6">
+                        <b>Type</b>
+                    </div>
+                    <div class="c-12 c-m-3">
+                        <b>QTY</b>
+                    </div>
+                    <div class="c-12 c-m-3">
+                        <b>Price</b>
+                    </div>
+                    <div class="c-12"><hr></div>
+                </div>
+                <div id="medTypes">
+
+                </div>
+        </div>
+                <div class ="bottomModel row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal btnCancel" id="deleteMed">Delete</button>
+                        <button type="button" class="btn btnNormal" id="updateMed">Edit</button>
+                    </div>
+                </div>
+            </div> 
         </div>
     </div>
-   <div class="detailsSection">
-        <div class="row">
-            <div class="c-12">
-                <h2>Medicine Details</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Medicine ID: <span class="answer" id="medicId"></span>
-            </div>
-            <div class="c-12 c-m-6">
-                Medicine Name: <span class="answer" id="medicName"></span>
-            </div>
-            <div class="c-12 c-m-3">
-                Short Code: <span class="answer" id="medicSc"></span>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-              
-        <div class="row">
-            <div class="c-12 c-m-6">
-                <b>Type</b>
-            </div>
-            <div class="c-12 c-m-3">
-                <b>QTY</b>
-            </div>
-            <div class="c-12 c-m-3">
-                <b>Price</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="medTypes">
+    <!-- End of the Modal for View Medicine-->
 
-        </div>
-   </div>
-        <div class ="bottomModel row">
-            <div class="c-12">
-                <button type="button" class="btn btnNormal btnCancel" id="deleteMed">Delete</button>
-                <button type="button" class="btn btnNormal" id="updateMed">Edit</button>
+    <!-- The Modal for Update Medicine-->
+    <div id="modalUpdateMed" class="modal modal2">
+        <!-- Modal content -->
+        <div class="modal-content-long inventoryModal">
+            <div class="row">
+                <div class="c-12">
+                <span class="close closeMed">&times;</span>
+                </div>
             </div>
+        <form method="POST" id="medUpForm">
+        <input type="hidden" value="" id="medUpID" name="medUpID">
+        <div class="detailsSection">
+
+                <div class="row">
+                    <div class="c-12">
+                        <h2>Update Medicine</h2>
+                    </div>
+                </div>
+
+        <div class="row" style="padding:0px; margin:0px;">
+            <div class="c-12" style="padding:0px; margin:0px;">
+                <div class="alerMSG" id="updateStatus"></div>
+            </div>
+        </div> 
+        
+                <div class="row">
+                    <div class="c-m-6">
+                        <label for="medname">Medicine Name: </label>
+                        <input type="text" class="input-field medName" style="width:100%;" name="medUpName" id="medUpName" placeholder="">
+                    </div>
+                    <div class="c-m-6">
+                        <label for="medSc">Short Code: </label>
+                        <input type="text" class="input-field medSc" style="width:100%;" name="medUpSc" id="medUpSc" placeholder="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
+                        <h4 style="display:inline; margin-right:20px;"> Add More</h4>
+                        <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="c-12 c-m-4">
+                        <b>Weight</b>
+                    </div>
+                    <div class="c-12 c-m-4">
+                        <b>QTY</b>
+                    </div>
+                    <div class="c-12 c-m-4">
+                        <b>Price</b>
+                    </div>
+                    <div class="c-12"><hr></div>
+                </div>
+                <div id="medUpTypes"></div>
+                <div id="addMedUpTypes"></div>
         </div>
-    </div> 
- </div>
-</div>
-<!-- End of the Modal for View Medicine-->
-
-<!-- The Modal for Update Medicine-->
-<div id="modalUpdateMed" class="modal modal2">
-
-<!-- Modal content -->
-<div class="modal-content-long inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
+        <div class="bottomModel">
+                <div class="row">
+                    <div class="c-12">
+                        <button type="button" class="btn btnNormal medCancel btnCancel" id="upMedCancel">Cancel</button> 
+                        <button type="button" class="btn btnNormal" id="upMedSave">Save</button> 
+                    </div>
+                </div>
+        </div>
+        </form>
         </div>
     </div>
-<form method="POST" id="medUpForm">
-   <input type="hidden" value="" id="medUpID" name="medUpID">
-   <div class="detailsSection">
-
-        <div class="row">
-            <div class="c-12">
-                <h2>Update Medicine</h2>
-            </div>
-        </div>
-
-   <div class="row" style="padding:0px; margin:0px;">
-       <div class="c-12" style="padding:0px; margin:0px;">
-        <div class="alerMSG" id="updateStatus"></div>
-       </div>
-   </div> 
-   
-        <div class="row">
-            <div class="c-m-6">
-                <label for="medname">Medicine Name: </label>
-                <input type="text" class="input-field medName" style="width:100%;" name="medUpName" id="medUpName" placeholder="">
-            </div>
-            <div class="c-m-6">
-                <label for="medSc">Short Code: </label>
-                <input type="text" class="input-field medSc" style="width:100%;" name="medUpSc" id="medUpSc" placeholder="">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
-                <h4 style="display:inline; margin-right:20px;"> Add More</h4>
-                <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
-            </div>
-            <div class="c-12 c-m-4">
-                <b>Weight</b>
-            </div>
-            <div class="c-12 c-m-4">
-                <b>QTY</b>
-            </div>
-            <div class="c-12 c-m-4">
-                <b>Price</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="medUpTypes"></div>
-        <div id="addMedUpTypes"></div>
-   </div>
-   <div class="bottomModel">
-        <div class="row">
-            <div class="c-12">
-                <button type="button" class="btn btnNormal medCancel btnCancel" id="upMedCancel">Cancel</button> 
-                <button type="button" class="btn btnNormal" id="upMedSave">Save</button> 
-            </div>
-        </div>
-   </div>
-</form>
-</div>
-</div>
-<!-- End of the Modal for Update Medicine-->
+    <!-- End of the Modal for Update Medicine-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>

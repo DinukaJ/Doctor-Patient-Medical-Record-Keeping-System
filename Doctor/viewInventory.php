@@ -50,48 +50,18 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>Total Variant Count:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="c-12 c-l-3">
-                            <div class="boxSmall">
-                                <label>Total Tablet Count:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
-                                </label>
+                                <label>Total Variant Count: <span id="totVariant"></span></label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class='row patientDataRow addMedicineRow'>
-                    <div class='c-2' class='patId'>Med ID</div>
-                    <div class='c-4' class='patFirstName'>Name</div>
-                    <div class='c-2' class='patLastName'>Age</div>
-                    <div class='c-4'>Price</div>
+                    <div class='c-3' class='medicId'>Medicine ID</div>
+                    <div class='c-4' class='medicName'>Medicine Name</div>
+                    <div class='c-4' class='medicQty'>Short Code</div>
                     <div class='c-1'></div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-2">
-                        1
-                    </div>
-                    <div class="c-4">
-                        Medicine Name
-                    </div>
-                    <div class="c-2">
-                        QTY
-                    </div>
-                    <div class="c-3">
-                        Price
-                    </div>
-                    <div class="c-1">
-                        <a class="btn btnPatientView viewMed" name="viewMed" id="viewMed">View</a>
-                    </div>
-                </div>  
+                <div id="medInfo" ></div> 
             </div>
         </div>
     </div>
@@ -147,7 +117,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
    </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="deleteMed">Delete</button>
+                <button type="button" class="btn btnNormal btnCancel" id="deleteMed">Delete</button>
                 <button type="button" class="btn btnNormal" id="updateMed">Edit</button>
             </div>
         </div>
@@ -215,7 +185,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
    <div class="bottomModel">
         <div class="row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal medCancel" id="upMedCancel">Cancel</button> 
+                <button type="button" class="btn btnNormal medCancel btnCancel" id="upMedCancel">Cancel</button> 
                 <button type="button" class="btn btnNormal" id="upMedSave">Save</button> 
             </div>
         </div>

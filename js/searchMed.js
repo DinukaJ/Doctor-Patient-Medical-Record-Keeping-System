@@ -16,14 +16,17 @@ function getAllMed()
         url:"../handlers/inventoryHandler.php",
         method:"POST",
         data:{type:'getMed'},
+        dataType:"json",
         success:function(data){
-            $('#medInfo').html(data);
+            $('#medInfo').html(data[0]);
+            $("#totVariant").html(data[1]);
             $(".viewMed").click(function(){             
                 putInventoryData(this.id);
             });
         }   
     });
 }
+
 //updating list based on the user input
 var a;
 ser.addEventListener("keydown",function(){

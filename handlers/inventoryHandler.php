@@ -72,6 +72,7 @@ function getMedic(){
     $output= "";
     $inventory = new inventory();
     $medData = $inventory->getMedAll();
+    $count=0;
     if(mysqli_num_rows($medData))
     {
         while($row=mysqli_fetch_array($medData))
@@ -84,9 +85,10 @@ function getMedic(){
                                 <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
                             </div>
                       </div>";
+            $count++;
         }
     }
-    echo $output;
+    echo json_encode(array($output,$count));
 }
 
 //getting view clicked med full details
