@@ -50,7 +50,7 @@ class prescription
     public function getPatientPres($pid)//getting a patient's prescriptions
     {  
         $db = new Database();
-        $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1')");
+        $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1') order by doi desc");
         return $data;
     }
     public function getPresMedCount($pid)

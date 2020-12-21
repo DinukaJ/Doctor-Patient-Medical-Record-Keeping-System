@@ -216,7 +216,7 @@ function getFullPatientData()
             </div>
             <div class="row">
                 <div class="c-12">
-                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientPrescription2" id="viewPatientPrescription2"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
+                    <button type="button" class="btn btnAddPres medData viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription2" id="viewPatientPrescription2"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
                     <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientDetails2" id="viewPatientDetails2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                 </div>
             </div>
@@ -308,7 +308,7 @@ function getFullPatientData()
         <div class="c-12 c-l-6" style="text-align:left">
         </div>
             <div class="c-12 c-l-6">
-                <button type="button" class="btn btnNormal upCancel" id="patClose">Close</button> 
+                <button type="button" class="btn btnNormal upCancel btnCancel" id="patClose">Close</button> 
             </div>
         </div>
    </div>
@@ -341,7 +341,7 @@ function getPatientPrescriptions()
    </div>
     <div class="row">
         <div class="c-12 c-m-3">
-            <div class="scrollBox2">
+            <div class="scrollBox2" id="presList">
                 <div class="row patientDataRow2 active">
                     <div class="c-12" style="padding-right:0px;">
                         <b>ID: </b><span>124</span><br>
@@ -358,11 +358,11 @@ function getPatientPrescriptions()
         </div>
         <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
             <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
-                <div class="c-l-6">
-                    <b>Prescription No: <span id="presNo"><b>
+                <div class="c-6">
+                    <b>Prescription No: <span id="presNo"></span><b>
                 </div>
-                <div class="c-l-6">
-                    <b>Date: <span id="presDate"><b>
+                <div class="c-6">
+                    <b>Date: <span id="presDate"></span><b>
                 </div>
             </div>
             <div class="row patientDataRow" style="border-bottom:none;">
@@ -376,24 +376,24 @@ function getPatientPrescriptions()
                             <th style="width:14%; text-align:center;">After/Before Meal</th>
                             <th style="width:12%; text-align:center;">Duration</th>
                         </tr>
-                        <div id="patPresData">
-                            <tr>
-                                <td style="width:2%">1</td>
-                                <td style="width:23%">Med Name</td>
-                                <td style="width:12%; text-align:center;">5</td>
-                                <td style="width:12%; text-align:center;">3</td>
-                                <td style="width:14%; text-align:center;">After</td>
-                                <td style="width:12%; text-align:center;">3 Weeks</td>
-                            </tr>
-                            <tr>
-                                <td style="width:2%">2</td>
-                                <td style="width:23%">Med Name</td>
-                                <td style="width:12%; text-align:center;">5</td>
-                                <td style="width:12%; text-align:center;">3</td>
-                                <td style="width:14%; text-align:center;">After</td>
-                                <td style="width:12%; text-align:center;">3 Weeks</td>
-                            </tr>
-                        </div>
+                    </table>
+                    <table id="patPresData" style="width:100%; font-size:0.8em !important;" class="presTable" id="presTableDetails">
+                        <tr>
+                            <td style="width:2%">1</td>
+                            <td style="width:23%">Med Name</td>
+                            <td style="width:12%; text-align:center;">5</td>
+                            <td style="width:12%; text-align:center;">3</td>
+                            <td style="width:14%; text-align:center;">After</td>
+                            <td style="width:12%; text-align:center;">3 Weeks</td>
+                        </tr>
+                        <tr>
+                            <td style="width:2%">2</td>
+                            <td style="width:23%">Med Name</td>
+                            <td style="width:12%; text-align:center;">5</td>
+                            <td style="width:12%; text-align:center;">3</td>
+                            <td style="width:14%; text-align:center;">After</td>
+                            <td style="width:12%; text-align:center;">3 Weeks</td>
+                        </tr>
                     </table>
                 </div>
             </div>  
@@ -405,7 +405,7 @@ function getPatientPrescriptions()
         <div class="c-12 c-l-6" style="text-align:left">
         </div>
             <div class="c-12 c-l-6">
-                <button type="button" class="btn btnNormal upCancel" id="patClose">Close</button> 
+                <button type="button" class="btn btnNormal upCancel btnCancel" id="presClose">Close</button> 
             </div>
         </div>
    </div>

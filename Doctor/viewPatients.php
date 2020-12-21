@@ -29,6 +29,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <title>Doctor - View Patients</title>
 </head>
 <body>
+    <input type="hidden" id="patientID">
     <div class="container-fluid">
         <div class="row">
             <!-- Getting Side Nav -->
@@ -167,6 +168,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     var patientFullData=document.getElementById("patientFullData");
                     $('.viewMed').click(function(){
                         var pId=$(this).attr('id');
+                        $("#patientID").val(pId);
                         putPatientData2(pId);
                         open(modalPatient);
                     });

@@ -290,3 +290,45 @@ ser.addEventListener("blur", function(){
 	
 });
 }
+
+function getPrescriptions(id)
+{
+    $.ajax({
+        url:"../handlers/prescriptionHandler.php",
+        method:"POST",
+        data:{patientID:id, type:'getPatientPres'},
+        dataType: "json",
+        success:function(data){
+            $("#presList").html(data[0]);
+            getPresDataTable(data[1]);
+            $("#presNo").html(data[1]);
+            $("#presDate").html(data[2]);
+            $(".patientDataRow2").click(function(){
+                $("#presNo").html($(this).find(".presListID").html());
+                $("#presDate").html($(this).find(".presListDate").html());
+                getPresDataTable($(this).find(".presListID").html());
+                $(".patientDataRow2").removeClass("active");
+                $(this).addClass("active");
+            });
+        }
+        
+    });
+}
+$(".viewPatientPrescription").click(function(){
+    var pId=$("#patientID").val().split(" ");
+    pId=pId[0];
+    getPrescriptions(pId);
+});
+
+function getPresDataTable(id)
+{
+    $.ajax({
+        url:"../handlers/prescriptionHandler.php",
+        method:"POST",
+        data:{presID:id, type:'getPresDataTable'},
+        success:function(data){
+            $("#patPresData").html(data);
+        }
+        
+    });
+}

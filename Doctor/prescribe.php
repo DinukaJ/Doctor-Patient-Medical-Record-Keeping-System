@@ -67,7 +67,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div> -->
                         <div class="c-12 c-l-3">
                             <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
-                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
+                            <button type="button" class="btn btnAddPres medData disable viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
                             <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                         </div>
                         <!-- <div class="c-12 c-l-3">
@@ -169,7 +169,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         <textarea class="input-field fullWidth medData disable" style="height:75px" name="presNote" id="presNote" placeholder="Prescription Note"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
-                        <button type="button" class="btn btnNormal btnPatient" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
+                        <button type="button" class="btn btnNormal btnPatient btnCancel" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
                     </div>
                     <div class="c-6 c-l-2">
                         <button type="button" class="btn btnNormal btnPatient" name="finish" id="finish"><i class="fas fa-check"></i> Finish</button>
@@ -216,6 +216,9 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             })
             $('#patClose').click(()=>{
                 close(modalPatient);
+            })
+            $('#presClose').click(()=>{
+                close(patientPrescription);
             })
         });
         // When the user clicks anywhere outside of the modal, close it

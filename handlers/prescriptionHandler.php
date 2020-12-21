@@ -21,6 +21,10 @@ if(isset($_POST["type"]))
         getPatientPresIn();
     if($_POST["type"]=="presInfo")
         getPatientPres();
+    if($_POST["type"]=="getPatientPres")
+        getPatientPresForModal();
+    if($_POST["type"]=="getPresDataTable")
+        getPresDataTable();
 }
 
 
@@ -196,5 +200,81 @@ function getPatientPres(){
     }
     //echo $output;
     echo json_encode(array($output,$docName,$presDate));
+}
+
+function getPatientPresForModal(){ 
+    $output="";
+    $prescription = new prescription();
+    $presId = $_POST["patientID"];
+    $presData = $prescription->getPatientPres($presId);
+    $last="";
+    $lastDate="";
+    if(mysqli_num_rows($presData)){
+        $presMedRow=mysqli_fetch_array($presData);
+        $output.= "
+            <div class='row patientDataRow2 active' id='pres $presMedRow[0]'>
+                <div class='c-12' style='padding-right:0px;'>
+                    <b>ID: </b><span class='presListID'>".$presMedRow[2]."</span><br>
+                    <b>Date: </b><span class='presListDate'>".$presMedRow[3]."</span><br>
+                </div>
+            </div> 
+            ";
+            $last=$presMedRow[2];
+            $lastDate=$presMedRow[3];
+        while($presMedRow=mysqli_fetch_array($presData)){ 
+            $output.= "
+            <div class='row patientDataRow2' id='pres $presMedRow[0]'>
+                <div class='c-12' style='padding-right:0px;'>
+                    <b>ID: </b><span class='presListID'>".$presMedRow[2]."</span><br>
+                    <b>Date: </b><span class='presListDate'>".$presMedRow[3]."</span><br>
+                </div>
+            </div> 
+            ";
+        }
+    }
+    //echo $output;
+    echo json_encode(array($output,$last,$lastDate));
+}
+function getPresDataTable()
+{
+    $output="";
+    $prescription = new prescription();
+    $presId = $_POST["presID"];
+    $presData = $prescription->getPresMeds($presId);
+    $count=1;
+    if(mysqli_num_rows($presData)){
+        while($presMedRow=mysqli_fetch_array($presData)){ 
+            $output.= "
+            <tr>
+                <td style='width:2%'>$count</td>
+                <td style='width:23%'>$presMedRow[7] $presMedRow[2]</td>
+                <td style='width:12%; text-align:center;'>$presMedRow[3]</td>
+                <td style='width:12%; text-align:center;'>$presMedRow[4]</td>
+                <td style='width:14%; text-align:center;'>".formatBeforeAfter($presMedRow[5])."</td>
+                <td style='width:12%; text-align:center;'>".formatDuration($presMedRow[6])."</td>
+            </tr>
+            ";
+            $count++;
+        }
+    }
+    //echo $output;
+    echo $output;
+}
+function formatBeforeAfter($v)
+{
+    if($v=="b")
+        return "Before";
+    else
+        return "After";
+}
+function formatDuration($v)
+{
+    $v=explode(" ",$v);
+    if($v[1]=="d")
+        return "$v[0] Day(s)";
+    else if($v[1]=="w")
+        return "$v[0] Week(s)";
+    else if($v[1]=="m")
+        return "$v[0] Month(s)";
 }
 ?>
