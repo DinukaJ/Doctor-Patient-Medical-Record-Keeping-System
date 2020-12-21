@@ -121,7 +121,7 @@ else
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="deleteRep">Delete</button>
+                <button type="button" class="btn btnNormal btnCancel" id="deleteRep">Delete</button>
                 <!-- <button type="button" class="btn btnNormal" id="updateRep">Edit</button> -->
             </div>
         </div>

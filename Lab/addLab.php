@@ -117,7 +117,7 @@ else
                         <textarea class="input-field fullWidth" style="height:75px" name="presNote" id="presNote" placeholder="Comment"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
-                        <button type="button" class="btn btnNormal btnPatient" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
+                        <button type="button" class="btn btnNormal btnPatient btnCancel" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
                     </div>
                     <div class="c-6 c-l-2">
                         <button type="button" class="btn btnNormal btnPatient" name="finish" id="finish"><i class="fas fa-check"></i> Finish</button>
