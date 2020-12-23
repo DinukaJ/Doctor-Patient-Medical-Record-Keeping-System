@@ -16,7 +16,9 @@ if(isset($_POST["type"])){
     if($_POST["type"]=="repAdd")
             addRep();    
     if($_POST["type"]=="repAddData")
-            addRepData();    
+            addRepData();
+    if($_POST["type"]=="testGet")
+            testData();    
 }
 
 function getRepDatAll(){
@@ -121,12 +123,31 @@ function addRep(){
 function addRepData()
 {
     $lab = new lab();
-    $rId = $_POST["rId"];
+    $pid = $_POST["patId"];
+    $rid = $_POST["repId"];
     $repTest = $_POST["repTest"];
     $repRes = $_POST["repRes"];
-    $repRange = $_POST["repRange"];
-    $stat = $lab->repAddData($rId,$repTest,$repRes,$repRange);
+    $today=date("Y-m-d");
+    $stat = $lab->repAddData($pid,$rid,$today,$repTest,$repRes);
     echo $stat;
+}
+
+//getting tests for each report type
+function testData()
+{
+    $output1="";
+    $output2="";
+    $lab = new lab();
+    $rId = $_POST["rid"];
+    $data = $lab->getRepInfo($rId);
+    if(mysqli_num_rows($data)){
+        while($row=mysqli_fetch_array($data)){
+
+            $output1.="<option value='$row[0]'>'$row[0]'</option>";
+            $output2.="<option value='$row[1]'>'$row[1]'</option>"; 
+        }
+    }
+    echo json_encode(array($output1,$output2));
 }
 
 ?>

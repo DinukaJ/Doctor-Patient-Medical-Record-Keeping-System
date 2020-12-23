@@ -75,10 +75,10 @@ else
                             <label>Select Report Type</label>
                             <select class="input-field fullWidth" name="reportType" id="reportType">
                                 <option selected disabled>Select Report Type</option>
-                                <option value="Lipid Profile">Lipid Profile</option>
-                                <option value="ESR">ESR</option>
-                                <option value="Urine Report">Urine Report</option>
-                                <option value="Liver Profile">Liver Profile</option>
+                                <option value="Lipid Profile-19">Lipid Profile</option>
+                                <option value="ESR-20">ESR</option>
+                                <option value="Urine Report-21">Urine Report</option>
+                                <option value="Liver Profile-22">Liver Profile</option>
                             </select>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ else
                     <div class="c-12"><hr></div>
                     
                     <div class="c-12" id="typeRowSection">
-                        <div class="typeRow row">
+                        <!-- <div class="typeRow row">
                             <div class="c-m-5">
                                 <input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder="">
                             </div>
@@ -108,7 +108,7 @@ else
                             <div class="c-m-3">                                          
                                 <input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder="">
                             </div>
-                        </div>
+                        </div> -->
                     </div>                            
                                                         
                 </div>

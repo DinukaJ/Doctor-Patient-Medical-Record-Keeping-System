@@ -10,7 +10,7 @@ class lab{
 
     public function repSearch($id){
         $db = new Database();
-        $data = $db->getData("select r.*, p.fname, p.lname, rd.* from labreport r join labreportdetails rd on r.id=rd.id join patient p on r.patientId = p.id where r.patientId like '%$id%' or p.fname like '%$id%' or p.lname like '%$id%' or r.id like '%$id%'");
+        $data = $db->getData("select r.*, p.fname, p.lname from labpatientrepdata r join patient p on p.id like '%$id%' or p.fname like '%$id%' or p.lname like '%$id%' or r.id like '%$id%'");
         return $data;
     }
 
@@ -31,6 +31,13 @@ class lab{
         $db = new Database();
         $stat = $db->insert_update_delete("insert into labpatientrepdata values ('$pid','$rid','$today','$repTest','$repRes')");
         return $stat;
+    }
+
+    public function getRepInfo($rid)
+    {
+        $db = new Database();
+        $data = $db->getData("select testName,normalRange from labreportdata where repId='$rid'");
+        return $data;
     }
 
 
