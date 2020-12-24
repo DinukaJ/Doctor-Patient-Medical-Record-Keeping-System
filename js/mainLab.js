@@ -293,7 +293,6 @@ sltRep.addEventListener("click",function(e){
         var rowData = "";
         repId = sltRep.value.split("-");
         repId = repId[1];
-        alert(repId);
         $.ajax({
             url:"../handlers/labHandler.php",
             method:"POST",
