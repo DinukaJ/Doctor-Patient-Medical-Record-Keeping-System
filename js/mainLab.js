@@ -323,3 +323,11 @@ sltRep.addEventListener("click",function(e){
         $(".typeRow").remove();
     }
 });
+
+$("#cancel").click(function(){
+    $("#patName").empty();
+    $("#patAge").empty();
+    $("#patientID").empty();
+    $("#typeRowSection").empty();
+    $('#reportType').prop('selectedIndex',0);
+});
