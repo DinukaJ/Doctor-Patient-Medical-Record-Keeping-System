@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 23, 2020 at 02:43 PM
+-- Generation Time: Dec 24, 2020 at 05:29 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -99,6 +99,20 @@ CREATE TABLE `docusualdays` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `labpatientrepdata`
+--
+
+CREATE TABLE `labpatientrepdata` (
+  `pid` varchar(9) NOT NULL,
+  `repId` int(11) NOT NULL,
+  `doi` date NOT NULL,
+  `testName` text NOT NULL,
+  `result` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `labreport`
 --
 
@@ -106,6 +120,16 @@ CREATE TABLE `labreport` (
   `id` int(11) NOT NULL,
   `type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `labreport`
+--
+
+INSERT INTO `labreport` (`id`, `type`) VALUES
+(19, 'Lipid Profile'),
+(20, 'ESR'),
+(21, 'Urine Profile'),
+(22, 'Liver Profile');
 
 -- --------------------------------------------------------
 
@@ -118,6 +142,17 @@ CREATE TABLE `labreportdata` (
   `testName` text NOT NULL,
   `normalRange` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `labreportdata`
+--
+
+INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
+(19, 'SERIUM CHOLESTEROL', '150-200'),
+(19, 'TRIGLYCERIDES', '35-160'),
+(19, 'HDL-CHOLESTEROL', '40-60'),
+(19, 'LDL-CHOLESTEROL', '<130'),
+(19, 'CHOLESTEROL/HDL', '<3.8');
 
 -- --------------------------------------------------------
 
@@ -232,20 +267,6 @@ CREATE TABLE `patientimpnotes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patientrepdata`
---
-
-CREATE TABLE `patientrepdata` (
-  `pid` varchar(9) NOT NULL,
-  `repId` int(11) NOT NULL,
-  `doi` date NOT NULL,
-  `testName` text NOT NULL,
-  `result` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `prescriptions`
 --
 
@@ -325,6 +346,13 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `labpatientrepdata`
+--
+ALTER TABLE `labpatientrepdata`
+  ADD KEY `pid` (`pid`),
+  ADD KEY `repId` (`repId`);
+
+--
 -- Indexes for table `labreport`
 --
 ALTER TABLE `labreport`
@@ -365,13 +393,6 @@ ALTER TABLE `patientallergy`
 --
 ALTER TABLE `patientimpnotes`
   ADD PRIMARY KEY (`id`,`impNote`);
-
---
--- Indexes for table `patientrepdata`
---
-ALTER TABLE `patientrepdata`
-  ADD KEY `pid` (`pid`),
-  ADD KEY `repId` (`repId`);
 
 --
 -- Indexes for table `prescriptions`
@@ -428,17 +449,17 @@ ALTER TABLE `docspeciality`
   ADD CONSTRAINT `docspeciality_ibfk_1` FOREIGN KEY (`docId`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `labpatientrepdata`
+--
+ALTER TABLE `labpatientrepdata`
+  ADD CONSTRAINT `labpatientrepdata_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `labpatientrepdata_ibfk_2` FOREIGN KEY (`repId`) REFERENCES `labreport` (`id`);
+
+--
 -- Constraints for table `labreportdata`
 --
 ALTER TABLE `labreportdata`
   ADD CONSTRAINT `labreportdata_ibfk_1` FOREIGN KEY (`repId`) REFERENCES `labreport` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `patientrepdata`
---
-ALTER TABLE `patientrepdata`
-  ADD CONSTRAINT `patientrepdata_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `patient` (`id`),
-  ADD CONSTRAINT `patientrepdata_ibfk_2` FOREIGN KEY (`repId`) REFERENCES `labreport` (`id`);
 
 --
 -- Constraints for table `prescriptions`
