@@ -116,13 +116,13 @@ function putPatientData()
     });
 }
 
-$("#upAddType").click(function(){
-    var rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder=""></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
-    $("#typeRowSection").append(rowData);
-    $(".delTest").click(function(){
-        $(this).parent().parent().remove();
-    });
-});
+// $("#upAddType").click(function(){
+//     var rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder=""></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
+//     $("#typeRowSection").append(rowData);
+//     $(".delTest").click(function(){
+//         $(this).parent().parent().remove();
+//     });
+// });
 
 $("#finish").click(function(){
     var errMsg="";
@@ -301,6 +301,13 @@ sltRep.addEventListener("click",function(e){
             success:function(data){
                 rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth" name="testName" id="testName">'+data[0]+'</select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth" name="testRange" id="testRange">'+data[1]+'</select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
                 $("#typeRowSection").append(rowData);
+                $("#upAddType").click(function(){
+                    var rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth" name="testName" id="testName">'+data[0]+'</select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth" name="testRange" id="testRange">'+data[1]+'</select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
+                    $("#typeRowSection").append(rowData);
+                    $(".delTest").click(function(){
+                        $(this).parent().parent().remove();
+                    });
+                });
                 $(".delTest").click(function(){
                     $(this).parent().parent().remove();
                 });
