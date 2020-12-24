@@ -124,6 +124,7 @@ function putPatientData()
 //     });
 // });
 
+
 $("#finish").click(function(){
     var errMsg="";
     var x=0;
@@ -289,6 +290,9 @@ sltRep.addEventListener("click",function(e){
     //     $(".delTest").click(function(){
     //         $(this).parent().parent().remove();
     //     });
+    $(".delTest").click(function(){
+        $(this).parent().parent().remove();
+    });
     if(sltRep.value!=""){
         var rowData = "";
         repId = sltRep.value.split("-");
@@ -311,6 +315,7 @@ sltRep.addEventListener("click",function(e){
                 $(".delTest").click(function(){
                     $(this).parent().parent().remove();
                 });
+
             }
         });
     }
