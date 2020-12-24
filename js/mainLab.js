@@ -293,16 +293,15 @@ sltRep.addEventListener("click",function(e){
         var rowData = "";
         repId = sltRep.value.split("-");
         repId = repId[1];
+        alert(repId);
         $.ajax({
-            
             url:"../handlers/labHandler.php",
             method:"POST",
             data:{type:'testGet',rid:repId},
+            dataType:'json',
             success:function(data){
-                rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth" name="testName" id="testName"></select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth" name="testRange" id="testRange"></select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
+                rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth" name="testName" id="testName">'+data[0]+'</select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth" name="testRange" id="testRange">'+data[1]+'</select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
                 $("#typeRowSection").append(rowData);
-                $("#testName").html(data[0]);
-                $("#testRange").html(data[1]);
                 $(".delTest").click(function(){
                     $(this).parent().parent().remove();
                 });

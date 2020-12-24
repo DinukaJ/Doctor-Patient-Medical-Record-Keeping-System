@@ -142,9 +142,8 @@ function testData()
     $data = $lab->getRepInfo($rId);
     if(mysqli_num_rows($data)){
         while($row=mysqli_fetch_array($data)){
-
-            $output1.="<option value='$row[0]'>'$row[0]'</option>";
-            $output2.="<option value='$row[1]'>'$row[1]'</option>"; 
+            $output1.="<option value=$row[0]>$row[0]</option>";
+            $output2.="<option value=$row[1]>$row[1]</option>"; 
         }
     }
     echo json_encode(array($output1,$output2));
