@@ -327,7 +327,7 @@ sltRep.addEventListener("click",function(e){
 $("#cancel").click(function(){
     $("#patName").empty();
     $("#patAge").empty();
-    $("#patientID").empty();
+    $("#patientID").val("");
     $("#typeRowSection").empty();
     $('#reportType').prop('selectedIndex',0);
 });
