@@ -290,9 +290,8 @@ sltRep.addEventListener("click",function(e){
     //     $(".delTest").click(function(){
     //         $(this).parent().parent().remove();
     //     });
-    $(".delTest").click(function(){
-        $(this).parent().parent().remove();
-    });
+    $("#reportType").prop("disabled",true);
+
     if(sltRep.value!=""){
         var rowData = "";
         repId = sltRep.value.split("-");
@@ -330,4 +329,5 @@ $("#cancel").click(function(){
     $("#patientID").val("");
     $("#typeRowSection").empty();
     $('#reportType').prop('selectedIndex',0);
+    $("#reportType").prop("disabled",false);
 });
