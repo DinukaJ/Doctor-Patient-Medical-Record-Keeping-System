@@ -53,6 +53,7 @@ else
                     <div class="c-12" style="padding:0px; margin:0px;">
                         <div class="alerMSG" id="addRepStatus"></div>
                     </div>
+                </div>
                 <div class="row" style="padding:0px; margin:0px;">
                     <div class="c-12" style="padding:0px; margin:0px;">
                         <div class="alerMSG" id="updateStatus"></div>
