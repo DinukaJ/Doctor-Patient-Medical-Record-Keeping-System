@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 24, 2020 at 05:29 AM
+-- Generation Time: Dec 25, 2020 at 11:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -107,7 +107,8 @@ CREATE TABLE `labpatientrepdata` (
   `repId` int(11) NOT NULL,
   `doi` date NOT NULL,
   `testName` text NOT NULL,
-  `result` text NOT NULL
+  `result` text NOT NULL,
+  `cmt` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -148,11 +149,15 @@ CREATE TABLE `labreportdata` (
 --
 
 INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
-(19, 'SERIUM CHOLESTEROL', '150-200'),
-(19, 'TRIGLYCERIDES', '35-160'),
-(19, 'HDL-CHOLESTEROL', '40-60'),
-(19, 'LDL-CHOLESTEROL', '<130'),
-(19, 'CHOLESTEROL/HDL', '<3.8');
+(22, 'SERIUM TOTAL PROTEIN', '6.6-8.7 g/dl'),
+(22, 'ALBIUM,SERIUM', '3.5-5.2 g/dl'),
+(22, 'GLOBIUM, SERIUM', '2.0-5.0 g/dl'),
+(22, 'BILIRUBIN, TOTAL, SERUM', '0.0-1.2 g/dl'),
+(19, 'SERIUM CHOLESTEROL', '150-200 mg/dl'),
+(19, 'TRIGLYCERIDES', '35-160 mg/dl'),
+(19, 'HDL-CHOLESTEROL', '40-60 mg/dl'),
+(19, 'LDL-CHOLESTEROL', '<130 mg/dl'),
+(19, 'CHOLESTEROL/HDL', '<3.8 mg/dl');
 
 -- --------------------------------------------------------
 
@@ -287,7 +292,8 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 ('doc45', 'p-1', 123, '2020-10-15', NULL, 0),
 ('doc45', 'p-1', 124, '2020-10-29', '', 0),
 ('doc45', 'p-1', 125, '2020-11-17', '', 0),
-('doc45', 'p-3', 126, '2020-11-17', '', 0);
+('doc45', 'p-3', 126, '2020-11-17', '', 0),
+('doc45', 'p-4', 127, '2020-12-25', '', -1);
 
 -- --------------------------------------------------------
 
@@ -314,7 +320,8 @@ INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerT
 (124, 6, '0', 1, 3, 'b', '1 w'),
 (124, 11, '0', 1.5, 2, 'a', '1 w'),
 (125, 25, '250mg', 1.5, 3, 'a', '2 w'),
-(126, 24, '200mg', 1, 1, 'b', '1 w');
+(126, 24, '200mg', 1, 1, 'b', '1 w'),
+(127, 29, '300mg', 2, 2, 'b', '1 w');
 
 --
 -- Indexes for dumped tables
