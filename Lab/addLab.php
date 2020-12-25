@@ -114,7 +114,7 @@ else
                 </div>
                 <div class="row patientDataRow presBottom">
                     <div class="c-12 c-l-8">
-                        <textarea class="input-field fullWidth" style="height:75px" name="presNote" id="presNote" placeholder="Comment"></textarea>
+                        <textarea class="input-field fullWidth comment" style="height:75px" name="comment" id="comment" placeholder="Comment"></textarea>
                     </div>
                     <div class="c-6 c-l-2">
                         <button type="button" class="btn btnNormal btnPatient btnCancel" name="cancel" id="cancel"><i class="fas fa-times"></i> Cancel</button>
