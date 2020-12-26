@@ -211,7 +211,7 @@ $("#finish").click(function(){
                         $.ajax({
                             url:"../handlers/labHandler.php",
                             method:"POST",
-                            data:{type:'repAddData',reportId:reportId,rid:repId,tName:$(obj).find(".testName").html(),result:$(obj).find(".repRes").val()},
+                            data:{type:'repAddData',reportId:reportId,rId:repId,tName:$(obj).find(".testName").html(),result:$(obj).find(".repRes").val()},
                             success:function(data){
                                 if(data!=1){
                                     $('#addRepStatus').addClass("error");
@@ -602,7 +602,6 @@ $(document).on("change","#reportType",function(){
     }
     else
     {
-        addedItemsArr.push($(this).val());
         $.ajax({
             url:"../handlers/labHandler.php",
             method:"POST",
@@ -610,6 +609,8 @@ $(document).on("change","#reportType",function(){
             success:function(data){
                 var d=data.replaceAll("~"," ");
                 $("#typeRowSection").append(d);
+                if(data)
+                 addedItemsArr.push($("#reportType").val());
             }
         });
     }

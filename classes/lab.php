@@ -46,10 +46,10 @@ class lab{
             return -1;
     }
 
-    public function repAddData($pid,$rid,$today,$repTest,$repRes,$cmt)
+    public function repAddData($reportId,$rId,$tName,$result)
     {
         $db = new Database();
-        $stat = $db->insert_update_delete("insert into labpatientrepdata values ('$pid','$rid','$today','$repTest','$repRes','$cmt')");
+        $stat = $db->insert_update_delete("insert into labpatientrepdata values ('$reportId','$rId','$tName','$result')");
         return $stat;
     }
 

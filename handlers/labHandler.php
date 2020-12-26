@@ -11,6 +11,8 @@ if(isset($_POST["type"])){
             getRep();
     if($_POST["type"]=="repDel")
             delRep();  
+    if($_POST["type"]=="repAdd")
+            repAdd();
     if($_POST["type"]=="repAddData")
             addRepData();
     if($_POST["type"]=="testGet")
@@ -106,17 +108,27 @@ function delRep(){
     echo $stat;
 }
 
+//Add patient report
+function repAdd()
+{
+    $lab = new lab();
+    $pid=$_POST["patId"];
+    $cmt=$_POST["cmt"];
+    $today=date("Y-m-d");
+    $stat=$lab->repAdd($pid,$cmt,$today);
+    echo $stat;
+}
 
+//Add patient report data
 function addRepData()
 {
     $lab = new lab();
-    $pid = $_POST["patId"];
-    $rid = $_POST["rid"];
-    $today=date("Y-m-d");
-    $repTest = $_POST["repTest"];
-    $repRes = $_POST["repRes"];
-    $cmt = $_POST["cmt"];
-    $stat = $lab->repAddData($pid,$rid,$today,$repTest,$repRes,$cmt);
+    $reportId = $_POST["reportId"];
+    $rId = $_POST["rId"];
+    $tName = $_POST["tName"];
+    $result = $_POST["result"];
+    
+    $stat = $lab->repAddData($reportId,$rId,$tName,$result);
     echo $stat;
 }
 
@@ -347,5 +359,72 @@ function deleteReportFields()
     {
         echo getReportFields($rId);
     }
+}
+
+//Get selected report type fields
+function getReportFieldsAdd()
+{
+    $rId=$_POST["repId"];
+    $repName=$_POST["repName"];
+    $lab=new lab();
+    $data=$lab->getReportFields($rId);
+    $output="";
+    $outputDone=0;
+    $testname="";
+    if(mysqli_num_rows($data))
+    {
+        $output.='
+        <div class="typeRow row">
+            <input type="hidden" value="'.$rId.'" name="repTypeId" class="repTypeId">
+            <div class="c-11">
+                <p class="reportType"><b><u>'.$repName.'</u></b></p>
+            </div>
+            <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                <button type="button" value="'.$rId.'" class="btn delMed removeTestName" name="removeTestName"><i class="fas fa-times"></i></button>
+            </div>
+        ';
+        while($row=mysqli_fetch_array($data))
+        {
+            if($testname==$row[1])
+            {
+                $output.='
+                <div class="c-m-4">
+                </div>
+                <div class="c-m-4">
+                </div>
+                <div class="c-m-4">                                          
+                    '.$row[2].'
+                </div>  
+                ';
+            }
+            else
+            {
+                if($outputDone==1)
+                {
+                    $output.='
+                    </div>
+                    ';
+                }
+                $testname=$row[1];
+                $output.='
+                <div class="resultSet c-12 row" style="margin-bottom:10px;">
+                    <div class="c-m-4 testName">
+                        '.$row[1].'
+                    </div>
+                    <div class="c-m-4">
+                        <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="Result">
+                    </div>
+                    <div class="c-m-4" style="margin-top:5px;">                                          
+                        '.$row[2].'
+                    </div>
+                ';
+                $outputDone=1;
+            }
+        }
+        $output.='
+        </div>
+        ';
+    }
+    echo $output;
 }
 ?>
