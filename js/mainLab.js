@@ -130,6 +130,7 @@ function putPatientData()
 $("#finish").click(function(){
     var errMsg="";
     var x=0;
+    var x2=0;
     if($("#patientID").val()=="" && val=="")
     {
         $('#patientID').addClass('errorInput');
@@ -141,17 +142,9 @@ $("#finish").click(function(){
     }
     if($(".typeRow").length==0)
     {
-        $('#addRepStatus').removeClass('error');
-        $('#addRepStatus').removeClass('success');
-        $('#addRepStatus').addClass('error');
-        $('#addRepStatus').html("There is no any report type added.");
-        $('#addRepStatus').slideDown();
-        setTimeout(function(){
-            $('#addRepStatus').slideUp('slow');
-        },5000);
-        x=1;
+        x2=1;
     }
-    else if($(".typeRow").length>1)
+    else if($(".typeRow").length>=1)
     {
         var z=0;
         $('.repRes').each(function(i, obj) {
@@ -175,6 +168,17 @@ $("#finish").click(function(){
         $('#addRepStatus').removeClass('success');
         $('#addRepStatus').addClass('error');
         $('#addRepStatus').html("These Fields Cannot be Empty.");
+        $('#addRepStatus').slideDown();
+        setTimeout(function(){
+            $('#addRepStatus').slideUp('slow');
+        },5000);
+    }
+    else if(x2==1)
+    {
+        $('#addRepStatus').removeClass('error');
+        $('#addRepStatus').removeClass('success');
+        $('#addRepStatus').addClass('error');
+        $('#addRepStatus').html("There is no any report type added.");
         $('#addRepStatus').slideDown();
         setTimeout(function(){
             $('#addRepStatus').slideUp('slow');
@@ -236,6 +240,7 @@ $("#finish").click(function(){
                                     $("#typeRowSection").empty();
                                     $("#comment").val("");
                                     $('#reportType').prop('selectedIndex',0);
+                                    addedItemsArr=[];
                                     // $("#reportType").prop("disabled",false);
                                 }
                             }

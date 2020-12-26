@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 26, 2020 at 07:03 AM
+-- Generation Time: Dec 26, 2020 at 08:44 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -111,11 +111,11 @@ CREATE TABLE IF NOT EXISTS `docusualdays` (
 DROP TABLE IF EXISTS `labpatientrep`;
 CREATE TABLE IF NOT EXISTS `labpatientrep` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
+  `pid` varchar(9) NOT NULL,
   `doi` date NOT NULL,
   `cmt` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `labreport` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `labreport`
@@ -174,6 +174,9 @@ CREATE TABLE IF NOT EXISTS `labreportdata` (
 --
 
 INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
+(19, 'CHOLESTEROL/HDL', '< 3.8~mg/dl'),
+(19, 'HDL-CHOLESTEROL', '40 - 60~mg/dl'),
+(19, 'LDL-CHOLESTEROL', '< 130~mg/dl'),
 (19, 'SERIUM CHOLESTEROL', '150 - 200~mg/dl'),
 (19, 'TRIGLYCERIDES', '35 - 160~mg/dl');
 
@@ -189,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `medicine` (
   `name` varchar(20) NOT NULL,
   `shortCode` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `medicine`
