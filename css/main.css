@@ -460,6 +460,12 @@ body{
     overflow-y: scroll;
 }
 #typeRowSection{
+    max-height: 50vh;
+    overflow-y: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#typeRowSectionReportAdd{
     max-height: calc(100vh - 435px);
     /* max-height: 50vh; */
     overflow-y: scroll;
