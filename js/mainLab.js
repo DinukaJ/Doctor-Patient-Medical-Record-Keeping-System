@@ -449,8 +449,8 @@ $("#addTestType").click(function(){
                 }
                 else
                 {
-                    $("#typeRowSectionReportAdd").html(data);
-                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
+                    $("#typeRowSection").html(data);
+                    $("#typeRowSection").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }
@@ -475,8 +475,8 @@ $(document).on("change","#reportType2",function(){
         method:"POST",
         data:{type:'getReportFields', repId:$(this).val()},
         success:function(data){
-            $("#typeRowSectionReportAdd").html(data);
-            $("#typeRowSectionReportAdd").find(".leftValue").hide();
+            $("#typeRowSection").html(data);
+            $("#typeRowSection").find(".leftValue").hide();
             clearTestNameInputSection();
         }
     });
@@ -548,8 +548,8 @@ $(document).on("click",".addMoreUnits",function(){
                 }
                 else
                 {
-                    $("#typeRowSectionReportAdd").html(data);
-                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
+                    $("#typeRowSection").html(data);
+                    $("#typeRowSection").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }
@@ -580,8 +580,8 @@ $(document).on("click",".delTestName",function(){
                 }
                 else
                 {
-                    $("#typeRowSectionReportAdd").html(data);
-                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
+                    $("#typeRowSection").html(data);
+                    $("#typeRowSection").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }

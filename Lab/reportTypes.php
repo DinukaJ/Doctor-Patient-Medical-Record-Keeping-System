@@ -119,7 +119,7 @@ else
                     </div>                            
                     <div class="c-12"><hr></div>   
                     
-                    <div class="c-12" id="typeRowSectionReportAdd">
+                    <div class="c-12" id="typeRowSection">
                         <!-- <div class="wholeSection">
                             <div class="testNameSection">
                                 <div class="typeRow row">
