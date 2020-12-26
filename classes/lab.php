@@ -26,6 +26,26 @@ class lab{
         return $stat;
     }
 
+    public function repAdd($pid,$cmt,$today)
+    {
+        $db=new Database();
+        $data=$db->getData("select id from labpatientrep order by id desc limit 1");
+        $repId="";
+        if(mysqli_num_rows($data))
+        {
+            $repId=mysqli_fetch_array($data)[0]+1;
+        }
+        else
+        {
+            $repId=1;
+        }
+        $stat=$db->insert_update_delete("insert into labpatientrep values('$repId','$pid','$today','$cmt')");
+        if($stat)
+            return $repId;
+        else
+            return -1;
+    }
+
     public function repAddData($pid,$rid,$today,$repTest,$repRes,$cmt)
     {
         $db = new Database();

@@ -139,37 +139,22 @@ $("#finish").click(function(){
     {
         $('#patientID').removeClass('errorInput');
     }
-    if($("#reportType").val()==null)
+    if($(".typeRow").length==0)
     {
-        $('#reportType').addClass('errorInput');
+        $('#addRepStatus').removeClass('error');
+        $('#addRepStatus').removeClass('success');
+        $('#addRepStatus').addClass('error');
+        $('#addRepStatus').html("There is no any report type added.");
+        $('#addRepStatus').slideDown();
+        setTimeout(function(){
+            $('#addRepStatus').slideUp('slow');
+        },5000);
         x=1;
     }
-    else
+    else if($(".typeRow").length>1)
     {
-        $('#reportType').removeClass('errorInput');
-    }
-    // if($(".typeRow").length>1)
-    // {
         var z=0;
-        $('.repTest').each(function(i, obj) {
-            if($(obj).val()=="")
-            {
-                $(obj).addClass('errorInput');
-                z=1;
-            }
-            else
-                $(obj).removeClass('errorInput');
-        });
         $('.repRes').each(function(i, obj) {
-            if($(obj).val()=="")
-            {
-                $(obj).addClass('errorInput');
-                z=1;
-            }
-            else
-                $(obj).removeClass('errorInput');
-        });
-        $('.repRange').each(function(i, obj) {
             if($(obj).val()=="")
             {
                 $(obj).addClass('errorInput');
@@ -182,25 +167,7 @@ $("#finish").click(function(){
         {
             x=1;
         }
-    // }
-    // else
-    // {
-    //     $(".repTest").removeClass('errorInput');
-    //     if($(".repRes").val()=="")
-    //     {
-    //         $(".repRes").addClass('errorInput');
-    //         x=1;
-    //     }
-    //     else
-    //         $(".repRes").removeClass('errorInput');
-    //     if($(".repRange").val()=="")
-    //     {
-    //         $(".repRange").addClass('errorInput');
-    //         x=1;
-    //     }
-    //     else
-    //         $(".repRange").removeClass('errorInput');
-    // }
+    }
 
     if(x==1)
     {
@@ -219,41 +186,63 @@ $("#finish").click(function(){
         $('#addRepStatus').removeClass('success');
         var addStat=0;
         var patID=val.split(' ')[0];
-        repId = sltRep.value.split("-");
-        repId = repId[1];
-        $('.typeRow').each(function(i, obj) {
-            $.ajax({
-                url:"../handlers/labHandler.php",
-                method:"POST",
-                data:{type:'repAddData',patId:patID,rid:repId,cmt:$("#comment").val(),repTest:$(obj).find(".repTest").val(),repRes:$(obj).find(".repRes").val()},
-                success:function(data){
-                    if(data!=1){
-                        $('#addRepStatus').addClass("error");
-                        $('#addRepStatus').html("Adding Failed!");
-                        $('#addRepStatus').slideDown("slow");
-                        setTimeout(function(){
-                            $('#updateStatus').slideUp("slow");
-                        },2000);
-                    }
-                    else
-                    {
-                        addStat=1;
-                        $('#addRepStatus').addClass("success");
-                        $('#addRepStatus').html("Successfully Added!");
-                        $('#addRepStatus').slideDown("slow");
-                        setTimeout(function(){
-                            $('#addRepStatus').slideUp("slow");
-                        },2000);
-                        $("#patName").empty();
-                        $("#patAge").empty();
-                        $("#patientID").val("");
-                        $("#typeRowSection").empty();
-                        $("#comment").val("");
-                        $('#reportType').prop('selectedIndex',0);
-                        // $("#reportType").prop("disabled",false);
-                    }
+
+        $.ajax({
+            url:"../handlers/labHandler.php",
+            method:"POST",
+            data:{type:'repAdd',patId:patID,cmt:$("#comment").val()},
+            success:function(data){
+                if(data=="-1")
+                {
+                    $('#addRepStatus').removeClass('error');
+                    $('#addRepStatus').removeClass('success');
+                    $('#addRepStatus').addClass('error');
+                    $('#addRepStatus').html("Something Went Wrong");
+                    $('#addRepStatus').slideDown();
+                    setTimeout(function(){
+                        $('#addRepStatus').slideUp('slow');
+                    },5000);
                 }
-            });
+                else
+                {
+                    var reportId=data;
+                    $('.resultSet').each(function(i, obj) {
+                        var repId=$(obj).parent().find(".repTypeId").val();
+                        $.ajax({
+                            url:"../handlers/labHandler.php",
+                            method:"POST",
+                            data:{type:'repAddData',reportId:reportId,rid:repId,tName:$(obj).find(".testName").html(),result:$(obj).find(".repRes").val()},
+                            success:function(data){
+                                if(data!=1){
+                                    $('#addRepStatus').addClass("error");
+                                    $('#addRepStatus').html("Adding Failed!");
+                                    $('#addRepStatus').slideDown("slow");
+                                    setTimeout(function(){
+                                        $('#updateStatus').slideUp("slow");
+                                    },2000);
+                                }
+                                else
+                                {
+                                    addStat=1;
+                                    $('#addRepStatus').addClass("success");
+                                    $('#addRepStatus').html("Successfully Added!");
+                                    $('#addRepStatus').slideDown("slow");
+                                    setTimeout(function(){
+                                        $('#addRepStatus').slideUp("slow");
+                                    },2000);
+                                    $("#patName").empty();
+                                    $("#patAge").empty();
+                                    $("#patientID").val("");
+                                    $("#typeRowSection").empty();
+                                    $("#comment").val("");
+                                    $('#reportType').prop('selectedIndex',0);
+                                    // $("#reportType").prop("disabled",false);
+                                }
+                            }
+                        });
+                    });
+                }
+            }
         });
        
 
@@ -327,6 +316,7 @@ function loadTestTypes($type)
         data:{type:'reportTypes',selectType:$type},
         success:function(data){
             $("#reportType2").html(data);
+            $("#reportType").html(data);
         }
     });
 }
@@ -539,6 +529,8 @@ $(document).on("click",".addMoreUnits",function(){
             success:function(data){
                 if(data=="-1")
                 {
+                    $('#addRepStatus').removeClass('error');
+                    $('#addRepStatus').removeClass('success');
                     $('#addRepStatus').addClass('error');
                     $('#addRepStatus').html("This Test Name is Already Added.");
                     $('#addRepStatus').slideDown();
@@ -571,6 +563,8 @@ $(document).on("click",".delTestName",function(){
             success:function(data){
                 if(data=="-1")
                 {
+                    $('#addRepStatus').removeClass('error');
+                    $('#addRepStatus').removeClass('success');
                     $('#addRepStatus').addClass('error');
                     $('#addRepStatus').html("Something Went Wrong.");
                     $('#addRepStatus').slideDown();
@@ -591,4 +585,38 @@ $(document).on("click",".delTestName",function(){
 
 $("#clearBtn").click(function(){
     location.reload();
+});
+
+var addedItemsArr=Array();
+$(document).on("change","#reportType",function(){
+    if(addedItemsArr.includes($(this).val()))
+    {
+        $('#addRepStatus').removeClass('error');
+        $('#addRepStatus').removeClass('success');
+        $('#addRepStatus').addClass('error');
+        $('#addRepStatus').html("Already Added");
+        $('#addRepStatus').slideDown();
+        setTimeout(function(){
+            $('#addRepStatus').slideUp('slow');
+        },5000);
+    }
+    else
+    {
+        addedItemsArr.push($(this).val());
+        $.ajax({
+            url:"../handlers/labHandler.php",
+            method:"POST",
+            data:{type:'getReportFieldsAdd', repId:$(this).val(), repName:$(this).children("option:selected").html()},
+            success:function(data){
+                var d=data.replaceAll("~"," ");
+                $("#typeRowSection").append(d);
+            }
+        });
+    }
+});
+
+$(document).on("click",".removeTestName",function(){
+    var rId=$(this).val();
+    delete addedItemsArr[addedItemsArr.indexOf(rId)];
+    $(this).parent().parent().remove();
 });

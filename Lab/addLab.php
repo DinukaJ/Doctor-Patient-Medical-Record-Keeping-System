@@ -75,17 +75,8 @@ else
                         <div class="group-fields">
                             <label>Select Report Type</label>
                             <select class="input-field fullWidth" name="reportType" id="reportType">
-                                <option selected disabled>Select Report Type</option>
-                                <option value="Lipid Profile-19">Lipid Profile</option>
-                                <option value="ESR-20">ESR</option>
-                                <option value="Urine Report-21">Urine Report</option>
-                                <option value="Liver Profile-22">Liver Profile</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="c-m-12" style="padding-top:20px; padding-bottom:10px;">
-                        <h4 style="display:inline; margin-right:20px;"> Add More</h4>
-                        <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
                     </div>
                     <div class="c-m-4">
                         <b>Test Name</b>
@@ -99,21 +90,45 @@ else
                     <div class="c-12"><hr></div>
                     
                     <div class="c-12" id="typeRowSection">
-                        <div class="typeRow row">
-                            <div class="c-12">
-                                <h4 class="reportType"><u>Lipid Profile</u></h4>
+                        <!-- <div class="typeRow row">
+                            <input type="hidden" value="" name="repTypeId" class="repTypeId">
+                            <div class="c-11">
+                                <p class="reportType"><b><u>Lipid Profile</u></b></p>
                             </div>
-                            <div class="c-m-4">
-                                Test Name 1
+                            <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                                <button type="button" value="" class="btn delMed" name="delTestName"><i class="fas fa-times"></i></button>
                             </div>
-                            <div class="c-m-4">
-                                <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
+                            <div class="resultSet c-12 row" style="margin-bottom:10px;">
+                                <div class="c-m-4 testName">
+                                    Test Name 1
+                                </div>
+                                <div class="c-m-4">
+                                    <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
+                                </div>
+                                <div class="c-m-4">                                          
+                                    <100 <br> 200-500
+                                </div>
+                                <div class="c-m-4">
+                                </div>
+                                <div class="c-m-4">
+                                </div>
+                                <div class="c-m-4">                                          
+                                    <100 <br> 200-500
+                                </div>
                             </div>
-                            <div class="c-m-4">                                          
-                                <p class="preFormat"><100 
-                                100-200</p>
+                            <div class="resultSet c-12 row" style="margin-bottom:10px;">
+                                <div class="c-m-4 testName">
+                                    Test Name 1
+                                </div>
+                                <div class="c-m-4">
+                                    <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
+                                </div>
+                                <div class="c-m-4">                                          
+                                    <100
+                                </div>
                             </div>
-                        </div>
+                            <div class="c-12"><hr class="lightHr"></div>
+                        </div> -->
                     </div>                            
                                                         
                 </div>

@@ -25,6 +25,8 @@ if(isset($_POST["type"])){
         getReportFields();    
     if($_POST["type"]=="deleteReportFields")
         deleteReportFields();    
+    if($_POST["type"]=="getReportFieldsAdd")
+        getReportFieldsAdd();    
 }
 
 function getRepDatAll(){
