@@ -292,13 +292,8 @@ $("#finish").click(function(){
 //});
 
 $("#cancel").click(function(){
-    $("#patName").empty();
-    $("#patAge").empty();
-    $("#patientID").val("");
-    $("#typeRowSection").empty();
-    $("#comment").val("");
-    $('#reportType').prop('selectedIndex',0);
-    // $("#reportType").prop("disabled",false);
+    if(confirm("Are you sure to cancel?"))
+     location.reload();
 });
 
 $(document).on("change",".rangeType",function(){
@@ -589,7 +584,8 @@ $(document).on("click",".delTestName",function(){
 });
 
 $("#clearBtn").click(function(){
-    location.reload();
+    if(confirm("Are you sure to clear?"))
+        location.reload();
 });
 
 var addedItemsArr=Array();
