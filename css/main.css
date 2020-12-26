@@ -280,6 +280,7 @@ body{
     margin-left: 1px;
     margin-right: 1px;
     padding: 10px 0px;
+    /* max-height: calc(100vh - 220px); */
 }
 .patientDataRow2{
     border-bottom: 1px solid #ced4da;
@@ -459,7 +460,8 @@ body{
     overflow-y: scroll;
 }
 #typeRowSection{
-    max-height: 50vh;
+    max-height: calc(100vh - 435px);
+    /* max-height: 50vh; */
     overflow-y: scroll;
     padding-top: 10px;
     padding-bottom: 10px;
