@@ -114,6 +114,7 @@ function repAdd()
     $lab = new lab();
     $pid=$_POST["patId"];
     $cmt=$_POST["cmt"];
+
     $today=date("Y-m-d");
     $stat=$lab->repAdd($pid,$cmt,$today);
     echo $stat;
