@@ -96,6 +96,16 @@ body{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
+@media (max-width:767px){
+    .sidePanel.c-12{
+        width: 0px !important;
+        position: absolute;
+        left:-700px;
+    }
+}
+.lightHr{
+    border:1px solid rgba(160, 159, 159, 0.111)
+}
 .upperPart, .upperPart2, .upperPart3, .upperPart4{
     background-color: #c9e8e2;
     padding-left: 15px;
@@ -450,6 +460,12 @@ body{
 }
 #typeRowSection{
     max-height: 50vh;
+    overflow-y: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#typeRowSectionReportAdd{
+    max-height: 54vh;
     overflow-y: scroll;
     padding-top: 10px;
     padding-bottom: 10px;

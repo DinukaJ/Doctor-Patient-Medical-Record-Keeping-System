@@ -449,8 +449,8 @@ $("#addTestType").click(function(){
                 }
                 else
                 {
-                    $("#typeRowSection").html(data);
-                    $("#typeRowSection").find(".leftValue").hide();
+                    $("#typeRowSectionReportAdd").html(data);
+                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }
@@ -462,6 +462,8 @@ function clearTestNameInputSection()
 {
     $("#testName").val("");
     $("#mainTestNameSection").find(".leftValue").hide();
+    $("#mainTestNameSection").find(".val1").val("");
+    $("#mainTestNameSection").find(".val2").val("");
     $("#mainTestNameSection").find(".rangeType").prop('selectedIndex',0);
     $("#mainTestNameSection").find(".unit").prop('selectedIndex',0);
 }
@@ -473,8 +475,8 @@ $(document).on("change","#reportType2",function(){
         method:"POST",
         data:{type:'getReportFields', repId:$(this).val()},
         success:function(data){
-            $("#typeRowSection").html(data);
-            $("#typeRowSection").find(".leftValue").hide();
+            $("#typeRowSectionReportAdd").html(data);
+            $("#typeRowSectionReportAdd").find(".leftValue").hide();
             clearTestNameInputSection();
         }
     });
@@ -546,8 +548,8 @@ $(document).on("click",".addMoreUnits",function(){
                 }
                 else
                 {
-                    $("#typeRowSection").html(data);
-                    $("#typeRowSection").find(".leftValue").hide();
+                    $("#typeRowSectionReportAdd").html(data);
+                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }
@@ -578,8 +580,8 @@ $(document).on("click",".delTestName",function(){
                 }
                 else
                 {
-                    $("#typeRowSection").html(data);
-                    $("#typeRowSection").find(".leftValue").hide();
+                    $("#typeRowSectionReportAdd").html(data);
+                    $("#typeRowSectionReportAdd").find(".leftValue").hide();
                     clearTestNameInputSection();
                 }
             }
