@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 25, 2020 at 11:54 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.27
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 26, 2020 at 07:03 AM
+-- Server version: 5.7.21
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,15 +28,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `bill`
 --
 
-DROP DATABASE groupprojectucsc;
-CREATE DATABASE groupprojectucsc;
-USE groupprojectucsc;
-
-CREATE TABLE `bill` (
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE IF NOT EXISTS `bill` (
   `presId` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `doi` date NOT NULL,
-  `amount` float NOT NULL
+  `amount` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `presId` (`presId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,10 +44,12 @@ CREATE TABLE `bill` (
 -- Table structure for table `docspecialdays`
 --
 
-CREATE TABLE `docspecialdays` (
+DROP TABLE IF EXISTS `docspecialdays`;
+CREATE TABLE IF NOT EXISTS `docspecialdays` (
   `docId` varchar(9) NOT NULL,
   `date` date DEFAULT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  KEY `docId` (`docId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -57,9 +58,11 @@ CREATE TABLE `docspecialdays` (
 -- Table structure for table `docspeciality`
 --
 
-CREATE TABLE `docspeciality` (
+DROP TABLE IF EXISTS `docspeciality`;
+CREATE TABLE IF NOT EXISTS `docspeciality` (
   `docId` varchar(9) NOT NULL,
-  `speciality` text NOT NULL
+  `speciality` text NOT NULL,
+  KEY `docId` (`docId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,14 +71,16 @@ CREATE TABLE `docspeciality` (
 -- Table structure for table `doctor`
 --
 
-CREATE TABLE `doctor` (
+DROP TABLE IF EXISTS `doctor`;
+CREATE TABLE IF NOT EXISTS `doctor` (
   `id` varchar(9) NOT NULL,
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `phone` varchar(10) NOT NULL,
   `email` text NOT NULL,
   `password` text NOT NULL,
-  `dp` text DEFAULT NULL
+  `dp` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -91,7 +96,8 @@ INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`
 -- Table structure for table `docusualdays`
 --
 
-CREATE TABLE `docusualdays` (
+DROP TABLE IF EXISTS `docusualdays`;
+CREATE TABLE IF NOT EXISTS `docusualdays` (
   `docId` varchar(9) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -99,17 +105,32 @@ CREATE TABLE `docusualdays` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `labpatientrep`
+--
+
+DROP TABLE IF EXISTS `labpatientrep`;
+CREATE TABLE IF NOT EXISTS `labpatientrep` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `doi` date NOT NULL,
+  `cmt` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `labpatientrepdata`
 --
 
-CREATE TABLE `labpatientrepdata` (
-  `pid` varchar(9) NOT NULL,
-  `repId` int(11) NOT NULL,
-  `doi` date NOT NULL,
-  `testName` text NOT NULL,
+DROP TABLE IF EXISTS `labpatientrepdata`;
+CREATE TABLE IF NOT EXISTS `labpatientrepdata` (
+  `repid` int(11) NOT NULL,
+  `repTypeId` int(11) NOT NULL,
+  `testName` varchar(400) NOT NULL,
   `result` text NOT NULL,
-  `cmt` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`repid`,`repTypeId`,`testName`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -117,10 +138,12 @@ CREATE TABLE `labpatientrepdata` (
 -- Table structure for table `labreport`
 --
 
-CREATE TABLE `labreport` (
-  `id` int(11) NOT NULL,
-  `type` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `labreport`;
+CREATE TABLE IF NOT EXISTS `labreport` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `labreport`
@@ -138,26 +161,21 @@ INSERT INTO `labreport` (`id`, `type`) VALUES
 -- Table structure for table `labreportdata`
 --
 
-CREATE TABLE `labreportdata` (
+DROP TABLE IF EXISTS `labreportdata`;
+CREATE TABLE IF NOT EXISTS `labreportdata` (
   `repId` int(11) NOT NULL,
-  `testName` text NOT NULL,
-  `normalRange` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `testName` varchar(400) NOT NULL,
+  `normalRange` varchar(400) NOT NULL,
+  PRIMARY KEY (`repId`,`testName`,`normalRange`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `labreportdata`
 --
 
 INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
-(22, 'SERIUM TOTAL PROTEIN', '6.6-8.7 g/dl'),
-(22, 'ALBIUM,SERIUM', '3.5-5.2 g/dl'),
-(22, 'GLOBIUM, SERIUM', '2.0-5.0 g/dl'),
-(22, 'BILIRUBIN, TOTAL, SERUM', '0.0-1.2 g/dl'),
-(19, 'SERIUM CHOLESTEROL', '150-200 mg/dl'),
-(19, 'TRIGLYCERIDES', '35-160 mg/dl'),
-(19, 'HDL-CHOLESTEROL', '40-60 mg/dl'),
-(19, 'LDL-CHOLESTEROL', '<130 mg/dl'),
-(19, 'CHOLESTEROL/HDL', '<3.8 mg/dl');
+(19, 'SERIUM CHOLESTEROL', '150 - 200~mg/dl'),
+(19, 'TRIGLYCERIDES', '35 - 160~mg/dl');
 
 -- --------------------------------------------------------
 
@@ -165,11 +183,13 @@ INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
 -- Table structure for table `medicine`
 --
 
-CREATE TABLE `medicine` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `medicine`;
+CREATE TABLE IF NOT EXISTS `medicine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `shortCode` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `shortCode` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `medicine`
@@ -189,12 +209,14 @@ INSERT INTO `medicine` (`id`, `name`, `shortCode`) VALUES
 -- Table structure for table `medtypes`
 --
 
-CREATE TABLE `medtypes` (
+DROP TABLE IF EXISTS `medtypes`;
+CREATE TABLE IF NOT EXISTS `medtypes` (
   `id` int(11) NOT NULL,
   `type` varchar(10) NOT NULL,
   `price` int(5) NOT NULL,
   `qty` int(4) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -216,7 +238,8 @@ INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 -- Table structure for table `patient`
 --
 
-CREATE TABLE `patient` (
+DROP TABLE IF EXISTS `patient`;
+CREATE TABLE IF NOT EXISTS `patient` (
   `id` varchar(9) NOT NULL,
   `fname` text NOT NULL,
   `lname` text NOT NULL,
@@ -225,8 +248,9 @@ CREATE TABLE `patient` (
   `password` text NOT NULL,
   `age` int(3) NOT NULL,
   `address` text NOT NULL,
-  `dp` text DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 1
+  `dp` text,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -246,9 +270,11 @@ INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `ag
 -- Table structure for table `patientallergy`
 --
 
-CREATE TABLE `patientallergy` (
+DROP TABLE IF EXISTS `patientallergy`;
+CREATE TABLE IF NOT EXISTS `patientallergy` (
   `id` varchar(9) NOT NULL,
-  `allergy` varchar(30) NOT NULL
+  `allergy` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`,`allergy`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -264,9 +290,11 @@ INSERT INTO `patientallergy` (`id`, `allergy`) VALUES
 -- Table structure for table `patientimpnotes`
 --
 
-CREATE TABLE `patientimpnotes` (
+DROP TABLE IF EXISTS `patientimpnotes`;
+CREATE TABLE IF NOT EXISTS `patientimpnotes` (
   `id` varchar(9) NOT NULL,
-  `impNote` varchar(100) NOT NULL
+  `impNote` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`,`impNote`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -275,13 +303,17 @@ CREATE TABLE `patientimpnotes` (
 -- Table structure for table `prescriptions`
 --
 
-CREATE TABLE `prescriptions` (
+DROP TABLE IF EXISTS `prescriptions`;
+CREATE TABLE IF NOT EXISTS `prescriptions` (
   `docId` varchar(9) NOT NULL,
   `patientId` varchar(9) NOT NULL,
   `id` int(11) NOT NULL,
   `doi` date NOT NULL,
-  `note` text DEFAULT NULL,
-  `status` int(1) DEFAULT NULL
+  `note` text,
+  `status` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `docId` (`docId`),
+  KEY `patientId` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -301,14 +333,18 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 -- Table structure for table `prescription_medicine`
 --
 
-CREATE TABLE `prescription_medicine` (
+DROP TABLE IF EXISTS `prescription_medicine`;
+CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   `pres_ID` int(11) NOT NULL,
   `med_ID` int(11) NOT NULL,
   `medType_ID` varchar(10) NOT NULL,
   `amtPerTime` float NOT NULL,
   `timesPerDay` int(1) NOT NULL,
   `beforeAfter` char(20) NOT NULL,
-  `duration` varchar(15) NOT NULL
+  `duration` varchar(15) NOT NULL,
+  PRIMARY KEY (`pres_ID`,`med_ID`,`medType_ID`),
+  KEY `med_ID` (`med_ID`),
+  KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -322,116 +358,6 @@ INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerT
 (125, 25, '250mg', 1.5, 3, 'a', '2 w'),
 (126, 24, '200mg', 1, 1, 'b', '1 w'),
 (127, 29, '300mg', 2, 2, 'b', '1 w');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `presId` (`presId`);
-
---
--- Indexes for table `docspecialdays`
---
-ALTER TABLE `docspecialdays`
-  ADD KEY `docId` (`docId`);
-
---
--- Indexes for table `docspeciality`
---
-ALTER TABLE `docspeciality`
-  ADD KEY `docId` (`docId`);
-
---
--- Indexes for table `doctor`
---
-ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `labpatientrepdata`
---
-ALTER TABLE `labpatientrepdata`
-  ADD KEY `pid` (`pid`),
-  ADD KEY `repId` (`repId`);
-
---
--- Indexes for table `labreport`
---
-ALTER TABLE `labreport`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `labreportdata`
---
-ALTER TABLE `labreportdata`
-  ADD KEY `repId` (`repId`);
-
---
--- Indexes for table `medicine`
---
-ALTER TABLE `medicine`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `medtypes`
---
-ALTER TABLE `medtypes`
-  ADD PRIMARY KEY (`id`,`type`);
-
---
--- Indexes for table `patient`
---
-ALTER TABLE `patient`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `patientallergy`
---
-ALTER TABLE `patientallergy`
-  ADD PRIMARY KEY (`id`,`allergy`);
-
---
--- Indexes for table `patientimpnotes`
---
-ALTER TABLE `patientimpnotes`
-  ADD PRIMARY KEY (`id`,`impNote`);
-
---
--- Indexes for table `prescriptions`
---
-ALTER TABLE `prescriptions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `docId` (`docId`),
-  ADD KEY `patientId` (`patientId`);
-
---
--- Indexes for table `prescription_medicine`
---
-ALTER TABLE `prescription_medicine`
-  ADD PRIMARY KEY (`pres_ID`,`med_ID`,`medType_ID`),
-  ADD KEY `med_ID` (`med_ID`),
-  ADD KEY `pres_ID` (`pres_ID`) USING BTREE;
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bill`
---
-ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `medicine`
---
-ALTER TABLE `medicine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
@@ -454,19 +380,6 @@ ALTER TABLE `docspecialdays`
 --
 ALTER TABLE `docspeciality`
   ADD CONSTRAINT `docspeciality_ibfk_1` FOREIGN KEY (`docId`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `labpatientrepdata`
---
-ALTER TABLE `labpatientrepdata`
-  ADD CONSTRAINT `labpatientrepdata_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `patient` (`id`),
-  ADD CONSTRAINT `labpatientrepdata_ibfk_2` FOREIGN KEY (`repId`) REFERENCES `labreport` (`id`);
-
---
--- Constraints for table `labreportdata`
---
-ALTER TABLE `labreportdata`
-  ADD CONSTRAINT `labreportdata_ibfk_1` FOREIGN KEY (`repId`) REFERENCES `labreport` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prescriptions`
