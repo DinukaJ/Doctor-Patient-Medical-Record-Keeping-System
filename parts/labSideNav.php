@@ -14,6 +14,7 @@ function getSideNav($type)
         </div>
         <a href="../Lab/addLab.php" class="sideLink ';if($type=="addLab"){echo 'active';} echo'">Add Lab Reports</a>
         <a href="../Lab/viewLab.php" class="sideLink ';if($type=="viewLab"){echo 'active';} echo'">View Lab Reports</a>
+        <a href="../Lab/reportTypes.php" class="sideLink ';if($type=="editType"){echo 'active';} echo'">Edit Report Types</a>
     </div>';
 }
 ?>

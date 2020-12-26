@@ -40,7 +40,43 @@ class lab{
         return $data;
     }
 
+    public function getReportTypes()
+    {
+        $db = new Database();
+        $data = $db->getData("select * from labreport");
+        return $data;
+    }
+    public function addReportType($repType)
+    {
+        $db=new Database();
+        $data=$db->getData("select * from labreport where type='$repType'");
+        if(mysqli_num_rows($data))
+            return -1;
+        else
+        {
+            $stat=$db->insert_update_delete("insert into labreport values(null,'$repType')");
+            return $stat;
+        }
+    }
+    public function addReportFields($rId,$tName,$rangeValue)
+    {
+        $db=new Database();
+        $stat=$db->insert_update_delete("insert into labreportdata values('$rId','$tName','$rangeValue')");
+        return $stat;
+    }
+    public function getReportFields($rId)
+    {
+        $db=new Database();
+        $data=$db->getData("select * from labreportdata where repId='$rId' order by testName");
+        return $data;
+    }
 
+    public function deleteReportFields($rId, $testName, $range)
+    {
+        $db = new Database();
+        $stat=$db->insert_update_delete("delete from labreportdata where repId='$rId' and testName='$testName' and normalRange='$range'");
+        return $stat;
+    }
 }
 
 ?>

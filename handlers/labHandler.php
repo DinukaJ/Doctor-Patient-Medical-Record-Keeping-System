@@ -10,13 +10,21 @@ if(isset($_POST["type"])){
     if($_POST["type"]=="repData")
             getRep();
     if($_POST["type"]=="repDel")
-            delRep();
-    if($_POST["type"]=="repUp")
-            upRep();    
+            delRep();  
     if($_POST["type"]=="repAddData")
             addRepData();
     if($_POST["type"]=="testGet")
             testData();    
+    if($_POST["type"]=="reportTypes")
+            getReportTypes();    
+    if($_POST["type"]=="addReportType")
+        addReportType();    
+    if($_POST["type"]=="addReportFields")
+        addReportFields();    
+    if($_POST["type"]=="getReportFields")
+        getReportFields();    
+    if($_POST["type"]=="deleteReportFields")
+        deleteReportFields();    
 }
 
 function getRepDatAll(){
@@ -96,20 +104,6 @@ function delRep(){
     echo $stat;
 }
 
-//update report data
-function upRep(){
-    $lab = new lab();
-    $rid = $_POST["repUpID"];
-    $type = $_POST["repUpType"];
-    $f1 = $_POST["repUpFi1"];
-    $f2 = $_POST["repUpFi2"];
-    $f3 = $_POST["repUpFi3"];
-    $f4 = $_POST["repUpFi4"];
-    $f5 = $_POST["repUpFi5"];
-    $stat = $lab->repUpdate($rid,$type,$f1,$f2,$f3,$f4,$f5);
-    echo $stat;
-}
-
 
 function addRepData()
 {
@@ -141,4 +135,215 @@ function testData()
     echo json_encode(array($output1,$output2));
 }
 
+//Get report types
+function getReportTypes()
+{
+    $selectVal=$_POST["selectType"];
+    $output="<option selected disabled value=''>Select Report Type</option>";
+    $lab=new lab();
+    $data = $lab->getReportTypes();
+    if(mysqli_num_rows($data))
+    {
+        while($row=mysqli_fetch_array($data))
+        {
+            if($selectVal==$row[1])
+                $output.="<option value='$row[0]' selected>$row[1]</option>";
+            else
+                $output.="<option value='$row[0]'>$row[1]</option>";
+        }
+    }
+    echo $output;
+}
+
+//Add new report types
+function addReportType()
+{
+    $repType=$_POST["repType"];
+    $lab=new lab();
+    $data = $lab->addReportType($repType);
+    echo $data;
+}
+
+//Add report fields
+function addReportFields()
+{
+    $rId=$_POST["repId"];
+    $tName=$_POST["testName"];
+    $val1=$_POST["value1"];
+    $val2=$_POST["value2"];
+    $range=$_POST["rangeVal"];
+    $unit=$_POST["unitVal"];
+    $lab=new lab();
+    if($range=="-")
+    {
+        $rangeValue=$val1." ".$range." ".$val2."~".$unit; 
+    }
+    else
+    {
+        $rangeValue=$range." ".$val2."~".$unit;
+    }
+    $stat=$lab->addReportFields($rId,$tName,$rangeValue);
+    if($stat!=1)
+        echo -1;
+    else
+    {
+        echo getReportFields($rId);
+    }
+}
+
+//Get added report fields of a report type
+function getReportFields($rId="")
+{
+    if($rId=="")
+    {
+        $rId=$_POST["repId"];
+    }
+    $lab=new lab();
+    $data=$lab->getReportFields($rId);
+    $output="";
+    $testname="";
+    $outDone=0;
+    if(mysqli_num_rows($data))
+    {
+        $output.='<div class="wholeSection">';
+        while($row=mysqli_fetch_array($data))
+        {
+            if($testname==$row[1])
+            {
+                $output.='
+                <div class="testNameSection">
+                    <div class="typeRow row">
+                        <div class="c-m-4">
+                            <p></p>
+                        </div>
+                        <div class="c-m-4" style="text-align:center;">
+                            <p>'.explode("~",$row[2])[0].'</p>
+                        </div>
+                        <div class="c-m-3">                                          
+                            <p>'.explode("~",$row[2])[1].'</p>
+                        </div>
+                        <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                            <button type="button" value="'.$row[0].'~'.$row[1].'~'.$row[2].'" class="btn delMed delTestName" name="delTestName"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                ';
+            }
+            else
+            {
+                if($outDone==1)
+                {
+                    $output.='
+                    <div class="typeRow row">
+                        <div class="c-m-4">
+                            
+                        </div>
+                        <div class="c-m-4" style="text-align:center;">
+                            <div class="row" style="margin:0px; padding:0px;">
+                                <div class="c-4 leftValue">
+                                    <input type="number" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
+                                </div>
+                                <div class="c-4">
+                                    <select class="input-field fullWidth rangeType" name="rangeType" style="font-size:1.2em;">
+                                        <option value="<"><</option>
+                                        <option value=">">></option>
+                                        <option value="-">-</option>
+                                    </select>
+                                </div>
+                                <div class="c-4">
+                                    <input type="number" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-m-3">                                          
+                            <select class="input-field fullWidth unit" name="unit" id="unit">
+                                <option value="mg/dl">mg/dl</option>
+                                <option value="g/dl">g/dl</option>
+                            </select>
+                        </div>
+                        <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                            <button type="button" value="'.$testname.'" class="btn btnPatientView viewMed addMoreUnits" name="addMoreUnits"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="c-12"><hr class="lightHr"></div>
+                    </div>
+                    </div>
+                    <div class="wholeSection">
+                    ';
+                }
+               $testname=$row[1];
+               $output.='
+                <div class="testNameSection">
+                    <div class="typeRow row">
+                        <div class="c-m-4">
+                            <p><b>'.$row[1].'</b></p>
+                        </div>
+                        <div class="c-m-4" style="text-align:center;">
+                            <p>'.explode("~",$row[2])[0].'</p>
+                        </div>
+                        <div class="c-m-3">                                          
+                            <p>'.explode("~",$row[2])[1].'</p>
+                        </div>
+                        <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                            <button type="button" value="'.$row[0].'~'.$row[1].'~'.$row[2].'" class="btn delMed delTestName" name="delTestName"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                ';
+                $outDone=1;
+            }
+        }
+        $output.='
+        <div class="typeRow row">
+            <div class="c-m-4">
+                
+            </div>
+            <div class="c-m-4" style="text-align:center;">
+                <div class="row" style="margin:0px; padding:0px;">
+                    <div class="c-4 leftValue">
+                        <input type="number" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
+                    </div>
+                    <div class="c-4">
+                        <select class="input-field fullWidth rangeType" name="rangeType" style="font-size:1.2em;">
+                            <option value="<"><</option>
+                            <option value=">">></option>
+                            <option value="-">-</option>
+                        </select>
+                    </div>
+                    <div class="c-4">
+                        <input type="number" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
+                    </div>
+                </div>
+            </div>
+            <div class="c-m-3">                                          
+                <select class="input-field fullWidth unit" name="unit" id="unit">
+                    <option value="mg/dl">mg/dl</option>
+                    <option value="g/dl">g/dl</option>
+                </select>
+            </div>
+            <div class="c-m-1" style="padding-top:5px; text-align:center;">
+                <button type="button" value="'.$testname.'" class="btn btnPatientView viewMed addMoreUnits" name="addMoreUnits"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="c-12"><hr class="lightHr"></div>
+        </div>
+        </div>
+        ';
+    }
+    echo $output;
+}
+
+//Delete report fields
+function deleteReportFields()
+{
+    $rId=$_POST["repId"];
+    $tName=$_POST["testName"];
+    $range=$_POST["rangeVal"];
+    $lab=new lab();
+    $stat=$lab->deleteReportFields($rId, $tName, $range);
+    if($stat!=1)
+        echo -1;
+    else
+    {
+        echo getReportFields($rId);
+    }
+}
 ?>

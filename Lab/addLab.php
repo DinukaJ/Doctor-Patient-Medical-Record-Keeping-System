@@ -87,29 +87,33 @@ else
                         <h4 style="display:inline; margin-right:20px;"> Add More</h4>
                         <button type="button" style="display:inline" value="" class="btn btnPatientView viewMed upAddType" name="upAddType" id="upAddType"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="c-m-5">
+                    <div class="c-m-4">
                         <b>Test Name</b>
                     </div>
-                    <div class="c-m-3">
+                    <div class="c-m-4">
                         <b>Result</b>
                     </div>
-                    <div class="c-m-3">
+                    <div class="c-m-4">
                         <b>Range</b>
                     </div>
                     <div class="c-12"><hr></div>
                     
                     <div class="c-12" id="typeRowSection">
-                        <!-- <div class="typeRow row">
-                            <div class="c-m-5">
-                                <input type="text" class="input-field repTest" style="width:100%;" name="repTest" placeholder="">
+                        <div class="typeRow row">
+                            <div class="c-12">
+                                <h4 class="reportType"><u>Lipid Profile</u></h4>
                             </div>
-                            <div class="c-m-3">
-                                <input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
+                            <div class="c-m-4">
+                                Test Name 1
                             </div>
-                            <div class="c-m-3">                                          
-                                <input type="text" class="input-field repRange" style="width:100%;" name="repRange" placeholder="">
+                            <div class="c-m-4">
+                                <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="">
                             </div>
-                        </div> -->
+                            <div class="c-m-4">                                          
+                                <p class="preFormat"><100 
+                                100-200</p>
+                            </div>
+                        </div>
                     </div>                            
                                                         
                 </div>
