@@ -255,7 +255,7 @@ function getReportFields($rId="")
                         <div class="c-m-4" style="text-align:center;">
                             <div class="row" style="margin:0px; padding:0px;">
                                 <div class="c-4 leftValue">
-                                    <input type="number" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
+                                    <input type="number" min="0" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
                                 </div>
                                 <div class="c-4">
                                     <select class="input-field fullWidth rangeType" name="rangeType" style="font-size:1.2em;">
@@ -265,7 +265,7 @@ function getReportFields($rId="")
                                     </select>
                                 </div>
                                 <div class="c-4">
-                                    <input type="number" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
+                                    <input type="number" min="0" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
                                 </div>
                             </div>
                         </div>
@@ -314,7 +314,7 @@ function getReportFields($rId="")
             <div class="c-m-4" style="text-align:center;">
                 <div class="row" style="margin:0px; padding:0px;">
                     <div class="c-4 leftValue">
-                        <input type="number" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
+                        <input type="number" min="0" class="input-field val1" style="width:100%;" name="val1" id="val1" placeholder="Value">
                     </div>
                     <div class="c-4">
                         <select class="input-field fullWidth rangeType" name="rangeType" style="font-size:1.2em;">
@@ -324,7 +324,7 @@ function getReportFields($rId="")
                         </select>
                     </div>
                     <div class="c-4">
-                        <input type="number" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
+                        <input type="number" min="0" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@ function getReportFieldsAdd()
                         '.$row[1].'
                     </div>
                     <div class="c-m-4">
-                        <input type="number" class="input-field repRes" style="width:100%;" name="repRes" placeholder="Result">
+                        <input type="number" min="0" class="input-field repRes" style="width:100%;" name="repRes" placeholder="Result">
                     </div>
                     <div class="c-m-4" style="margin-top:5px;">                                          
                         '.$row[2].'
