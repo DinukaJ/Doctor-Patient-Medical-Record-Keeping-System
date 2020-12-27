@@ -359,10 +359,10 @@ function getPatientPrescriptions()
         <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
             <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
                 <div class="c-6">
-                    <b>Prescription No: <span id="presNo"></span><b>
+                    <b>Prescription No: <span id="presNo"></span></b>
                 </div>
                 <div class="c-6">
-                    <b>Date: <span id="presDate"></span><b>
+                    <b>Date: <span id="presDate"></span></b>
                 </div>
             </div>
             <div class="row patientDataRow" style="border-bottom:none;">
