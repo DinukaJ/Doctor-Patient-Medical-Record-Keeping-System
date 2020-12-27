@@ -254,43 +254,6 @@ $("#finish").click(function(){
     }
 });
 
-
-
-//sltRep.addEventListener("click",function(e){
-
-    // $("#reportType").prop("disabled",true);
-
-    // if(sltRep.value!=""){
-    //     var rowData = "";
-    //     repId = sltRep.value.split("-");
-    //     repId = repId[1];
-    //     $.ajax({
-    //         url:"../handlers/labHandler.php",
-    //         method:"POST",
-    //         data:{type:'testGet',rid:repId},
-    //         dataType:'json',
-    //         success:function(data){
-    //             rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth repTest" name="repTest" >'+data[0]+'</select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth repRange" name="repRange" >'+data[1]+'</select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
-    //             $("#typeRowSection").append(rowData);
-    //             $("#upAddType").click(function(){
-    //                 var rowData='<div class="typeRow row removeType" style="margin-top:10px;"><div class="c-m-5"><select class="input-field fullWidth repTest" name="repTest">'+data[0]+'</select></div><div class="c-m-3"><input type="text" class="input-field repRes" style="width:100%;" name="repRes" placeholder=""></div><div class="c-m-3"><select class="input-field fullWidth repRange" name="repRange">'+data[1]+'</select></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delMed delTest" name="delType"><i class="fas fa-times"></i></button></div></div>';
-    //                 $("#typeRowSection").append(rowData);
-    //                 $(".delTest").click(function(){
-    //                     $(this).parent().parent().remove();
-    //                 });
-    //             });
-    //             $(".delTest").click(function(){
-    //                 $(this).parent().parent().remove();
-    //             });
-
-    //         }
-    //     });
-    // }
-    // else{
-    //     $(".typeRow").remove();
-    // }
-//});
-
 $("#cancel").click(function(){
     if(confirm("Are you sure to cancel?"))
      location.reload();
@@ -621,4 +584,5 @@ $(document).on("click",".removeTestName",function(){
     var rId=$(this).val();
     delete addedItemsArr[addedItemsArr.indexOf(rId)];
     $(this).parent().parent().remove();
+    $("#reportType").prop("selectedIndex",0);
 });
