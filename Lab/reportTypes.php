@@ -101,7 +101,7 @@ else
                                         </select>
                                     </div>
                                     <div class="c-4">
-                                        <input type="number" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
+                                        <input type="number" min="0" class="input-field val2" style="width:100%;" name="val2" id="val2" placeholder="Value">
                                     </div>
                                 </div>
                                 
