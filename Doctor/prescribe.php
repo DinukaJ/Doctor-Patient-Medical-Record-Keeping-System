@@ -68,7 +68,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         <div class="c-12 c-l-3">
                             <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
                             <button type="button" class="btn btnAddPres medData disable viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
-                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientReports" id="viewPatientReports"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                         </div>
                         <!-- <div class="c-12 c-l-3">
                             <div class="box">
@@ -191,6 +191,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
        <?php getPatientPrescriptions()?>
     <!-- Patient Prescription Data -->
 
+    <!-- Patient Reports Modal -->
+    <?php getPatientReports()?>
+    <!-- Patient Reports Modal -->
+
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -198,6 +202,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <script>
         var modalPatient=document.getElementById("patientFullData");
         var patientPrescription=document.getElementById("patientPrescription");
+        var patientReports=document.getElementById("patientReports");
         $(document).ready(function(){
             $('#viewPatientDetails').click(function(){
                 open(modalPatient);
@@ -209,7 +214,14 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 open(patientPrescription);
                 close(modalPatient);
             });
-
+            $('#viewPatientReports').click(function(){
+                open(patientReports);
+                close(modalPatient);
+            });
+            $('#viewPatientReports2').click(function(){
+                open(patientReports);
+                close(modalPatient);
+            });
             $('.close').click(()=>{
                 close(modalPatient);
                 close(patientPrescription);
@@ -219,6 +231,9 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             })
             $('#presClose').click(()=>{
                 close(patientPrescription);
+            })
+            $('#reportClose').click(()=>{
+                close(patientReports);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -234,6 +249,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             if (event.target == patientPrescription) {
                     // modalUpdateDet.style.display = "none";
                     close(patientPrescription);
+            }
+            if (event.target == patientReports) {
+                    // modalUpdateDet.style.display = "none";
+                    close(patientReports);
             }
         }
     </script>

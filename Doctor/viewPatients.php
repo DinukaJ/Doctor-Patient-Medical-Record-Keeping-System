@@ -74,7 +74,11 @@ echo"<input type='hidden' value='$docid' id='docID'>";
 
     <!-- Patient Prescription Modal -->
     <?php getPatientPrescriptions()?>
-    <!-- Patient Prescription Data -->
+    <!-- Patient Prescription Modal -->
+
+    <!-- Patient Reports Modal -->
+    <?php getPatientReports()?>
+    <!-- Patient Reports Modal -->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -85,9 +89,14 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         var modalPatient=document.getElementById("patientFullData");
         var modalPatientUpdate=document.getElementById("modalUpdatePat");
         var patientPrescription=document.getElementById("patientPrescription");
+        var patientReports=document.getElementById("patientReports");
         $(document).ready(function(){
             $('#viewPatientPrescription2').click(function(){
                 open(patientPrescription);
+                close(modalPatient);
+            });
+            $('#viewPatientReports2').click(function(){
+                open(patientReports);
                 close(modalPatient);
             });
             $('.close').click(()=>{
@@ -96,6 +105,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             })
             $('#patClose').click(()=>{
                 close(modalPatient);
+            })
+            $('#presClose').click(()=>{
+                close(patientPrescription);
+            })
+            $('#reportClose').click(()=>{
+                close(patientReports);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -111,6 +126,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             if (event.target == patientPrescription) {
                     // modalUpdateDet.style.display = "none";
                     close(patientPrescription);
+            }
+            if (event.target == patientReports) {
+                    // modalUpdateDet.style.display = "none";
+                    close(patientReports);
             }
         }
     </script>

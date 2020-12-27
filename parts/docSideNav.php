@@ -217,7 +217,7 @@ function getFullPatientData()
             <div class="row">
                 <div class="c-12">
                     <button type="button" class="btn btnAddPres medData viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription2" id="viewPatientPrescription2"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
-                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientDetails2" id="viewPatientDetails2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientReports2" id="viewPatientReports2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                 </div>
             </div>
         </div>
@@ -367,8 +367,8 @@ function getPatientPrescriptions()
             </div>
             <div class="row patientDataRow" style="border-bottom:none;">
                 <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
-                    <table style="width:100%; font-size:0.8em !important;" class="presTable" id="presTableDetails">
-                        <tr>
+                    <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow" id="presTableDetails">
+                        <tr style="height:20px;">
                             <th style="width:2%">No</th>
                             <th style="width:23%">Name</th>
                             <th style="width:12%; text-align:center;">Amount Per Time</th>
@@ -406,6 +406,95 @@ function getPatientPrescriptions()
         </div>
             <div class="c-12 c-l-6">
                 <button type="button" class="btn btnNormal upCancel btnCancel" id="presClose">Close</button> 
+            </div>
+        </div>
+   </div>
+
+</div>
+</div>
+<!-- End of the Modal for Update User Details-->
+    ';
+
+}
+function getPatientReports()
+{
+    echo'
+    <!-- The Modal for Update User Details-->
+<div id="patientReports" class="modal modal2" style="padding-top:40px">
+
+<!-- Modal content -->
+<div class="modal-content-long inventoryModal" style="padding-bottom:5px;">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+
+   <div class="detailsSection editProfile" style="padding-bottom:0px">
+   <div class="row">
+        <div class="c-12">
+            <h2 style="margin:0px;">Reports</h2>
+        </div>
+   </div>
+    <div class="row">
+        <div class="c-12 c-m-3">
+            <div class="scrollBox2" id="reportList">
+                <div class="row patientDataRow2 active">
+                    <div class="c-12" style="padding-right:0px;">
+                        <b>ID: </b><span>124</span><br>
+                        <b>Date: </b><span>2020/11/5</span><br>
+                    </div>
+                </div> 
+                <div class="row patientDataRow2">
+                    <div class="c-12" style="padding-right:0px;">
+                        <b>ID: </b><span>123</span><br>
+                        <b>Date: </b><span>2020/11/1</span><br>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
+            <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-6">
+                    <b>Report No: <span id="reportNo"></span></b>
+                </div>
+                <div class="c-6">
+                    <b>Date: <span id="reportDate"></span></b>
+                </div>
+            </div>
+            <div class="row patientDataRow" style="border-bottom:none;">
+                <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
+                    <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow id="reportTable">
+                        <tr style="height:20px;">
+                            <th style="width:30%">Test Name</th>
+                            <th style="width:30%">Result</th>
+                            <th style="width:30%; text-align:center;">Range</th>
+                        </tr>
+                    </table>
+                    <table id="patPresData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
+                        <h5><u>Report Type</u></h5>
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>  
+        </div>
+    </div>
+   </div>
+   <div class="bottomModel">
+        <div class="row">
+        <div class="c-12 c-l-6" style="text-align:left">
+        </div>
+            <div class="c-12 c-l-6">
+                <button type="button" class="btn btnNormal upCancel btnCancel" id="reportClose">Close</button> 
             </div>
         </div>
    </div>
