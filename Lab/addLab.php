@@ -89,7 +89,7 @@ else
                     </div>
                     <div class="c-12"><hr></div>
                     
-                    <div class="c-12" id="typeRowSection">
+                    <div class="c-12" id="typeRowSectionReport">
                         <!-- <div class="typeRow row">
                             <input type="hidden" value="" name="repTypeId" class="repTypeId">
                             <div class="c-11">

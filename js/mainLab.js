@@ -237,7 +237,7 @@ $("#finish").click(function(){
                                     $("#patName").empty();
                                     $("#patAge").empty();
                                     $("#patientID").val("");
-                                    $("#typeRowSection").empty();
+                                    $("#typeRowSectionReport").empty();
                                     $("#comment").val("");
                                     $('#reportType').prop('selectedIndex',0);
                                     addedItemsArr=[];
@@ -609,7 +609,7 @@ $(document).on("change","#reportType",function(){
             data:{type:'getReportFieldsAdd', repId:$(this).val(), repName:$(this).children("option:selected").html()},
             success:function(data){
                 var d=data.replaceAll("~"," ");
-                $("#typeRowSection").append(d);
+                $("#typeRowSectionReport").append(d);
                 if(data)
                  addedItemsArr.push($("#reportType").val());
             }
