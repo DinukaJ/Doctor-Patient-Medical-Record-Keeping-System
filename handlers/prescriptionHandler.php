@@ -289,9 +289,9 @@ function getTodayPres()
     if(mysqli_num_rows($presData)){
         while($row = mysqli_fetch_array($presData)){
             $output.="<div class='row patientDataRow'>
-            <div class='c-3' class='presId'>$row[0]</div>
-            <div class='c-4' class='patName'>$row[1] $row[2]</div>
-            <div class='c-4' class='patName'>$row[9]</div>
+            <div class='c-3' class='presId'>$row[4]</div>
+            <div class='c-4' class='patName'>$row[0] $row[1]</div>
+            <div class='c-4' class='items'>$row[15]</div>
             <div class='c-1'>
                 <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[4]'>View</button>
             </div>
