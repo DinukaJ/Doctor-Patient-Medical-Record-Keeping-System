@@ -13,7 +13,7 @@ function getTodayPres(){
         data:{type:'getTodayPres'},
         dataType:"json",
         success:function(data){
-            $('#presInfo').html(data[0]);
+            $("#presInfo").html(data[0]);
             $("#itemCount").html(data[1]);
             $(".viewPres").click(function(){             
                 putPresData(this.id);
