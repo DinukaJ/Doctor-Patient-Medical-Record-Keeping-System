@@ -4,6 +4,7 @@ function getSideNav($type)
     $user=unserialize($_SESSION['user']);
     $name=/*"Doctor Name";*/$user->getFname().' '.$user->getLName();
     $dp="acc.png";
+    $docType=$user->getDocType();
     if($user->getDP())
         $dp=$user->getDP();
     echo '
@@ -20,9 +21,12 @@ function getSideNav($type)
             <div class="c-6 usrBtns"><a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a></div>
         </div>
         <a href="../Doctor/prescribe.php" class="sideLink ';if($type=="prescribe"){echo 'active';} echo'">Prescribe</a>
-        <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="patients"){echo 'active';} echo'">Patients</a>
-        <a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">Inventory</a>
-        <a href="../Doctor/viewFinancial.php" class="sideLink ';if($type=="financial"){echo 'active';} echo'">Financial Records</a>
+        <a href="../Doctor/viewPatients.php" class="sideLink ';if($type=="patients"){echo 'active';} echo'">Patients</a>';
+        if($docType=='1')
+        {
+            echo '<a href="../Doctor/viewInventory.php" class="sideLink ';if($type=="inventory"){echo 'active';} echo'">Inventory</a>';
+        }
+        echo '<a href="../Doctor/viewFinancial.php" class="sideLink ';if($type=="financial"){echo 'active';} echo'">Financial Records</a>
     </div>';
 }
 function getEditProfile($doctor)

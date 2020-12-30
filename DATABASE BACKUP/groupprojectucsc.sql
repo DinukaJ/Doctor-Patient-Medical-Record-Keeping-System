@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 26, 2020 at 08:44 PM
+-- Generation Time: Dec 30, 2020 at 03:19 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `dp` text,
+  `type` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -87,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`) VALUES
-('doc45', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL);
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`) VALUES
+('doc45', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -328,7 +329,8 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 ('doc45', 'p-1', 124, '2020-10-29', '', 0),
 ('doc45', 'p-1', 125, '2020-11-17', '', 0),
 ('doc45', 'p-3', 126, '2020-11-17', '', 0),
-('doc45', 'p-4', 127, '2020-12-25', '', -1);
+('doc45', 'p-4', 127, '2020-12-25', '', 0),
+('doc45', 'p-3', 128, '2020-12-30', '', 0);
 
 -- --------------------------------------------------------
 
@@ -360,7 +362,9 @@ INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerT
 (124, 11, '0', 1.5, 2, 'a', '1 w'),
 (125, 25, '250mg', 1.5, 3, 'a', '2 w'),
 (126, 24, '200mg', 1, 1, 'b', '1 w'),
-(127, 29, '300mg', 2, 2, 'b', '1 w');
+(127, 29, '300mg', 2, 2, 'b', '1 w'),
+(128, 24, '200mg', 1.5, 1, 'b', '1 w'),
+(128, 25, '250mg', 1, 2, 'a', '2 w');
 
 --
 -- Constraints for dumped tables

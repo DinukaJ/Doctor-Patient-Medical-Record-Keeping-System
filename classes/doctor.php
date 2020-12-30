@@ -2,6 +2,17 @@
 include_once('users.php');
 class doctor extends users
 {
+    private $type;
+    
+    public function setDocType($docType)
+    {
+        $this->type=$docType;
+    }
+    public function getDocType()
+    {
+        return $this->type;
+    }
+
     public function __construct($data="")
     {
         if($data!="")
@@ -11,6 +22,7 @@ class doctor extends users
             $this->setFName($row[1]);
             $this->setLName($row[2]);
             $this->setDP($row[6]);
+            $this->setDocType($row[7]);
         }
     }
     public function disname()

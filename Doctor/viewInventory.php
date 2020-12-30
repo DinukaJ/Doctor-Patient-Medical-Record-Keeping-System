@@ -10,6 +10,10 @@ if(isset($_SESSION["user"]))
 {
     $doctor=unserialize($_SESSION['user']);
     $docid=$doctor->getUserId();
+    if($doctor->getDocType()==0)
+    {
+        header("Location: prescribe.php");
+    }
 }
 else
 {
