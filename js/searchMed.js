@@ -36,8 +36,10 @@ ser.addEventListener("keydown",function(){
             url:"../handlers/inventoryHandler.php",
             method:"POST",
             data:{medSearch:a, type:'searchMed'},
+            dataType:"json",
             success:function(data){
-                $('#medInfo').html(data);
+                $('#medInfo').html(data[0]);
+                $("#totVariant").html(data[1]);
                 $(".viewMed").click(function(){
                     putInventoryData(this.id);
                 });

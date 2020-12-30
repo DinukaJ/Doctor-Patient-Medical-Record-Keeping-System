@@ -31,6 +31,7 @@ function searchMedic()
     $inventory = new inventory();
     $medicSearch=$_POST["medSearch"];
     $searchResult=$inventory->getMedList($medicSearch);
+    $count=0;
     if(mysqli_num_rows($searchResult))
     {
         while($row=mysqli_fetch_array($searchResult))
@@ -43,9 +44,10 @@ function searchMedic()
                                 <button type='button' class='btn btnPatientView viewMed' name='viewMed' id='viewMed-$row[0]'>View</button>
                             </div>
                       </div>";
+            $count++;
         }
     }
-    echo $output;
+    echo json_encode(array($output,$count));
 }
 
 function searchDocMedic()
