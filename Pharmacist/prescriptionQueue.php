@@ -55,7 +55,8 @@ else
                 </div>
                 <div class='row patientDataRow addMedicineRow'>
                     <div class='c-3' class='medicId'>Prescription No</div>
-                    <div class='c-8' class='medicName'>Patient Name</div>
+                    <div class='c-4' class='medicName'>Patient Name</div>
+                    <div class='c-4' class='medicName'>No of Items</div>
                     <!-- <div class='c-4' class='medicQty'>Item Count</div> -->
                     <div class='c-1'>
                     
