@@ -309,9 +309,9 @@ function getTodayPres()
 function getTodayPresMed()
 {
     $output="";
-    $pres =  new prescription();
+    $prescription =  new prescription();
     $pid = $_POST["id"];
-    $presMedData = $pres->getPresMeds($pid);
+    $presMedData = $prescription->getPresMeds($pid);
     if(mysqli_num_rows($presMedData)){
         while($row = mysqli_fetch_array($presMedData)){
             $output.='<div class="row">
