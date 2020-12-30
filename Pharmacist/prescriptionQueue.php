@@ -43,25 +43,26 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-12">
                             <div class="boxSmall">
-                                <label>No. of Prescriptions in Queue: 10<?php 
+                                <label>No. of Prescriptions in Queue:<?php 
                                 // $pid = $pres->getUserId();
                                 // $res = $pres->getPatientPresNum($pid);
                                 // echo"<span>$res</span>"?>
                                 </label>
+                                <span id="itemCount"></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class='row patientDataRow addMedicineRow'>
                     <div class='c-3' class='medicId'>Prescription No</div>
-                    <div class='c-4' class='medicName'>Patient Name</div>
-                    <div class='c-4' class='medicQty'>Item Count</div>
+                    <div class='c-8' class='medicName'>Patient Name</div>
+                    <!-- <div class='c-4' class='medicQty'>Item Count</div> -->
                     <div class='c-1'>
                     
                     </div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-3">
+                <div id="presInfo">
+                    <!-- <div class="c-3">
                         1
                     </div>
                     <div class="c-4">
@@ -72,7 +73,7 @@ else
                     </div>
                     <div class="c-1">
                         <button type="button" class="btn btnPatientView viewPres" id="viewPres">View</button>
-                    </div>
+                    </div> -->
                 </div>
                 <?php
                 // $res=$patient->getPatients();
@@ -289,5 +290,6 @@ else
             }
         }
     </script>
+    <script src="../js/searchPres.js"></script>
 </body>
 </html>

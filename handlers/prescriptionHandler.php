@@ -25,6 +25,8 @@ if(isset($_POST["type"]))
         getPatientPresForModal();
     if($_POST["type"]=="getPresDataTable")
         getPresDataTable();
+    if($_POST["type"]=="getTodayPres")
+        getTodayPres();
 }
 
 
@@ -277,4 +279,26 @@ function formatDuration($v)
     else if($v[1]=="m")
         return "$v[0] Month(s)";
 }
+
+function getTodayPres()
+{
+    $output="";
+    $prescription = new prescription();
+    $presData = $prescription->getTodayPres();
+    $count=0;
+    if(mysqli_num_rows($presData)){
+        while($row = mysqli_fetch_array($presData)){
+            $output.="<div class='row patientDataRow'>
+            <div class='c-3' class='presId'>$row[0] $row[1]</div>
+            <div class='c-8' class='patName'>$row[1]</div>
+            <div class='c-1'>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[4]'>View</button>
+            </div>
+            </div>";
+            $count+=1;
+        }
+    }
+    echo json_encode(array($output,$count));
+}
+
 ?>
