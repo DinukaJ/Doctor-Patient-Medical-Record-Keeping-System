@@ -84,5 +84,4 @@ function putPresData(id){
         $(".doi").html(today);
     }
  });
-
 }
