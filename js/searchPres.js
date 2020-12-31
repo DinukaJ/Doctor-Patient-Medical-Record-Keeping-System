@@ -74,7 +74,7 @@ function putPresData(id){
  $.ajax({
     url:"../handlers/prescriptionHandler.php",
     method:"POST",
-    data:{type:'getTodayPresMed',id=id},
+    data:{type:'getTodayPresMed',id:id},
     dataType:"json",
     success:function (data){
         $("#presVals").html(data);
