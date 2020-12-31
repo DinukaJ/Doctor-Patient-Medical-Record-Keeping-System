@@ -29,6 +29,8 @@ if(isset($_POST["type"])){
         deleteReportFields();    
     if($_POST["type"]=="getReportFieldsAdd")
         getReportFieldsAdd();    
+    if($_POST["type"]=="getPatientReport")
+        getPatientReport();    
 }
 
 function getRepDatAll(){
@@ -426,5 +428,40 @@ function getReportFieldsAdd()
         ';
     }
     echo $output;
+}
+
+function getPatientReport()
+{
+    $output="";
+    $lab = new lab();
+    $pId = $_POST["patientID"];
+    $repData = $lab->getPatientRep($pId);
+    $last="";
+    $lastDate="";
+    if(mysqli_num_rows($repData)){
+        $repRow=mysqli_fetch_array($repData);
+        $output.= "
+            <div class='row patientDataRowRep active' id='pres $repRow[0]'>
+                <div class='c-12' style='padding-right:0px;'>
+                    <b>ID: </b><span class='reportListID'>".$repRow[0]."</span><br>
+                    <b>Date: </b><span class='reportListDate'>".$repRow[2]."</span><br>
+                </div>
+            </div> 
+            ";
+            $last=$repRow[0];
+            $lastDate=$repRow[2];
+        while($repRow=mysqli_fetch_array($repData)){ 
+            $output.= "
+            <div class='row patientDataRowRep' id='pres $repRow[0]'>
+                <div class='c-12' style='padding-right:0px;'>
+                    <b>ID: </b><span class='reportListID'>".$repRow[0]."</span><br>
+                    <b>Date: </b><span class='reportListDate'>".$repRow[2]."</span><br>
+                </div>
+            </div> 
+            ";
+        }
+    }
+    //echo $output;
+    echo json_encode(array($output,$last,$lastDate));
 }
 ?>

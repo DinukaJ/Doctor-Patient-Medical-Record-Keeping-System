@@ -97,6 +97,13 @@ class lab{
         $stat=$db->insert_update_delete("delete from labreportdata where repId='$rId' and testName='$testName' and normalRange='$range'");
         return $stat;
     }
+
+    public function getPatientRep($pid)//getting a patient's prescriptions
+    {  
+        $db = new Database();
+        $data = $db->getData("select * from labpatientrep where pid='$pid' order by doi desc");
+        return $data;
+    }
 }
 
 ?>

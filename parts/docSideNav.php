@@ -221,7 +221,7 @@ function getFullPatientData()
             <div class="row">
                 <div class="c-12">
                     <button type="button" class="btn btnAddPres medData viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription2" id="viewPatientPrescription2"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
-                    <button type="button" class="btn btnAddPres medData" style="margin-top:18px;" name="viewPatientReports2" id="viewPatientReports2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                    <button type="button" class="btn btnAddPres medData viewPatientReport" style="margin-top:18px;" name="viewPatientReports2" id="viewPatientReports2"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                 </div>
             </div>
         </div>
@@ -443,13 +443,13 @@ function getPatientReports()
     <div class="row">
         <div class="c-12 c-m-3">
             <div class="scrollBox2" id="reportList">
-                <div class="row patientDataRow2 active">
+                <div class="row patientDataRowRep active">
                     <div class="c-12" style="padding-right:0px;">
                         <b>ID: </b><span>124</span><br>
                         <b>Date: </b><span>2020/11/5</span><br>
                     </div>
                 </div> 
-                <div class="row patientDataRow2">
+                <div class="row patientDataRowRep">
                     <div class="c-12" style="padding-right:0px;">
                         <b>ID: </b><span>123</span><br>
                         <b>Date: </b><span>2020/11/1</span><br>
@@ -475,7 +475,7 @@ function getPatientReports()
                             <th style="width:30%; text-align:center;">Range</th>
                         </tr>
                     </table>
-                    <table id="patPresData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
+                    <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
                         <h5><u>Report Type</u></h5>
                         <tr>
                             <td style="width:30%; text-align:center;">1</td>

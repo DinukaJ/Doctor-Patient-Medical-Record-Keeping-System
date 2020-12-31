@@ -85,6 +85,8 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <script src="../js/mainDoc.js"></script>
     <script src="../js/mainPatient.js"></script>
     <script src="../js/search.js"></script>
+    <script src="../js/searchPres.js"></script>
+    <script src="../js/searchRep.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
         var modalPatientUpdate=document.getElementById("modalUpdatePat");
@@ -102,6 +104,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             $('.close').click(()=>{
                 close(modalPatient);
                 close(patientPrescription);
+                close(patientReports);
             })
             $('#patClose').click(()=>{
                 close(modalPatient);
@@ -184,8 +187,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     $("#patientData").html(data[0]);
                     $("#totalCountPat").html(data[1]);
                     //Open patient data modal when click on view
-                    var patientFullData=document.getElementById("patientFullData");
-                    $('.viewMed').click(function(){
+                    $('.viewPat').click(function(){
                         var pId=$(this).attr('id');
                         $("#patientID").val(pId);
                         putPatientData2(pId);

@@ -22,23 +22,26 @@ function getAllRep(){
     });
 }
 
-ser.addEventListener("keydown",function(){
-    setTimeout(function(){
-        $.ajax({
-            url:'../handlers/labHandler.php',
-            method:'POST',
-            data:{id:ser.value,type:'searchRep'},
-            dataType:'json',
-            success:function(data){
-                $('#reportInfo').html(data[0]);
-                $('#totalCount').html(data[1]);
-                $('.viewRep').click(function(){
-                    putReportData(this.id);
-                });
-            }
-        });
-    },100)
-});
+if(ser)
+{
+    ser.addEventListener("keydown",function(){
+        setTimeout(function(){
+            $.ajax({
+                url:'../handlers/labHandler.php',
+                method:'POST',
+                data:{id:ser.value,type:'searchRep'},
+                dataType:'json',
+                success:function(data){
+                    $('#reportInfo').html(data[0]);
+                    $('#totalCount').html(data[1]);
+                    $('.viewRep').click(function(){
+                        putReportData(this.id);
+                    });
+                }
+            });
+        },100)
+    });
+}
 
 //handling getting Rep data when view clicked
 function putReportData(id)
@@ -101,33 +104,77 @@ function deleteRepData(id){
     });
 }
 
-$('#repUpForm').on('submit',(e)=>{
-    e.preventDefault();
-    $.ajax({
-        url:'../handlers/labHandler.php',
-        method:'POST',
-        data:$('#repUpForm').serialize()+"&type=repUp",
-        success:function(data){
-            if(data==1)
-            {   
-                $("#updateStatus").addClass("success");
-                $("#updateStatus").html("Successfully Updated!");
-                $("#updateStatus").slideDown("slow");
-                setTimeout(function(){
-                    $("#updateStatus").slideUp("slow");
-                },2000);
-            }
-            else
-            {
-                $("#updateStatus").addClass("error");
-                $("#updateStatus").html("Update Failed!");
-                $("#updateStatus").slideDown("slow");
-                setTimeout(function(){
-                    $("#updateStatus").slideUp("slow");
-                },2000);
-            }
+// $('#repUpForm').on('submit',(e)=>{
+//     e.preventDefault();
+//     $.ajax({
+//         url:'../handlers/labHandler.php',
+//         method:'POST',
+//         data:$('#repUpForm').serialize()+"&type=repUp",
+//         success:function(data){
+//             if(data==1)
+//             {   
+//                 $("#updateStatus").addClass("success");
+//                 $("#updateStatus").html("Successfully Updated!");
+//                 $("#updateStatus").slideDown("slow");
+//                 setTimeout(function(){
+//                     $("#updateStatus").slideUp("slow");
+//                 },2000);
+//             }
+//             else
+//             {
+//                 $("#updateStatus").addClass("error");
+//                 $("#updateStatus").html("Update Failed!");
+//                 $("#updateStatus").slideDown("slow");
+//                 setTimeout(function(){
+//                     $("#updateStatus").slideUp("slow");
+//                 },2000);
+//             }
 
-            getAllRep();
+//             getAllRep();
+//         }
+//     });
+// });
+
+
+//Get patient reports in doctor
+function getReports(id)
+{
+    $.ajax({
+        url:"../handlers/labHandler.php",
+        method:"POST",
+        data:{patientID:id, type:'getPatientReport'},
+        dataType: "json",
+        success:function(data){
+            $("#reportList").html(data[0]);
+            getReportDataTable(data[1]);
+            $("#reportNo").html(data[1]);
+            $("#reportDate").html(data[2]);
+            $(".patientDataRowRep").click(function(){
+                $("#reportNo").html($(this).find(".reportListID").html());
+                $("#reportDate").html($(this).find(".reportListDate").html());
+                getPresDataTable($(this).find(".reportListID").html());
+                $(".patientDataRowRep").removeClass("active");
+                $(this).addClass("active");
+            });
         }
+        
     });
+}
+$(".viewPatientReport").click(function(){
+    var pId=$("#patientID").val();//.split(" ");
+   // pId=pId[0];
+   getReports(pId);
 });
+
+function getReportDataTable(id)
+{
+    $.ajax({
+        url:"../handlers/labHandler.php",
+        method:"POST",
+        data:{reportID:id, type:'getReportDataTable'},
+        success:function(data){
+            $("#patReportData").html(data);
+        }
+        
+    });
+}

@@ -199,6 +199,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
+    <script src="../js/searchPres.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
         var patientPrescription=document.getElementById("patientPrescription");

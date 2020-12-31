@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
     $('#patientID').focus();
-
 });
 $(".leftValue").hide();
 $('#addRepStatus').hide();
@@ -126,7 +125,7 @@ function putPatientData()
 //     });
 // });
 
-
+//Complete report adding
 $("#finish").click(function(){
     var errMsg="";
     var x=0;
@@ -285,6 +284,7 @@ function loadTestTypes($type)
 }
 loadTestTypes("");
 
+//Add new report types
 $("#upAddNewType").click(function(){
     if($("#newReportType").val()=="")
     {
@@ -317,6 +317,7 @@ $("#upAddNewType").click(function(){
     }
 });
 
+//Add New test types
 $("#addTestType").click(function(){
     var x=0;
     var rId;
@@ -552,6 +553,7 @@ $("#clearBtn").click(function(){
 });
 
 var addedItemsArr=Array();
+//Adding new report types for the report
 $(document).on("change","#reportType",function(){
     if(addedItemsArr.includes($(this).val()))
     {
@@ -580,9 +582,12 @@ $(document).on("change","#reportType",function(){
     }
 });
 
+//Remove added test types
 $(document).on("click",".removeTestName",function(){
     var rId=$(this).val();
     delete addedItemsArr[addedItemsArr.indexOf(rId)];
     $(this).parent().parent().remove();
     $("#reportType").prop("selectedIndex",0);
 });
+
+
