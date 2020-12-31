@@ -6,6 +6,7 @@ $(document).ready(function(){
     $("#updateStatus").hide();
 });
 
+//Get today new prescriptions for the prescription queue in pharmacist
 function getTodayPres(){
     $.ajax({
         url:"../handlers/prescriptionHandler.php",
