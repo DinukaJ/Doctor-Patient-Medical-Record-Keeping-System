@@ -75,25 +75,7 @@ else
                     <div class="c-1">
                         <button type="button" class="btn btnPatientView viewPres" id="viewPres">View</button>
                     </div> -->
-                </div>
-                <?php
-                // $res=$patient->getPatients();
-                // $i=1;
-                // while($row=mysqli_fetch_assoc($res))
-                // {
-                //     echo '
-                //     <div class="row patientDataRow">
-                //         <div class="c-11">
-                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                //         </div>
-                //         <div class="c-1">
-                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                //         </div>
-                //     </div>
-                //     ';
-                //     $i++;
-                // }
-                ?>           
+                </div>           
             </div>
         </div>
     </div>
