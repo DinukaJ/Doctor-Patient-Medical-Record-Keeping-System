@@ -27,6 +27,8 @@ if(isset($_POST["type"]))
         getPresDataTable();
     if($_POST["type"]=="getTodayPres")
         getTodayPres();
+    if($_POST["type"]=="getTodayPresMed")
+        getTodayPresMed();
 }
 
 
@@ -138,6 +140,7 @@ function getPrescriptionMedicine()
     }
     echo $output;
 }
+
 function deletePrescription()
 {
     $pres=new prescription();
@@ -289,17 +292,37 @@ function getTodayPres()
     if(mysqli_num_rows($presData)){
         while($row = mysqli_fetch_array($presData)){
             $output.="<div class='row patientDataRow'>
-            <div class='c-3' class='presId'>$row[0]</div>
-            <div class='c-4' class='patName'>$row[1] $row[2]</div>
-            <div class='c-4' class='patName'>$row[9]</div>
+            <div class='c-3' class='presId'>$row[4]</div>
+            <div class='c-4' class='patName'>$row[0] $row[1]</div>
+            <div class='c-4' class='items'>$row[8]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[4]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[4]-$row[2]-$row[3]-$row[0]-$row[1]-$row[5]'>View</button>
             </div>
             </div>";
             $count+=1;
         }
     }
     echo json_encode(array($output,$count));
+}
+
+
+function getTodayPresMed()
+{
+    $output="";
+    $prescription =  new prescription();
+    $pid = $_POST["id"];
+    $presMedData = $prescription->getPresMeds($pid);
+    if(mysqli_num_rows($presMedData)){
+        while($row = mysqli_fetch_array($presMedData)){
+            $output.='<div class="row">
+            <div class="c-4 c-m-3">'.$row[7].'</div>
+            <div class="c-4 c-m-2">'.$row[3].'</div>
+            <div class="c-4 c-m-2">'.$row[4].'</div>
+            <div class="c-4 c-m-2">'.$row[5].'</div>
+            <div class="c-4 c-m-3">'.$row[6].' week(s)</div>';
+        }
+    }
+    echo $output;
 }
 
 ?>
