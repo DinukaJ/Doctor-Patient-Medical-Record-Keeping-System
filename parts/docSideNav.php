@@ -476,7 +476,7 @@ function getPatientReports()
                         </tr>
                     </table>
                     <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
-                        <h5><u>Report Type</u></h5>
+         
                         <tr>
                             <td style="width:30%; text-align:center;">1</td>
                             <td style="width:30%; text-align:center;">Med Name</td>

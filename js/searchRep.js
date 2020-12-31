@@ -173,7 +173,8 @@ function getReportDataTable(id)
         method:"POST",
         data:{reportID:id, type:'getReportDataTable'},
         success:function(data){
-            $("#patReportData").html(data);
+            var d=data.replaceAll("~"," ");
+            $("#patReportData").html(d);
         }
         
     });

@@ -98,10 +98,23 @@ class lab{
         return $stat;
     }
 
-    public function getPatientRep($pid)//getting a patient's prescriptions
+    public function getPatientRep($pid)
     {  
         $db = new Database();
         $data = $db->getData("select * from labpatientrep where pid='$pid' order by doi desc");
+        return $data;
+    }
+    public function getReportData($id)
+    {  
+        $db = new Database();
+        $data = $db->getData("select lp.id, lp.doi, lp.cmt, lpd.repTypeId, l.type, lpd.testName, lpd.result from labpatientrep lp join labpatientrepdata lpd on lp.id=lpd.repid join labreport l on lpd.repTypeId=l.id where lp.id='$id' order by lpd.repTypeId, lpd.testName");
+        return $data;
+    }
+
+    public function getReportRanges($rId, $testName)
+    {
+        $db=new Database();
+        $data=$db->getData("select normalRange from labreportdata where repId='$rId' and testName='$testName'");
         return $data;
     }
 }

@@ -31,6 +31,8 @@ if(isset($_POST["type"])){
         getReportFieldsAdd();    
     if($_POST["type"]=="getPatientReport")
         getPatientReport();    
+    if($_POST["type"]=="getReportDataTable")
+        getReportDataTable();    
 }
 
 function getRepDatAll(){
@@ -463,5 +465,117 @@ function getPatientReport()
     }
     //echo $output;
     echo json_encode(array($output,$last,$lastDate));
+}
+
+function getReportDataTable()
+{
+    $output="";
+    $lab = new lab();
+    $reportId = $_POST["reportID"];
+    $reportData = $lab->getReportData($reportId);
+    $count=1;
+    $testname="";
+    if(mysqli_num_rows($reportData)){
+        while($reportDataRow=mysqli_fetch_array($reportData)){ 
+            $ranges=$lab->getReportRanges($reportDataRow[3], $reportDataRow[5]);
+            if($testname!=$reportDataRow[4])
+            {
+                $testname=$reportDataRow[4];
+                $output.='<br><h4><u>'.$testname.'</u></h4>';
+            }
+            $output.='
+            <tr>
+                <td style="width:30%; text-align:center;">'.$reportDataRow[5].'</td>'.getResultRangeStatus($reportDataRow[6], $reportDataRow[3], $reportDataRow[5]);
+            
+            
+            if(mysqli_num_rows($ranges)==1)
+            {
+                $output.='<td style="width:30%; text-align:center;">'.mysqli_fetch_array($ranges)[0].'</td>';
+            }
+            else if(mysqli_num_rows($ranges)>1)
+            {
+                $output.='<td style="width:30%; text-align:center;">';
+                while($rangeRow=mysqli_fetch_array($ranges))
+                {
+                    $output.=$rangeRow[0].'</br>';
+                }
+                $output.='</td>';
+            }
+            $output.='</tr>';
+            $count++;
+        }
+    }
+    //echo $output;
+    echo $output;
+}
+
+function getResultRangeStatus($result,$repId,$testName)
+{
+    $result=(float)$result;
+    $lab = new lab();
+    $range=$lab->getReportRanges($repId, $testName);
+    $status="";
+    $error=0;
+    while($row=mysqli_fetch_array($range))
+    {
+        $arr=explode(" ",$row[0]);
+        if($arr[0]=="<")
+        {
+            if((float)$arr[1]<$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.' (High)</td>';
+                return $status;
+            }
+            else if((float)$arr[1]==$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.'</td>';
+                return $status;
+            }
+            else
+            {
+                $status='<td style="width:30%; text-align:center; color:green;">'.$result.'</td>';
+            }
+        }
+        else if($arr[0]==">")
+        {
+            if((float)$arr[1]>$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.' (Low)</td>';
+                return $status;
+            }
+            else if((float)$arr[1]==$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.'</td>';
+                return $status;
+            }
+            else
+            {
+                $status='<td style="width:30%; text-align:center; color:green;">'.$result.'</td>';
+            }
+        }
+        else if($arr[1]=="-")
+        {
+            if((float)$arr[0]>$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.' (Low)</td>';
+                return $status;
+            }
+            else if((float)$arr[2]<$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.' (High)</td>';
+                return $status;
+            }  
+            else if((float)$arr[0]==$result || (float)$arr[2]==$result)
+            {
+                $status='<td style="width:30%; text-align:center; color:red;">'.$result.'</td>';
+                return $status;
+            } 
+            else
+            {
+                $status='<td style="width:30%; text-align:center; color:green;">'.$result.'</td>';
+            }
+        }
+    }
+    return $status;
 }
 ?>

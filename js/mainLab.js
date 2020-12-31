@@ -214,7 +214,7 @@ $("#finish").click(function(){
                         $.ajax({
                             url:"../handlers/labHandler.php",
                             method:"POST",
-                            data:{type:'repAddData',reportId:reportId,rId:repId,tName:$(obj).find(".testName").html(),result:$(obj).find(".repRes").val()},
+                            data:{type:'repAddData',reportId:reportId,rId:repId,tName:$.trim($(obj).find(".testName").html()),result:$(obj).find(".repRes").val()},
                             success:function(data){
                                 if(data!=1){
                                     $('#addRepStatus').addClass("error");
