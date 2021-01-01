@@ -16,7 +16,7 @@ function getTodayPres(){
         success:function(data){
             $("#presInfo").html(data[0]);
             $("#itemCount").html(data[1]);
-            $(".viewPres").click(function(){             
+            $(".viewPres").click(function(){            
                 putPresData(this.id);
             });
         }   
@@ -76,13 +76,13 @@ function putPresData(id){
     url:"../handlers/prescriptionHandler.php",
     method:"POST",
     data:{type:'getTodayPresMed',id:id},
-    dataType:"json",
     success:function (data){
         $("#presVals").html(data);
         $(".presId").html(id);
         $(".patId").html(patId);
         $(".patName").html(patName);
         $(".doi").html(today);
+        open(modalViewPres);
     }
  });
 }

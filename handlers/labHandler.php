@@ -509,6 +509,7 @@ function getReportDataTable()
     echo $output;
 }
 
+//Find the result is okay, high or low according to the ranges
 function getResultRangeStatus($result,$repId,$testName)
 {
     $result=(float)$result;

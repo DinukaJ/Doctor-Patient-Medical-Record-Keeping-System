@@ -239,15 +239,11 @@ else
 
     <script>
         // Get the Prescription view modal
-       var modal = document.getElementById("modalViewPres");
+       var modalViewPres = document.getElementById("modalViewPres");
         //Model Bill
-       var modal = document.getElementById("modalBill");
+       var modalBill = document.getElementById("modalBill");
 
         $(document).ready(function(){
-            //click on view
-            $(".viewPres").click(()=>{
-                open(modalViewPres);
-            });
             $(".close").click(()=>{
                 close(modalViewPres);
                 close(modalBill);
