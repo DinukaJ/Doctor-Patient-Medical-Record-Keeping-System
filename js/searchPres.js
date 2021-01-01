@@ -67,7 +67,7 @@ function getPresDataTable(id)
 }
 
 function putPresData(id){
- splitVal = id.split("-");
+ splitVal = id.split("~");
  id = splitVal[1];
  patId = splitVal[3];
  patName = splitVal[4]+' '+splitVal[5];

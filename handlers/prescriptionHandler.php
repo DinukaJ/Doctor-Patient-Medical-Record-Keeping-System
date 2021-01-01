@@ -296,7 +296,7 @@ function getTodayPres()
             <div class='c-4' class='patName'>$row[0] $row[1]</div>
             <div class='c-4' class='items'>$row[8]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$row[4]-$row[2]-$row[3]-$row[0]-$row[1]-$row[5]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]'>View</button>
             </div>
             </div>";
             $count+=1;
@@ -319,7 +319,8 @@ function getTodayPresMed()
             <div class="c-4 c-m-2">'.$row[3].'</div>
             <div class="c-4 c-m-2">'.$row[4].'</div>
             <div class="c-4 c-m-2">'.$row[5].'</div>
-            <div class="c-4 c-m-3">'.$row[6].' week(s)</div>';
+            <div class="c-4 c-m-3">'.$row[6].' week(s)</div>
+            </div>';
         }
     }
     echo $output;

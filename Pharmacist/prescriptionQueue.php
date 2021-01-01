@@ -145,7 +145,7 @@ else
                 <div class="c-4 c-m-3">
                     1 Week(s)
                 </div> -->
-            </div>
+            <!-- </div> -->
         </div>    
         </div>
         <div class ="bottomModel row">
