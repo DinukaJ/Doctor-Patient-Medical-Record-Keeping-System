@@ -104,5 +104,11 @@ class prescription
         return $data;
     }
 
+    public function getMedFin($id){
+        $db = new Database();
+        $data = $db->getData("select m.name,pm.medType_ID,mt.price,pm.amtPerTime,pm.timesPerDay,pm.duration from medicine m join medtypes mt on m.id=mt.id join prescription_medicine pm on m.id=pm.med_ID where pm.pres_ID='$id'");
+        return $data;
+    }
+
 }
 ?>

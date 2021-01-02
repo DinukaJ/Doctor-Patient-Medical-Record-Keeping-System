@@ -194,13 +194,16 @@ else
             <div class="c-12"><hr></div>
         </div>  
         <div class="row">
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-3">
                 <b>Med Name</b>
             </div>
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-3">
+                <b>Types</b>
+            </div>
+            <div class="c-12 c-m-3">
                 <b>QTY</b>
             </div>
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-3">
                 <b>Price</b>
             </div>
             <div class="c-12"><hr></div>
@@ -215,7 +218,7 @@ else
         <div class="row" style="margin-top:50px;">
             <div class="c-12"><hr></div>
             <div class="c-12">
-                <b>Total Amount:- <span id="totalAmount">Rs.250</span></b>
+                <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
             </div>
             <div class="c-12"><hr></div>
         </div>  

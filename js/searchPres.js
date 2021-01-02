@@ -76,7 +76,7 @@ function putPresData(id){
     url:"../handlers/prescriptionHandler.php",
     method:"POST",
     data:{type:'getTodayPresMed',id:id},
-    success:function (data){
+    success:function(data){
         $("#presVals").html(data);
         $(".presId").html(id);
         $(".patId").html(patId);
@@ -84,14 +84,25 @@ function putPresData(id){
         $(".doi").html(today);
         open(modalViewPres);
         $("#billCreate").click(function(){
-            getMedFinInfo();
+            getMedFinInfo();//input param: Med Qty
         });
     }
  });
 }
 
 function getMedFinInfo(){
-    var medIds = $('.medName').map(function(){
-        return $(this).attr('id');
+    pid = $('.medName').attr('id');
+    $.ajax({
+        url:"../handlers/prescriptionHandler.php",
+        method:"POST",
+        data:{type:'getMedFinInfo',pid:pid},
+        dataType:'json',
+        success:function (data){
+            $("#billVals").html(data[0]);
+            $("#totalAmount").html(data[1]);
+            $("#endBill").click(function(){
+                
+            });
+        }
     });
 }

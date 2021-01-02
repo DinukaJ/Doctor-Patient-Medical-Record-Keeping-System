@@ -29,6 +29,8 @@ if(isset($_POST["type"]))
         getTodayPres();
     if($_POST["type"]=="getTodayPresMed")
         getTodayPresMed();
+    if($_POST["type"]=="getMedFinInfo")
+        getMedFinInfo();
 }
 
 
@@ -315,16 +317,42 @@ function getTodayPresMed()
     if(mysqli_num_rows($presMedData)){
         while($row = mysqli_fetch_array($presMedData)){
             $output.='<div class="row">
-            <div class="c-4 c-m-2 medName" id='.$row[1].'>'.$row[7].'</div>
+            <div class="c-4 c-m-2 medName" id='.$row[0].'>'.$row[7].'</div>
             <div class="c-4 c-m-2 medType">'.$row[2].'</div>
             <div class="c-4 c-m-2 medAmt">'.$row[3].'</div>
             <div class="c-4 c-m-2 medTimes">'.$row[4].'</div>
             <div class="c-4 c-m-2 medBA">'.$row[5].'</div>
             <div class="c-4 c-m-2 medDura">'.$row[6].' week(s)</div>
             </div>';
+
         }
     }
     echo $output;
 }
+
+function getMedFinInfo(){
+$output="";
+$total = 0;
+$prescription =  new prescription();
+$pid = $_POST["pid"];
+$presMedFinData = $prescription->getMedFin($pid);
+
+if(mysqli_num_rows($presMedFinData)){
+    while($row = mysqli_fetch_array($presMedFinData)){//TODO:price calculation
+            $qty = ceil((float)$row[3]*(int)$row[4]*(int)$row[5]*7);
+            $total+= $qty*(float)$row[2];
+            $output.='<div class="row">
+            <div class="c-12 c-m-3 medName">'.$row[0].'</div>
+            <div class="c-12 c-m-3 medType">'.$row[1].'</div>
+            <div class="c-12 c-m-3 medQty">'.$qty.'</div>
+            <div class="c-12 c-m-3 medPrice">'.$row[2].'</div>
+            </div>';
+    }
+}
+
+echo json_encode(array($output,$total));
+
+}
+
 
 ?>
