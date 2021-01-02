@@ -466,6 +466,11 @@ function getPatientReports()
                     <b>Date: <span id="reportDate"></span></b>
                 </div>
             </div>
+            <div id="commentRow" class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-12">
+                    <b>Comment: <span id="comment"></span></b>
+                </div>
+            </div>
             <div class="row patientDataRow" style="border-bottom:none;">
                 <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
                     <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow id="reportTable">

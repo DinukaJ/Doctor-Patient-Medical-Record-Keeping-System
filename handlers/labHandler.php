@@ -44,12 +44,11 @@ function getRepDatAll(){
         while($row=mysqli_fetch_array($data)){
 
             $output.="<div class='row patientDataRow'>
-            <div class='c-2' class='patId'>$row[0]</div>
-            <div class='c-2' class='repId'>$row[1]</div>
-            <div class='c-3' class='repType'>$row[3]</div>
-            <div class='c-4' class='repType'>$row[2]</div>
+            <div class='c-2 repId'>$row[0]</div>
+            <div class='c-5 patId'>$row[1]</div>
+            <div class='c-4 repDate'>$row[2]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[1]'>View</button>
+                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[0]'>View</button>
             </div>
       </div>";
         }
@@ -66,12 +65,11 @@ function repSearch(){
         while($row=mysqli_fetch_array($data)){
            
             $output.="<div class='row patientDataRow'>
-            <div class='c-2' class='patId'>$row[0]</div>
-            <div class='c-2' class='repId'>$row[1]</div>
-            <div class='c-3' class='repType'>$row[3]</div>
-            <div class='c-4' class='repType'>$row[2]</div>
+            <div class='c-2 repId'>$row[0]</div>
+            <div class='c-5 patId'>$row[1]</div>
+            <div class='c-4 repDate'>$row[2]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[1]'>View</button>
+                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[0]'>View</button>
             </div>
       </div>";
         }
@@ -475,6 +473,7 @@ function getReportDataTable()
     $reportData = $lab->getReportData($reportId);
     $count=1;
     $testname="";
+    $comment="";
     if(mysqli_num_rows($reportData)){
         while($reportDataRow=mysqli_fetch_array($reportData)){ 
             $ranges=$lab->getReportRanges($reportDataRow[3], $reportDataRow[5]);
@@ -503,10 +502,11 @@ function getReportDataTable()
             }
             $output.='</tr>';
             $count++;
+            $comment=$reportDataRow[2];
         }
     }
     //echo $output;
-    echo $output;
+    echo json_encode(array($output,$comment));
 }
 
 //Find the result is okay, high or low according to the ranges

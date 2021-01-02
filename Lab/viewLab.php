@@ -57,9 +57,8 @@ else
                          
                 <!-- prints info -->
                     <div class='row patientDataRow addMedicineRow'>
-                      <div class='c-2' class='patId'>Patient ID</div>
-                      <div class='c-2' class='repId'>Report ID</div>
-                      <div class='c-3' class='repType'>Type</div>
+                      <div class='c-2' class='repId'>Report ID</div>  
+                      <div class='c-5' class='patId'>Patient Name</div>
                       <div class='c-4' class='repType'>Date</div>
                       <div class='c-1'></div>
                     </div> 
@@ -85,43 +84,52 @@ else
                 <h2>Report Details</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Report ID: <span class="answer" id="reportId"></span>
+        <div class="c-12" style="padding-left:0px; padding-right:0px;">
+            <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-4">
+                    <center><b>Report ID: <span id="reportNo"></span></b></center>
+                </div>
+                <div class="c-4">
+                    <center><b>Patient Name: <span id="patName"></span></b></center>
+                </div>
+                <div class="c-4">
+                    <center><b>Date: <span id="reportDate"></span></b></center>
+                </div>
             </div>
-            <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId"></span>
+            <div id="commentRow" class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-12">
+                    <b>Comment: <span id="comment"></span></b>
+                </div>
             </div>
-            <div class="c-12 c-m-3">
-                Name: <span class="answer" id="patientName"></span>
-            </div>
-            <div class="c-12 c-m-3">
-                Type: <span class="answer" id="rType"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Date: <span class="answer" id="doi"></span>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>  
-        <div class="row">
-            <div class="c-4 c-m-4">
-                <b>Test Name</b>
-            </div>
-            <div class="c-4 c-m-4">
-                <b>Result</b>
-            </div>
-            <div class="c-4 c-m-4">
-                <b>Range</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="repTypes">
-
+            <div class="row patientDataRow" style="border-bottom:none;">
+                <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
+                    <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow id="reportTable">
+                        <tr style="height:20px;">
+                            <th style="width:30%">Test Name</th>
+                            <th style="width:30%">Result</th>
+                            <th style="width:30%; text-align:center;">Range</th>
+                        </tr>
+                    </table>
+                    <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
+         
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>  
         </div>    
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal btnCancel" id="deleteRep">Delete</button>
+                <button type="button" class="btn btnNormal btnCancel" id="closeRep">Close</button>
                 <!-- <button type="button" class="btn btnNormal" id="updateRep">Edit</button> -->
             </div>
         </div>
@@ -129,87 +137,6 @@ else
  </div>
 </div>
 <!-- End of the Modal for View Report-->
-
-<!-- The Modal for Update Report-->
-<div id="modalUpdateRep" class="modal modal2">
-
-<!-- Modal content -->
-<div class="modal-content-short2 inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
-        </div>
-    </div>
-<form method="POST" id="repUpForm">
-    <input type="hidden" value="" id="repUpID" name="repUpID">
-   <div class="detailsSection">
-   <div class="alerMSG" id="updateStatus"></div>
-        <div class="row">
-            <div class="c-12">
-                <h2>Update Report Details</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Type: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpType" id="repUpType" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Field 1: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi1" id="repUpFi1" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Field 2: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi2" id="repUpFi2" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Field 3: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi3" id="repUpFi3" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Field 4: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi4" id="repUpFi4" placeholder="" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Field 5: 
-            </div>
-            <div class="c-12 c-m-9">
-                <input type="text" class="input-field" style="width:100%; display:inline;" name="repUpFi5" id="repUpFi5" placeholder="" required>
-            </div>
-        </div>
-   </div>
-   <div class="bottomModel">
-        <div class="row">
-            <div class="c-12">
-                <button type="button" class="btn btnNormal medCancel" id="updateRepCancel">Cancel</button> 
-                <button type="submit" class="btn btnNormal" id="updateRepSave">Save</button> 
-            </div>
-        </div>
-   </div>
-</form>
-</div>
-</div>
-<!-- End of the Modal for Update Report-->
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -224,6 +151,9 @@ else
             $('.close').click(()=>{
                 close(modalViewRep);
                 close(modalUpdateRep);
+            })
+            $('#closeRep').click(()=>{
+                close(modalViewRep);
             })
             $('#updateRepCancel').click(()=>{
                 close(modalUpdateRep);

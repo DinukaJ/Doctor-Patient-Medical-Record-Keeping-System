@@ -5,12 +5,12 @@ class lab{
 
     public function getAllRep(){
         $db = new Database();
-        return $db->getData("select * from labreport");
+        return $db->getData("select l.id,concat(p.fname,' ',p.lname),l.doi from labpatientrep l join patient p on l.pid=p.id order by l.doi desc");
     }
 
     public function repSearch($id){
         $db = new Database();
-        $data = $db->getData("select r.*, p.fname, p.lname from labpatientrepdata r join patient p on p.id like '%$id%' or p.fname like '%$id%' or p.lname like '%$id%' or r.id like '%$id%'");
+        $data = $db->getData("select l.id, concat(p.fname,' ',p.lname),l.doi from labpatientrep l join patient p on l.pid=p.id where p.id like '%$id%' or p.fname like '%$id%' or p.lname like '%$id%' or l.id like '%$id%'");
         return $data;
     }
 

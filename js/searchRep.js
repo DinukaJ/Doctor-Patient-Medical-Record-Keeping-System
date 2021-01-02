@@ -16,7 +16,11 @@ function getAllRep(){
             $('#reportInfo').html(data[0]);
             $('#totalCount').html(data[1]);
             $('.viewRep').click(function(){
-                putReportData(this.id);
+                $("#patName").html($(this).parent().parent().find('.patId').html());
+                $("#reportDate").html($(this).parent().parent().find('.repDate').html());
+                $("#reportNo").html(this.id.split("-")[1]);
+                getReportDataTable(this.id.split("-")[1]);
+                open(modalViewRep);
             });
         }
     });
@@ -35,7 +39,8 @@ if(ser)
                     $('#reportInfo').html(data[0]);
                     $('#totalCount').html(data[1]);
                     $('.viewRep').click(function(){
-                        putReportData(this.id);
+                        getReportDataTable(this.id);
+                        open(modalViewRep);
                     });
                 }
             });
@@ -172,9 +177,19 @@ function getReportDataTable(id)
         url:"../handlers/labHandler.php",
         method:"POST",
         data:{reportID:id, type:'getReportDataTable'},
+        dataType: 'json',
         success:function(data){
-            var d=data.replaceAll("~"," ");
+            var d=data[0].replaceAll("~"," ");
             $("#patReportData").html(d);
+            if(data[1]!="")
+            {
+                $("#comment").html(data[1]);
+                $("#commentRow").show();
+            }
+            else
+            {
+                $("#commentRow").hide();
+            }
         }
         
     });
