@@ -83,6 +83,15 @@ function putPresData(id){
         $(".patName").html(patName);
         $(".doi").html(today);
         open(modalViewPres);
+        $("#billCreate").click(function(){
+            getMedFinInfo();
+        });
     }
  });
+}
+
+function getMedFinInfo(){
+    var medIds = $('.medName').map(function(){
+        return $(this).attr('id');
+    });
 }

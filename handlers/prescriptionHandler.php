@@ -315,11 +315,12 @@ function getTodayPresMed()
     if(mysqli_num_rows($presMedData)){
         while($row = mysqli_fetch_array($presMedData)){
             $output.='<div class="row">
-            <div class="c-4 c-m-3">'.$row[7].'</div>
-            <div class="c-4 c-m-2">'.$row[3].'</div>
-            <div class="c-4 c-m-2">'.$row[4].'</div>
-            <div class="c-4 c-m-2">'.$row[5].'</div>
-            <div class="c-4 c-m-3">'.$row[6].' week(s)</div>
+            <div class="c-4 c-m-2 medName" id='.$row[1].'>'.$row[7].'</div>
+            <div class="c-4 c-m-2 medType">'.$row[2].'</div>
+            <div class="c-4 c-m-2 medAmt">'.$row[3].'</div>
+            <div class="c-4 c-m-2 medTimes">'.$row[4].'</div>
+            <div class="c-4 c-m-2 medBA">'.$row[5].'</div>
+            <div class="c-4 c-m-2 medDura">'.$row[6].' week(s)</div>
             </div>';
         }
     }

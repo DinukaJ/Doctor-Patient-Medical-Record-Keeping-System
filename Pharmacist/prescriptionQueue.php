@@ -111,8 +111,11 @@ else
             <div class="c-12"><hr></div>
         </div>  
         <div class="row">
-            <div class="c-4 c-m-3">
+            <div class="c-4 c-m-2">
                 <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Type</b>
             </div>
             <div class="c-4 c-m-2">
                 <b>Amount Per Time</b>
@@ -123,7 +126,7 @@ else
             <div class="c-4 c-m-2">
                 <b>Before / After Meal</b>
             </div>
-            <div class="c-4 c-m-3">
+            <div class="c-4 c-m-2">
                 <b>Duration</b>
             </div>
             <div class="c-12"><hr></div>
@@ -177,16 +180,16 @@ else
         </div>
         <div class="row">
             <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer" id="predId">1</span>
+                Prescription ID: <span class="answer presId" id="predId"></span>
             </div>
             <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId">p-1</span>
+                Patient ID: <span class="answer patId" id="patientId"></span>
             </div>
             <div class="c-12 c-m-4">
-                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+                Patient Name: <span class="answer patName" id="patientName"></span>
             </div>
             <div class="c-12 c-m-3">
-                Date: <span class="answer" id="doi">2020-11-17</span>
+                Date: <span class="answer doi" id="doi2"></span>
             </div>
             <div class="c-12"><hr></div>
         </div>  
@@ -203,17 +206,11 @@ else
             <div class="c-12"><hr></div>
         </div>
         <div id="billVals">
-            <div class="row">
-                <div class="c-4 c-m-4">
-                    Amoxicillin
-                </div>
-                <div class="c-4 c-m-4">
-                    20
-                </div>
-                <div class="c-4 c-m-4">
-                    250
-                </div>
-            </div>
+            <!-- <div class="row">
+                <div class="c-4 c-m-4"></div>
+                <div class="c-4 c-m-4"></div>
+                <div class="c-4 c-m-4"></div>
+            </div> -->
         </div>  
         <div class="row" style="margin-top:50px;">
             <div class="c-12"><hr></div>
