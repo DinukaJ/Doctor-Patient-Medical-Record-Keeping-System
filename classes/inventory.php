@@ -74,5 +74,14 @@ class inventory
     //     $data = $db->getData("select * from prescriptions where doi='$today'");
     //     return $data;
     // }
+
+    public function updateMed($mid,$qty){
+        $db = new Database();
+        $prevQty = $db->getData("select qty from medtypes where id='$mid'");
+        $newQty=$prevQty-$qty;
+        $data = $db->insert_update_delete("update medtypes set qty='$newQty' where id='$mid'");
+        return $data;
+    }
+
 }
 ?>

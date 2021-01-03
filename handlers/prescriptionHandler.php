@@ -318,7 +318,7 @@ function getTodayPresMed()
         while($row = mysqli_fetch_array($presMedData)){
             $output.='<div class="row">
             <div class="c-4 c-m-2 medName" id='.$row[0].'>'.$row[7].'</div>
-            <div class="c-4 c-m-2 medType">'.$row[2].'</div>
+            <div class="c-4 c-m-2 medType" id='.$row[1].'>'.$row[2].'</div>
             <div class="c-4 c-m-2 medAmt">'.$row[3].'</div>
             <div class="c-4 c-m-2 medTimes">'.$row[4].'</div>
             <div class="c-4 c-m-2 medBA">'.$row[5].'</div>
@@ -333,6 +333,7 @@ function getTodayPresMed()
 function getMedFinInfo(){
 $output="";
 $total = 0;
+$qtys = [];
 $prescription =  new prescription();
 $pid = $_POST["pid"];
 $presMedFinData = $prescription->getMedFin($pid);
@@ -347,10 +348,11 @@ if(mysqli_num_rows($presMedFinData)){
             <div class="c-12 c-m-3 medQty">'.$qty.'</div>
             <div class="c-12 c-m-3 medPrice">'.$row[2].'</div>
             </div>';
+            array_push($qtys,$qty);
     }
 }
 
-echo json_encode(array($output,$total));
+echo json_encode(array($output,$total,$qtys));
 
 }
 

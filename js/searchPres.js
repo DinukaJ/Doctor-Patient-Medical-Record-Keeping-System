@@ -101,8 +101,37 @@ function getMedFinInfo(){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
             $("#endBill").click(function(){
-                
+                createBill(data[1],pid);
+                updateMed(data[2]);   
             });
+        }
+    });
+}
+
+function updateMed(qtys){
+    var mids = $('.medType').map(function() {
+        return $(this).attr('id');
+      });
+      
+      $.ajax({
+        url:"../handlers/inventoryHandler.php",
+        method:"POST",
+        data:{type:'updateMed',mids:mids,qtys:qtys},
+        success:function (data){
+            window.alert("Success");
+        }
+    });
+}
+
+
+function createBill(totAmt,pid){
+
+      $.ajax({
+        url:"../handlers/billHandler.php",
+        method:"POST",
+        data:{type:'createBill',totAmt:totAmt,pid:pid},
+        success:function (data){
+            window.alert("Bill Success");
         }
     });
 }

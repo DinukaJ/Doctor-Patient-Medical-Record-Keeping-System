@@ -22,6 +22,8 @@ if(isset($_POST["type"])){
         upMedData();
     if($_POST["type"]=="delMed")
         delMedData();
+    if($_POST["type"]=="updateMed")
+        updateMed();
 }
 
 
@@ -183,6 +185,20 @@ function upMedTypes(){
     $price = $_POST["price"];
     $qty = $_POST["qty"];
     $stat = $inventory->upMedTypes($medId,$type,$qty,$price);
+    echo $stat;
+}
+
+function updateMed(){
+    $inventory = new inventory();
+    $i = 0;
+    $medIds = $_POST["mids"];
+    $medQtys = $_POST["qtys"];
+    // console.log(sizeof($medIds));
+    foreach($medIds as $mid){
+    $stat = $inventory->updateMed($mid,$medQtys[$i]);
+    $i++;
+    }
+  
     echo $stat;
 }
 
