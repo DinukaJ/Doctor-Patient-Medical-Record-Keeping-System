@@ -32,8 +32,8 @@ function getPres(){
         data:{type:'getPresInfo'},
         dataType:"json",
         success:function(data){
-            $("#presInfo").html(data[0]);
-            $("#itemCount").html(data[1]);
+            $("#presData").html(data[0]);
+            $("#dataCount").html(data[1]);
             $(".viewPres").click(function(){            
                 putPresData(this.id);
             });

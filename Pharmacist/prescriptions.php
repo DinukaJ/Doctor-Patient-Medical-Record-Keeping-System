@@ -46,7 +46,7 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-12">
                             <div class="boxSmall">
-                                 <label>No. of Items: </label><span id="itemCount"></span>
+                                 <label>No. of Items: </label><span id="dataCount"></span>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ else
                     <div class='c-2' class='medicQty'>Date</div>
                     <div class='c-1'></div>
                 </div>
-                <div id="presInfo">
+                <div id="presData">
                     <!-- <div class="c-3">
                         1
                     </div>
