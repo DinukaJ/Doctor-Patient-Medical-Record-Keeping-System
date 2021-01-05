@@ -119,8 +119,9 @@ function getMedFinInfo(){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
             $("#endBill").click(function(){
-                createBill(data[1],pid);
-                updateMed(data[2]);   
+                // createBill(data[1],pid);
+                // updateMed(data[2]);
+                statusChange(pid);
             });
         }
     });
@@ -152,4 +153,16 @@ function createBill(totAmt,pid){
             window.alert("Bill Success");
         }
     });
+}
+
+function statusChange(pid){
+    $.ajax({
+        url:"../handlers/prescriptionHandler.php",
+        method:"POST",
+        data:{type:'changeStatus',pid:pid},
+        dataType:'json',
+        success:function (data){
+            getTodayPres();
+        }
+    });  
 }

@@ -79,6 +79,7 @@ class inventory
         $db = new Database();
         $prevQty = $db->getData("select qty from medtypes where id='$mid'");
         $newQty=$prevQty-$qty;
+        console.log($newQty);
         $data = $db->insert_update_delete("update medtypes set qty='$newQty' where id='$mid'");
         return $data;
     }

@@ -116,5 +116,11 @@ class prescription
         return $data;
     }
 
+    public function changeStatus($pid){
+        $db = new Database();
+        $stat = $db->insert_update_delete("update prescriptions set status='1' where id='$pid'");
+        return $stat;
+    }
+
 }
 ?>

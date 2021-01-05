@@ -33,6 +33,8 @@ if(isset($_POST["type"]))
         getMedFinInfo();
     if($_POST["type"]=="getPresInfo")
         getPresInfo();
+    if($_POST["type"]=="changeStatus")
+        changeStatus();
 }
 
 
@@ -377,6 +379,13 @@ function getPresInfo(){
         }
     }
     echo json_encode(array($output,$count));  
+}
+
+function changeStatus(){
+    $prescription = new prescription();
+    $pid = $_POST["pid"];
+    $stat = $prescription->changeStatus($pid);
+    echo json_encode($stat);
 }
 
 
