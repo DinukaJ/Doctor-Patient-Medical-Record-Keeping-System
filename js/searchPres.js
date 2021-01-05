@@ -3,6 +3,7 @@
 //getting all info at first load
 $(document).ready(function(){
     getTodayPres();
+    getPres();
     $("#updateStatus").hide();
 });
 
@@ -12,6 +13,23 @@ function getTodayPres(){
         url:"../handlers/prescriptionHandler.php",
         method:"POST",
         data:{type:'getTodayPres'},
+        dataType:"json",
+        success:function(data){
+            $("#presInfo").html(data[0]);
+            $("#itemCount").html(data[1]);
+            $(".viewPres").click(function(){            
+                putPresData(this.id);
+            });
+        }   
+    });
+}
+
+//getting all the prescriptions
+function getPres(){
+    $.ajax({
+        url:"../handlers/prescriptionHandler.php",
+        method:"POST",
+        data:{type:'getPresInfo'},
         dataType:"json",
         success:function(data){
             $("#presInfo").html(data[0]);
