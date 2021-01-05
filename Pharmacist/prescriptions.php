@@ -46,7 +46,7 @@ else
                     <div class="upperFirst row">
                         <div class="c-12 c-l-12">
                             <div class="boxSmall">
-                                 <label>No. of Items</label>
+                                 <label>No. of Items: </label><span id="itemCount"></span>
                             </div>
                         </div>
                     </div>
@@ -57,12 +57,10 @@ else
                     <div class='c-4' class='medicName'>Patient Name</div>
                     <div class='c-2' class='medicQty'>Item Count</div>
                     <div class='c-2' class='medicQty'>Date</div>
-                    <div class='c-1'>
-                    
-                    </div>
+                    <div class='c-1'></div>
                 </div>
-                <div class="row patientDataRow">
-                    <div class="c-3">
+                <div id="presInfo">
+                    <!-- <div class="c-3">
                         1
                     </div>
                     <div class="c-4">
@@ -76,26 +74,8 @@ else
                     </div>
                     <div class="c-1">
                         <button type="button" class="btn btnPatientView viewPres" id="viewPres">View</button>
-                    </div>
-                </div>
-                <?php
-                // $res=$patient->getPatients();
-                // $i=1;
-                // while($row=mysqli_fetch_assoc($res))
-                // {
-                //     echo '
-                //     <div class="row patientDataRow">
-                //         <div class="c-11">
-                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                //         </div>
-                //         <div class="c-1">
-                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                //         </div>
-                //     </div>
-                //     ';
-                //     $i++;
-                // }
-                ?>           
+                    </div> -->
+                </div>         
             </div>
         </div>
     </div>
@@ -117,22 +97,25 @@ else
         </div>
         <div class="row">
             <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer" id="predId">1</span>
+                Prescription ID: <span class="answer presId" id="presId"></span>
             </div>
             <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId">p-1</span>
+                Patient ID: <span class="answer patId" id="patId"></span>
             </div>
             <div class="c-12 c-m-4">
-                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+                Patient Name: <span class="answer patName" id="patName"></span>
             </div>
             <div class="c-12 c-m-3">
-                Date: <span class="answer" id="doi">2020-11-17</span>
+                Date: <span class="answer doi" id="doi"></span>
             </div>
             <div class="c-12"><hr></div>
         </div>  
         <div class="row">
-            <div class="c-4 c-m-3">
+            <div class="c-4 c-m-2">
                 <b>Med Name</b>
+            </div>
+            <div class="c-4 c-m-2">
+                <b>Type</b>
             </div>
             <div class="c-4 c-m-2">
                 <b>Amount Per Time</b>
@@ -143,13 +126,13 @@ else
             <div class="c-4 c-m-2">
                 <b>Before / After Meal</b>
             </div>
-            <div class="c-4 c-m-3">
+            <div class="c-4 c-m-2">
                 <b>Duration</b>
             </div>
             <div class="c-12"><hr></div>
         </div>
         <div id="presVals">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="c-4 c-m-3">
                     Amoxicillin
                 </div>
@@ -165,7 +148,7 @@ else
                 <div class="c-4 c-m-3">
                     1 Week(s)
                 </div>
-            </div>
+            </div> -->
         </div>    
         </div>
         <div class ="bottomModel row">
@@ -206,5 +189,6 @@ else
             }
         }
     </script>
+    <script src="../js/searchPres.js"></script>
 </body>
 </html>
