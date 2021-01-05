@@ -119,8 +119,8 @@ function getMedFinInfo(){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
             $("#endBill").click(function(){
-                // createBill(data[1],pid);
-                // updateMed(data[2]);
+                createBill(data[1],pid);
+                updateMed(data[2]); //Need to find the error of updateMed
                 statusChange(pid);
             });
         }
