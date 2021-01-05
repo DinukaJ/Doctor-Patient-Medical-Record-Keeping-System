@@ -10,9 +10,9 @@ class bill
     }
 
     //adding bill details
-    public function addBill($presId,$amt){
+    public function addBill($presId,$amt,$doi){
         $db = new Database();
-        $stat = $db->insert_update_delete("insert into bill values ('$presId',NULL,'CURDATE()',$amt)");
+        $stat = $db->insert_update_delete("insert into bill values ('$presId',NULL,'$doi','$amt')");
         return $stat;
     }
 

@@ -8,10 +8,12 @@ if(isset($_POST["type"]))
 }
 
 function createBill(){
+
+$bill = new bill();
 $totAmt = $_POST["totAmt"];
 $pid = $_POST["pid"];
-$bill = new bill();
-$stat = $bill->addBill($pid,$totAmt);
+$today=date("Y-m-d");
+$stat = $bill->addBill($pid,$totAmt,$today);
 return $stat;
 }
 
