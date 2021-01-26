@@ -112,7 +112,7 @@ class prescription
 
     public function getAllPres(){
         $db = new Database();
-        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID) from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID group by presM.pres_ID order by pres.doi DESC");
+        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId group by presM.pres_ID order by pres.doi DESC");
         return $data;
     }
 

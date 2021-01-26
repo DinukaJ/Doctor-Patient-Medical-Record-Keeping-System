@@ -96,17 +96,17 @@ else
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer presId" id="presId"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Patient ID: <span class="answer patId" id="patId"></span>
+        <div class="c-12 c-m-2">
+                ID: <span class="answer presId" id="predId"></span>
             </div>
             <div class="c-12 c-m-4">
-                Patient Name: <span class="answer patName" id="patName"></span>
+                Doctor Name: <span class="answer docName" id="docName"></span>
             </div>
-            <div class="c-12 c-m-3">
-                Date: <span class="answer doi" id="doi"></span>
+            <div class="c-12 c-m-4">
+                Patient Name: <span class="answer patName" id="patientName"></span>
+            </div>
+            <div class="c-12 c-m-2">
+                Date: <span class="answer doi" id="doi2"></span>
             </div>
             <div class="c-12"><hr></div>
         </div>  

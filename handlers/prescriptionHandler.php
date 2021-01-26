@@ -383,7 +383,7 @@ function getPresInfo(){
             <div class='c-2' class='items'>$row[8]</div>
             <div class='c-2' class='doi'>$row[5]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
             </div>
             </div>";
             $count+=1;
