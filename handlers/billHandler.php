@@ -4,7 +4,9 @@ include_once(dirname(dirname(__FILE__)).'/classes/bill.php');
 if(isset($_POST["type"]))
 {
     if($_POST["type"]=="createBill")
-    createBill();
+        createBill();
+    if($_POST["type"]=="addBillMed")
+    addBillMed();
 }
 
 function createBill(){
@@ -14,7 +16,19 @@ $totAmt = $_POST["totAmt"];
 $pid = $_POST["pid"];
 $today=date("Y-m-d");
 $stat = $bill->addBill($pid,$totAmt,$today);
-return $stat;
+echo $stat;
+}
+function addBillMed(){
+
+$bill = new bill();
+$billId = $_POST["billId"];
+$medId = $_POST["medId"];
+$medType = $_POST["medType"];
+$medQty = $_POST["medQty"];
+$medTot = $_POST["medTot"];
+
+$stat = $bill->addBillItems($billId,$medId,$medType,$medQty,$medTot);
+echo $stat;
 }
 
 ?>

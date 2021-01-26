@@ -75,12 +75,9 @@ class inventory
     //     return $data;
     // }
 
-    public function updateMed($mid,$qty){
+    public function updateMed($medId,$medType,$medQty){
         $db = new Database();
-        $prevQty = $db->getData("select qty from medtypes where id='$mid'");
-        $newQty=$prevQty-$qty;
-        console.log($newQty);
-        $data = $db->insert_update_delete("update medtypes set qty='$newQty' where id='$mid'");
+        $data = $db->insert_update_delete("update medtypes set qty=qty-'$medQty' where id='$medId' and type='$medType'");
         return $data;
     }
 

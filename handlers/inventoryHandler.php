@@ -190,14 +190,11 @@ function upMedTypes(){
 
 function updateMed(){
     $inventory = new inventory();
-    $i = 0;
-    $medIds = $_POST["mids"];
-    $medQtys = $_POST["qtys"];
+    $medId = $_POST["medId"];
+    $medType = $_POST["medType"];
+    $medQty = $_POST["medQty"];
     // console.log(sizeof($medIds));
-    foreach($medIds as $mid){
-    $stat = $inventory->updateMed($mid,$medQtys[$i]);
-    $i++;
-    }
+    $stat=$inventory->updateMed($medId,$medType,$medQty);
   
     echo $stat;
 }

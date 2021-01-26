@@ -119,11 +119,7 @@ function getMedFinInfo(){
         success:function (data){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
-            $("#endBill").click(function(){
-                createBill($("#totalAmount").html(),pid);
-                updateMed(data[2]); //Need to find the error of updateMed
-                statusChange(pid);
-            });
+
             $(".medQty").change(function () {
                 if($(this).val()<0)
                 {
@@ -143,19 +139,34 @@ function getMedFinInfo(){
         }
     });
 }
+$("#endBill").on('click',function(){
+   createBill($("#totalAmount").html(),pid);
+   // updateMed(billId); //Need to find the error of updateMed
+   statusChange(pid);
+});
 
-function updateMed(qtys){
-    var mids = $('.medType').map(function() {
-        return $(this).attr('id');
-      });
-      
-      $.ajax({
-        url:"../handlers/inventoryHandler.php",
-        method:"POST",
-        data:{type:'updateMed',mids:mids,qtys:qtys},
-        success:function (data){
-            window.alert("Success");
-        }
+function updateMed(billId){
+    $('.billItemRow').each(function(i, obj) {
+        medId=$(obj).attr("medId");
+        medType=$(obj).find(".medType").html();
+        medQty=$(obj).find(".medQty").val();
+        medTot=$(obj).find(".medTotPrice").html();
+        $.ajax({
+            url:"../handlers/inventoryHandler.php",
+            method:"POST",
+            data:{type:'updateMed',medId:medId,medType:medType,medQty:medQty},
+            success:function (data){
+                // window.alert("Success");
+            }
+        });
+        $.ajax({
+            url:"../handlers/billHandler.php",
+            method:"POST",
+            data:{type:'addBillMed',billId:billId,medId:medId,medType:medType,medQty:medQty,medTot:medTot},
+            success:function (data){
+                // window.alert("Success");
+            }
+        });
     });
 }
 
@@ -167,7 +178,8 @@ function createBill(totAmt,pid){
         method:"POST",
         data:{type:'createBill',totAmt:totAmt,pid:pid},
         success:function (data){
-            window.alert("Bill Success");
+            updateMed(data);
+            alert("Bill Successfully Ended!");
         }
     });
 }
