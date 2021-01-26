@@ -123,6 +123,22 @@ function getMedFinInfo(){
                 updateMed(data[2]); //Need to find the error of updateMed
                 statusChange(pid);
             });
+            $(".medQty").change(function () {
+                if($(this).val()<0)
+                {
+                    $(this).val("0");
+                }
+                else if(parseInt($(this).val())>parseInt($(this).attr("maxAmount")))
+                {
+                    $(this).val($(this).attr("maxAmount"));
+                }
+                $(this).parent().parent().find(".medTotPrice").html(($(this).attr("unitPrice")*$(this).val()).toFixed(2));
+                var tot=0;
+                $('.medTotPrice').each(function(i, obj) {
+                    tot=tot+parseFloat($(obj).html());
+                });
+                $("#totalAmount").html(tot.toFixed(2));
+            });
         }
     });
 }

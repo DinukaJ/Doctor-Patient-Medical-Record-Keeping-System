@@ -200,11 +200,14 @@ else
             <div class="c-12 c-m-3">
                 <b>Types</b>
             </div>
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-2">
                 <b>QTY</b>
             </div>
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-2">
                 <b>Price</b>
+            </div>
+            <div class="c-12 c-m-2">
+                <b>Total Price</b>
             </div>
             <div class="c-12"><hr></div>
         </div>

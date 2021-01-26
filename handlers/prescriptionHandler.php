@@ -325,8 +325,8 @@ function getTodayPresMed()
             <div class="c-4 c-m-2 medType" id='.$row[1].'>'.$row[2].'</div>
             <div class="c-4 c-m-2 medAmt">'.$row[3].'</div>
             <div class="c-4 c-m-2 medTimes">'.$row[4].'</div>
-            <div class="c-4 c-m-2 medBA">'.$row[5].'</div>
-            <div class="c-4 c-m-2 medDura">'.$row[6].' week(s)</div>
+            <div class="c-4 c-m-2 medBA">'.str_replace('a','After',(str_replace('b','Before',$row[5]))).'</div>
+            <div class="c-4 c-m-2 medDura">'.str_replace('d','day(s)',(str_replace('w','weeks(s)',$row[6]))).'</div>
             </div>';
 
         }
@@ -344,19 +344,30 @@ $presMedFinData = $prescription->getMedFin($pid);
 
 if(mysqli_num_rows($presMedFinData)){
     while($row = mysqli_fetch_array($presMedFinData)){//TODO:price calculation
-            $qty = ceil((float)$row[3]*(int)$row[4]*(int)$row[5]*7);
+            $dayCount=0;
+            $arr= (explode(" ",$row[5]));
+            if($arr[1]=='w')
+            {
+                $dayCount=7;
+            }
+            else if($arr[1]=='d')
+            {
+                $dayCount=1;
+            }
+            $qty = ceil((float)$row[3]*(int)$row[4]*(int)$row[5]*$dayCount);
             $total+= $qty*(float)$row[2];
             $output.='<div class="row">
             <div class="c-12 c-m-3 medName">'.$row[0].'</div>
             <div class="c-12 c-m-3 medType">'.$row[1].'</div>
-            <div class="c-12 c-m-3 medQty">'.$qty.'</div>
-            <div class="c-12 c-m-3 medPrice">'.$row[2].'</div>
+            <div class="c-12 c-m-2"><input type="number" value="'.$qty.'" maxAmount="'.$qty.'" unitPrice="'.$row[2].'" class="input-field medQty" style="width:100%;" name="qty" placeholder=""></div>
+            <div class="c-12 c-m-2 medPrice">'.$row[2].'</div>
+            <div class="c-12 c-m-2 medTotPrice">'.number_format((float)$qty*(float)$row[2], 2, '.', '').'</div>
             </div>';
             array_push($qtys,$qty);
     }
 }
 
-echo json_encode(array($output,$total,$qtys));
+echo json_encode(array($output,number_format((float)$total, 2, '.', ''),$qtys));
 }
 
 function getPresInfo(){
