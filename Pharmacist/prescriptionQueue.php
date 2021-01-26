@@ -96,16 +96,16 @@ else
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer presId" id="presId"></span>
-            </div>
             <div class="c-12 c-m-2">
-                Patient ID: <span class="answer patId" id="patId"></span>
+                ID: <span class="answer presId" id="presId"></span>
+            </div>
+            <div class="c-12 c-m-4">
+                Doctor Name: <span class="answer docName" id="docName"></span>
             </div>
             <div class="c-12 c-m-4">
                 Patient Name: <span class="answer patName" id="patName"></span>
             </div>
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-2">
                 Date: <span class="answer doi" id="doi"></span>
             </div>
             <div class="c-12"><hr></div>
@@ -179,16 +179,16 @@ else
             </div>
         </div>
         <div class="row">
-            <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer presId" id="predId"></span>
-            </div>
             <div class="c-12 c-m-2">
-                Patient ID: <span class="answer patId" id="patientId"></span>
+                ID: <span class="answer presId" id="predId"></span>
+            </div>
+            <div class="c-12 c-m-4">
+                Doctor Name: <span class="answer docName" id="docName"></span>
             </div>
             <div class="c-12 c-m-4">
                 Patient Name: <span class="answer patName" id="patientName"></span>
             </div>
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-2">
                 Date: <span class="answer doi" id="doi2"></span>
             </div>
             <div class="c-12"><hr></div>
@@ -220,7 +220,7 @@ else
         </div>  
         <div class="row" style="margin-top:50px;">
             <div class="c-12"><hr></div>
-            <div class="c-12">
+            <div class="c-12" style="text-align:right; padding-right:11%;">
                 <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
             </div>
             <div class="c-12"><hr></div>

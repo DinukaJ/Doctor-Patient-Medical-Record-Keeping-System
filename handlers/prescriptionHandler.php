@@ -302,7 +302,7 @@ function getTodayPres()
             <div class='c-4' class='patName'>$row[0] $row[1]</div>
             <div class='c-4' class='items'>$row[8]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
             </div>
             </div>";
             $count+=1;
@@ -356,7 +356,7 @@ if(mysqli_num_rows($presMedFinData)){
             }
             $qty = ceil((float)$row[3]*(int)$row[4]*(int)$row[5]*$dayCount);
             $total+= $qty*(float)$row[2];
-            $output.='<div class="row">
+            $output.='<div class="row billItemRow" medId='.$row[6].'>
             <div class="c-12 c-m-3 medName">'.$row[0].'</div>
             <div class="c-12 c-m-3 medType">'.$row[1].'</div>
             <div class="c-12 c-m-2"><input type="number" value="'.$qty.'" maxAmount="'.$qty.'" unitPrice="'.$row[2].'" class="input-field medQty" style="width:100%;" name="qty" placeholder=""></div>

@@ -12,7 +12,7 @@ class bill
     //adding bill details
     public function addBill($presId,$amt,$doi){
         $db = new Database();
-        $stat = $db->insert_update_delete("insert into bill values ('$presId',NULL,'$doi','$amt')");
+        $stat = $db->insert_update_delete("insert into bill values ('$presId',null,'$doi','$amt')");
         return $stat;
     }
 

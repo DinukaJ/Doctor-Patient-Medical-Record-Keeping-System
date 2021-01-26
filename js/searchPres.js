@@ -90,6 +90,7 @@ function putPresData(id){
  patId = splitVal[3];
  patName = splitVal[4]+' '+splitVal[5];
  today = splitVal[6];
+ docName=splitVal[7]+' '+splitVal[8];
  $.ajax({
     url:"../handlers/prescriptionHandler.php",
     method:"POST",
@@ -97,7 +98,7 @@ function putPresData(id){
     success:function(data){
         $("#presVals").html(data);
         $(".presId").html(id);
-        $(".patId").html(patId);
+        $(".docName").html(docName);
         $(".patName").html(patName);
         $(".doi").html(today);
         open(modalViewPres);
@@ -119,7 +120,7 @@ function getMedFinInfo(){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
             $("#endBill").click(function(){
-                createBill(data[1],pid);
+                createBill($("#totalAmount").html(),pid);
                 updateMed(data[2]); //Need to find the error of updateMed
                 statusChange(pid);
             });
