@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 30, 2020 at 03:19 PM
+-- Generation Time: Jan 26, 2021 at 10:09 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -33,10 +33,41 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `presId` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doi` date NOT NULL,
-  `amount` float NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`) VALUES
+(128, 8, '2021-01-26', '765.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billitems`
+--
+
+DROP TABLE IF EXISTS `billitems`;
+CREATE TABLE IF NOT EXISTS `billitems` (
+  `billId` int(11) NOT NULL,
+  `medId` int(11) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `totPrice` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`billId`,`medId`,`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `billitems`
+--
+
+INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
+(8, 24, '200mg', 10, '345.00'),
+(8, 25, '250mg', 28, '420.00');
 
 -- --------------------------------------------------------
 
@@ -118,6 +149,13 @@ CREATE TABLE IF NOT EXISTS `labpatientrep` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `labpatientrep`
+--
+
+INSERT INTO `labpatientrep` (`id`, `pid`, `doi`, `cmt`) VALUES
+(1, 'p-1', '2020-12-31', '');
+
 -- --------------------------------------------------------
 
 --
@@ -132,6 +170,17 @@ CREATE TABLE IF NOT EXISTS `labpatientrepdata` (
   `result` text NOT NULL,
   PRIMARY KEY (`repid`,`repTypeId`,`testName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `labpatientrepdata`
+--
+
+INSERT INTO `labpatientrepdata` (`repid`, `repTypeId`, `testName`, `result`) VALUES
+(1, 19, 'SERIUM CHOLESTEROL', '20'),
+(1, 19, 'TRIGLYCERIDES', '50'),
+(1, 19, 'LDL-CHOLESTEROL', '135'),
+(1, 19, 'HDL-CHOLESTEROL', '60'),
+(1, 19, 'CHOLESTEROL/HDL', '2');
 
 -- --------------------------------------------------------
 
@@ -217,7 +266,7 @@ DROP TABLE IF EXISTS `medtypes`;
 CREATE TABLE IF NOT EXISTS `medtypes` (
   `id` int(11) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `price` int(5) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `qty` int(4) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`,`type`)
@@ -228,13 +277,13 @@ CREATE TABLE IF NOT EXISTS `medtypes` (
 --
 
 INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
-(17, '', 200, 20, 1),
-(24, '200mg', 34, 2000, 1),
-(25, '250mg', 15, 1500, 1),
-(26, '100mg', 50, 500, 1),
-(27, '150mg', 12, 1500, 1),
-(28, '25mg', 20, 1500, 1),
-(29, '300mg', 30, 2000, 1);
+(17, '', '200.00', 20, 1),
+(24, '200mg', '34.50', 1944, 1),
+(25, '250mg', '15.00', 1360, 1),
+(26, '100mg', '50.00', 500, 1),
+(27, '150mg', '12.00', 1500, 1),
+(28, '25mg', '20.00', 1500, 1),
+(29, '300mg', '30.00', 2000, 1);
 
 -- --------------------------------------------------------
 
@@ -330,7 +379,7 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 ('doc45', 'p-1', 125, '2020-11-17', '', 0),
 ('doc45', 'p-3', 126, '2020-11-17', '', 0),
 ('doc45', 'p-4', 127, '2020-12-25', '', 0),
-('doc45', 'p-3', 128, '2020-12-30', '', 0);
+('doc45', 'p-3', 128, '2021-01-26', '', 1);
 
 -- --------------------------------------------------------
 
