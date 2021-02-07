@@ -47,7 +47,7 @@ class users{
         $db=new Database();
         $passEncry=sha1($password);
         $isDoc=$db->getData("select * from doctor where id='$username' and password='$passEncry'"); //Doc#123
-        $isPat=$db->getData("select * from patient where id='$username' and password='$passEncry'");//Pat#123
+        $isPat=$db->getData("select * from patient where (id='$username' OR email='$username') and password='$passEncry'");//Pat#123
         if(mysqli_num_rows($isDoc))
         {
             $user=new doctor($isDoc);
