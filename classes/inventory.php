@@ -81,5 +81,12 @@ class inventory
         return $data;
     }
 
+    public function getMedCount($id,$type)
+    {
+        $db = new Database();
+        $data = $db->getData("select qty from medtypes where id='$id' and type='$type'");
+        return $data;
+    }
+
 }
 ?>

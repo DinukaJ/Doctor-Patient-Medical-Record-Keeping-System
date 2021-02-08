@@ -390,6 +390,10 @@ body{
 .accPic{
     border-radius: 50px;
 }
+.errStock{
+    color: red;
+    font-size: 10px;
+}
 .btnPatient{
     margin-top: 0.6em;
     width: 100%;

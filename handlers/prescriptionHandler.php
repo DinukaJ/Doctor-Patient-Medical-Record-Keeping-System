@@ -2,6 +2,7 @@
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/inventory.php');
 
 //Checking which function to call
 if(isset($_POST["type"]))
@@ -341,6 +342,7 @@ $total = 0;
 $qtys = [];
 $prescription =  new prescription();
 $doc =  new doctor();
+$inv =  new inventory();
 $pid = $_POST["pid"];
 $presMedFinData = $prescription->getMedFin($pid);
 $docCharge=$doc->getDocCharge();
@@ -357,12 +359,25 @@ if(mysqli_num_rows($presMedFinData)){
             {
                 $dayCount=1;
             }
+
+            $stockCount=$inv->getMedCount($row[6],$row[1]);
+            $stockCount=mysqli_fetch_array($stockCount)[0];
+
             $qty = ceil((float)$row[3]*(int)$row[4]*(int)$row[5]*$dayCount);
             $total+= $qty*(float)$row[2];
             $output.='<div class="row billItemRow" medId='.$row[6].'>
             <div class="c-12 c-m-3 medName">'.$row[0].'</div>
             <div class="c-12 c-m-3 medType">'.$row[1].'</div>
-            <div class="c-12 c-m-2"><input type="number" value="'.$qty.'" maxAmount="'.$qty.'" unitPrice="'.$row[2].'" class="input-field medQty" style="width:100%;" name="qty" placeholder=""></div>
+            <div class="c-12 c-m-2">';
+            if($stockCount<$qty)
+            {
+                $output.='<span class="errStock">*'.$stockCount.' in Stock need '.$qty.'. <br></span><input type="number" value="'.$stockCount.'" maxAmount="'.$stockCount.'" unitPrice="'.$row[2].'" class="input-field medQty" style="width:100%;" name="qty" placeholder=""></div>';
+            }
+            else
+            {
+                $output.='<input type="number" value="'.$qty.'" maxAmount="'.$qty.'" unitPrice="'.$row[2].'" class="input-field medQty" style="width:100%;" name="qty" placeholder=""></div>';
+            }
+            $output.='
             <div class="c-12 c-m-2 medPrice">'.$row[2].'</div>
             <div class="c-12 c-m-2 medTotPrice">'.number_format((float)$qty*(float)$row[2], 2, '.', '').'</div>
             </div>';
