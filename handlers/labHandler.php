@@ -519,13 +519,13 @@ function getPatLab(){
     $pId = $_POST["patientID"];
     $repData = $lab->getPatientRepData($pId);
     if(mysqli_num_rows($repData)){
-        while(mysqli_fetch_array($repData)){
+        while($row=mysqli_fetch_array($repData)){
         $output.="<div class='row patientDataRow'>
-            <div class='c-12 c-l-3' class='repId'>$repData[0]</div>
-            <div class='c-12 c-l-3' class='repDate'>$repData[2]</div>
-            <div class='c-12 c-l-5' class='repCmt'>$repData[3]</div>
+            <div class='c-12 c-l-3' class='repId'>$row[0]</div>
+            <div class='c-12 c-l-3' class='repDate'>$row[2]</div>
+            <div class='c-12 c-l-5' class='repCmt'>$row[3]</div>
             <div class='c-12 c-l-1'>
-                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$repData[0]'>View</button>
+                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$row[0]'>View</button>
             </div>
       </div>";
          $count++;
