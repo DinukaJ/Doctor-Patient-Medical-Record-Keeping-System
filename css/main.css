@@ -583,7 +583,7 @@ body{
     position: absolute;
     right:20px;
     top:5px;
-    z-index: 1
+    z-index: 1;
   }
   .modal-content-long .detailsSection, .modal-content-short2 .detailsSection{
     padding-top: 10px;

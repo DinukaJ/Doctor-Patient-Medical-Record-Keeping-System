@@ -91,10 +91,10 @@ else
             <span class="close closeMed">&times;</span>
             </div>
         </div>
-        <div class="detailsSection" id="printPresSec">
+        <div class="detailsSection" id="printPresSec" style="padding-bottom:20px;">
             <div class="row">
                 <div class="c-12">
-                    <h2>Prescription Details</h2>
+                    <h2>Prescription</h2>
                 </div>
             </div>
             <div class="row">
@@ -151,7 +151,16 @@ else
                         1 Week(s)
                     </div> -->
                 <!-- </div> -->
-            </div>    
+            </div>
+            <div id="addressPart">
+                <div class="row">
+                    <div class="c-12"><hr></div>
+                    <div class="c-12" style="text-align:center; padding-top:20px">
+                        <p style="line-height:0px;">Madagoda Medical Center</p>
+                        <p style="line-height:8px;">Contact No: 0112754212</p>
+                    </div>
+                </div>
+            </div>   
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
@@ -172,7 +181,7 @@ else
             <span class="close closeMed">&times;</span>
             </div>
         </div>
-        <div class="detailsSection" id="printBillSec">
+        <div class="detailsSection" id="printBillSec" style="padding-bottom:20px;">
             <div class="row">
                 <div class="c-12">
                     <h2>Bill</h2>
@@ -224,6 +233,14 @@ else
                     <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
                 </div>
                 <div class="c-12"><hr></div>
+            </div>  
+            <div id="addressPart">
+                <div class="row">
+                    <div class="c-12" style="text-align:center; padding-top:20px">
+                        <p style="line-height:0px;">Madagoda Medical Center</p>
+                        <p style="line-height:8px;">Contact No: 0112754212</p>
+                    </div>
+                </div>
             </div>  
         </div>
         <div class ="bottomModel row">
@@ -337,6 +354,9 @@ else
 
             // Don't print this
             noPrintSelector : ".avoid-this",
+            
+            // Add this at bottom
+            prepend : "jQueryScript.net",
 
             // Manually add form values
             manuallyCopyFormValues: true,
