@@ -102,11 +102,31 @@ function putPresData(id){
         $(".patName").html(patName);
         $(".doi").html(today);
         open(modalViewPres);
+        //Create the bill
         $("#billCreate").click(function(){
-            getMedFinInfo();//input param: Med Qty
+            getMedFinInfo();
         });
+        //Print the prescription
+        // $("#presPrint").click(function(){
+        //     Popup($("#printPresSec").html());//input param: Med Qty
+        // });
     }
  });
+}
+
+function Popup(data) {
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    mywindow.document.write('<html><head><title></title>');
+    mywindow.document.write('<link rel="stylesheet" href="../css/main.css" type="text/css" />');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(data);
+    mywindow.document.write('</body></html>');
+    mywindow.document.close();
+    mywindow.focus();
+    setTimeout(function(){mywindow.print();},1000);
+    mywindow.close();
+
+    return true;
 }
 
 function getMedFinInfo(){

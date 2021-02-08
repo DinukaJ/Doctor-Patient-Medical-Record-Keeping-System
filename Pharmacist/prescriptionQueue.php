@@ -82,157 +82,154 @@ else
     <!-- The Modal for View Prescription-->
 <div id="modalViewPres" class="modal modal2">
 
-<!-- Modal content -->
- <div class="modal-content-long inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
-        </div>
-    </div>
-   <div class="detailsSection">
+    <!-- Modal content -->
+    <div class="modal-content-long inventoryModal">
         <div class="row">
             <div class="c-12">
-                <h2>Prescription Details</h2>
+            <span class="close closeMed">&times;</span>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                ID: <span class="answer presId" id="presId"></span>
+        <div class="detailsSection" id="printPresSec">
+            <div class="row">
+                <div class="c-12">
+                    <h2>Prescription Details</h2>
+                </div>
             </div>
-            <div class="c-12 c-m-4">
-                Doctor Name: <span class="answer docName" id="docName"></span>
-            </div>
-            <div class="c-12 c-m-4">
-                Patient Name: <span class="answer patName" id="patName"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Date: <span class="answer doi" id="doi"></span>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>  
-        <div class="row">
-            <div class="c-4 c-m-2">
-                <b>Med Name</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Type</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Amount Per Time</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Times Per Day</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Before / After Meal</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Duration</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="presVals">
-            <!-- <div class="row">
-                <div class="c-4 c-m-3">
-                    Amoxicillin
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    ID: <span class="answer presId" id="presId"></span>
+                </div>
+                <div class="c-12 c-m-4">
+                    Doctor Name: <span class="answer docName" id="docName"></span>
+                </div>
+                <div class="c-12 c-m-4">
+                    Patient Name: <span class="answer patName" id="patName"></span>
+                </div>
+                <div class="c-12 c-m-2">
+                    Date: <span class="answer doi" id="doi"></span>
+                </div>
+                <div class="c-12"><hr></div>
+            </div>  
+            <div class="row">
+                <div class="c-4 c-m-2">
+                    <b>Med Name</b>
                 </div>
                 <div class="c-4 c-m-2">
-                    2
+                    <b>Type</b>
                 </div>
                 <div class="c-4 c-m-2">
-                    3
+                    <b>Amount Per Time</b>
                 </div>
                 <div class="c-4 c-m-2">
-                    After
+                    <b>Times Per Day</b>
                 </div>
-                <div class="c-4 c-m-3">
-                    1 Week(s)
-                </div> -->
-            <!-- </div> -->
-        </div>    
+                <div class="c-4 c-m-2">
+                    <b>Before / After Meal</b>
+                </div>
+                <div class="c-4 c-m-2">
+                    <b>Duration</b>
+                </div>
+                <div class="c-12"><hr></div>
+            </div>
+            <div id="presVals">
+                <!-- <div class="row">
+                    <div class="c-4 c-m-3">
+                        Amoxicillin
+                    </div>
+                    <div class="c-4 c-m-2">
+                        2
+                    </div>
+                    <div class="c-4 c-m-2">
+                        3
+                    </div>
+                    <div class="c-4 c-m-2">
+                        After
+                    </div>
+                    <div class="c-4 c-m-3">
+                        1 Week(s)
+                    </div> -->
+                <!-- </div> -->
+            </div>    
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal" id="presPrint">Print</button> 
+                <button type="button" class="btn btnNormal presPrint" id="presPrint">Print</button> 
                 <button type="button" class="btn btnNormal" id="billCreate">Create Bill</button> 
             </div>
         </div>
-    </div> 
- </div>
+    </div>
 </div>
 <!-- End of the Modal for View Prescription-->
 
     <!-- The Modal for Bill-->
 <div id="modalBill" class="modal modal2">
-
 <!-- Modal content -->
- <div class="modal-content-long inventoryModal">
-    <div class="row">
-        <div class="c-12">
-        <span class="close closeMed">&times;</span>
-        </div>
-    </div>
-   <div class="detailsSection">
+    <div class="modal-content-long inventoryModal">
         <div class="row">
             <div class="c-12">
-                <h2>Bill</h2>
+            <span class="close closeMed">&times;</span>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                ID: <span class="answer presId" id="predId"></span>
+        <div class="detailsSection" id="printBillSec">
+            <div class="row">
+                <div class="c-12">
+                    <h2>Bill</h2>
+                </div>
             </div>
-            <div class="c-12 c-m-4">
-                Doctor Name: <span class="answer docName" id="docName"></span>
+            <div class="row">
+                <div class="c-12 c-m-2">
+                    ID: <span class="answer presId" id="predId"></span>
+                </div>
+                <div class="c-12 c-m-4">
+                    Doctor Name: <span class="answer docName" id="docName"></span>
+                </div>
+                <div class="c-12 c-m-4">
+                    Patient Name: <span class="answer patName" id="patientName"></span>
+                </div>
+                <div class="c-12 c-m-2">
+                    Date: <span class="answer doi" id="doi2"></span>
+                </div>
+                <div class="c-12"><hr></div>
+            </div>  
+            <div class="row">
+                <div class="c-12 c-m-3">
+                    <b>Med Name</b>
+                </div>
+                <div class="c-12 c-m-3">
+                    <b>Types</b>
+                </div>
+                <div class="c-12 c-m-2">
+                    <b>QTY</b>
+                </div>
+                <div class="c-12 c-m-2">
+                    <b>Price</b>
+                </div>
+                <div class="c-12 c-m-2">
+                    <b>Total Price</b>
+                </div>
+                <div class="c-12"><hr></div>
             </div>
-            <div class="c-12 c-m-4">
-                Patient Name: <span class="answer patName" id="patientName"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Date: <span class="answer doi" id="doi2"></span>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>  
-        <div class="row">
-            <div class="c-12 c-m-3">
-                <b>Med Name</b>
-            </div>
-            <div class="c-12 c-m-3">
-                <b>Types</b>
-            </div>
-            <div class="c-12 c-m-2">
-                <b>QTY</b>
-            </div>
-            <div class="c-12 c-m-2">
-                <b>Price</b>
-            </div>
-            <div class="c-12 c-m-2">
-                <b>Total Price</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="billVals">
-            <!-- <div class="row">
-                <div class="c-4 c-m-4"></div>
-                <div class="c-4 c-m-4"></div>
-                <div class="c-4 c-m-4"></div>
-            </div> -->
-        </div>  
-        <div class="row" style="margin-top:50px;">
-            <div class="c-12"><hr></div>
-            <div class="c-12" style="text-align:right; padding-right:11%;">
-                <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>  
+            <div id="billVals">
+                <!-- <div class="row">
+                    <div class="c-4 c-m-4"></div>
+                    <div class="c-4 c-m-4"></div>
+                    <div class="c-4 c-m-4"></div>
+                </div> -->
+            </div>  
+            <div class="row" style="margin-top:50px;">
+                <div class="c-12"><hr></div>
+                <div class="c-12" style="text-align:right; padding-right:11%;">
+                    <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
+                </div>
+                <div class="c-12"><hr></div>
+            </div>  
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
                 <button type="button" class="btn btnNormal" id="endBill" style="width:auto;">Print & End Bill</button>  
             </div>
         </div>
-    </div> 
- </div>
+    </div>
 </div>
 <!-- End of the Modal for Bill-->
 
@@ -273,5 +270,82 @@ else
         }
     </script>
     <script src="../js/searchPres.js"></script>
+    <script src="../js/jQuery.print.js"></script>
+    <script type='text/javascript'>
+        $(function() {
+            $("#presPrint").on('click', function() {
+            $("#printPresSec").print({
+
+            // Use Global styles
+            globalStyles : false, 
+
+            // Add link with attrbute media=print
+            mediaPrint : false, 
+
+            //Custom stylesheet
+            stylesheet : "../css/mainPrint.css", 
+
+            //Print in a hidden iframe
+            iframe : true, 
+
+            // Don't print this
+            noPrintSelector : ".avoid-this",
+
+            // Manually add form values
+            manuallyCopyFormValues: true,
+
+            // resolves after print and restructure the code for better maintainability
+            deferred: $.Deferred(),
+
+            // timeout
+            timeout: 250,
+
+            // Custom title
+            title: null,
+
+            // Custom document type
+            doctype: '<!doctype html>'
+
+            });
+        });
+    });
+        $(function() {
+            $("#endBill").on('click', function() {
+            $("#printBillSec").print({
+
+            // Use Global styles
+            globalStyles : false, 
+
+            // Add link with attrbute media=print
+            mediaPrint : false, 
+
+            //Custom stylesheet
+            stylesheet : "../css/mainPrint.css", 
+
+            //Print in a hidden iframe
+            iframe : true, 
+
+            // Don't print this
+            noPrintSelector : ".avoid-this",
+
+            // Manually add form values
+            manuallyCopyFormValues: true,
+
+            // resolves after print and restructure the code for better maintainability
+            deferred: $.Deferred(),
+
+            // timeout
+            timeout: 250,
+
+            // Custom title
+            title: null,
+
+            // Custom document type
+            doctype: '<!doctype html>'
+
+            });
+        });
+    });
+    </script> 
 </body>
 </html>
