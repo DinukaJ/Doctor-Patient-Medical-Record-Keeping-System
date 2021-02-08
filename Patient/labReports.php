@@ -53,28 +53,17 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 </div>
 
                 <div class='row patientDataRow addMedicineRow'>
-                    <div class='c-3' class='medicId'>Report Id</div>
-                    <div class='c-4' class='medicName'>Report Type</div>
-                    <div class='c-4' class='medicQty'>Date</div>
+                    <div class='c-3' class='repId'>Report Id</div>
+                    <div class='c-3' class='repDate'>Report Date</div>
+                    <div class='c-5' class='repCmt'>Comment</div>
                     <div class='c-1'>
                     
                     </div>
                 </div>
 
-                <div class="row patientDataRow">
-                    <div class="c-3">
-                        1
-                    </div>
-                    <div class="c-4">
-                        Blood Report
-                    </div>
-                    <div class="c-4">
-                        2020-11-01
-                    </div>
-                    <div class="c-1">
-                        <button type="button" class="btn btnPatientView viewReport" name="viewReport" id="viewReport">View</button>
-                    </div>
-                </div>
+                <!--Adding Reports-->
+                <div id="reportInfo"></div>
+
                 <?php
                 // $res=$patient->getPatients();
                 // $i=1;
@@ -177,6 +166,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
     <script>
         var labReport=document.getElementById("modalViewRep");
         $(document).ready(function(){
+            getAllLab();
             $(".viewReport").click(function(){
                 open(labReport);
             });
@@ -201,6 +191,21 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     // modalUpdateDet.style.display = "none";
                     close(labReport);
             }
+        }
+
+        function getAllLab(){
+            var patID = "<?php echo "$patId"?>";
+            $.ajax({
+                url:"../handlers/labHandler.php",
+                method:"POST",
+                data:{patientID:patID,type:'getPatLab'},
+                dataType:'json',
+                success:function(data){
+                    $('#reportInfo').html(data[0]);
+                    $('#noOfReports').html(data[1]);
+            
+                }
+            });
         }
     </script>
 </body>

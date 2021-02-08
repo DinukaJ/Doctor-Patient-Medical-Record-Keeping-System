@@ -111,6 +111,13 @@ class lab{
         return $data;
     }
 
+    public function getPatientRepData($pid)
+    {
+        $db = new Database();
+        $data = $db->getData("select * from labpatientrep where pid='$pid' order by doi");
+        return $data;  
+    }
+
     public function getReportRanges($rId, $testName)
     {
         $db=new Database();

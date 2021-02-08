@@ -32,7 +32,9 @@ if(isset($_POST["type"])){
     if($_POST["type"]=="getPatientReport")
         getPatientReport();    
     if($_POST["type"]=="getReportDataTable")
-        getReportDataTable();    
+        getReportDataTable();
+    if($_POST["type"]=="getPatLab") 
+        getPatLab();   
 }
 
 function getRepDatAll(){
@@ -507,6 +509,30 @@ function getReportDataTable()
     }
     //echo $output;
     echo json_encode(array($output,$comment));
+}
+
+//fetching patient lab reports
+function getPatLab(){
+    $output="";
+    $count =0;
+    $lab = new lab();
+    $pId = $_POST["patientID"];
+    $repData = $lab->getPatientRepData($pId);
+    if(mysqli_num_rows($repData)){
+        while(mysqli_fetch_array($repData)){
+        $output.="<div class='row patientDataRow'>
+            <div class='c-12 c-l-3' class='repId'>$repData[0]</div>
+            <div class='c-12 c-l-3' class='repDate'>$repData[2]</div>
+            <div class='c-12 c-l-5' class='repCmt'>$repData[3]</div>
+            <div class='c-12 c-l-1'>
+                <button type='button' class='btn btnPatientView viewRep' name='viewRep' id='viewRep-$repData[0]'>View</button>
+            </div>
+      </div>";
+         $count++;
+        }
+    }  
+
+    echo json_encode(array($output,$count));
 }
 
 //Find the result is okay, high or low according to the ranges
