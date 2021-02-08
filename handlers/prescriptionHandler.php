@@ -369,12 +369,11 @@ if(mysqli_num_rows($presMedFinData)){
             array_push($qtys,$qty);
     }
     $output.='
-    <div class="row" style="margin-top:50px;">
+    <div class="row" style="margin-top:50px;margin-bottom:0px;">
         <div class="c-12"><hr></div>
         <div class="c-12" style="text-align:right; padding-right:11%;">
             Doctor Charge:- Rs.<span id="docCharge">'.$docCharge.'</span>
         </div>
-        <div class="c-12"><hr></div>
     </div>  
     ';
     $total+=(float)$docCharge;

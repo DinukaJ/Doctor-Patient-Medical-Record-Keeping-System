@@ -40,7 +40,7 @@ else
                         </div>
                     </div>
                     <div class="upperFirst row">
-                        <div class="c-12 c-l-12">
+                        <div class="c-12 c-m-10">
                             <div class="boxSmall">
                                 <label>No. of Prescriptions in Queue:<?php 
                                 // $pid = $pres->getUserId();
@@ -49,6 +49,9 @@ else
                                 </label>
                                 <span id="itemCount"></span>
                             </div>
+                        </div>
+                        <div class="c-m-2" style="text-align:right">
+                            <button type="button" class="btn docChargeBtn" id="editDocCharge">Edit Doctor Charge</button>
                         </div>
                     </div>
                 </div>
@@ -232,6 +235,44 @@ else
 </div>
 <!-- End of the Modal for Bill-->
 
+    <!-- The Modal for Doc Charge-->
+<div id="docCharge" class="modal">
+<!-- Modal content -->
+    <div class="modal-content-short">
+        <div class="row">
+            <div class="c-12">
+            <span class="close closeMed">&times;</span>
+            </div>
+        </div>
+        <div class="row" style="padding:0px; margin:0px;">
+            <div class="c-12" style="padding:0px; margin:0px;">
+                <div class="alerMSG" id="docChargeStatus"></div>
+            </div>
+        </div>
+        <div class="detailsSection">
+            <div class="row">
+                <div class="c-12">
+                    <h2>Edit Doctor Charge</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c-12 c-m-4">
+                    Enter Doctor Charge: Rs.
+                </div>
+                <div class="c-12 c-m-8">
+                    <input type="number" class="input-field medQty" style="width:100%;" name="docC" id="docC" placeholder="">
+                </div>
+            </div>   
+        </div>
+        <div class="bottomModel row" style="margin-top:50px; text-align:right;">
+            <div class="c-12">
+                <button type="button" class="btn btnNormal" id="updateDocCharge" style="width:auto;">Update</button>  
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of the Modal for Doc Charge-->
+
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
@@ -241,11 +282,14 @@ else
        var modalViewPres = document.getElementById("modalViewPres");
         //Model Bill
        var modalBill = document.getElementById("modalBill");
+        //Model docCharge
+       var docCharge = document.getElementById("docCharge");
 
         $(document).ready(function(){
             $(".close").click(()=>{
                 close(modalViewPres);
                 close(modalBill);
+                close(docCharge);
             })
             $("#billCreate").click(()=>{
                 close(modalViewPres);
@@ -265,6 +309,10 @@ else
         if (event.target == modalBill) {
             // modal.style.display = "none";
                 $(modalBill).slideUp();
+            }
+        if (event.target == docCharge) {
+            // modal.style.display = "none";
+                $(docCharge).slideUp();
             }
         }
     </script>

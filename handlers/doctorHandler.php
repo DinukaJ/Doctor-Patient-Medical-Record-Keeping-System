@@ -11,6 +11,10 @@ if(isset($_POST["type"]))
         updateDet();
     if($_POST["type"]=="upPass")
         updatePass();
+    if($_POST["type"]=="updateDocCharge")
+        updateDocCharge();
+    if($_POST["type"]=="getDocCharge")
+        getDocCharge();
 }
 function addDoctor()
 {
@@ -60,6 +64,18 @@ function updatePass(){
     $docID=$_POST["docID"];
     $newPass= $_POST["nPass"];
     $stat = $doctor->updateDoctorPass($docID,$newPass);
+    echo $stat;
+}
+function updateDocCharge(){
+    $doctor = new doctor();
+    $charge=$_POST["charge"];
+    $stat = $doctor->updateDocCharge($charge);
+    echo $stat;
+}
+function getDocCharge(){
+    $doctor = new doctor();
+    $stat = $doctor->getDocCharge();
+    $stat=mysqli_fetch_array($stat)[0];
     echo $stat;
 }
 ?>

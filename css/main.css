@@ -402,6 +402,16 @@ body{
     color: #5cc8b1;
     transition: 0.5s;
 }
+.docChargeBtn{
+    background-color: #5cc8b1;
+    color: white;
+    transition: 0.5s;
+}
+.docChargeBtn:hover{
+    background-color: white;
+    color: #5cc8b1;
+    border:1px solid #5cc8b1;
+}
 .btnPatientView2{
     border:1px solid #5cc8b1;
     color: #5cc8b1;

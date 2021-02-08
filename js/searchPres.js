@@ -197,3 +197,46 @@ function statusChange(pid){
         }
     });  
 }
+
+$("#editDocCharge").click(function(){
+    $.ajax({
+        url:"../handlers/doctorHandler.php",
+        method:"POST",
+        data:{type:'getDocCharge'},
+        success:function (data){
+            $("#docC").val(data);
+            open(docCharge);
+        }
+    });  
+});
+
+$("#updateDocCharge").click(function(){
+    $('#docChargeStatus').removeClass("success");
+    $('#docChargeStatus').removeClass("error");
+    var docC=$("#docC").val();
+    $.ajax({
+        url:"../handlers/doctorHandler.php",
+        method:"POST",
+        data:{type:'updateDocCharge',charge:docC},
+        success:function (data){
+            var docCharge = document.getElementById("docCharge");
+            // close(docCharge);
+            if(data==1){
+                $('#docChargeStatus').addClass("success");
+                $('#docChargeStatus').html("Successfully Updated!");
+                $('#docChargeStatus').slideDown("slow");
+                setTimeout(function(){
+                    $('#docChargeStatus').slideUp("slow");
+                },2000);
+            }
+            else{
+                $('#docChargeStatus').addClass("error");
+                $('#docChargeStatus').html("Update Failed!");
+                $('#docChargeStatus').slideDown("slow");
+                setTimeout(function(){
+                    $('#docChargeStatus').slideUp("slow");
+                },2000);
+            }
+        }
+    });  
+});

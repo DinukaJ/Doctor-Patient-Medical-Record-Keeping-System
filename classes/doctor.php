@@ -55,5 +55,10 @@ class doctor extends users
         $res=$db->getData("select amount from doccharge");
         return $res;
     }
+    public function updateDocCharge($charge)
+    {
+        $db= new Database();
+        return $db->insert_update_delete("update doccharge set amount=$charge where id='1'");
+    }
 }
 ?>
