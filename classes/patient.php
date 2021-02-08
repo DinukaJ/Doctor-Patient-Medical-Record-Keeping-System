@@ -10,7 +10,7 @@ class patient extends users
             $this->setUserId($row[0]);
             $this->setFName($row[1]);
             $this->setLName($row[2]);
-            $this->setDP($row[6]);
+            $this->setDP($row[8]);
         }
     }
     public function getNewId()

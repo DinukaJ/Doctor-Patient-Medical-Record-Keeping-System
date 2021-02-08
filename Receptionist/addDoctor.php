@@ -52,18 +52,19 @@ if(!isset($_SESSION["user"]))
                         </div> -->
                     </div>
                 </div>
-                <div class="row" style="padding:0px; margin:0px;">
-                    <div class="c-12" style="padding:0px; margin:0px;">
+                <!-- <div class="row" style="padding:0px; margin:0px;">
+                    
+                </div> -->
+                <div class="row patientDataRow" style="padding-top:0px;" id="rightScroll">
+                <div class="c-12" style="padding:0px; margin:0px;">
                         <div class="alerMSG" id="updateStatusInfo"></div>
                     </div>
-                </div>
-                <div class="row patientDataRow" id="rightScroll">
                     <div class='c-12'>
-                        <form action="#" method="POST" id="newPat">
+                        <form action="#" method="POST" id="newDoc">
                             <div class="row">
                                 <div class="c-12" style="padding-top:0px">
                                     <h1>Doctor ID:- <span id="patIDDis"></span></h1>
-                                    <input type="hidden" id="patId" name="patId" value="">
+                                    <input type="hidden" id="docId" name="docId" value="">
                                 </div>
                                 <div class="c-m-6">
                                     <div class="group-fields">
@@ -106,21 +107,21 @@ if(!isset($_SESSION["user"]))
                                     </div>
                                     <div class="row">
                                         <div class="c-11" style="padding-right:4px">
-                                            <input type="text" class="input-field fullWidth" id="newAllergy" placeholder="Enter New Specialty">
+                                            <input type="text" class="input-field fullWidth" id="newSpecialty" placeholder="Enter New Specialty">
                                         </div>
                                         <div class="c-1" style="padding:0px">
-                                        <button type="button" class="btn btnAddPres" style="padding:0px;" name="addAllergy" id="addAllergy"><i class="fas fa-plus"></i></button>
+                                        <button type="button" class="btn btnAddPres" style="padding:0px;" name="addSpecialty" id="addSpecialty"><i class="fas fa-plus"></i></button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="c-12" style="padding-right:0px;">
-                                            <div class="scrollBox" id="allergyBox">
+                                            <div class="scrollBox" id="specialtyBox">
                                                 <div class="row allergyRow">
                                                     <div class="c-11" style="padding-right:0px;">
                                                         Specialty 1
                                                     </div>
                                                     <div class="c-1" style="padding-left:2px;">
-                                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
+                                                        <button type="button" class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
                                                     </div>
                                                 </div> 
                                                 <div class="row allergyRow">
@@ -139,18 +140,18 @@ if(!isset($_SESSION["user"]))
                                     <h4>Usual Attending Days</h4>
                                     <input type="checkbox" id="atMon" name="day" value="Monday">
                                     <label for="atMon"> Monday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Tuesday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Wednesday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Thursday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Friday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Saturday</label><br>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Sunday</label><br>
+                                    <input type="checkbox" id="atTue" name="day" value="Tuesday">
+                                    <label for="atTue"> Tuesday</label><br>
+                                    <input type="checkbox" id="atWed" name="day" value="Wednesday">
+                                    <label for="atWed"> Wednesday</label><br>
+                                    <input type="checkbox" id="atThur" name="day" value="Thursday">
+                                    <label for="atThur"> Thursday</label><br>
+                                    <input type="checkbox" id="atFri" name="day" value="Friday">
+                                    <label for="atFri"> Friday</label><br>
+                                    <input type="checkbox" id="atSat" name="day" value="Saturday">
+                                    <label for="atSat"> Saturday</label><br>
+                                    <input type="checkbox" id="atSun" name="day" value="Sunday">
+                                    <label for="atSun"> Sunday</label><br>
                                 </div>
                                 <div class="c-m-6">
                                     <button type="reset" class="btn btnLogin btnNormal btnCancel" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
@@ -177,7 +178,7 @@ if(!isset($_SESSION["user"]))
         $('#phone').change(function(){
             $("#pass").val($("#phone").val());
         });
-        $('#newPat').on('submit',function(e){
+        $('#newDoc').on('submit',function(e){
             e.preventDefault();
             var errMsg="";
             var x=0;
@@ -210,16 +211,6 @@ if(!isset($_SESSION["user"]))
             else
             {
                 $('#phone').removeClass('errorInput');
-            }
-            if(isNaN($('#age').val()) || $("#age").val()<=0 ||  $("#age").val()>=150)
-            {
-                $('#age').addClass('errorInput');
-                errMsg+="<br>Invalid Age";
-                x=1;
-            } 
-            else
-            {
-                $('#age').removeClass('errorInput');
             }
             if(($("#email").val()!="") && ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null))
             {
@@ -258,9 +249,9 @@ if(!isset($_SESSION["user"]))
                 $('#updateStatusInfo').removeClass('error');
                 $('#updateStatusInfo').removeClass('success');
                 $.ajax({
-                    url:"../handlers/patientHandler.php",
+                    url:"../handlers/doctorHandler.php",
                     method:"POST",
-                    data:$('#newPat').serialize()+"&type=addPat",
+                    data:$('#newDoc').serialize()+"&type=addDoc",
                     success:function(data){
                         if(data==1){
                             $('#updateStatusInfo').addClass("success");
@@ -278,7 +269,7 @@ if(!isset($_SESSION["user"]))
                             setTimeout(function(){
                                 $('#updateStatusInfo').slideUp("slow");
                             },2000);
-                }
+                        }
                     }
                 });
             }

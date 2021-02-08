@@ -15,10 +15,20 @@ if(isset($_POST["type"]))
         updateDocCharge();
     if($_POST["type"]=="getDocCharge")
         getDocCharge();
+    if($_POST["type"]=="addDoc")
+        addDoctor();
 }
 function addDoctor()
 {
-
+    $patient = new patient();
+    $id=$_POST["docId"];
+    $fname=$_POST["firstName"];
+    $lname=$_POST["lastName"];
+    $phone=$_POST["phone"];
+    $email=$_POST["email"];
+    $pass=$_POST["pass"];
+    $stat=$patient->addPatient($id,$fname,$lname,$phone,$age,$email,$pass,$address,1);
+    echo $stat;
 }
 function searchDoctor()
 {
