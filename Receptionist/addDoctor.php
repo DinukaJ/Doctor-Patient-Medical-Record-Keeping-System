@@ -19,7 +19,7 @@ if(!isset($_SESSION["user"]))
     <!-- Header Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/headerIncludes.php');?>
 
-    <title>Add Patients</title>
+    <title>Add Doctors</title>
     <style>
         #rightScroll{
             max-height:80vh;
@@ -40,7 +40,7 @@ if(!isset($_SESSION["user"]))
                             <a href="addDoctor.php"><button type="button" class="btn btnNormal btnPatient active" name="addDoctor" id="addDoctor"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
                         </div>
                         <div class="c-l-2">
-                            <a href=""><button type="submit" class="btn btnNormal btnPatient" name="viewDoctor" id="viewDoctor"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
+                            <a href="addedDoctors.php"><button type="submit" class="btn btnNormal btnPatient" name="viewDoctor" id="viewDoctor"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
                         </div>
                     </div>
                     <div class="upperSecond row">

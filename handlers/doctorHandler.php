@@ -9,6 +9,8 @@ if(isset($_POST["type"]))
         searchDoctor();
     if($_POST["type"]=="doctorData")
         getDoctorData();
+    if($_POST["type"]=="doctorData2")
+        getDoctorData2();
     if($_POST["type"]=="upDet")
         updateDet();
     if($_POST["type"]=="upPass")
@@ -19,6 +21,8 @@ if(isset($_POST["type"]))
         getDocCharge();
     if($_POST["type"]=="addDoc")
         addDoctor();
+    if($_POST["type"]=="searchDRecep")
+        searchDRecep();
 }
 function getDocNewId()
 {
@@ -71,7 +75,31 @@ function searchDoctor()
     // }
     // echo $output;
 }
-
+function searchDRecep()
+{
+    $output="";
+    $patient = new doctor();
+    $patientSearch=$_POST["doctorSearch"];
+    $searchResult=$patient->getDoctorList($patientSearch);
+    $numRows=mysqli_num_rows($searchResult);
+    if(mysqli_num_rows($searchResult))
+    {
+        while($row=mysqli_fetch_array($searchResult))
+        {
+            $output.="
+            <div class='row patientDataRow'>
+                <div class='c-3' class='$row[0]' id='docID'>$row[0]</div>
+                <div class='c-8' class='$row[1]'>$row[1] $row[2]</div>
+                <div class='c-1'>
+                    <button type='button' class='btn btnPatientView viewDoc' name='viewDoc' id='$row[0]'>View</button>
+                </div>
+            </div>
+            ";
+        }
+    }
+    //echo $output;
+    echo json_encode(array($output, $numRows));
+}
 function getDoctorData()
 {
     $doctor = new doctor();
@@ -79,6 +107,26 @@ function getDoctorData()
     $doctorData=$doctor->getDoctorData($docID);
     $row=mysqli_fetch_array($doctorData);
     echo json_encode($row);
+}
+function getDoctorData2()
+{
+    $doctor = new doctor();
+    $docID=$_POST["docID"];
+    $doctorData=$doctor->getDoctorData($docID);
+    $data=mysqli_fetch_array($doctorData);
+    $usualDays=$doctor->getDoctorUsualDays($docID);
+    $usualDaysData="";
+    while($row=mysqli_fetch_array($usualDays))
+    {
+        $usualDaysData.="$row[1] ,";
+    }
+    $specialty=$doctor->getDoctorSpecialty($docID);
+    $specialtyData="";
+    while($row=mysqli_fetch_array($specialty))
+    {
+        $specialtyData.="$row[1] ,";
+    }
+    echo json_encode(array($data,$usualDaysData,$specialtyData));
 }
 
 function updateDet(){

@@ -77,7 +77,7 @@ else
 
         <div class="detailsSection">
             <div class="row">
-                <div class="c-12 c-m-4">
+                <div class="c-12">
                     <h2>Patient Details</h2>
                 </div>
             </div>
@@ -181,12 +181,12 @@ else
                 <span class="close closeMed">&times;</span>
                 </div>
             </div>
-        <form method="POST" id="medUpForm">
+        <form method="POST" id="patUpForm">
             <input type="hidden" value="" id="patUpID" name="patUpID">
            <div class="detailsSection">
            <div class="alerMSG" id="updateStatus"></div>
                 <div class="row">
-                    <div class="c-12 c-m-5">
+                    <div class="c-12">
                         <h2>Update Patient Details</h2>
                     </div>
                 </div>
@@ -211,7 +211,7 @@ else
                         Phone: 
                     </div>
                     <div class="c-12 c-m-8">
-                        <input type="number" class="input-field" style="width:100%; display:inline;" name="patUpPhone" id="patUpPhone" placeholder="Phone">
+                        <input type="text" class="input-field" style="width:100%; display:inline;" name="patUpPhone" id="patUpPhone" placeholder="Phone">
                     </div>
                 </div>
                 <div class="row">
@@ -223,6 +223,7 @@ else
                     </div>
                 </div>
                 <div class="row">
+                    <input type="hidden" id="oldEmail" name="oldEmail">
                     <div class="c-12 c-m-4">
                         Email: 
                     </div>
@@ -238,12 +239,20 @@ else
                         <textarea type="number" class="input-field fullWidth" name="patUpAddress" id="patUpAddress" placeholder="Address"></textarea>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="c-12 c-m-4">
+                        Password: 
+                    </div>
+                    <div class="c-12 c-m-8">
+                    <input type="password" class="input-field" style="width:100%; display:inline;" name="patUpPass" id="patUpPass" placeholder="Password">
+                    </div>
+                </div>
            </div>
            <div class="bottomModel">
                 <div class="row">
                     <div class="c-12">
-                        <button type="button" class="btn btnNormal medCancel" id="updateMedCancel">Cancel</button> 
-                        <button type="submit" class="btn btnNormal" id="updateMedSave">Save</button> 
+                        <button type="button" class="btn btnNormal medCancel btnCancel" id="patUpdateClose">Cancel</button> 
+                        <button type="submit" class="btn btnNormal" id="updatePat">Save</button> 
                     </div>
                 </div>
            </div>
@@ -265,6 +274,9 @@ else
             })
             $('#patClose').click(()=>{
                 close(modalPatient);
+            })
+            $('#patUpdateClose').click(()=>{
+                close(modalPatientUpdate);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -311,6 +323,7 @@ else
                     $('#patUpAge').val(data[6]);
 
                     $('#emailData').html(data[4]);
+                    $('#oldEmail').html(data[4]);
                     $('#patUpEmail').val(data[4]);
 
                     $('#addressData').html(data[7]);
@@ -330,8 +343,7 @@ else
                     $("#patientData").html(data[0]);
                     $("#totalCountPat").html(data[1]);
                     //Open patient data modal when click on view
-                    var patientFullData=document.getElementById("patientFullData");
-                    $('.viewMed').click(function(){
+                    $('.viewPat').click(function(){
                          pId=$(this).attr('id');
 
                         patientDataModal(pId);
@@ -365,6 +377,103 @@ else
              return false;
            }
            
+        });
+
+        $('#patUpForm').on('submit',function(e){
+            e.preventDefault();
+            var errMsg="";
+            var x=0;
+            if($('#patUpFname').val().match(/^[A-Za-z]+$/)==null)
+            {
+                $('#patUpFname').addClass('errorInput');
+                errMsg+="First Name Must Contain Only Letters.";
+                x=1;
+            }
+            else
+            {
+                $('#patUpFname').removeClass('errorInput');
+            }
+            if($('#patUpLname').val().match(/^[A-Za-z]+$/)==null)
+            {
+                $('#patUpLname').addClass('errorInput');
+                errMsg+="<br>Last Name Must Contain Only Letters.";
+                x=1;
+            }
+            else
+            {
+                $('#patUpLname').removeClass('errorInput');
+            }
+            if($('#patUpPhone').val().length<10 || $('#patUpPhone').val().length>10)
+            {
+                $('#patUpPhone').addClass('errorInput');
+                errMsg+="<br>Phone Number Must Contain Only 10 Digits. (07******** / 011*******)";
+                x=1;
+            } 
+            else
+            {
+                $('#patUpPhone').removeClass('errorInput');
+            }
+            if(isNaN($('#patUpAge').val()) || $("#patUpAge").val()<=0 ||  $("#patUpAge").val()>=150)
+            {
+                $('#patUpAge').addClass('errorInput');
+                errMsg+="<br>Invalid Age";
+                x=1;
+            } 
+            else
+            {
+                $('#patUpAge').removeClass('errorInput');
+            }
+            if(($("#patUpEmail").val()!="") && ($("#patUpEmail").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null))
+            {
+                $('#patUpEmail').addClass('errorInput');
+                errMsg+="<br>Invalid Email.";
+                x=1;
+            }
+            else
+            {
+                $('#patUpEmail').removeClass('errorInput');
+            }
+            if(x==1)
+            {
+                $('#updateStatus').removeClass('error');
+                $('#updateStatus').removeClass('success');
+                $('#updateStatus').addClass('error');
+                $('#updateStatus').html(errMsg);
+                $('#updateStatus').slideDown();
+                setTimeout(function(){
+                    $('#updateStatus').slideUp('slow');
+                },5000);
+                return false;
+            }
+            else
+            {
+                $('#updateStatus').removeClass('error');
+                $('#updateStatus').removeClass('success');
+                $.ajax({
+                    url:"../handlers/patientHandler.php",
+                    method:"POST",
+                    data:$('#patUpForm').serialize()+"&type=upPat",
+                    success:function(data){
+                        if(data==1){
+                            getpatients("");
+                            $('#updateStatus').addClass("success");
+                            $('#updateStatus').html("Successfully Updated!");
+                            $('#updateStatus').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatus').slideUp("slow");
+                            },2000);                           
+                        }
+                        else{
+                            $('#updateStatus').addClass("error");
+                            $('#updateStatus').html("Failed!");
+                            $('#updateStatus').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatus').slideUp("slow");
+                            },2000);
+                }
+                    }
+                });
+            }
         });
     </script>
 </body>

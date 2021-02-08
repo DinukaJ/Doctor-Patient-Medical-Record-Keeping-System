@@ -60,6 +60,16 @@ class doctor extends users
         $db=new Database();
         return $db->getData("select * from doctor where id='$id'");
     } 
+    public function getDoctorUsualDays($id)
+    {
+        $db=new Database();
+        return $db->getData("select * from docusualdays where docId='$id'");
+    } 
+    public function getDoctorSpecialty($id)
+    {
+        $db=new Database();
+        return $db->getData("select * from docspeciality where docId='$id'");
+    } 
     public function updateDoctorInfo($fname, $lname, $phone, $docID)
     {
         $db = new Database();
@@ -81,5 +91,10 @@ class doctor extends users
         $db= new Database();
         return $db->insert_update_delete("update doccharge set amount=$charge where id='1'");
     }
+    public function getDoctorList($search)
+    {
+        $db=new Database();
+        return $db->getData("select id,fname,lname from doctor where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
+    } 
 }
 ?>

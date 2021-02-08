@@ -24,6 +24,20 @@ class patient extends users
         $passEncry=sha1($pass);
         return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','',$status)");
     }
+    public function updatePatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address)
+    {   
+        $db=new Database();
+        
+        if($pass=="")
+        {
+            return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',email='$email',age='$age',address='$address' where id='$pid'");
+        }
+        else
+        {
+            $passEncry=sha1($pass);
+            return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',email='$email',password='$passEncry',age='$age',address='$address' where id='$pid'");
+        }
+    }
     public function getPatients()
     {
         $db=new Database();

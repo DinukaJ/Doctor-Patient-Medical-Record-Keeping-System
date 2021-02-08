@@ -30,6 +30,8 @@ if(isset($_POST["type"]))
         delImp();
     if($_POST["type"]=="delPat")
         delPat();
+    if($_POST["type"]=="upPat")
+        upPat();
 }
 function getPatNewId()
 {
@@ -181,6 +183,20 @@ function delPat(){
     $patient = new patient();
     $patientID=$_POST["id"];
     $stat=$patient->delPat($patientID);
+    echo $stat; 
+}
+function upPat(){
+    $patient = new patient();
+    $id=$_POST["patUpID"];
+    $fname=$_POST["patUpFname"];
+    $lname=$_POST["patUpLname"];
+    $phone=$_POST["patUpPhone"];
+    $age=$_POST["patUpAge"];
+    $email=$_POST["patUpEmail"];
+    $oldEmail=$_POST["oldEmail"];
+    $pass=$_POST["patUpPass"];
+    $address=$_POST["patUpAddress"];
+    $stat=$patient->updatePatient($id,$fname,$lname,$phone,$age,$email,$pass,$address);
     echo $stat; 
 }
 
