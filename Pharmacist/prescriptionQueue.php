@@ -1,5 +1,4 @@
 <?php
-//Do the edits
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/patient.php');
@@ -216,7 +215,7 @@ else
                     <div class="c-4 c-m-4"></div>
                 </div> -->
             </div>  
-            <div class="row" style="margin-top:50px;">
+            <div class="row">
                 <div class="c-12"><hr></div>
                 <div class="c-12" style="text-align:right; padding-right:11%;">
                     <b>Total Amount:- Rs.<span id="totalAmount"></span></b>

@@ -557,7 +557,7 @@ body{
     border-radius: 10px;
   }
   .modal-content-long .row, .modal-content-short2 .row{
-      margin-bottom: 20px;
+      margin-bottom: 10px;
   }
 
   /* The Close Button */

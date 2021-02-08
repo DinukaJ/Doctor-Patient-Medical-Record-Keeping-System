@@ -49,5 +49,11 @@ class doctor extends users
         $db = new Database();
         return $db->insert_update_delete("update doctor set password='$newPass' where id='$docID'");
     }
+    public function getDocCharge()
+    {
+        $db= new Database();
+        $res=$db->getData("select amount from doccharge");
+        return $res;
+    }
 }
 ?>

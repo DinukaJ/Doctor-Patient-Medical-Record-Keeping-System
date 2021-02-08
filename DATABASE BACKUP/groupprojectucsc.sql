@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 26, 2021 at 10:09 AM
+-- Generation Time: Feb 08, 2021 at 06:09 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -34,16 +34,23 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doi` date NOT NULL,
   `amount` decimal(10,2) NOT NULL,
+  `docCharge` decimal(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`) VALUES
-(128, 8, '2021-01-26', '765.00');
+INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`) VALUES
+(128, 8, '2021-01-26', '765.00', '0.00'),
+(128, 9, '2021-02-08', '0.00', '0.00'),
+(128, 10, '2021-02-08', '799.50', '0.00'),
+(128, 11, '2021-02-08', '799.50', '0.00'),
+(128, 12, '2021-02-08', '799.50', '0.00'),
+(128, 13, '2021-02-08', '0.00', '0.00'),
+(128, 14, '2021-02-08', '500.00', '500.00');
 
 -- --------------------------------------------------------
 
@@ -66,8 +73,28 @@ CREATE TABLE IF NOT EXISTS `billitems` (
 --
 
 INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
-(8, 24, '200mg', 10, '345.00'),
-(8, 25, '250mg', 28, '420.00');
+(14, 25, '250mg', 0, '0.00'),
+(14, 24, '200mg', 0, '0.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doccharge`
+--
+
+DROP TABLE IF EXISTS `doccharge`;
+CREATE TABLE IF NOT EXISTS `doccharge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `amount` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doccharge`
+--
+
+INSERT INTO `doccharge` (`id`, `amount`) VALUES
+(1, '500.00');
 
 -- --------------------------------------------------------
 
@@ -154,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `labpatientrep` (
 --
 
 INSERT INTO `labpatientrep` (`id`, `pid`, `doi`, `cmt`) VALUES
+(2, 'p-6', '2021-02-08', ''),
 (1, 'p-1', '2020-12-31', '');
 
 -- --------------------------------------------------------
@@ -176,6 +204,11 @@ CREATE TABLE IF NOT EXISTS `labpatientrepdata` (
 --
 
 INSERT INTO `labpatientrepdata` (`repid`, `repTypeId`, `testName`, `result`) VALUES
+(2, 19, 'SERIUM CHOLESTEROL', '150'),
+(2, 19, 'HDL-CHOLESTEROL', '70'),
+(2, 19, 'LDL-CHOLESTEROL', '200'),
+(2, 19, 'CHOLESTEROL/HDL', '5'),
+(2, 19, 'TRIGLYCERIDES', '40'),
 (1, 19, 'SERIUM CHOLESTEROL', '20'),
 (1, 19, 'TRIGLYCERIDES', '50'),
 (1, 19, 'LDL-CHOLESTEROL', '135'),
@@ -278,8 +311,8 @@ CREATE TABLE IF NOT EXISTS `medtypes` (
 
 INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (17, '', '200.00', 20, 1),
-(24, '200mg', '34.50', 1944, 1),
-(25, '250mg', '15.00', 1360, 1),
+(24, '200mg', '34.50', 1911, 1),
+(25, '250mg', '15.00', 1276, 1),
 (26, '100mg', '50.00', 500, 1),
 (27, '150mg', '12.00', 1500, 1),
 (28, '25mg', '20.00', 1500, 1),
@@ -315,7 +348,8 @@ INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `ag
 ('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0),
 ('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1),
 ('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1),
-('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1);
+('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1),
+('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1);
 
 -- --------------------------------------------------------
 
@@ -379,7 +413,7 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 ('doc45', 'p-1', 125, '2020-11-17', '', 0),
 ('doc45', 'p-3', 126, '2020-11-17', '', 0),
 ('doc45', 'p-4', 127, '2020-12-25', '', 0),
-('doc45', 'p-3', 128, '2021-01-26', '', 1);
+('doc45', 'p-6', 128, '2021-02-08', '', 0);
 
 -- --------------------------------------------------------
 

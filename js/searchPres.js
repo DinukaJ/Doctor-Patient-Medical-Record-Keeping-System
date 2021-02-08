@@ -106,27 +106,8 @@ function putPresData(id){
         $("#billCreate").click(function(){
             getMedFinInfo();
         });
-        //Print the prescription
-        // $("#presPrint").click(function(){
-        //     Popup($("#printPresSec").html());//input param: Med Qty
-        // });
     }
  });
-}
-
-function Popup(data) {
-    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-    mywindow.document.write('<html><head><title></title>');
-    mywindow.document.write('<link rel="stylesheet" href="../css/main.css" type="text/css" />');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(data);
-    mywindow.document.write('</body></html>');
-    mywindow.document.close();
-    mywindow.focus();
-    setTimeout(function(){mywindow.print();},1000);
-    mywindow.close();
-
-    return true;
 }
 
 function getMedFinInfo(){
@@ -139,7 +120,7 @@ function getMedFinInfo(){
         success:function (data){
             $("#billVals").html(data[0]);
             $("#totalAmount").html(data[1]);
-
+            
             $(".medQty").change(function () {
                 if($(this).val()<0)
                 {
@@ -154,13 +135,14 @@ function getMedFinInfo(){
                 $('.medTotPrice').each(function(i, obj) {
                     tot=tot+parseFloat($(obj).html());
                 });
+                tot=tot+parseFloat($("#docCharge").html());
                 $("#totalAmount").html(tot.toFixed(2));
             });
         }
     });
 }
 $("#endBill").on('click',function(){
-   createBill($("#totalAmount").html(),pid);
+   createBill($("#totalAmount").html(),pid,$("#docCharge").html());
    // updateMed(billId); //Need to find the error of updateMed
    statusChange(pid);
 });
@@ -191,12 +173,12 @@ function updateMed(billId){
 }
 
 
-function createBill(totAmt,pid){
+function createBill(totAmt,pid,docCharge){
 
       $.ajax({
         url:"../handlers/billHandler.php",
         method:"POST",
-        data:{type:'createBill',totAmt:totAmt,pid:pid},
+        data:{type:'createBill',totAmt:totAmt,pid:pid,docCharge:docCharge},
         success:function (data){
             updateMed(data);
             alert("Bill Successfully Ended!");

@@ -15,7 +15,8 @@ $bill = new bill();
 $totAmt = $_POST["totAmt"];
 $pid = $_POST["pid"];
 $today=date("Y-m-d");
-$stat = $bill->addBill($pid,$totAmt,$today);
+$docCharge=$_POST["docCharge"];
+$stat = $bill->addBill($pid,$totAmt,$today,$docCharge);
 echo $stat;
 }
 function addBillMed(){

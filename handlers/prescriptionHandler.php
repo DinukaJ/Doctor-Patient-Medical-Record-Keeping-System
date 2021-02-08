@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
+include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
 
 //Checking which function to call
 if(isset($_POST["type"]))
@@ -339,9 +340,11 @@ $output="";
 $total = 0;
 $qtys = [];
 $prescription =  new prescription();
+$doc =  new doctor();
 $pid = $_POST["pid"];
 $presMedFinData = $prescription->getMedFin($pid);
-
+$docCharge=$doc->getDocCharge();
+$docCharge=mysqli_fetch_array($docCharge)[0];
 if(mysqli_num_rows($presMedFinData)){
     while($row = mysqli_fetch_array($presMedFinData)){//TODO:price calculation
             $dayCount=0;
@@ -365,6 +368,16 @@ if(mysqli_num_rows($presMedFinData)){
             </div>';
             array_push($qtys,$qty);
     }
+    $output.='
+    <div class="row" style="margin-top:50px;">
+        <div class="c-12"><hr></div>
+        <div class="c-12" style="text-align:right; padding-right:11%;">
+            Doctor Charge:- Rs.<span id="docCharge">'.$docCharge.'</span>
+        </div>
+        <div class="c-12"><hr></div>
+    </div>  
+    ';
+    $total+=(float)$docCharge;
 }
 
 echo json_encode(array($output,number_format((float)$total, 2, '.', ''),$qtys));

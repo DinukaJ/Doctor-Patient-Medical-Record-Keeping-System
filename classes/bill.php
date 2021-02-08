@@ -10,9 +10,9 @@ class bill
     }
 
     //adding bill details
-    public function addBill($presId,$amt,$doi){
+    public function addBill($presId,$amt,$doi,$docCharge){
         $db = new Database();
-        $stat = $db->insert_update_delete("insert into bill values ('$presId',null,'$doi','$amt')");
+        $stat = $db->insert_update_delete("insert into bill values ('$presId',null,'$doi','$amt','$docCharge')");
         if($stat)
         {
             $res=$db->getData("select id from bill order by id desc limit 1");
