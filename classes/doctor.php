@@ -25,6 +25,27 @@ class doctor extends users
             $this->setDocType($row[7]);
         }
     }
+    public function getNewId()
+    {
+        $db=new Database();
+        return $db->getData("select id from doctor order by id desc limit 1");
+    }
+    public function addDoctor($id,$fname,$lname,$phone,$email,$pass,$type)
+    {   
+        $db=new Database();
+        $passEncry=sha1($pass);
+        return $db->insert_update_delete("insert into doctor values('$id','$fname','$lname','$phone','$email','$passEncry','','$type')");
+    }
+    public function addDocUsualDays($id,$day)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("insert into docusualdays values('$id','$day')");
+    }
+    public function addDocSpecialty($id,$spec)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("insert into docspeciality values('$id','$spec')");
+    }
     public function disname()
     {
         return $this->getFName();

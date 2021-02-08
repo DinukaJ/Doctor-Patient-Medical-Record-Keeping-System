@@ -3,6 +3,8 @@ include_once(dirname( dirname(__FILE__) ).'/classes/prescription.php');
 include_once(dirname( dirname(__FILE__) ).'/classes/doctor.php');
 if(isset($_POST["type"]))
 {
+    if($_POST["type"]=="getID")
+        getDocNewId();
     if($_POST["type"]=="searchD")
         searchDoctor();
     if($_POST["type"]=="doctorData")
@@ -18,16 +20,36 @@ if(isset($_POST["type"]))
     if($_POST["type"]=="addDoc")
         addDoctor();
 }
+function getDocNewId()
+{
+    $doctor = new doctor();
+    $res=$doctor->getNewId();
+    if(mysqli_num_rows($res))
+        echo mysqli_fetch_array($res)[0];
+    else
+        echo "";
+}
 function addDoctor()
 {
-    $patient = new patient();
+    $doctor = new doctor();
     $id=$_POST["docId"];
     $fname=$_POST["firstName"];
     $lname=$_POST["lastName"];
     $phone=$_POST["phone"];
     $email=$_POST["email"];
     $pass=$_POST["pass"];
-    $stat=$patient->addPatient($id,$fname,$lname,$phone,$age,$email,$pass,$address,1);
+    $days=$_POST["day"];
+    $specialties=$_POST["special"];
+    $specialArr=explode(",",$specialties);
+    $stat=$doctor->addDoctor($id,$fname,$lname,$phone,$email,$pass,0);
+    foreach($days as $day)
+    {
+        $doctor->addDocUsualDays($id,$day);
+    }
+    foreach($specialArr as $spec)
+    {
+        $doctor->addDocSpecialty($id,$spec);
+    }
     echo $stat;
 }
 function searchDoctor()

@@ -37,10 +37,10 @@ if(!isset($_SESSION["user"]))
                 <div class="upperPart">
                     <div class="upperFirst row">
                         <div class="c-l-2">
-                            <a href="addDoctor.php"><button type="button" class="btn btnNormal btnPatient active" name="addPatient" id="addPatient"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
+                            <a href="addDoctor.php"><button type="button" class="btn btnNormal btnPatient active" name="addDoctor" id="addDoctor"><i class="fas fa-plus"></i> ADD DOCTORS</button></a>
                         </div>
                         <div class="c-l-2">
-                            <a href=""><button type="submit" class="btn btnNormal btnPatient" name="addPatient" id="addPatient"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
+                            <a href=""><button type="submit" class="btn btnNormal btnPatient" name="viewDoctor" id="viewDoctor"><i class="fas fa-search"></i> VIEW DOCTORS</button></a>
                         </div>
                     </div>
                     <div class="upperSecond row">
@@ -63,7 +63,7 @@ if(!isset($_SESSION["user"]))
                         <form action="#" method="POST" id="newDoc">
                             <div class="row">
                                 <div class="c-12" style="padding-top:0px">
-                                    <h1>Doctor ID:- <span id="patIDDis"></span></h1>
+                                    <h1>Doctor ID:- <span id="docIDDis"></span></h1>
                                     <input type="hidden" id="docId" name="docId" value="">
                                 </div>
                                 <div class="c-m-6">
@@ -116,42 +116,27 @@ if(!isset($_SESSION["user"]))
                                     <div class="row">
                                         <div class="c-12" style="padding-right:0px;">
                                             <div class="scrollBox" id="specialtyBox">
-                                                <div class="row allergyRow">
-                                                    <div class="c-11" style="padding-right:0px;">
-                                                        Specialty 1
-                                                    </div>
-                                                    <div class="c-1" style="padding-left:2px;">
-                                                        <button type="button" class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
-                                                    </div>
-                                                </div> 
-                                                <div class="row allergyRow">
-                                                    <div class="c-11" style="padding-right:0px;">
-                                                    Specialty 2
-                                                    </div>
-                                                    <div class="c-1" style="padding-left:2px;">
-                                                        <button class="btn btnPatientView2" name="viewPatient" id="viewPatient"><i class="fas fa-times"></i></button>
-                                                    </div>
-                                                </div> 
+                                                <!--Specialties-->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="c-m-6">
                                     <h4>Usual Attending Days</h4>
-                                    <input type="checkbox" id="atMon" name="day" value="Monday">
-                                    <label for="atMon"> Monday</label><br>
-                                    <input type="checkbox" id="atTue" name="day" value="Tuesday">
-                                    <label for="atTue"> Tuesday</label><br>
-                                    <input type="checkbox" id="atWed" name="day" value="Wednesday">
-                                    <label for="atWed"> Wednesday</label><br>
-                                    <input type="checkbox" id="atThur" name="day" value="Thursday">
-                                    <label for="atThur"> Thursday</label><br>
-                                    <input type="checkbox" id="atFri" name="day" value="Friday">
-                                    <label for="atFri"> Friday</label><br>
-                                    <input type="checkbox" id="atSat" name="day" value="Saturday">
-                                    <label for="atSat"> Saturday</label><br>
-                                    <input type="checkbox" id="atSun" name="day" value="Sunday">
-                                    <label for="atSun"> Sunday</label><br>
+                                    <input type="checkbox" id="chkMonday" name="day[]" class="chkDay" value="Monday">
+                                    <label for="chkMonday"> Monday</label><br>
+                                    <input type="checkbox" id="chkTuesday" name="day[]" class="chkDay" value="Tuesday">
+                                    <label for="chkTuesday"> Tuesday</label><br>
+                                    <input type="checkbox" id="chkWednesday" name="day[]" class="chkDay" value="Wednesday">
+                                    <label for="chkWednesday"> Wednesday</label><br>
+                                    <input type="checkbox" id="chkThursday" name="day[]" class="chkDay" value="Thursday">
+                                    <label for="chkThursday"> Thursday</label><br>
+                                    <input type="checkbox" id="chkFriday" name="day[]" class="chkDay" value="Friday">
+                                    <label for="chkFriday"> Friday</label><br>
+                                    <input type="checkbox" id="chkSaturday" name="day[]" class="chkDay" value="Saturday">
+                                    <label for="chkSaturday"> Saturday</label><br>
+                                    <input type="checkbox" id="chkSunday" name="day[]" class="chkDay" value="Sunday">
+                                    <label for="chkSunday"> Sunday</label><br>
                                 </div>
                                 <div class="c-m-6">
                                     <button type="reset" class="btn btnLogin btnNormal btnCancel" name="cancelBtn" id=""><i class="fas fa-times"></i> CANCEL</button>
@@ -172,12 +157,25 @@ if(!isset($_SESSION["user"]))
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script>
         $('#updateStatusInfo').hide();
+        getId();
         $('#specialtyStatus').hide();
-
+        var chkCount=0;
 
         $('#phone').change(function(){
             $("#pass").val($("#phone").val());
         });
+
+        $(".chkDay").click(function(){
+            if($(this).prop("checked")==true)
+            {
+                chkCount++;
+            }
+            else
+            {
+                chkCount--;
+            }
+        });
+
         $('#newDoc').on('submit',function(e){
             e.preventDefault();
             var errMsg="";
@@ -205,7 +203,7 @@ if(!isset($_SESSION["user"]))
             if($('#phone').val().length<10 || $('#phone').val().length>10)
             {
                 $('#phone').addClass('errorInput');
-                errMsg+="<br>Phone Number Must Contain Only 10 Digits. (07******** / 011*******)";
+                errMsg+="<br>Phone Number Must Contain Only 10 Digits. (07******** / 011*******).";
                 x=1;
             } 
             else
@@ -225,12 +223,17 @@ if(!isset($_SESSION["user"]))
             if($("#pass").val()=="")
             {
                 $('#pass').addClass('errorInput');
-                errMsg+="<br>Password Cannot be Blank";
+                errMsg+="<br>Password Cannot be Blank.";
                 x=1;
             }
             else
             {
                 $('#pass').removeClass('errorInput');
+            }
+            if(chkCount==0)
+            {
+                errMsg+="<br>At Least One Day Must be Selected.";
+                x=1;
             }
             if(x==1)
             {
@@ -248,10 +251,15 @@ if(!isset($_SESSION["user"]))
             {
                 $('#updateStatusInfo').removeClass('error');
                 $('#updateStatusInfo').removeClass('success');
+                var specialties="";
+                $('.specialtyValue').each(function(i, obj) {
+                    specialties+=$(obj).html()+",";
+                });
+                specialties=specialties.slice(0, -1);
                 $.ajax({
                     url:"../handlers/doctorHandler.php",
                     method:"POST",
-                    data:$('#newDoc').serialize()+"&type=addDoc",
+                    data:$('#newDoc').serialize()+"&type=addDoc&special="+specialties,
                     success:function(data){
                         if(data==1){
                             $('#updateStatusInfo').addClass("success");
@@ -277,32 +285,70 @@ if(!isset($_SESSION["user"]))
         //function to reset all.
         function resetAll()
         {
-            $("#newPat").trigger("reset");
+            $("#newDoc").trigger("reset");
+            $("#specialtyBox").html("");
             getId();
         }
         // Function to get the new patient id
         function getId()
+        {
+            $.ajax({
+                url:"../handlers/doctorHandler.php",
+                method:"POST",
+                data:{type:'getID'},
+                success:function(data){
+                    if(data=="")
+                    {
+                        $("#docId").val("doc-1");
+                        $("#docIDDis").html("doc-1");
+                    }
+                    else
+                    {
+                        var arr=data.split("-");
+                        var num=parseInt(arr[1]) + 1;
+                        $("#docId").val("doc-"+num);
+                        $("#docIDDis").html("doc-"+num);
+                    }
+                }
+            });
+        }
+
+        $("#addSpecialty").click(function(){
+            if($("#newSpecialty").val()=="")
             {
-                $.ajax({
-                    url:"../handlers/patientHandler.php",
-                    method:"POST",
-                    data:{type:'getID'},
-                    success:function(data){
-                        if(data=="")
-                        {
-                            $("#patId").val("p-1");
-                            $("#patIDDis").html("p-1");
-                        }
-                        else
-                        {
-                            var arr=data.split("-");
-                            var num=parseInt(arr[1]) + 1;
-                            $("#patId").val("p-"+num);
-                            $("#patIDDis").html("p-"+num);
-                        }
+                $("#newSpecialty").addClass("errorInput");
+            }
+            else
+            {
+                $("#newSpecialty").removeClass("errorInput");
+                var chk=0;
+                $('.specialtyValue').each(function(i, obj) {
+                    if($(obj).html().toLowerCase()==$("#newSpecialty").val().toLowerCase())
+                    {
+                        chk=1;
                     }
                 });
+                if(chk==1)
+                {
+                    $('#specialtyStatus').addClass("error");
+                    $('#specialtyStatus').html("Specialty Already Added!");
+                    $('#specialtyStatus').slideDown("slow");
+                    setTimeout(function(){
+                        $('#specialtyStatus').slideUp("slow");
+                    },2000);
+                }
+                else
+                {
+                    $("#specialtyBox").append('<div class="row allergyRow docSpecialties"><div class="c-11 specialtyValue" style="padding-right:0px;">'+$("#newSpecialty").val()+'</div><div class="c-1" style="padding-left:2px;"><button type="button" class="btn btnPatientView2 removeSpecialty" name="removeSpecialty"><i class="fas fa-times"></i></button></div></div>');
+                    $("#newSpecialty").val("");
+                    $(".removeSpecialty").click(function(){
+                        $(this).parent().parent().remove();
+                    });
+                }
             }
+        });
+
+        
     </script>
 
 </body>
