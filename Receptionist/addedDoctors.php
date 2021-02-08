@@ -260,6 +260,9 @@ else
             $('#patClose').click(()=>{
                 close(modalDoctor);
             })
+            $('#updateMedCancel').click(()=>{
+                close(modalDoctorUpdate);
+            })
         });
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -276,6 +279,7 @@ else
     <script>
         getDocs("");
         $('#updateStatus').hide();
+        $('#specialtyStatus').hide();
         $("#updateDoc").click(function(){
             close(modalDoctor);
             open(modalDoctorUpdate);
