@@ -36,6 +36,20 @@ class doctor extends users
         $passEncry=sha1($pass);
         return $db->insert_update_delete("insert into doctor values('$id','$fname','$lname','$phone','$email','$passEncry','','$type')");
     }
+    public function updateDoctor($id,$fname,$lname,$phone,$email,$pass)
+    {   
+        $db=new Database();
+        $db->insert_update_delete("delete from docusualdays where docId='$id'");
+        if($pass=="")
+        {
+            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email' where id='$id'");
+        }
+        else
+        {
+            $passEncry=sha1($pass);
+            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email', password='$passEncry' where id='$id'");
+        }
+    }
     public function addDocUsualDays($id,$day)
     {
         $db=new Database();
@@ -45,6 +59,11 @@ class doctor extends users
     {
         $db=new Database();
         return $db->insert_update_delete("insert into docspeciality values('$id','$spec')");
+    }
+    public function removeDocSpecialty($id,$spec)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("delete from docspeciality where docId='$id' and speciality='$spec'");
     }
     public function disname()
     {

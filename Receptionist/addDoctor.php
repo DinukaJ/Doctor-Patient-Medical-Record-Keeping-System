@@ -323,7 +323,7 @@ if(!isset($_SESSION["user"]))
                 $("#newSpecialty").removeClass("errorInput");
                 var chk=0;
                 $('.specialtyValue').each(function(i, obj) {
-                    if($(obj).html().toLowerCase()==$("#newSpecialty").val().toLowerCase())
+                    if($(obj).html().toLowerCase().trim()==$("#newSpecialty").val().toLowerCase().trim())
                     {
                         chk=1;
                     }
@@ -339,7 +339,7 @@ if(!isset($_SESSION["user"]))
                 }
                 else
                 {
-                    $("#specialtyBox").append('<div class="row allergyRow docSpecialties"><div class="c-11 specialtyValue" style="padding-right:0px;">'+$("#newSpecialty").val()+'</div><div class="c-1" style="padding-left:2px;"><button type="button" class="btn btnPatientView2 removeSpecialty" name="removeSpecialty"><i class="fas fa-times"></i></button></div></div>');
+                    $("#specialtyBox").append('<div class="row allergyRow docSpecialties"><div class="c-11 specialtyValue" style="padding-right:0px;">'+$("#newSpecialty").val().trim()+'</div><div class="c-1" style="padding-left:2px;"><button type="button" class="btn btnPatientView2 removeSpecialty" name="removeSpecialty"><i class="fas fa-times"></i></button></div></div>');
                     $("#newSpecialty").val("");
                     $(".removeSpecialty").click(function(){
                         $(this).parent().parent().remove();

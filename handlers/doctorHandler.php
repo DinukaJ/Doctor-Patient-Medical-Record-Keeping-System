@@ -23,6 +23,12 @@ if(isset($_POST["type"]))
         addDoctor();
     if($_POST["type"]=="searchDRecep")
         searchDRecep();
+    if($_POST["type"]=="addDocSpec")
+        addDocSpec();
+    if($_POST["type"]=="removeDocSpec")
+        removeDocSpec();
+    if($_POST["type"]=="upDoc")
+        updateDoctor();
 }
 function getDocNewId()
 {
@@ -54,6 +60,39 @@ function addDoctor()
     {
         $doctor->addDocSpecialty($id,$spec);
     }
+    echo $stat;
+}
+function updateDoctor()
+{
+    $doctor = new doctor();
+    $id=$_POST["docUpID"];
+    $fname=$_POST["firstNameUp"];
+    $lname=$_POST["lastNameUp"];
+    $phone=$_POST["phoneUp"];
+    $email=$_POST["emailUp"];
+    $pass=$_POST["passUp"];
+    $days=$_POST["day"];
+    $stat=$doctor->updateDoctor($id,$fname,$lname,$phone,$email,$pass);
+    foreach($days as $day)
+    {
+        $doctor->addDocUsualDays($id,$day);
+    }
+    echo $stat;
+}
+function addDocSpec()
+{
+    $doctor = new doctor();
+    $id=$_POST["id"];
+    $spec=$_POST["spec"];
+    $stat=$doctor->addDocSpecialty($id,$spec);
+    echo $stat;
+}
+function removeDocSpec()
+{
+    $doctor = new doctor();
+    $id=$_POST["id"];
+    $spec=$_POST["spec"];
+    $stat=$doctor->removeDocSpecialty($id,$spec);
     echo $stat;
 }
 function searchDoctor()
