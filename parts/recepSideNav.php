@@ -14,7 +14,7 @@ function getSideNav($type)
         </div>
         <a href="addPatients.php" class="sideLink ';if($type=="patient"){echo 'active';} echo'">Patients</a>
         <a href="addDoctor.php" class="sideLink ';if($type=="doctor"){echo 'active';} echo'">Doctors</a>
-        <a href="" class="sideLink ';if($type=="docStatus"){echo 'active';} echo'">Doctor Attending Status</a>
+        <a href="docAttendingStatus.php" class="sideLink ';if($type=="docStatus"){echo 'active';} echo'">Doctor Attending Status</a>
     </div>';
 }
 ?>

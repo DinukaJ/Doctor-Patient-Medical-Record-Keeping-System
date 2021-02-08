@@ -284,11 +284,13 @@ else
             close(modalDoctor);
             open(modalDoctorUpdate);
         });
+
         var pId="";
         var chkCount=0;
         //Function to open the patient data modal
         function doctorDataModal(pId)
         {
+            $(".chkDay").prop("checked",false);
             open(modalDoctor);
             $.ajax({
                 url:"../handlers/doctorHandler.php",

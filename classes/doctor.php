@@ -115,5 +115,28 @@ class doctor extends users
         $db=new Database();
         return $db->getData("select id,fname,lname from doctor where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
     } 
+    public function addSpecDay($id,$specDate,$stat)
+    {
+        $db=new Database();
+        $res=$db->getData("select * from docspecialdays where docId='$id' and date='$specDate'");
+        if(mysqli_num_rows($res)>0)
+        {
+            return -1;
+        }
+        else
+        {
+            return $db->insert_update_delete("insert into docspecialdays values('$id','$specDate','$stat')");
+        }
+    }
+    public function getSpecDays($id)
+    {
+        $db=new Database();
+        return $db->getData("select * from docspecialdays where docId='$id' and date>=CURDATE()");
+    }
+    public function removeSpecDay($id,$specDate)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("delete from docspecialdays where docId='$id' and date='$specDate'");
+    }
 }
 ?>

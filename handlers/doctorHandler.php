@@ -29,6 +29,12 @@ if(isset($_POST["type"]))
         removeDocSpec();
     if($_POST["type"]=="upDoc")
         updateDoctor();
+    if($_POST["type"]=="addSpecDay")
+        addSpecDay();
+    if($_POST["type"]=="getSpecDays")
+        getSpecDays();
+    if($_POST["type"]=="removeSpecDay")
+        removeSpecDay();
 }
 function getDocNewId()
 {
@@ -121,6 +127,11 @@ function searchDRecep()
     $patientSearch=$_POST["doctorSearch"];
     $searchResult=$patient->getDoctorList($patientSearch);
     $numRows=mysqli_num_rows($searchResult);
+    $btnVal="View";
+    if(isset($_POST["btn"]))
+    {
+        $btnVal=$_POST["btn"];
+    }
     if(mysqli_num_rows($searchResult))
     {
         while($row=mysqli_fetch_array($searchResult))
@@ -130,7 +141,7 @@ function searchDRecep()
                 <div class='c-3' class='$row[0]' id='docID'>$row[0]</div>
                 <div class='c-8' class='$row[1]'>$row[1] $row[2]</div>
                 <div class='c-1'>
-                    <button type='button' class='btn btnPatientView viewDoc' name='viewDoc' id='$row[0]'>View</button>
+                    <button type='button' class='btn btnPatientView viewDoc' name='viewDoc' id='$row[0]'>$btnVal</button>
                 </div>
             </div>
             ";
@@ -196,5 +207,54 @@ function getDocCharge(){
     $stat = $doctor->getDocCharge();
     $stat=mysqli_fetch_array($stat)[0];
     echo $stat;
+}
+
+function addSpecDay()
+{
+    $doctor = new doctor();
+    $id = $_POST["docId"];
+    $specDate = $_POST["specDate"];
+    $stat = $_POST["stat"];
+    if($stat=="Available")
+    {
+        $stat=1;
+    }
+    else
+    {
+        $stat=0;
+    }
+    $res = $doctor->addSpecDay($id,$specDate,$stat);
+    echo $res;
+}
+function getSpecDays()
+{
+    $doctor = new doctor();
+    $id = $_POST["docId"];
+    $res = $doctor->getSpecDays($id);
+    $output="";
+    while($row=mysqli_fetch_array($res))
+    {
+        $stat="";
+        if($row[2]==1)
+        {
+            $stat="Available";
+        }
+        else
+        {
+            $stat="Not Available";
+        }
+        $output.='
+        <div class="row allergyRow docSpecDays"><div class="c-11 specialtyValue" style="padding-right:0px;">'.$row[1].' - '.$stat.'</div><div class="c-1" style="padding-left:2px;"><button type="button" specDate='.$row[1].' class="btn btnPatientView2 removeSpecDate" name="removeSpecialty"><i class="fas fa-times"></i></button></div></div>
+        ';
+    }
+    echo $output;
+}
+function removeSpecDay()
+{
+    $doctor = new doctor();
+    $id = $_POST["docId"];
+    $specDate = $_POST["specDate"];
+    $res = $doctor->removeSpecDay($id,$specDate);
+    echo $res;
 }
 ?>
