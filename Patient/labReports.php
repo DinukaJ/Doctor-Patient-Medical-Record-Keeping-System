@@ -106,53 +106,50 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 <h2>Report Details</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-2">
-                Report ID: <span class="answer" id="reportId"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId"></span>
-            </div>
-            <div class="c-12 c-m-3">
-                Name: <span class="answer" id="patientName"></span>
-            </div>
-            <div class="c-12 c-m-3">
-                Type: <span class="answer" id="rType"></span>
-            </div>
-            <div class="c-12 c-m-2">
-                Date: <span class="answer" id="doi"></span>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>  
-        <div class="row">
-            <div class="c-4 c-m-4">
-                <b>Test Name</b>
-            </div>
-            <div class="c-4 c-m-4">
-                <b>Result</b>
-            </div>
-            <div class="c-4 c-m-4">
-                <b>Range</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="repTypes">
-            <div class="row">
-                <div class="c-4 c-m-4">
-                    HDL - Cholesterol
+        <div class="c-12" style="padding-left:0px; padding-right:0px;">
+            <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-4">
+                    <center><b>Report ID: <span id="reportNo"></span></b></center>
                 </div>
-                <div class="c-4 c-m-4">
-                    36 mg/dl
-                </div>
-                <div class="c-4 c-m-4">
-                    40-60
+                <div class="c-4"></div>
+                <div class="c-4">
+                    <center><b>Date: <span id="reportDate"></span></b></center>
                 </div>
             </div>
+            <div id="commentRow" class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-12">
+                    <b>Comment: <span id="comment"></span></b>
+                </div>
+            </div>
+            <div class="row patientDataRow" style="border-bottom:none;">
+                <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
+                    <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow id="reportTable">
+                        <tr style="height:20px;">
+                            <th style="width:30%">Test Name</th>
+                            <th style="width:30%">Result</th>
+                            <th style="width:30%; text-align:center;">Range</th>
+                        </tr>
+                    </table>
+                    <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
+         
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                        <tr>
+                            <td style="width:30%; text-align:center;">1</td>
+                            <td style="width:30%; text-align:center;">Med Name</td>
+                            <td style="width:30%; text-align:center;">5</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>  
         </div>    
         </div>
         <div class ="bottomModel row">
             <div class="c-12">
-                <button type="button" class="btn btnNormal btnCancel" id="closeReport">Close</button>
+                <button type="button" class="btn btnNormal btnCancel" id="closeRep">Close</button>
                 <!-- <button type="button" class="btn btnNormal" id="updateRep">Edit</button> -->
             </div>
         </div>
@@ -163,22 +160,23 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainPatient.js"></script>
+    <script src="../js/searchPatRep.js"></script>
     <script>
-        var labReport=document.getElementById("modalViewRep");
+        var modalViewRep=document.getElementById("modalViewRep");
         $(document).ready(function(){
             getAllLab();
-            $(".viewReport").click(function(){
-                open(labReport);
-            });
             $('.close').click(()=>{
                 close(modalUpdateDet);
-                close(labReport);
+                close(modalViewRep);
             })
             $('#closeReport').click(()=>{
-                close(labReport);
+                close(modalViewRep);
             })
             $('#upCancel').click(()=>{
                 close(modalUpdateDet);
+            })
+            $('.btnCancel').click(()=>{
+                close(modalViewRep);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -187,9 +185,9 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     // modalUpdateDet.style.display = "none";
                     close(modalUpdateDet);
             }
-            if (event.target == labReport) {
+            if (event.target == modalViewRep) {
                     // modalUpdateDet.style.display = "none";
-                    close(labReport);
+                    close(modalViewRep);
             }
         }
 
@@ -203,8 +201,36 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 success:function(data){
                     $('#reportInfo').html(data[0]);
                     $('#noOfReports').html(data[1]);
-            
+                    $('.viewRep').click(function(){
+                        $("#reportDate").html($(this).parent().parent().find('.repDate').html());
+                        $("#reportNo").html(this.id.split("-")[1]);
+                        getReportDataTable(this.id.split("-")[1]);
+                        open(modalViewRep);
+                    });
                 }
+            });
+        }
+
+        function getReportDataTable(id){
+            $.ajax({
+                url:"../handlers/labHandler.php",
+                method:"POST",
+                data:{reportID:id, type:'getReportDataTable'},
+                dataType: 'json',
+                success:function(data){
+                    var d=data[0].replaceAll("~"," ");
+                    $("#patReportData").html(d);
+                    if(data[1]!="")
+                    {
+                        $("#comment").html(data[1]);
+                        $("#commentRow").show();
+                    }
+                    else
+                    {
+                        $("#commentRow").hide();
+                    }
+                }
+                
             });
         }
     </script>
