@@ -76,6 +76,28 @@ function putInventoryData(id)
                 $('#medUpName').val(data[1]);
                 $('#medUpSc').val(data[2]);
                 $('#medUpTypes').html(data[4]);
+                var temp_qty = $(".medUpQTY").val();
+                var temp_price = $(".medUpPrice").val();
+                $(".medUpQTY").change(function(){
+                    if($(this).val()<0)
+                    {
+                        $(this).val(temp_qty);
+                        $(this).addClass("errorInput");
+                        setTimeout(function(){
+                            $(".medUpQTY").removeClass("errorInput");
+                        },2000);
+                    }
+                });
+                $(".medUpPrice").change(function(){
+                    if($(this).val()<0){
+                        $(this).val(temp_price);
+                        $(this).addClass("errorInput");
+                        setTimeout(function(){
+                            $(".medUpPrice").removeClass("errorInput");
+                        },2000);
+                    }
+                });
+    
             })
 
         }
