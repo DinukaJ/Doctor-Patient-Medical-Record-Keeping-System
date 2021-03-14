@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 08, 2021 at 12:35 PM
+-- Generation Time: Mar 14, 2021 at 05:43 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -37,20 +37,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `docCharge` decimal(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`) VALUES
-(128, 8, '2021-01-26', '765.00', '0.00'),
-(128, 9, '2021-02-08', '0.00', '0.00'),
-(128, 10, '2021-02-08', '799.50', '0.00'),
-(128, 11, '2021-02-08', '799.50', '0.00'),
-(128, 12, '2021-02-08', '799.50', '0.00'),
-(128, 13, '2021-02-08', '0.00', '0.00'),
-(128, 14, '2021-02-08', '500.00', '500.00');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -67,14 +54,6 @@ CREATE TABLE IF NOT EXISTS `billitems` (
   `totPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`billId`,`medId`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `billitems`
---
-
-INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
-(14, 25, '250mg', 0, '0.00'),
-(14, 24, '200mg', 0, '0.00');
 
 -- --------------------------------------------------------
 
@@ -111,6 +90,14 @@ CREATE TABLE IF NOT EXISTS `docspecialdays` (
   KEY `docId` (`docId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `docspecialdays`
+--
+
+INSERT INTO `docspecialdays` (`docId`, `date`, `status`) VALUES
+('doc-1', '2021-02-09', 1),
+('doc-1', '2021-02-12', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +128,8 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `password` text NOT NULL,
   `dp` text,
   `type` int(11) NOT NULL DEFAULT '0',
+  `token` text,
+  `verifyStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -148,8 +137,8 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`) VALUES
-('doc45', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1);
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`) VALUES
+('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', -1);
 
 -- --------------------------------------------------------
 
@@ -160,9 +149,28 @@ INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`
 DROP TABLE IF EXISTS `docusualdays`;
 CREATE TABLE IF NOT EXISTS `docusualdays` (
   `docId` varchar(9) NOT NULL,
-  `date` varchar(10) NOT NULL,
-  PRIMARY KEY (`docId`,`date`)
+  `day` varchar(10) NOT NULL,
+  PRIMARY KEY (`docId`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `docusualdays`
+--
+
+INSERT INTO `docusualdays` (`docId`, `day`) VALUES
+('', 'Friday'),
+('', 'Monday'),
+('', 'Thursday'),
+('', 'Wednesday'),
+('doc-1', 'Friday'),
+('doc-1', 'Monday'),
+('doc-1', 'Saturday'),
+('doc-1', 'Sunday'),
+('doc-1', 'Thursday'),
+('doc-1', 'Tuesday'),
+('doc-1', 'Wednesday'),
+('doc-2', 'Monday'),
+('doc-2', 'Sunday');
 
 -- --------------------------------------------------------
 
@@ -339,6 +347,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `address` text NOT NULL,
   `dp` text,
   `status` int(11) NOT NULL DEFAULT '1',
+  `token` text,
+  `verifyStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -346,13 +356,14 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `dp`, `status`) VALUES
-('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'c4a1e9ab9701149995d64bc94a8cac2b1a0ed8f7', 25, '12/21,Seeduwa', NULL, 1),
-('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0),
-('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1),
-('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1),
-('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1),
-('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1);
+INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `dp`, `status`, `token`, `verifyStatus`) VALUES
+('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'c4a1e9ab9701149995d64bc94a8cac2b1a0ed8f7', 25, '12/21,Seeduwa', NULL, 1, '', 0),
+('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0, '', 0),
+('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1, '', 0),
+('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1, '', 0),
+('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0),
+('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0),
+('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '2f5da5243f847e7bb3c6208bd10615f2f26f08b7', 18, '', '', 1, 'm0chBcvRd2BhLP0lKZGybJGMi3O4To', -1);
 
 -- --------------------------------------------------------
 
@@ -407,18 +418,6 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   KEY `patientId` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
-('doc45', 'p-1', 123, '2020-10-15', NULL, 0),
-('doc45', 'p-1', 124, '2020-10-29', '', 0),
-('doc45', 'p-1', 125, '2020-11-17', '', 0),
-('doc45', 'p-3', 126, '2020-11-17', '', 0),
-('doc45', 'p-4', 127, '2020-12-25', '', 0),
-('doc45', 'p-6', 128, '2021-02-08', '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -438,20 +437,6 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `prescription_medicine`
---
-
-INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(123, 10, '0', 1.5, 2, 'Before', '4 weeks'),
-(124, 6, '0', 1, 3, 'b', '1 w'),
-(124, 11, '0', 1.5, 2, 'a', '1 w'),
-(125, 25, '250mg', 1.5, 3, 'a', '2 w'),
-(126, 24, '200mg', 1, 1, 'b', '1 w'),
-(127, 29, '300mg', 2, 2, 'b', '1 w'),
-(128, 24, '200mg', 1.5, 1, 'b', '1 w'),
-(128, 25, '250mg', 1, 2, 'a', '2 w');
 
 --
 -- Constraints for dumped tables
