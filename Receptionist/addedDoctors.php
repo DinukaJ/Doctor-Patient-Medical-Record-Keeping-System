@@ -508,14 +508,28 @@ else
             {
                 $('#updateStatus').removeClass('error');
                 $('#updateStatus').removeClass('success');
+                $('#updateStatus').addClass("success");
+                $('#updateStatus').html("Processing....");
+                $('#updateStatus').slideDown("slow");
+                $("#updateMedSave").prop("disabled",true);
                 $.ajax({
                     url:"../handlers/doctorHandler.php",
                     method:"POST",
                     data:$('#docUpForm').serialize()+"&type=upDoc",
                     success:function(data){
+                        $("#updateMedSave").prop("disabled",false);
                         if(data==1){
                             $('#updateStatus').addClass("success");
                             $('#updateStatus').html("Successfully Updated!");
+                            $('#updateStatus').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatus').slideUp("slow");
+                            },2000);
+                        }
+                        else if(data==-1)
+                        {
+                            $('#updateStatus').addClass("error");
+                            $('#updateStatus').html("Doctor with the same email already exists!");
                             $('#updateStatus').slideDown("slow");
                             setTimeout(function(){
                                 $('#updateStatus').slideUp("slow");

@@ -449,11 +449,16 @@ else
             {
                 $('#updateStatus').removeClass('error');
                 $('#updateStatus').removeClass('success');
+                $('#updateStatus').addClass("success");
+                $('#updateStatus').html("Processing....");
+                $('#updateStatus').slideDown("slow");
+                $("#updatePat").prop("disabled",true);
                 $.ajax({
                     url:"../handlers/patientHandler.php",
                     method:"POST",
                     data:$('#patUpForm').serialize()+"&type=upPat",
                     success:function(data){
+                        $("#updatePat").prop("disabled",false);
                         if(data==1){
                             getpatients("");
                             $('#updateStatus').addClass("success");
@@ -462,6 +467,15 @@ else
                             setTimeout(function(){
                                 $('#updateStatus').slideUp("slow");
                             },2000);                           
+                        }
+                        else if(data==-1)
+                        {
+                            $('#updateStatus').addClass("error");
+                            $('#updateStatus').html("Patient with the same email and password already exists! Use a different password!");
+                            $('#updateStatus').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatus').slideUp("slow");
+                            },2000);
                         }
                         else{
                             $('#updateStatus').addClass("error");

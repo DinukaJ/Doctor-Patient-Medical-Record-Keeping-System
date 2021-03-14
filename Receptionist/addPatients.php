@@ -205,11 +205,16 @@ if(!isset($_SESSION["user"]))
             {
                 $('#updateStatusInfo').removeClass('error');
                 $('#updateStatusInfo').removeClass('success');
+                $('#updateStatusInfo').addClass("success");
+                $('#updateStatusInfo').html("Processing....");
+                $('#updateStatusInfo').slideDown("slow");
+                $("#patSave").prop("disabled",true);
                 $.ajax({
                     url:"../handlers/patientHandler.php",
                     method:"POST",
                     data:$('#newPat').serialize()+"&type=addPat",
                     success:function(data){
+                        $("#patSave").prop("disabled",false);
                         if(data==1){
                             $('#updateStatusInfo').addClass("success");
                             $('#updateStatusInfo').html("Successfully Added!");

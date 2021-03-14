@@ -251,6 +251,10 @@ if(!isset($_SESSION["user"]))
             {
                 $('#updateStatusInfo').removeClass('error');
                 $('#updateStatusInfo').removeClass('success');
+                $('#updateStatusInfo').addClass("success");
+                $('#updateStatusInfo').html("Processing....");
+                $('#updateStatusInfo').slideDown("slow");
+                $("#patSave").prop("disabled",true);
                 var specialties="";
                 $('.specialtyValue').each(function(i, obj) {
                     specialties+=$(obj).html()+",";
@@ -261,6 +265,7 @@ if(!isset($_SESSION["user"]))
                     method:"POST",
                     data:$('#newDoc').serialize()+"&type=addDoc&special="+specialties,
                     success:function(data){
+                        $("#patSave").prop("disabled",false);
                         if(data==1){
                             $('#updateStatusInfo').addClass("success");
                             $('#updateStatusInfo').html("Successfully Added!");
@@ -269,6 +274,15 @@ if(!isset($_SESSION["user"]))
                                 $('#updateStatusInfo').slideUp("slow");
                             },2000);
                             resetAll();
+                        }
+                        else if(data==-1)
+                        {
+                            $('#updateStatusInfo').addClass("error");
+                            $('#updateStatusInfo').html("Doctor with the same email already exists!");
+                            $('#updateStatusInfo').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatusInfo').slideUp("slow");
+                            },2000);
                         }
                         else{
                             $('#updateStatusInfo').addClass("error");

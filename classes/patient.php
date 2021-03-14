@@ -11,6 +11,7 @@ class patient extends users
             $this->setFName($row[1]);
             $this->setLName($row[2]);
             $this->setDP($row[8]);
+            $this->setVS($row[11]);
         }
     }
     public function getNewId()
@@ -35,9 +36,9 @@ class patient extends users
             {
                 $verifyToken=getToken(30);
                 $verifyStatus=-1;
+                $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
+                sendActiveReset($fname, $email, $link, 0);
             }
-            $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
-            sendActiveReset($fname, $email, $link, 0);
             return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','',$status,'$verifyToken',$verifyStatus)");
         }
     }
@@ -49,10 +50,27 @@ class patient extends users
         $patEmail=$patData["email"];
         $patVarifyStatus=$patData["verifyStatus"];
         $verifyToken="";
+        if($email!="" && $pass!="")
+        {
+            $passEncry=sha1($pass);
+            $ifExist=$db->getData("select * from patient where email='$email' and password='$passEncry' and id <> '$pid'");
+            if(mysqli_num_rows($ifExist)>0)
+            {
+                return -1;//User exists with the same email and password
+            }
+        }
         if($email!="" && ($patEmail != $email))
         {
+            $currPass=$patData["password"];
+            $ifExist=$db->getData("select * from patient where email='$email' and password='$currPass' and id <> '$pid'");
+            if(mysqli_num_rows($ifExist)>0)
+            {
+                return -1;//User exists with the same email and password
+            }
             $verifyToken=getToken(30);
             $patVarifyStatus=-1;
+            $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
+            sendActiveReset($fname, $email, $link, 0);
         }
         if($pass=="")
         {

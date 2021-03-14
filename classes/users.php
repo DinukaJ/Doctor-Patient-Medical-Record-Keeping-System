@@ -10,6 +10,7 @@ class users{
     private $fName;
     private $lName;
     private $dp;
+    private $verifyStatus;
     
     public function setUserId($id)
     {
@@ -42,6 +43,14 @@ class users{
     public function getDP()
     {
         return $this->dp;
+    }
+    public function setVS($vs)
+    {
+        $this->verifyStatus=$vs;
+    }
+    public function getVS()
+    {
+        return $this->verifyStatus;
     }
 
     public function login($username, $password)

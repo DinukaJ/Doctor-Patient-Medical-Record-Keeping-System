@@ -7,6 +7,11 @@ function getSideNav($type)
     $docType=$user->getDocType();
     if($user->getDP())
         $dp=$user->getDP();
+    
+    if($user->getVS()=="-1")
+    {
+        echo '<div class="c-12 error"><center>Please Verify the Email by Clicking the Link in the Email!</center></div>';
+    }
     echo '
     <div class="c-12 c-l-2 sidePanel">
         <div class="row account2">
