@@ -61,7 +61,7 @@ class doctor extends users
         $docData=$this->getDoc($id);
         $docData=mysqli_fetch_assoc($docData);
         $docEmail=$docData["email"];
-        $docVarifyStatus=$docData["verifyStatus"];
+        $docVerifyStatus=$docData["verifyStatus"];
         $verifyToken="";
         if($email!="" && ($docEmail != $email))
         {
@@ -71,18 +71,22 @@ class doctor extends users
                 return -1;//User exists with the same email and password
             }
             $verifyToken=getToken(30);
-            $docVarifyStatus=-1;
+            $docVerifyStatus=-1;
             $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=doc&tk=$verifyToken&email=$email";
             sendActiveReset($fname, $email, $link, 0);
         }
+        else if($email=="")
+        {
+            $docVerifyStatus=0;
+        }
         if($pass=="")
         {
-            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email', token='$verifyToken', verifyStatus='$docVarifyStatus' where id='$id'");
+            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email', token='$verifyToken', verifyStatus='$docVerifyStatus' where id='$id'");
         }
         else
         {
             $passEncry=sha1($pass);
-            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email', password='$passEncry', token='$verifyToken', verifyStatus='$docVarifyStatus' where id='$id'");
+            return $db->insert_update_delete("update doctor set fname='$fname', lname='$lname', phone='$phone', email='$email', password='$passEncry', token='$verifyToken', verifyStatus='$docVerifyStatus' where id='$id'");
         }
     }
     public function addDocUsualDays($id,$day)

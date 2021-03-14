@@ -72,6 +72,10 @@ class patient extends users
             $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
             sendActiveReset($fname, $email, $link, 0);
         }
+        if($email=="")
+        {
+            $patVarifyStatus=0;
+        }
         if($pass=="")
         {
             return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',email='$email',age='$age',address='$address', token='$verifyToken', verifyStatus='$patVarifyStatus' where id='$pid'");
@@ -160,15 +164,49 @@ class patient extends users
         $db=new Database();
         return $db->insert_update_delete("update patient set allergies='$allergy', impNotes='$IN' where id='$patID'");
     }
-    public function updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address)
+    public function updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address,$email)
     {
         $db = new Database();
-        return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',age='$age',address='$address' where id='$patID'");
+        $patData=$this->getPatientData($patID);
+        $patData=mysqli_fetch_assoc($patData);
+        $patEmail=$patData["email"];
+        $patVarifyStatus=$patData["verifyStatus"];
+        $verifyToken=$patData["token"];
+        if($email!="" && ($patEmail != $email))
+        {
+            $currPass=$patData["password"];
+            $ifExist=$db->getData("select * from patient where email='$email' and password='$currPass' and id <> '$patID'");
+            if(mysqli_num_rows($ifExist)>0)
+            {
+                return -1;//User exists with the same email and password
+            }
+            $verifyToken=getToken(30);
+            $patVarifyStatus=-1;
+            $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
+            sendActiveReset($fname, $email, $link, 0);
+        }
+        else if($email=="")
+        {
+            $patVarifyStatus=0;
+        }
+        return $db->insert_update_delete("update patient set fname='$fname',lname='$lname',phone='$phone',age='$age',address='$address', email='$email', token='$verifyToken', verifyStatus='$patVarifyStatus' where id='$patID'");
     }
     public function updatePatientPass($patID,$newPass)
     {
         $db = new Database();
-        return $db->insert_update_delete("update patient set password='$newPass' where id='$patID'");
+        $passEncry=sha1($newPass);
+        $patData=$this->getPatientData($patID);
+        $patData=mysqli_fetch_assoc($patData);
+        $patEmail=$patData["email"];
+        $ifExist=$db->getData("select * from patient where email='$patEmail' and password='$passEncry' and id <> '$patID'");
+        if(mysqli_num_rows($ifExist)>0)
+        {
+            return -1;
+        }
+        else
+        {
+            return $db->insert_update_delete("update patient set password='$passEncry' where id='$patID'");
+        }
     }
 }
 ?>

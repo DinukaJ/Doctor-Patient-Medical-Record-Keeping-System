@@ -208,7 +208,8 @@ function updateDet(){
     $phone = $_POST["phone"];
     $age = $_POST["age"];
     $address = $_POST["address"];
-    $stat = $patient->updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address);
+    $email=$_POST["email"];
+    $stat = $patient->updatePatientNonMedInfo($patID,$fname,$lname,$phone,$age,$address,$email);
     echo $stat;
 }
 

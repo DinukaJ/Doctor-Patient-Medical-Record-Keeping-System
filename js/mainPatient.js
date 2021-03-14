@@ -99,6 +99,9 @@ $('#usrDetailUpPat').on('submit',function(e){
     }
     else
     {
+        $('#updateStatusInfo').addClass("success");
+        $('#updateStatusInfo').html("Processing....");
+        $('#updateStatusInfo').slideDown("slow");
         $.ajax({
             url:"../handlers/patientHandler.php",
             method:"POST",
@@ -110,6 +113,15 @@ $('#usrDetailUpPat').on('submit',function(e){
                     $('#updateStatusInfo').slideDown("slow");
                     setTimeout(function(){
                         $('#updateStatusInfo').slideUp("slow");
+                    },2000);
+                }
+                else if(data==-1)
+                {
+                    $('#errorMsgPass').addClass('error');
+                    $('#errorMsgPass').html('Patient with this email address all ready exists!');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
                     },2000);
                 }
                 else{
@@ -159,13 +171,34 @@ $('#usrPassUpPat').on('submit',function(e){
             url:"../handlers/patientHandler.php",
             method:"POST",
             data:{nPass:newPass,pid:patID,type:'upPass'},
-            success:function(){
-                $('#errorMsgPass').addClass('success');
-                $('#errorMsgPass').html('Updated Successfully');
-                $('#errorMsgPass').slideDown();
-                setTimeout(function(){
-                    $('#errorMsgPass').slideUp();
-                },2000);
+            success:function(data){
+                if(data==1)
+                {
+                    $('#errorMsgPass').addClass('success');
+                    $('#errorMsgPass').html('Updated Successfully');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
+                    },2000);
+                }
+                else if(data==-1)
+                {
+                    $('#errorMsgPass').addClass('error');
+                    $('#errorMsgPass').html('This password is not allowed!');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
+                    },2000);
+                }
+                else
+                {
+                    $('#errorMsgPass').addClass('error');
+                    $('#errorMsgPass').html('Update Failed!');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
+                    },2000);
+                }
             }
         });
     }
