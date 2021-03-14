@@ -219,14 +219,24 @@ if(!isset($_SESSION["user"]))
                             },2000);
                             resetAll();
                         }
-                        else{
+                        else if(data==-1)
+                        {
+                            $('#updateStatusInfo').addClass("error");
+                            $('#updateStatusInfo').html("Patient with the same email and password already exists! Use a different password!");
+                            $('#updateStatusInfo').slideDown("slow");
+                            setTimeout(function(){
+                                $('#updateStatusInfo').slideUp("slow");
+                            },2000);
+                        }
+                        else
+                        {
                             $('#updateStatusInfo').addClass("error");
                             $('#updateStatusInfo').html("Failed!");
                             $('#updateStatusInfo').slideDown("slow");
                             setTimeout(function(){
                                 $('#updateStatusInfo').slideUp("slow");
                             },2000);
-                }
+                        }
                     }
                 });
             }

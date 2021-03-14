@@ -37,4 +37,11 @@ function logout()
     session_destroy();
     header("Location: login.php");
 }
+
+function verifyAccount($type,$token,$email)
+{ 
+    $user=new users();
+    $stat=$user->verifyUser($type,$token,$email);
+    return $stat;
+}
 ?>

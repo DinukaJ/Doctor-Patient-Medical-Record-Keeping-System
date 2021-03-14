@@ -2,6 +2,8 @@
 include_once("doctor.php");
 include_once("patient.php");
 include_once("database.php");
+include_once(dirname( dirname(__FILE__) ).'/handlers/token.php');
+include_once(dirname( dirname(__FILE__) ).'/emails/email.php');
 class users{
 
     private $userId;
@@ -79,6 +81,35 @@ class users{
         {
             return false;
         }        
+    }
+    public function verifyUser($type,$token,$email)
+    {
+        $db=new Database();
+        if($type=="pat")
+        {
+            $stat=$db->getData("select verifyStatus from patient where email='$email' and token='$token'");
+            if(mysqli_num_rows($stat)>0)
+            {
+                $stat=mysqli_fetch_array($stat);
+                if($stat[0]==1)
+                {
+                    return 2; //Already Verified
+                }
+                else if($stat[0]==-1)
+                {
+                    $res=$db->insert_update_delete("update patient set verifyStatus=1 where email='$email' and token='$token'");
+                    return $res; //1 -> Successfully Verified; 0-> Failed
+                }
+            }
+            else
+            {
+                return -1; //Not Found
+            }
+        }
+        else if($type=="doc")
+        {
+
+        }
     }
 }
 ?>
