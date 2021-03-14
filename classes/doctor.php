@@ -128,10 +128,27 @@ class doctor extends users
         $db=new Database();
         return $db->getData("select * from docspeciality where docId='$id'");
     } 
-    public function updateDoctorInfo($fname, $lname, $phone, $docID)
+    public function updateDoctorInfo($fname, $lname, $phone, $docID, $email)
     {
         $db = new Database();
-        return $db->insert_update_delete("update doctor set fname='$fname',lname='$lname',phone='$phone' where id='$docID'");
+        $ifExist=$db->getData("select * from doctor where email='$email' and id <> '$docID'");
+        if($email!="")
+        {
+            if(mysqli_num_rows($ifExist)>0)
+            {
+                return -1;
+            }
+            $verifyToken=getToken(30);
+            $docVerifyStatus=-1;
+            $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=doc&tk=$verifyToken&email=$email";
+            sendActiveReset($fname, $email, $link, 0);
+            return $db->insert_update_delete("update doctor set fname='$fname',lname='$lname',phone='$phone',email='$email',token='$verifyToken',verifyStatus='$docVerifyStatus' where id='$docID'");
+        }
+        else
+        {
+            $docVerifyStatus=0;
+            return $db->insert_update_delete("update doctor set fname='$fname',lname='$lname',phone='$phone',email='$email',verifyStatus='$docVerifyStatus' where id='$docID'");
+        }
     }
     public function updateDoctorPass($docID,$newPass)
     {

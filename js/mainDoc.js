@@ -86,6 +86,9 @@ $('#usrDetailUp').on('submit',function(e){
     {
         $('#updateStatusInfo').removeClass('error');
         $('#updateStatusInfo').removeClass('success');
+        $('#updateStatusInfo').addClass("success");
+        $('#updateStatusInfo').html("Processing....");
+        $('#updateStatusInfo').slideDown("slow");
         $.ajax({
             url:"../handlers/doctorHandler.php",
             method:"POST",
@@ -97,6 +100,15 @@ $('#usrDetailUp').on('submit',function(e){
                     $('#updateStatusInfo').slideDown("slow");
                     setTimeout(function(){
                         $('#updateStatusInfo').slideUp("slow");
+                    },2000);
+                }
+                else if(data==-1)
+                {
+                    $('#updateStatusInfo').addClass('error');
+                    $('#updateStatusInfo').html('Doctor with the same email already exists!');
+                    $('#updateStatusInfo').slideDown();
+                    setTimeout(function(){
+                        $('#updateStatusInfo').slideUp();
                     },2000);
                 }
                 else{
@@ -146,13 +158,25 @@ $('#usrPassUp').on('submit',function(e){
             url:"../handlers/doctorHandler.php",
             method:"POST",
             data:{nPass:newPass,docID:dID,type:'upPass'},
-            success:function(){
-                $('#errorMsgPass').addClass('success');
-                $('#errorMsgPass').html('Updated Successfully');
-                $('#errorMsgPass').slideDown();
-                setTimeout(function(){
-                    $('#errorMsgPass').slideUp();
-                },2000);
+            success:function(data){
+                if(data==1)
+                {
+                    $('#errorMsgPass').addClass('success');
+                    $('#errorMsgPass').html('Updated Successfully');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
+                    },2000);
+                }
+                else
+                {
+                    $('#errorMsgPass').addClass('error');
+                    $('#errorMsgPass').html('Update Failed!');
+                    $('#errorMsgPass').slideDown();
+                    setTimeout(function(){
+                        $('#errorMsgPass').slideUp();
+                    },2000);
+                }
             }
         });
     }

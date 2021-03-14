@@ -185,7 +185,8 @@ function updateDet(){
     $fname = $_POST["firstName"];
     $lname = $_POST["lastName"];
     $phone = $_POST["phone"];
-    $stat = $doctor->updateDoctorInfo($fname, $lname, $phone, $docID);
+    $email = $_POST["email"];
+    $stat = $doctor->updateDoctorInfo($fname, $lname, $phone, $docID, $email);
     echo $stat;
 }
 

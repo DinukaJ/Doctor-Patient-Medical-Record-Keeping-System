@@ -117,11 +117,11 @@ $('#usrDetailUpPat').on('submit',function(e){
                 }
                 else if(data==-1)
                 {
-                    $('#errorMsgPass').addClass('error');
-                    $('#errorMsgPass').html('Patient with this email address all ready exists!');
-                    $('#errorMsgPass').slideDown();
+                    $('#updateStatusInfo').addClass('error');
+                    $('#updateStatusInfo').html('Patient with this email already exists!');
+                    $('#updateStatusInfo').slideDown();
                     setTimeout(function(){
-                        $('#errorMsgPass').slideUp();
+                        $('#updateStatusInfo').slideUp();
                     },2000);
                 }
                 else{
