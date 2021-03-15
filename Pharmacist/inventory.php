@@ -187,7 +187,7 @@ else
                             </div>
                             <div class="c-m-4">
                                 <label for="medPrice"></label>
-                                <input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder="">
+                                <input type="number" step="0.01" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder="">
                             </div>
                             <div class="c-m-1">
                             <label for="medname"></label>

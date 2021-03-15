@@ -105,6 +105,39 @@ function putInventoryData(id)
     });
 }
 
+$("#addMed").click(function(){
+    $(".medType").change(function(){
+        if(parseInt($(this).val())<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medType").removeClass("errorInput");
+            },2000);
+        }
+    });
+    $(".medQTY").change(function(){
+        if($(this).val()<0){
+            $(this).val("0");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medQTY").removeClass("errorInput");
+            },2000);
+        }
+    })
+
+    $(".medPrice").change(function(){
+        if($(this).val()<0){
+            $(this).val("0");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medPrice").removeClass("errorInput");
+            },2000)
+        }
+    });
+});
+
+//TODO: #addType minus value fix
+
 //Adding data to the database
 // $('#medAddForm').on('submit',function(e){
 //     e.preventDefault();
@@ -178,7 +211,7 @@ $(document).ready(function(){
 });
 //Add More Types
 $("#addType").click(function(){
-    $("#typeRowSection").append('<div class="typeRow typeRowRemove row"><div class="c-m-4"><label for="medname"></label><input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder=""></div><div class="c-m-3"><label for="medname"></label><input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder=""></div><div class="c-m-4"><label for="medname"></label><input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder=""></div><div class="c-m-1"><label for="medname"></label><button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button></div></div>');
+    $("#typeRowSection").append('<div class="typeRow typeRowRemove row"><div class="c-m-4"><label for="medType"></label><input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder=""></div><div class="c-m-3"><label for="medQTY"></label><input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder=""></div><div class="c-m-4"><label for="medPrice"></label><input type="number" step="0.01" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder=""></div><div class="c-m-1"><label for="delType"></label><button type="button" value="" class="btn delType delMed" name="delType"><i class="fas fa-times"></i></button></div></div>');
     $(".delMed").click(function(){
         $(this).parent().parent().remove();
     });
