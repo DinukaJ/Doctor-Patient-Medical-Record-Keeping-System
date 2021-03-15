@@ -178,15 +178,15 @@ else
                     <div class="c-12" id="typeRowSection">
                         <div class="typeRow row">
                             <div class="c-m-4">
-                                <label for="medname"></label>
+                                <label for="medType"></label>
                                 <input type="text" class="input-field medType" style="width:100%;" name="medType" placeholder="200(mg/ml)">
                             </div>
                             <div class="c-m-3">
-                                <label for="medname"></label>
+                                <label for="medQTY"></label>
                                 <input type="number" class="input-field medQTY" style="width:100%;" name="medQTY" placeholder="">
                             </div>
                             <div class="c-m-4">
-                                <label for="medname"></label>
+                                <label for="medPrice"></label>
                                 <input type="number" class="input-field medPrice" style="width:100%;" name="medPrice" placeholder="">
                             </div>
                             <div class="c-m-1">
