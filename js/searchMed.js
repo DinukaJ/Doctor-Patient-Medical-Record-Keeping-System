@@ -105,7 +105,7 @@ function putInventoryData(id)
     });
 }
 
-$("#addMed").click(function(){
+$('#addMed').on('click',function(){
     $(".medType").change(function(){
         if(parseInt($(this).val())<0){
             $(this).val("");
@@ -136,7 +136,38 @@ $("#addMed").click(function(){
     });
 });
 
-//TODO: #addType minus value fix
+//this is for the newly added lines (minus value check) using types button
+$(document).on('click','#addType',function(){
+    $(".medType").change(function(){
+        if(parseInt($(this).val())<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medType").removeClass("errorInput");
+            },2000);
+        }
+    });
+    $(".medQTY").change(function(){
+        if($(this).val()<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medQTY").removeClass("errorInput");
+            },2000);
+        }
+    });
+
+    $(".medPrice").change(function(){
+        if($(this).val()<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medPrice").removeClass("errorInput");
+            },2000)
+        }
+    });
+});
+
 
 //Adding data to the database
 // $('#medAddForm').on('submit',function(e){
