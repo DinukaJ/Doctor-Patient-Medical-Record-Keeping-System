@@ -117,7 +117,7 @@ $("#addMed").click(function(){
     });
     $(".medQTY").change(function(){
         if($(this).val()<0){
-            $(this).val("0");
+            $(this).val("");
             $(this).addClass("errorInput");
             setTimeout(function(){
                 $(".medQTY").removeClass("errorInput");
@@ -127,7 +127,7 @@ $("#addMed").click(function(){
 
     $(".medPrice").change(function(){
         if($(this).val()<0){
-            $(this).val("0");
+            $(this).val("");
             $(this).addClass("errorInput");
             setTimeout(function(){
                 $(".medPrice").removeClass("errorInput");
