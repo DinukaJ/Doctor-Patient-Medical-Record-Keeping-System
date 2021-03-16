@@ -123,7 +123,7 @@ $("#addMed").click(function(){
                 $(".medQTY").removeClass("errorInput");
             },2000);
         }
-    })
+    });
 
     $(".medPrice").change(function(){
         if($(this).val()<0){
