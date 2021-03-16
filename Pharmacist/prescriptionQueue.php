@@ -277,7 +277,7 @@ else
                     Enter Doctor Charge: Rs.
                 </div>
                 <div class="c-12 c-m-8">
-                    <input type="number" class="input-field medQty" style="width:100%;" name="docC" id="docC" placeholder="">
+                    <input type="number" class="input-field docC" style="width:100%;" name="docC" id="docC" placeholder="">
                 </div>
             </div>   
         </div>
