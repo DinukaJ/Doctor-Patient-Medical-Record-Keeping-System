@@ -206,6 +206,15 @@ $("#editDocCharge").click(function(){
         success:function (data){
             $("#docC").val(data);
             open(docCharge);
+            $("#docC").change(function(){
+                if($(this).val()<0){
+                    $(this).val(data);
+                    $(this).addClass("errorInput");
+                    setTimeout(function(){
+                        $("#docC").removeClass("errorInput");
+                    },2000);
+                }
+            });
         }
     });  
 });
