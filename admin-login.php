@@ -5,7 +5,7 @@ if(isset($_POST["emailUsername"]))
 {
     $username=$_POST["emailUsername"];
     $password=$_POST["password"];
-    $stat=login($username,$password,"patient");
+    $stat=login($username,$password,"admin");
 }
 ?>
 <!DOCTYPE html>

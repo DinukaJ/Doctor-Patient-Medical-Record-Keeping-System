@@ -1,4 +1,5 @@
 <?php 
 include_once("handlers/loginHandler.php");
-logout();
+$uType=$_GET["uType"];
+logout($uType);
 ?>

@@ -1,11 +1,11 @@
 <?php
 include_once(dirname( dirname(__FILE__) ).'/classes/users.php');
 // include_once('token.php');
-function login($username,$pass)
+function login($username,$pass,$type)
 {
     $userLogin=new users();
     // $passEncrypted=sh1salt($pass);
-    $stat=$userLogin->login($username,$pass);
+    $stat=$userLogin->login($username,$pass,$type);
     if($stat=="Receptionist")
     {
         header("Location: Receptionist/addPatients.php");
@@ -31,11 +31,19 @@ function login($username,$pass)
         return false;
     }
 }
-function logout()
+function logout($uType)
 {
     session_start();
     session_destroy();
-    header("Location: login.php");
+    if($uType=="admin")
+    {
+        header("Location: admin-login.php");
+    }
+    else
+    {
+        header("Location: login.php");
+    }
+    
 }
 
 function verifyAccount($type,$token,$email)

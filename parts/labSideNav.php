@@ -9,7 +9,7 @@ function getSideNav($type)
             </div>
             <div class="c-7 name usrBtns2">
                 <p class="accountName">Lab Person</p>
-                <a href="../logout.php"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
+                <a href="../logout.php?uType=admin"><button type="button" class="btn btnNormal btnPatient" name="logout" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
             </div>
         </div>
         <a href="../Lab/addLab.php" class="sideLink ';if($type=="addLab"){echo 'active';} echo'">Add Lab Reports</a>
