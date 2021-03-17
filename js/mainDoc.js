@@ -180,4 +180,19 @@ $('#usrPassUp').on('submit',function(e){
             }
         });
     }
-})
+});
+
+function getBillData(docType,docID,month)
+{
+    if(docType=="1")
+    {
+        $.ajax({
+            url:"../handlers/billHandler.php",
+            method:"POST",
+            data:{type:"getBill",docType:docType, docID:docID,month:month},
+            success:function(data){
+                $("#billData").html(data);
+            }
+        });
+    }
+}

@@ -35,5 +35,19 @@ class bill
         return $data;
     }
 
+    public function getBillData($docType,$docID,$month)
+    {
+        $db=new Database();
+        if($docType=="1")
+        {
+            $stat=$db->getData("select b.*, count(pr.med_ID) as noMed from bill b join prescriptions p on b.presId = p.id join prescription_medicine pr on p.id=pr.pres_ID where b.doi like '$month%'");
+        }
+        else
+        {
+            $stat=$db->getData("select b.*, count(pr.med_ID) as noMed from bill b join prescriptions p on b.presId = p.id join prescription_medicine pr on p.id=pr.pres_ID where p.docId='$docID' and b.doi like '$month%'");
+        }
+        return $stat;
+    }
+
 }
 ?>

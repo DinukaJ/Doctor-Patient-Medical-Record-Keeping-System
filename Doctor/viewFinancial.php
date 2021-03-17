@@ -91,7 +91,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     </div>
                 </div>
                 <div id="billData">
-                    <div class="row patientDataRow">
+                    <!-- <div class="row patientDataRow">
                         <div class="c-3">
                             1
                         </div>
@@ -104,7 +104,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         <div class="c-1">
                             <a class="btn btnPatientView viewBill" name="viewBill" id="viewBill">View</a>
                         </div>
-                    </div>  
+                    </div>   -->
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         </div>
         <div class="row">
             <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer" id="predId">1</span>
+                ID: <span class="answer" id="predId">1</span>
             </div>
             <div class="c-12 c-m-2">
                 Patient ID: <span class="answer" id="patientId">p-1</span>
@@ -146,19 +146,25 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             <div class="c-12"><hr></div>
         </div>  
         <div class="row">
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-3">
                 <b>Med Name</b>
             </div>
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-3">
+                <b>Types</b>
+            </div>
+            <div class="c-12 c-m-2">
                 <b>QTY</b>
             </div>
-            <div class="c-4 c-m-4">
+            <div class="c-12 c-m-2">
                 <b>Price</b>
+            </div>
+            <div class="c-12 c-m-2">
+                <b>Total Price</b>
             </div>
             <div class="c-12"><hr></div>
         </div>
         <div id="billVals">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="c-4 c-m-4">
                     Amoxicillin
                 </div>
@@ -168,11 +174,11 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 <div class="c-4 c-m-4">
                     250
                 </div>
-            </div>
+            </div> -->
         </div>  
         <div class="row" style="margin-top:50px;">
             <div class="c-12"><hr></div>
-            <div class="c-12">
+            <div class="c-12" style="text-align:right; padding-right:11%;">
                 <b>Total Amount:- <span id="totalAmount">Rs.250</span></b>
             </div>
             <div class="c-12"><hr></div>
@@ -235,6 +241,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
       <script>
         var modalBill=document.getElementById("modalBill");
         $(document).ready(function(){
+
             $('.viewBill').click(function(){
                 open(modalBill);
             });
@@ -252,6 +259,11 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     close(modalBill);
             }
         }
+    </script>
+    <script>
+        var docType="<?php echo $doctor->getDocType();?>";
+        var docId="<?php echo $docid;?>";
+        getBillData(docType,docId,"");
     </script>
 </body>
 </html>

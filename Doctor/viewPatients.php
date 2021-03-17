@@ -138,43 +138,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     </script>
     <script>
         getpatients("");
-        // $('#updateStatus').hide();
-        // $("#updateMed").click(function(){
-        //     close(modalPatient);
-        //     open(modalPatientUpdate);
-        // });
-
-        //Function to open the patient data modal
-        // function patientDataModal(pId)
-        // {
-        //     open(modalPatient);
-        //     $.ajax({
-        //         url:"../handlers/patientHandler.php",
-        //         method:"POST",
-        //         data:{patientID:pId,type:'patientData'},
-        //         dataType:'json',
-        //         success:function(data){
-        //             $('#patUpID').val(data[0]);
-        //             $('#firstNameData').html(data[1]);
-        //             $('#patUpFname').val(data[1]);
-
-        //             $('#lastNameData').html(data[2]);
-        //             $('#patUpLname').val(data[2]);
-
-        //             $('#phoneData').html(data[3]);
-        //             $('#patUpPhone').val(data[3]);
-
-        //             $('#ageData').html(data[6]);
-        //             $('#patUpAge').val(data[6]);
-
-        //             $('#emailData').html(data[4]);
-        //             $('#patUpEmail').val(data[4]);
-
-        //             $('#addressData').html(data[7]);
-        //             $('#patUpAddress').val(data[7]);
-        //         }
-        //     });
-        // }
         //Function to get the added patients
         function getpatients(serVal)
         {
