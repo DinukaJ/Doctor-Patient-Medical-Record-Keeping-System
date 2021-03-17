@@ -27,6 +27,7 @@ else
             <div class="c-12 c-l-9 mainIMG">
             </div>
             <div class="c-12 c-l-3 loginPart">
+            <div class="centerBox">
                 <h1>
                 <?php
                 if($stat==1)
@@ -48,6 +49,7 @@ else
                 ?>
                 </h1>
                 <a href="login.php"><button type="button" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button></a>
+            </div>
             </div>
         </div>
     </div>

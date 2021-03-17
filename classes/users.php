@@ -137,5 +137,44 @@ class users{
             }
         }
     }
+
+    public function passwordReset($email,$pID, $type)
+    {
+        $db=new Database();
+        if($type=="patient")
+        {
+            $stat=$db->getData("select * from patient where email = '$email' and id='$pID' and status='1'");
+            if(mysqli_num_rows($stat)>0)
+            {
+                $newPassword=getToken(6);
+                $passEncry=sha1($newPassword);
+                $st=$db->insert_update_delete("update patient set password='$passEncry' where email='$email' and id='$pID'");
+                
+                sendActiveReset("", $email, $newPassword, 1);
+                return $st;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        else if($type=="doctor")
+        {
+            $stat=$db->getData("select * from doctor where email = '$email'");
+            if(mysqli_num_rows($stat)>0)
+            {
+                $newPassword=getToken(6);
+                $passEncry=sha1($newPassword);
+                $st=$db->insert_update_delete("update doctor set password='$passEncry' where email='$email'");
+                
+                sendActiveReset("", $email, $newPassword, 1);
+                return $st;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
 }
 ?>

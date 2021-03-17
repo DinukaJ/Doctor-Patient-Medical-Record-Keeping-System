@@ -86,9 +86,16 @@ body{
 }
 .loginPart{
     background-color: #c9e8e2;
-    padding-top: 12%;
+    /* padding-top: 12%; */
     padding-left: 2.5em !important;
     padding-right: 2.5em !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    vertical-align: middle;
+}
+.centerBox{
+    width: 100%;
 }
 .sidePanel{
     background-color: #c9e8e2;
@@ -513,6 +520,9 @@ body{
 .errorText{
     color: red;
 }
+.successText{
+    color: #155724;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -584,6 +594,13 @@ body{
     right:20px;
     top:5px;
     z-index: 1;
+  }
+  .resetLink{
+      color:black;
+      text-decoration: none;
+  }
+  .resetLink:hover{
+      text-decoration: underline;
   }
   .modal-content-long .detailsSection, .modal-content-short2 .detailsSection{
     padding-top: 10px;

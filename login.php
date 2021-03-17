@@ -22,24 +22,27 @@ if(isset($_POST["emailUsername"]))
             <div class="c-12 c-l-9 mainIMG">
             </div>
             <div class="c-12 c-l-3 loginPart">
-                <h1>Login</h1>
-                <?php
-                if(isset($_POST["emailUsername"]) && $stat==false)
-                {
-                    echo "<p class='errorText'>Username or password incorrect!<p>";
-                }
-                ?>
-                <form action="#" method="POST">
-                    <div class="group-fields">
-                        <label>Email or Username</label>
-                        <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Email or Username" required>
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input type="password" class="input-field fullWidth" name="password" id="password" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button>
-                </form>
+                <div class="centerBox">
+                    <h1>Login</h1>
+                    <?php
+                    if(isset($_POST["emailUsername"]) && $stat==false)
+                    {
+                        echo "<p class='errorText'>Username or password incorrect!<p>";
+                    }
+                    ?>
+                    <form action="#" method="POST">
+                        <div class="group-fields">
+                            <label>Email or Username</label>
+                            <input type="text" class="input-field fullWidth" name="emailUsername" id="emailUsername" placeholder="Email or Username" required>
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" class="input-field fullWidth" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button><br><br>
+                        <a href="passReset.php?uType=patient" class="resetLink">Forgot Password?</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

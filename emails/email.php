@@ -1,7 +1,7 @@
 <?php
 function sendActiveReset($name, $email, $link, $type)
 {
-  $msgFile = array('../emails/aemail.html','');
+  $msgFile = array('../emails/aemail.html','emails/remail.html');
   $msgSub = array('Welcome to Madagoda Medical Center - Confirm','Password Reset - Madagoda Medical Center');
   $to = $email;
   $from = "madagodamedicalcenter@gmail.com";

@@ -44,4 +44,9 @@ function verifyAccount($type,$token,$email)
     $stat=$user->verifyUser($type,$token,$email);
     return $stat;
 }
+function passwordReset($email,$pId,$type)
+{
+    $user=new users();
+    return $user->passwordReset($email,$pId,$type);
+}
 ?>
