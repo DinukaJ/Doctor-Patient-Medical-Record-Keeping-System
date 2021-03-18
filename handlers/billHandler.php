@@ -11,6 +11,8 @@ if(isset($_POST["type"]))
         getBill();
     if($_POST["type"]=="getBillData")
         getBillData();
+    if($_POST["type"]=="getChart")
+        getChart();
 }
 
 function createBill(){
@@ -140,5 +142,21 @@ function getBillData()
         }
     }
     echo json_encode(array($output,$patientId,$patientName,$doi,$billType,$billTotal));
+}
+
+function getChart()
+{
+    $bill = new bill();
+    $year=$_POST["year"];
+    $data=$bill->getChart($year);
+    $months=array(0,0,0,0,0,0,0,0,0,0,0,0);
+    if(mysqli_num_rows($data)>0)
+    {
+        while($row=mysqli_fetch_array($data))
+        {
+            $months[$row[1]-1]=$row[0];
+        }
+    }
+    echo json_encode($months);
 }
 ?>

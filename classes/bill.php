@@ -63,5 +63,11 @@ class bill
         return $data;
     }
 
+    public function getChart($year)
+    {
+        $db=new Database();
+        $data=$db->getData("select sum(amount), MONTH(doi) from bill where YEAR(doi)='$year' group by MONTH(doi)");
+        return $data;
+    }
 }
 ?>

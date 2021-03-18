@@ -219,3 +219,64 @@ function setBillDataModal(id)
         }
     });
 }
+
+function getChart(year)
+{
+    $.ajax({
+        url:"../handlers/billHandler.php",
+        method:"POST",
+        data:{type:"getChart",year:year},
+        dataType:'json',
+        success:function(data){
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    });
+}
