@@ -242,7 +242,6 @@ function setDocDataModal(id,dp,docName,docSpec)
         data:{type:'docDataModal',id:id},
         dataType:'json',
         success:function(data){
-            console.log(data);
             $("#docNormalDaysModal").html(data[0]);
             $("#docSpecDaysModal").html(data[1]);
         }
