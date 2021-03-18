@@ -46,7 +46,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                   <div class="upperFirst row">
                         <div class="c-12 c-l-3">
                              <div class="boxSmall wrapper">
-                                 <input class="input-field " placeholder="Enter Doctor Name">
+                                 <input class="input-field " id="docNameSearch" placeholder="Enter Doctor Name">
                              </div>
                         </div>
                         <div class="c-12 c-l-3">
@@ -60,31 +60,21 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                             </div>
                         </div>
                     </div>
-                  </div>  
-                </div>
-                <div class="row patientDataRow">
-                    <div class="c-4">
-                        1
-                    </div>
-                    <div class="c-7">
-                        1
-                    </div>
-                </div>
-                <?php
-                // $res=$patient->getPatients();
-                // $i=1;
-                // while($row=mysqli_fetch_assoc($res))
-                // {
-                //     echo '
-                //     <div class="row patientDataRow">
-                //         <div class="c-11">
-                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                //         </div>
-                //     </div>
-                //     ';
-                //     $i++;
-                // }
-                ?>           
+                </div>  
+                <div class="row" id="docData" style="width:100%">
+                    <!-- <div class="c-6 c-m-3">
+                        <div class="docBox">
+                            <div class="imgSection">
+                                <img src="../images/acc.png">
+                            </div>
+                            <div class="textSection">
+                                <p>Doctor Name</p>
+                                <p>Specialty</p>
+                                <a>View Dates</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>        
             </div>
         </div>
     </div>
@@ -93,16 +83,67 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
     <!-- End of Edit Profile View -->
 
 
+<!-- The Modal for View Doctor Data-->
+<div id="modalViewDocData" class="modal modal2">
+
+<!-- Modal content -->
+ <div class="modal-content-long inventoryModal">
+    <div class="row">
+        <div class="c-12">
+        <span class="close closeMed">&times;</span>
+        </div>
+    </div>
+   <div class="detailsSection">
+        <div class="row">
+            <div class="c-12">
+                <h2>Doctor Data</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="c-12 c-m-4 docData">
+                <img id="docDpModal" src="../images/acc.png">
+                <p><b><span id="docNameModal"></span></b></p>
+                <p id="docSpecModal"></p>
+            </div>
+            <div class="c-12 c-m-4 docData">
+                <p><b>Usual Days</b></p>
+                <span id="docNormalDaysModal">
+                
+                </span>
+            </div>
+            <div class="c-12 c-m-4 docData">
+                <p><b>Special Days</b></p>
+                <span id="docSpecDaysModal">
+                </span>
+            </div>
+        </div>     
+    </div>
+    <div class ="bottomModel row">
+        <div class="c-12">
+            <button type="button" class="btn btnNormal btnCancel" id="closeDocData">Close</button> 
+        </div>
+    </div>
+</div> 
+ </div>
+<!-- End of the Modal for View Doctor Data-->
+
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainPatient.js"></script>
     <script>
+        var modalViewDocData=document.getElementById("modalViewDocData");
         $(document).ready(function(){
             $('.close').click(()=>{
                 close(modalUpdateDet);
             })
+            $('.close').click(()=>{
+                close(modalViewDocData);
+            })
             $('#upCancel').click(()=>{
                 close(modalUpdateDet);
+            })
+            $('#closeDocData').click(()=>{
+                close(modalViewDocData);
             })
         });
         // When the user clicks anywhere outside of the modal, close it
@@ -111,7 +152,12 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     // modalUpdateDet.style.display = "none";
                     close(modalUpdateDet);
             }
+            if (event.target == modalViewDocData) {
+                    // modalUpdateDet.style.display = "none";
+                    close(modalViewDocData);
+            }
         }
+        getDoctors("","");
     </script>
 </body>
 </html>

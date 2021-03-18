@@ -234,7 +234,7 @@ function getChart(year)
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
                     datasets: [{
-                        label: '# of Votes',
+                        label: 'Amount',
                         data: data,
                         backgroundColor: [
                             'rgba(255, 159, 64, 0.2)',

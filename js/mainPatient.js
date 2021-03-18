@@ -203,3 +203,48 @@ $('#usrPassUpPat').on('submit',function(e){
         });
     }
 })
+
+function getDoctors(name,specialty)
+{
+    $.ajax({
+        url:"../handlers/doctorHandler.php",
+        method:"POST",
+        data:{type:'searchD',name:name,spec:specialty},
+        success:function(data){
+            $("#docData").html(data);
+            $(".viewDocDates").click(function(){
+                dp=$(this).parent().parent().find(".imgSection").find(".docDp").attr("src");
+                docName=$(this).parent().find(".docName").html();
+                docSpec=$(this).parent().find(".docSpec").html();
+                setDocDataModal($(this).attr("docId"),dp,docName,docSpec);
+                open(modalViewDocData);
+            });
+        }
+    });
+}
+
+$("#docNameSearch").on("keydown",function(){
+    setTimeout(function(){
+		a=$("#docNameSearch").val();
+        getDoctors(a,"");
+    },100)
+});
+
+function setDocDataModal(id,dp,docName,docSpec)
+{
+    $("#docDpModal").attr("src",dp);
+    $("#docNameModal").html(docName);
+    $("#docSpecModal").html(docSpec);
+
+    $.ajax({
+        url:"../handlers/doctorHandler.php",
+        method:"POST",
+        data:{type:'docDataModal',id:id},
+        dataType:'json',
+        success:function(data){
+            console.log(data);
+            $("#docNormalDaysModal").html(data[0]);
+            $("#docSpecDaysModal").html(data[1]);
+        }
+    });
+}

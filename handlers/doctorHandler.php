@@ -35,6 +35,8 @@ if(isset($_POST["type"]))
         getSpecDays();
     if($_POST["type"]=="removeSpecDay")
         removeSpecDay();
+    if($_POST["type"]=="docDataModal")
+        docDataModal();
 }
 function getDocNewId()
 {
@@ -103,22 +105,62 @@ function removeDocSpec()
 }
 function searchDoctor()
 {
-    // $output="";
-    // $patient = new patient();
-    // $patientSearch=$_POST["patientSearch"];
-    // $searchResult=$patient->getPatientsList($patientSearch);
-    // $count=1;
-    // if(mysqli_num_rows($searchResult))
-    // {
-    //     while($row=mysqli_fetch_array($searchResult))
-    //     {
-    //         $output.="<div class='row c-12  searchr se$count'>$row[0] - $row[1] $row[2]</div>";
-    //         $count=$count+1;
-    //     }
-    //     $count=$count-1;
-    //     $output.=" <input type='hidden' id='secount' value='$count'>";
-    // }
-    // echo $output;
+    $doctor=new doctor();
+    $name=$_POST["name"];
+    $spec=$_POST["spec"];
+    $output="";
+    $data=$doctor->getDoctorListPatient($name,$spec);
+    if(mysqli_num_rows($data)>0)
+    {
+        while($row=mysqli_fetch_assoc($data))
+        {
+            $dp="";
+            $spec="";
+            if($row["dp"]==NULL)
+                $dp="acc.png";
+            else
+                $dp=$row["dp"];
+
+            $docSpec=$doctor->getDoctorSpecialty($row["id"]);
+            if(mysqli_num_rows($docSpec)>0)
+            {
+                $count=mysqli_num_rows($docSpec);
+                $i=1;
+                while($row2=mysqli_fetch_assoc($docSpec))
+                {
+                    if($i==$count)
+                    {
+                        $spec.='
+                        '.$row2["speciality"].'
+                        ';
+                    }
+                    else
+                    {
+                        $spec.='
+                        '.$row2["speciality"].',
+                        ';
+                    }
+                    $i++;
+                }
+            }
+            $output.='
+            <div class="c-6 c-m-3">
+                <div class="docBox">
+                    <div class="imgSection">
+                        <img class="docDp" src="../images/'.$dp.'">
+                    </div>
+                    <div class="textSection">
+                        <p class="docName">'.$row["fname"].' '.$row["lname"].'</p>
+                        <p class="docSpec">'.$spec.'</p>
+                        <a class="viewDocDates" docId="'.$row["id"].'">View Dates</a>
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+    }
+    echo $output;
+    
 }
 function searchDRecep()
 {
@@ -257,5 +299,44 @@ function removeSpecDay()
     $specDate = $_POST["specDate"];
     $res = $doctor->removeSpecDay($id,$specDate);
     echo $res;
+}
+
+function docDataModal()
+{
+    $doctor=new doctor();
+    $id=$_POST['id'];
+    $normalDays=$doctor->getDoctorUsualDays($id);
+    $specDays=$doctor->getSpecDays($id);
+    $output1="";
+    $output2="";
+    if(mysqli_num_rows($normalDays)>0)
+    {
+        while($row=mysqli_fetch_assoc($normalDays))
+        {
+            $output1.='
+            <p>'.$row["day"].'</p>
+            ';
+        }
+    }
+    if(mysqli_num_rows($specDays)>0)
+    {
+        while($row2=mysqli_fetch_assoc($specDays))
+        {
+            if($row2["status"]=="1")
+            {
+                $output2.='
+                <p>'.$row2["date"].' <span class="success">Coming</span></p>
+                ';
+            }
+            else
+            {
+                $output2.='
+                <p>'.$row2["date"].' <span class="error">Not Coming</span></p>
+                ';
+            }
+            
+        }
+    }
+    echo json_encode(array($output1,$output2));
 }
 ?>

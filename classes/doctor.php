@@ -121,7 +121,14 @@ class doctor extends users
     public function getDoctorUsualDays($id)
     {
         $db=new Database();
-        return $db->getData("select * from docusualdays where docId='$id'");
+        return $db->getData("select * from docusualdays where docId='$id' order by FIELD(day,
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+         'Sunday');");
     } 
     public function getDoctorSpecialty($id)
     {
@@ -171,6 +178,11 @@ class doctor extends users
         $db=new Database();
         return $db->getData("select id,fname,lname from doctor where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
     } 
+    public function getDoctorListPatient($name,$spec)
+    {
+        $db=new Database();
+        return $db->getData("select DISTINCT d.* from doctor d join docspeciality ds on d.id=ds.docId where (d.fname like '$name%' or d.lname like '$name%') and ds.speciality like '%$spec%'");
+    }
     public function addSpecDay($id,$specDate,$stat)
     {
         $db=new Database();
