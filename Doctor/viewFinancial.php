@@ -55,19 +55,13 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>Total Doctor Charges:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
+                                <label>Total Doctor Charges: <span id="totalDocCharge"></span>
                                 </label>
                             </div>
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>Total Bill Count:<?php 
-                                // $pid = $pres->getUserId();
-                                // $res = $pres->getPatientPresNum($pid);
-                                // echo"<span>$res</span>"?>
+                                <label>Total Bill Count:<span id="totalBillCount"></span>
                                 </label>
                             </div>
                         </div>
@@ -127,36 +121,33 @@ echo"<input type='hidden' value='$docid' id='docID'>";
    <div class="detailsSection">
         <div class="row">
             <div class="c-12">
-                <h2>Bill</h2>
+                <h2>Bill - <span id="billType"></span></h2>
             </div>
         </div>
         <div class="row">
             <div class="c-12 c-m-3">
-                ID: <span class="answer" id="predId">1</span>
+                ID: <span class="answer" id="billId"></span>
             </div>
             <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId">p-1</span>
+                Patient ID: <span class="answer" id="patientId"></span>
             </div>
             <div class="c-12 c-m-4">
-                Patient Name: <span class="answer" id="patientName">Pasindu Dissanayake</span>
+                Patient Name: <span class="answer" id="patientName"></span>
             </div>
             <div class="c-12 c-m-3">
-                Date: <span class="answer" id="doi">2020-11-17</span>
+                Date: <span class="answer" id="doi"></span>
             </div>
             <div class="c-12"><hr></div>
         </div>  
         <div class="row">
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-4">
                 <b>Med Name</b>
             </div>
-            <div class="c-12 c-m-3">
+            <div class="c-12 c-m-4">
                 <b>Types</b>
             </div>
             <div class="c-12 c-m-2">
                 <b>QTY</b>
-            </div>
-            <div class="c-12 c-m-2">
-                <b>Price</b>
             </div>
             <div class="c-12 c-m-2">
                 <b>Total Price</b>
@@ -176,10 +167,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 </div>
             </div> -->
         </div>  
-        <div class="row" style="margin-top:50px;">
+        <div class="row">
             <div class="c-12"><hr></div>
             <div class="c-12" style="text-align:right; padding-right:11%;">
-                <b>Total Amount:- <span id="totalAmount">Rs.250</span></b>
+                <b>Total Amount:- <span id="totalAmount"></span></b>
             </div>
             <div class="c-12"><hr></div>
         </div>  
@@ -241,10 +232,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
       <script>
         var modalBill=document.getElementById("modalBill");
         $(document).ready(function(){
-
-            $('.viewBill').click(function(){
-                open(modalBill);
-            });
             $('.close').click(()=>{
                 close(modalBill);
             })

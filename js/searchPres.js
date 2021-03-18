@@ -178,7 +178,7 @@ function createBill(totAmt,pid,docCharge){
       $.ajax({
         url:"../handlers/billHandler.php",
         method:"POST",
-        data:{type:'createBill',totAmt:totAmt,pid:pid,docCharge:docCharge},
+        data:{type:'createBill',totAmt:totAmt,pid:pid,docCharge:docCharge,billType:'pres'},
         success:function (data){
             updateMed(data);
             alert("Bill Successfully Ended!");

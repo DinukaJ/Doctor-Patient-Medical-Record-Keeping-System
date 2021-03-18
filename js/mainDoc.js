@@ -184,15 +184,38 @@ $('#usrPassUp').on('submit',function(e){
 
 function getBillData(docType,docID,month)
 {
-    if(docType=="1")
-    {
-        $.ajax({
-            url:"../handlers/billHandler.php",
-            method:"POST",
-            data:{type:"getBill",docType:docType, docID:docID,month:month},
-            success:function(data){
-                $("#billData").html(data);
-            }
-        });
-    }
+    $.ajax({
+        url:"../handlers/billHandler.php",
+        method:"POST",
+        data:{type:"getBill",docType:docType, docID:docID,month:month},
+        dataType:'json',
+        success:function(data){
+            $("#billData").html(data[0]);
+            $("#totalDocCharge").html(data[1]);
+            $("#totalBillCount").html(data[2]);
+            $('.viewBill').click(function(){
+                setBillDataModal($(this).attr("billId"));
+                open(modalBill);
+            });
+        }
+    });
+}
+
+function setBillDataModal(id)
+{
+    $("#billId").html(id);
+    $.ajax({
+        url:"../handlers/billHandler.php",
+        method:"POST",
+        data:{type:"getBillData",bId:id},
+        dataType:'json',
+        success:function(data){
+            $("#billVals").html(data[0]);
+            $("#patientId").html(data[1]);
+            $("#patientName").html(data[2]);
+            $("#doi").html(data[3]);
+            $("#billType").html(data[4]);
+            $("#totalAmount").html(data[5]);
+        }
+    });
 }
