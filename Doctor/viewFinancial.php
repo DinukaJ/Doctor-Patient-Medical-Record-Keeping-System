@@ -51,11 +51,11 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                             <label>Select Month: </label>
                         </div>
                         <div class="c-0 c-l-4">
-                            <input class="input-field fullWidth" type="month" id="selectMonth" name="selectMonth" placeholder="Select Month">
+                            <input class="input-field fullWidth" type="month" id="selectMonth" name="selectMonth" placeholder="Select Month" value="<?php echo date("Y-m");?>">
                         </div>
                         <div class="c-12 c-l-3">
                             <div class="boxSmall">
-                                <label>Total Doctor Charges: <span id="totalDocCharge"></span>
+                                <label>Total Doctor Charges: Rs.<span id="totalDocCharge"></span>
                                 </label>
                             </div>
                         </div>
@@ -170,7 +170,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         <div class="row">
             <div class="c-12"><hr></div>
             <div class="c-12" style="text-align:right; padding-right:11%;">
-                <b>Total Amount:- <span id="totalAmount"></span></b>
+                <b>Total Amount:- Rs.<span id="totalAmount"></span></b>
             </div>
             <div class="c-12"><hr></div>
         </div>  
@@ -251,6 +251,10 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         var docType="<?php echo $doctor->getDocType();?>";
         var docId="<?php echo $docid;?>";
         getBillData(docType,docId,"");
+
+        $("#selectMonth").change(function(){
+            getBillData(docType,docId,$(this).val());
+        });
     </script>
 </body>
 </html>

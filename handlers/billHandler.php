@@ -55,6 +55,8 @@ function getBill()
     {
         while($row=mysqli_fetch_assoc($data[0]))
         {
+            if($row["id"]!="")
+            {
             $output.='
             <div class="row patientDataRow">
                 <div class="c-3">
@@ -64,16 +66,18 @@ function getBill()
                     '.$row["noMed"].'
                 </div>
                 <div class="c-3">
-                    '.$row["amount"].'
+                    Rs.'.$row["amount"].'
                 </div>
                 <div class="c-1">
                     <button class="btn btnPatientView viewBill" name="viewBill" id="viewBill" billId="'.$row["id"].'">View</button>
                 </div>
             </div>  
             ';
+            }
         }
         $row2=mysqli_fetch_array($data[1]);
-        $totalDocCharge=$row2[0];
+        if($row2[0]>0)
+            $totalDocCharge=$row2[0];
         $totalBillCount=$row2[1];
     }
     echo json_encode(array($output,$totalDocCharge,$totalBillCount));
