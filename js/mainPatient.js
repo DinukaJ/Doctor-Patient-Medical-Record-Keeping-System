@@ -15,6 +15,15 @@ $('#editProfilePat').click(()=>{
             $('#email').val(data['email']);
             $('#age').val(data['age']);
             $('#address').val(data['address']);
+            $('#age').change(function(){
+                if($(this).val()<0){
+                    $(this).val(data['age']);
+                    $(this).addClass("errorInput");
+                    setTimeout(function(){
+                        $("#age").removeClass("errorInput");
+                    },2000);
+                }
+            });
 
         }
     });

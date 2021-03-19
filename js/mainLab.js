@@ -575,6 +575,16 @@ $(document).on("change","#reportType",function(){
             success:function(data){
                 var d=data.replaceAll("~"," ");
                 $("#typeRowSectionReport").append(d);
+                $(".repRes").change(function(){
+                    if($(this).val()<0){
+                        $(this).val("");
+                        $(this).addClass("errorInput");
+                        setTimeout(function(){
+                            $('.repRes').removeClass("errorInput");
+                        },2000);
+                    }
+                }
+                );
                 if(data)
                  addedItemsArr.push($("#reportType").val());
             }
