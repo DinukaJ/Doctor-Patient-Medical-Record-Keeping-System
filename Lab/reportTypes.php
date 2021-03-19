@@ -192,6 +192,18 @@ else
     </div>
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
+    <script>
+    //blocking entering minus values in .val2
+    $(".val2").change(function(){
+        if($(this).val()<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".val2").removeClass("errorInput");
+            },2000);
+        }
+    });
+    </script>
 
     <script src="../js/mainLab.js"></script>
 </body>
