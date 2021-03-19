@@ -220,49 +220,62 @@ function setBillDataModal(id)
     });
 }
 
-function getChart(year)
+function getChart(year,cType)
 {
     $.ajax({
         url:"../handlers/billHandler.php",
         method:"POST",
-        data:{type:"getChart",year:year},
+        data:{type:"getChart",year:year,cType:cType},
         dataType:'json',
         success:function(data){
+            if(cType=="all")
+            {
+                backColor="rgba(255, 159, 64, 0.2)";
+                borderColor="rgba(255, 159, 64, 1)";
+                label="All Amount";
+            }
+            else if(cType=="docCharge")
+            {
+
+                backColor='rgba(153, 102, 255, 0.2)';
+                borderColor='rgba(153, 102, 255, 1)';
+                label="Doctor Charges";
+            }
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
                     datasets: [{
-                        label: 'Amount',
+                        label: label,
                         data: data,
                         backgroundColor: [
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor,
+                            backColor
                         ],
                         borderColor: [
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor,
+                            borderColor
                         ],
                         borderWidth: 1
                     }]
@@ -280,3 +293,16 @@ function getChart(year)
         }
     });
 }
+
+$("#allAmountsChart").click(function(){
+    year=$("#selectMonth").val();
+    year=year.split("-")[0];
+    $("#allAmountsChart").addClass("active");
+    $("#doctorChargesChart").removeClass("active");
+    getChart(year,"all");
+});
+$("#doctorChargesChart").click(function(){
+    $("#doctorChargesChart").addClass("active");
+    $("#allAmountsChart").removeClass("active");
+    getChart(year,"docCharge");
+});

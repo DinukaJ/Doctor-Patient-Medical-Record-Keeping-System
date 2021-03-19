@@ -148,7 +148,8 @@ function getChart()
 {
     $bill = new bill();
     $year=$_POST["year"];
-    $data=$bill->getChart($year);
+    $cType=$_POST["cType"];
+    $data=$bill->getChart($year,$cType);
     $months=array(0,0,0,0,0,0,0,0,0,0,0,0);
     if(mysqli_num_rows($data)>0)
     {

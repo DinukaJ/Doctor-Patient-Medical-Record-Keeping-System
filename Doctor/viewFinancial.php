@@ -222,14 +222,14 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         var docType="<?php echo $doctor->getDocType();?>";
         var docId="<?php echo $docid;?>";
         getBillData(docType,docId,"");
-        getChart(year);
+        getChart(year,"all");
         $("#selectMonth").change(function(){
             val=$(this).val();
             val=val.split("-");
             if(year!=val[0])
             {
                 year=val[0];
-                getChart(year);
+                getChart(year,"all");
             }
             getBillData(docType,docId,$(this).val());
         });
