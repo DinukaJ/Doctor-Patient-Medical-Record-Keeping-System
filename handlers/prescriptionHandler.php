@@ -256,13 +256,13 @@ function getPresDataTable()
     $presData = $prescription->getPresMeds($presId);
     $count=1;
     if(mysqli_num_rows($presData)){
-        while($presMedRow=mysqli_fetch_array($presData)){ 
+        while($presMedRow=mysqli_fetch_array($presData)){             
             $output.= "
             <tr>
                 <td style='width:2%'>$count</td>
                 <td style='width:23%'>$presMedRow[7] $presMedRow[2]</td>
                 <td style='width:12%; text-align:center;'>$presMedRow[3]</td>
-                <td style='width:12%; text-align:center;'>$presMedRow[4]</td>
+                <td style='width:12%; text-align:center;'>".formatTimes($presMedRow[4])."</td>
                 <td style='width:14%; text-align:center;'>".formatBeforeAfter($presMedRow[5])."</td>
                 <td style='width:12%; text-align:center;'>".formatDuration($presMedRow[6])."</td>
             </tr>
@@ -273,12 +273,29 @@ function getPresDataTable()
     //echo $output;
     echo $output;
 }
+function formatTimes($t)
+{
+    if($t==1)
+    {
+        return "1 (Night)";
+    }
+    else if($t==2)
+    {
+        return "2 (Morning & Night)";
+    }
+    else
+    {
+        return "3";
+    }
+}
 function formatBeforeAfter($v)
 {
     if($v=="b")
         return "Before";
-    else
+    else if($v=="a")
         return "After";
+    else if($v=="c")
+        return "Any";
 }
 function formatDuration($v)
 {
@@ -326,9 +343,9 @@ function getTodayPresMed()
             <div class="c-4 c-m-2 medName" id='.$row[0].'>'.$row[7].'</div>
             <div class="c-4 c-m-2 medType" id='.$row[1].'>'.$row[2].'</div>
             <div class="c-4 c-m-2 medAmt">'.$row[3].'</div>
-            <div class="c-4 c-m-2 medTimes">'.$row[4].'</div>
-            <div class="c-4 c-m-2 medBA">'.str_replace('a','After',(str_replace('b','Before',$row[5]))).'</div>
-            <div class="c-4 c-m-2 medDura">'.str_replace('d','day(s)',(str_replace('w','weeks(s)',$row[6]))).'</div>
+            <div class="c-4 c-m-2 medTimes">'.formatTimes($row[4]).'</div>
+            <div class="c-4 c-m-2 medBA">'.formatBeforeAfter($row[5]).'</div>
+            <div class="c-4 c-m-2 medDura">'.formatDuration($row[6]).'</div>
             </div>';
 
         }
@@ -348,7 +365,7 @@ $presMedFinData = $prescription->getMedFin($pid);
 $docCharge=$doc->getDocCharge();
 $docCharge=mysqli_fetch_array($docCharge)[0];
 if(mysqli_num_rows($presMedFinData)){
-    while($row = mysqli_fetch_array($presMedFinData)){//TODO:price calculation
+    while($row = mysqli_fetch_array($presMedFinData)){
             $dayCount=0;
             $arr= (explode(" ",$row[5]));
             if($arr[1]=='w')

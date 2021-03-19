@@ -377,8 +377,10 @@ body{
     transition: 0.5s;
     box-shadow: none;
     outline: none;
+    border: none;
+    cursor: pointer;
 }
-.btnNormal:hover{
+.btnNormal:hover, .btnNormal.active{
     background-color: white;
     color: #5cc8b1;
     border:1px solid #5cc8b1;

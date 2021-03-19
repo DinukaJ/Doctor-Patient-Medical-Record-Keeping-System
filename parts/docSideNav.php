@@ -387,22 +387,7 @@ function getPatientPrescriptions()
                         </tr>
                     </table>
                     <table id="patPresData" style="width:100%; font-size:0.8em !important;" class="presTable" id="presTableDetails">
-                        <tr>
-                            <td style="width:2%">1</td>
-                            <td style="width:23%">Med Name</td>
-                            <td style="width:12%; text-align:center;">5</td>
-                            <td style="width:12%; text-align:center;">3</td>
-                            <td style="width:14%; text-align:center;">After</td>
-                            <td style="width:12%; text-align:center;">3 Weeks</td>
-                        </tr>
-                        <tr>
-                            <td style="width:2%">2</td>
-                            <td style="width:23%">Med Name</td>
-                            <td style="width:12%; text-align:center;">5</td>
-                            <td style="width:12%; text-align:center;">3</td>
-                            <td style="width:14%; text-align:center;">After</td>
-                            <td style="width:12%; text-align:center;">3 Weeks</td>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>  

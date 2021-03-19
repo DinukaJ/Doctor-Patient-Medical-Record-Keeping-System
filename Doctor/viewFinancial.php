@@ -71,6 +71,12 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 <div class="tableCont3">
                     <div class="row">
                         <div class="c-12">
+                            <button class="btnNormal active" id="allAmountsChart">All Amounts</button>
+                            <button class="btnNormal" id="doctorChargesChart">Doctor Charges</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="c-12">
                             <canvas id="myChart" width="100" height="30vh"></canvas>
                         </div>
                     </div>

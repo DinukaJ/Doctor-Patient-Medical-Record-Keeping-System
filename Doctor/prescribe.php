@@ -119,8 +119,8 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </select>
                         <select class="input-field medData disable" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
                             <option value="" disabled selected>Times Per Day</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <option value="1">1 (Night)</option>
+                            <option value="2">2 (Morning & Night)</option>
                             <option value="3">3</option>
                         </select>
                     </div>
@@ -129,11 +129,16 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                             <option value="" disabled selected>After/Before Meal</option>
                             <option value="a">After</option>
                             <option value="b">Before</option>
+                            <option value="c">Any</option>
                         </select>
                         <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                             <option value="" disabled selected>Duration</option>
-                            <option value="1 w">1 Week</option>
-                            <option value="2 w">2 Week</option>
+                            <option value="5 d">5 Day(s)</option>
+                            <option value="6 d">6 Day(s)</option>
+                            <option value="1 w">1 Week(s)</option>
+                            <option value="2 w">2 Week(s)</option>
+                            <option value="3 w">3 Week(s)</option>
+                            <option value="4 w">4 Week(s)</option>
                         </select>
                     </div>
                     <div class="c-12 c-l-3">
