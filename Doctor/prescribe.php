@@ -68,7 +68,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         <div class="c-12 c-l-3">
                             <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientDetails" id="viewPatientDetails"><i class="fas fa-search"></i> View All Details</button>
                             <button type="button" class="btn btnAddPres medData disable viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
-                            <button type="button" class="btn btnAddPres medData disable" style="margin-top:18px;" name="viewPatientReports" id="viewPatientReports"><i class="fas fa-file-medical-alt"></i> View Reports</button>
+                            <button type="button" class="btn btnAddPres medData disable viewPatientReport" style="margin-top:18px;" name="viewPatientReports" id="viewPatientReports"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                         </div>
                         <!-- <div class="c-12 c-l-3">
                             <div class="box">
@@ -205,6 +205,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script src="../js/mainDoc.js"></script>
     <script src="../js/searchPres.js"></script>
+    <script src="../js/searchRep.js"></script>
     <script>
         var modalPatient=document.getElementById("patientFullData");
         var patientPrescription=document.getElementById("patientPrescription");
@@ -231,6 +232,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             $('.close').click(()=>{
                 close(modalPatient);
                 close(patientPrescription);
+                close(patientReports);
             })
             $('#patClose').click(()=>{
                 close(modalPatient);

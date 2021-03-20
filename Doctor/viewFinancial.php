@@ -78,6 +78,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     <div class="row">
                         <div class="c-12">
                             <canvas id="myChart" width="100" height="30vh"></canvas>
+                            <canvas id="myChart2" width="100" height="30vh"></canvas>
                         </div>
                     </div>
                 </div>

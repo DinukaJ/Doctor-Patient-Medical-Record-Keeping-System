@@ -351,18 +351,7 @@ function getPatientPrescriptions()
     <div class="row">
         <div class="c-12 c-m-3">
             <div class="scrollBox2" id="presList">
-                <div class="row patientDataRow2 active">
-                    <div class="c-12" style="padding-right:0px;">
-                        <b>ID: </b><span>124</span><br>
-                        <b>Date: </b><span>2020/11/5</span><br>
-                    </div>
-                </div> 
-                <div class="row patientDataRow2">
-                    <div class="c-12" style="padding-right:0px;">
-                        <b>ID: </b><span>123</span><br>
-                        <b>Date: </b><span>2020/11/1</span><br>
-                    </div>
-                </div> 
+               
             </div>
         </div>
         <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
@@ -433,18 +422,7 @@ function getPatientReports()
     <div class="row">
         <div class="c-12 c-m-3">
             <div class="scrollBox2" id="reportList">
-                <div class="row patientDataRowRep active">
-                    <div class="c-12" style="padding-right:0px;">
-                        <b>ID: </b><span>124</span><br>
-                        <b>Date: </b><span>2020/11/5</span><br>
-                    </div>
-                </div> 
-                <div class="row patientDataRowRep">
-                    <div class="c-12" style="padding-right:0px;">
-                        <b>ID: </b><span>123</span><br>
-                        <b>Date: </b><span>2020/11/1</span><br>
-                    </div>
-                </div> 
+                
             </div>
         </div>
         <div class="c-12 c-m-9" style="padding-left:0px; padding-right:0px;">
@@ -472,16 +450,7 @@ function getPatientReports()
                     </table>
                     <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
          
-                        <tr>
-                            <td style="width:30%; text-align:center;">1</td>
-                            <td style="width:30%; text-align:center;">Med Name</td>
-                            <td style="width:30%; text-align:center;">5</td>
-                        </tr>
-                        <tr>
-                            <td style="width:30%; text-align:center;">1</td>
-                            <td style="width:30%; text-align:center;">Med Name</td>
-                            <td style="width:30%; text-align:center;">5</td>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>  

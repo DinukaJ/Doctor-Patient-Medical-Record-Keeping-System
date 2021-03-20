@@ -66,8 +66,8 @@ function getPrescriptions(id)
     });
 }
 $(".viewPatientPrescription").click(function(){
-    var pId=$("#patientID").val();//.split(" ");
-   // pId=pId[0];
+    var pId=$("#patientID").val().split(" ");
+   pId=pId[0];
     getPrescriptions(pId);
 });
 

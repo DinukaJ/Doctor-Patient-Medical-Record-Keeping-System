@@ -222,6 +222,8 @@ function setBillDataModal(id)
 
 function getChart(year,cType)
 {
+    $("#myChart").html("");
+    $("#myChart2").html("");
     $.ajax({
         url:"../handlers/billHandler.php",
         method:"POST",
@@ -241,7 +243,18 @@ function getChart(year,cType)
                 borderColor='rgba(153, 102, 255, 1)';
                 label="Doctor Charges";
             }
-            var ctx = document.getElementById('myChart').getContext('2d');
+            if(cType=="all")
+            {
+                var ctx = document.getElementById('myChart').getContext('2d');
+                $("#myChart").show();
+                $("#myChart2").hide();
+            }
+            else
+            {
+                var ctx = document.getElementById('myChart2').getContext('2d');
+                $("#myChart2").show();
+                $("#myChart").hide();
+            }
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {

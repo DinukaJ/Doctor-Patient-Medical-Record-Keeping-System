@@ -166,8 +166,8 @@ function getReports(id)
     });
 }
 $(".viewPatientReport").click(function(){
-    var pId=$("#patientID").val();//.split(" ");
-   // pId=pId[0];
+    var pId=$("#patientID").val().split(" ");
+   pId=pId[0];
    getReports(pId);
 });
 
