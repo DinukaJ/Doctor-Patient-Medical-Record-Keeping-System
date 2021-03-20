@@ -143,7 +143,6 @@ function getMedFinInfo(){
 }
 $("#endBill").on('click',function(){
    createBill($("#totalAmount").html(),pid,$("#docCharge").html());
-   // updateMed(billId); //Need to find the error of updateMed
    statusChange(pid);
 });
 
