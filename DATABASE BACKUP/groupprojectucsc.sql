@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 21, 2021 at 06:19 AM
+-- Generation Time: Mar 21, 2021 at 10:25 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -38,15 +38,15 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `type` char(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bill`
 --
 
 INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`, `type`) VALUES
-(1, 1, '2021-03-17', '1770.00', '600.00', 'pres'),
-(7, 2, '2021-03-21', '1332.50', '600.00', 'pres');
+(7, 4, '2021-03-21', '1332.50', '600.00', 'pres'),
+(10, 5, '2021-03-21', '772.50', '600.00', 'pres');
 
 -- --------------------------------------------------------
 
@@ -69,10 +69,9 @@ CREATE TABLE IF NOT EXISTS `billitems` (
 --
 
 INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
-(2, 28, '25mg', 28, '560.00'),
-(2, 24, '200mg', 5, '172.50'),
-(1, 25, '250mg', 14, '210.00'),
-(1, 29, '300mg', 32, '960.00');
+(5, 24, '200mg', 5, '172.50'),
+(4, 28, '25mg', 28, '560.00'),
+(4, 24, '200mg', 5, '172.50');
 
 -- --------------------------------------------------------
 
@@ -357,11 +356,11 @@ CREATE TABLE IF NOT EXISTS `medtypes` (
 
 INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (17, '', '200.00', 20, 1),
-(24, '200mg', '34.50', 1906, 1),
+(24, '200mg', '34.50', 1891, 1),
 (25, '250mg', '15.00', 1262, 1),
 (26, '100mg', '50.00', 500, 1),
 (27, '150mg', '12.00', 1500, 1),
-(28, '25mg', '20.00', 1472, 1),
+(28, '25mg', '20.00', 1416, 1),
 (29, '300mg', '30.00', 1968, 1);
 
 -- --------------------------------------------------------
@@ -459,13 +458,10 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
 --
 
 INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
-('doc-1', 'p-1', 1, '2021-03-17', 'Test Note', 0),
-('doc-1', 'p-1', 2, '2021-03-19', '', 0),
-('doc-1', 'p-1', 3, '2021-03-19', '', 0),
-('doc-1', 'p-1', 4, '2021-03-19', '', 0),
-('doc-1', 'p-1', 5, '2021-03-19', '', 0),
-('doc-1', 'p-1', 6, '2021-03-20', '', 0),
-('doc-1', 'p-8', 7, '2021-03-21', 'Test Note', 1);
+('doc-1', 'p-8', 7, '2021-03-21', 'Test Note', 1),
+('doc-1', 'p-1', 10, '2021-03-21', '', 1),
+('doc-1', 'p-1', 11, '2021-03-21', 'Test Note', 0),
+('doc-1', 'p-1', 12, '2021-03-21', '', -1);
 
 -- --------------------------------------------------------
 
@@ -492,12 +488,12 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
 --
 
 INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(1, 25, '250mg', 1, 2, 'a', '1 w'),
-(1, 29, '300mg', 1.5, 3, 'b', '1 w'),
-(2, 25, '250mg', 1, 2, 'a', '1 w'),
-(5, 27, '150mg', 2, 1, 'c', '4 w'),
 (7, 24, '200mg', 1, 1, 'a', '5 d'),
-(7, 28, '25mg', 2, 2, 'b', '1 w');
+(7, 28, '25mg', 2, 2, 'b', '1 w'),
+(10, 24, '200mg', 1, 1, 'a', '5 d'),
+(11, 25, '250mg', 1.5, 1, 'a', '5 d'),
+(11, 27, '150mg', 1, 2, 'a', '5 d'),
+(12, 25, '250mg', 1.5, 1, 'a', '5 d');
 
 --
 -- Constraints for dumped tables
