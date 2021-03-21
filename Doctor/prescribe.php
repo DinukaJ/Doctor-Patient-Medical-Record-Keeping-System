@@ -452,6 +452,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     {
                         finishPres();
                         $(window).unbind('beforeunload');
+                        $("#currPID").val("");
                         location.reload();
                     }
                 }
