@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 14, 2021 at 05:43 PM
+-- Generation Time: Mar 21, 2021 at 06:19 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -35,9 +35,18 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `doi` date NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `docCharge` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `type` char(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`, `type`) VALUES
+(1, 1, '2021-03-17', '1770.00', '600.00', 'pres'),
+(7, 2, '2021-03-21', '1332.50', '600.00', 'pres');
 
 -- --------------------------------------------------------
 
@@ -54,6 +63,16 @@ CREATE TABLE IF NOT EXISTS `billitems` (
   `totPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`billId`,`medId`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `billitems`
+--
+
+INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
+(2, 28, '25mg', 28, '560.00'),
+(2, 24, '200mg', 5, '172.50'),
+(1, 25, '250mg', 14, '210.00'),
+(1, 29, '300mg', 32, '960.00');
 
 -- --------------------------------------------------------
 
@@ -95,8 +114,10 @@ CREATE TABLE IF NOT EXISTS `docspecialdays` (
 --
 
 INSERT INTO `docspecialdays` (`docId`, `date`, `status`) VALUES
-('doc-1', '2021-02-09', 1),
-('doc-1', '2021-02-12', 0);
+('doc-1', '2021-02-12', 0),
+('doc-1', '2021-03-20', 1),
+('doc-1', '2021-03-22', 0),
+('doc-1', '2021-03-23', 1);
 
 -- --------------------------------------------------------
 
@@ -111,6 +132,14 @@ CREATE TABLE IF NOT EXISTS `docspeciality` (
   PRIMARY KEY (`docId`,`speciality`),
   KEY `docId` (`docId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `docspeciality`
+--
+
+INSERT INTO `docspeciality` (`docId`, `speciality`) VALUES
+('doc-1', 'Eye'),
+('doc-1', 'Normal');
 
 -- --------------------------------------------------------
 
@@ -138,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`) VALUES
-('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', -1);
+('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -193,7 +222,8 @@ CREATE TABLE IF NOT EXISTS `labpatientrep` (
 
 INSERT INTO `labpatientrep` (`id`, `pid`, `doi`, `cmt`) VALUES
 (2, 'p-6', '2021-02-08', ''),
-(1, 'p-1', '2020-12-31', '');
+(1, 'p-1', '2020-12-31', ''),
+(3, 'p-8', '2021-03-21', 'Test Comment');
 
 -- --------------------------------------------------------
 
@@ -215,7 +245,12 @@ CREATE TABLE IF NOT EXISTS `labpatientrepdata` (
 --
 
 INSERT INTO `labpatientrepdata` (`repid`, `repTypeId`, `testName`, `result`) VALUES
+(3, 19, 'TRIGLYCERIDES', '40'),
+(3, 19, 'SERIUM CHOLESTEROL', '155'),
+(3, 19, 'HDL-CHOLESTEROL', '50'),
 (2, 19, 'SERIUM CHOLESTEROL', '150'),
+(3, 19, 'CHOLESTEROL/HDL', '5'),
+(3, 19, 'LDL-CHOLESTEROL', '150'),
 (2, 19, 'HDL-CHOLESTEROL', '70'),
 (2, 19, 'LDL-CHOLESTEROL', '200'),
 (2, 19, 'CHOLESTEROL/HDL', '5'),
@@ -322,12 +357,12 @@ CREATE TABLE IF NOT EXISTS `medtypes` (
 
 INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (17, '', '200.00', 20, 1),
-(24, '200mg', '34.50', 1911, 1),
-(25, '250mg', '15.00', 1276, 1),
+(24, '200mg', '34.50', 1906, 1),
+(25, '250mg', '15.00', 1262, 1),
 (26, '100mg', '50.00', 500, 1),
 (27, '150mg', '12.00', 1500, 1),
-(28, '25mg', '20.00', 1500, 1),
-(29, '300mg', '30.00', 2000, 1);
+(28, '25mg', '20.00', 1472, 1),
+(29, '300mg', '30.00', 1968, 1);
 
 -- --------------------------------------------------------
 
@@ -363,7 +398,8 @@ INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `ag
 ('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1, '', 0),
 ('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0),
 ('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0),
-('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '2f5da5243f847e7bb3c6208bd10615f2f26f08b7', 18, '', '', 1, 'm0chBcvRd2BhLP0lKZGybJGMi3O4To', -1);
+('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '084ee8fcabcef7b546229990cf8b09c79443bb3e', 18, 'test', '', 1, '95rLlB5IHrXSqjVZ2cL0YfVOtVfP4O', -1),
+('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1);
 
 -- --------------------------------------------------------
 
@@ -418,6 +454,19 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   KEY `patientId` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
+('doc-1', 'p-1', 1, '2021-03-17', 'Test Note', 0),
+('doc-1', 'p-1', 2, '2021-03-19', '', 0),
+('doc-1', 'p-1', 3, '2021-03-19', '', 0),
+('doc-1', 'p-1', 4, '2021-03-19', '', 0),
+('doc-1', 'p-1', 5, '2021-03-19', '', 0),
+('doc-1', 'p-1', 6, '2021-03-20', '', 0),
+('doc-1', 'p-8', 7, '2021-03-21', 'Test Note', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -437,6 +486,18 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescription_medicine`
+--
+
+INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
+(1, 25, '250mg', 1, 2, 'a', '1 w'),
+(1, 29, '300mg', 1.5, 3, 'b', '1 w'),
+(2, 25, '250mg', 1, 2, 'a', '1 w'),
+(5, 27, '150mg', 2, 1, 'c', '4 w'),
+(7, 24, '200mg', 1, 1, 'a', '5 d'),
+(7, 28, '25mg', 2, 2, 'b', '1 w');
 
 --
 -- Constraints for dumped tables
