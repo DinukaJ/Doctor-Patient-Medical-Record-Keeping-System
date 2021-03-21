@@ -147,26 +147,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 </div>  
                 <div class="row patientDataRow" style="border-bottom:none;">
                     <div class="c-12 tableCont">
-                        <table style="width:100%;" class="presTable" id="presTable">
-                            <!-- <tr>
-                                <td style="width:2%">1</td>
-                                <td style="width:23%">Med Name</td>
-                                <td style="width:12%; text-align:center;">5</td>
-                                <td style="width:12%; text-align:center;">3</td>
-                                <td style="width:14%; text-align:center;">After</td>
-                                <td style="width:12%; text-align:center;">3 Weeks</td>
-                                <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td style="width:2%">2</td>
-                                <td style="width:23%">Med Name</td>
-                                <td style="width:12%; text-align:center;">5</td>
-                                <td style="width:12%; text-align:center;">3</td>
-                                <td style="width:14%; text-align:center;">After</td>
-                                <td style="width:12%; text-align:center;">3 Weeks</td>
-                                <td style="width:25%; text-align:center;"><a class="btn btnPatientView" name="deleteMed" id="medid"><i class="fas fa-times"></i></a></td>
-                            </tr> -->
-                        </table>
+                        <table style="width:100%;" class="presTable" id="presTable"></table>
                     </div>
                 </div>  
                 <div class="row patientDataRow presBottom">
@@ -465,11 +446,18 @@ echo"<input type='hidden' value='$docid' id='docID'>";
 
             //Handle Finish Button Operation
             $("#finish").click(function(){
-                if(confirm("Are you sure to finish?"))
+                if($("#presTable").html()!="")
                 {
-                    finishPres();
-                    $(window).unbind('beforeunload');
-                    location.reload();
+                    if(confirm("Are you sure to finish?"))
+                    {
+                        finishPres();
+                        $(window).unbind('beforeunload');
+                        location.reload();
+                    }
+                }
+                else
+                {
+                    alert("Prescription is Empty!");
                 }
             });
 
@@ -478,7 +466,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 return "Are you sure to leave?";
             });
             $(window).bind('unload', function(){
-                alert("test");
                 if($("#currPID").val()!="")
                 {                    
                     cancelPres();

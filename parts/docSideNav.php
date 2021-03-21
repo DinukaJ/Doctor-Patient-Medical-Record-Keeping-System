@@ -363,6 +363,11 @@ function getPatientPrescriptions()
                     <b>Date: <span id="presDate"></span></b>
                 </div>
             </div>
+            <div id="commentRowPres" class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+                <div class="c-12">
+                    <b>Comment: <span id="commentPres"></span></b>
+                </div>
+            </div>
             <div class="row patientDataRow" style="border-bottom:none;">
                 <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
                     <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow" id="presTableDetails">
@@ -370,7 +375,7 @@ function getPatientPrescriptions()
                             <th style="width:2%">No</th>
                             <th style="width:23%">Name</th>
                             <th style="width:12%; text-align:center;">Amount Per Time</th>
-                            <th style="width:12%; text-align:center;">Amount Per Day</th>
+                            <th style="width:12%; text-align:center;">Times Per Day</th>
                             <th style="width:14%; text-align:center;">After/Before Meal</th>
                             <th style="width:12%; text-align:center;">Duration</th>
                         </tr>

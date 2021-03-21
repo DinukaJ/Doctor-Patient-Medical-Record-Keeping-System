@@ -50,7 +50,8 @@ class prescription
     public function getPatientPres($pid)//getting a patient's prescriptions
     {  
         $db = new Database();
-        $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1') order by doi desc");
+        // $data = $db->getData("select * from prescriptions where patientId='$pid' and (status='0' or status='1') order by id desc");
+        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname, pres.note from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId where (pres.status=0 or pres.status=1) and p.id='$pid' group by presM.pres_ID");
         return $data;
     }
     public function getPresMedCount($pid)
@@ -94,13 +95,13 @@ class prescription
     public function finishPres($id)
     {
         $db = new Database();
-        $stat=$db->insert_update_delete("update prescriptions set status='0'");
+        $stat=$db->insert_update_delete("update prescriptions set status='0' where id='$id'");
         return $stat;
     }
     public function getTodayPres()
     {
         $db = new Database();
-        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId where pres.doi=CURDATE() AND pres.status=0 group by presM.pres_ID");
+        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname, pres.note from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId where pres.doi=CURDATE() AND pres.status=0 group by presM.pres_ID");
         return $data;
     }
 
@@ -112,7 +113,7 @@ class prescription
 
     public function getAllPres(){
         $db = new Database();
-        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId group by presM.pres_ID order by pres.doi DESC");
+        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname, pres.note from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId group by presM.pres_ID order by pres.id DESC");
         return $data;
     }
 

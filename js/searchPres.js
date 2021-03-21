@@ -18,7 +18,7 @@ function getTodayPres(){
             $("#presInfo").html(data[0]);
             $("#itemCount").html(data[1]);
             $(".viewPres").click(function(){            
-                putPresData(this.id);
+                putPresData($(this));
             });
         }   
     });
@@ -35,7 +35,7 @@ function getPres(){
             $("#presData").html(data[0]);
             $("#dataCount").html(data[1]);
             $(".viewPres").click(function(){            
-                putPresData(this.id);
+                putPresData($(this));
             });
         }   
     });
@@ -54,9 +54,27 @@ function getPrescriptions(id)
             getPresDataTable(data[1]);
             $("#presNo").html(data[1]);
             $("#presDate").html(data[2]);
+            if(data[3]!="")
+            {
+                $("#commentRowPres").show();
+                $("#commentPres").html(data[3]);
+            }
+            else
+            {
+                $("#commentRowPres").hide();
+            }
             $(".patientDataRow2").click(function(){
                 $("#presNo").html($(this).find(".presListID").html());
                 $("#presDate").html($(this).find(".presListDate").html());
+                if($(this).attr("note")!="")
+                {
+                    $("#commentRowPres").show();
+                    $("#commentPres").html($(this).attr("note"));
+                }
+                else
+                {
+                    $("#commentRowPres").hide();
+                }
                 getPresDataTable($(this).find(".presListID").html());
                 $(".patientDataRow2").removeClass("active");
                 $(this).addClass("active");
@@ -84,23 +102,37 @@ function getPresDataTable(id)
     });
 }
 
-function putPresData(id){
- splitVal = id.split("~");
- id = splitVal[1];
- patId = splitVal[3];
- patName = splitVal[4]+' '+splitVal[5];
- today = splitVal[6];
- docName=splitVal[7]+' '+splitVal[8];
+function putPresData(btn){
+//  splitVal = id.split("~");
+//  id = splitVal[1];
+//  patId = splitVal[3];
+//  patName = splitVal[4]+' '+splitVal[5];
+//  day = splitVal[6];
+//  docName=splitVal[7]+' '+splitVal[8];
+ id = $(btn).attr("presId");
+ patId = $(btn).attr("patId");
+ patName = $(btn).attr("patName");
+ day = $(btn).attr("day");
+ docName=$(btn).attr("docName");
+ if($(btn).attr("note")!="")
+ {
+     $("#commentRowPres").show();
+     $("#commentPres").html($(btn).attr("note"));
+ }
+ else
+ {
+     $("#commentRowPres").hide();
+ }
  $.ajax({
     url:"../handlers/prescriptionHandler.php",
     method:"POST",
     data:{type:'getTodayPresMed',id:id},
     success:function(data){
         $("#presVals").html(data);
-        $(".presId").html(id);
-        $(".docName").html(docName);
-        $(".patName").html(patName);
-        $(".doi").html(today);
+        $("#presId").html(id);
+        $("#docName").html(docName);
+        $("#patName").html(patName);
+        $(".doi").html(day);
         open(modalViewPres);
         //Create the bill
         $("#billCreate").click(function(){

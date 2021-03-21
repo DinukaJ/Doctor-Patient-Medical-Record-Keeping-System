@@ -61,24 +61,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     </div>
                 </div>
               <div id="presInfo"></div>
-                <?php
-                // $res=$patient->getPatients();
-                // $i=1;
-                // while($row=mysqli_fetch_assoc($res))
-                // {
-                //     echo '
-                //     <div class="row patientDataRow">
-                //         <div class="c-11">
-                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                //         </div>
-                //         <div class="c-1">
-                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                //         </div>
-                //     </div>
-                //     ';
-                //     $i++;
-                // }
-                ?>           
+        
             </div>
         </div>
     </div>
@@ -103,56 +86,38 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 <h2>Prescription Details</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="c-12 c-m-3">
-                Prescription ID: <span class="answer" id="predId">1</span>
-            </div>
-            <div class="c-12 c-m-2">
-                Patient ID: <span class="answer" id="patientId">p-1</span>
+        <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
+            <div class="c-12 c-m-4">
+                Prescription ID: <span class="answer" id="presId"></span>
             </div>
             <div class="c-12 c-m-4">
-                Doctor Name: <span class="answer" id="patientName">Rukmal Weerasinghe</span>
+                Doctor Name: <span class="answer" id="docName"></span>
             </div>
-            <div class="c-12 c-m-3">
-                Date: <span class="answer" id="doi">2020-11-17</span>
+            <div class="c-12 c-m-4">
+                Date: <span class="answer" id="doi"></span>
             </div>
-            <div class="c-12"><hr></div>
         </div>  
-        <div class="row">
-            <div class="c-4 c-m-3">
-                <b>Med Name</b>
+        <div class="row addMedicineRow" id="commentRowPres" style="padding:5px; margin-left:0px; margin-right:0px;">
+            <div class="c-12">
+                Comment: <span class="answer" id="commentPres"></span>
             </div>
-            <div class="c-4 c-m-2">
-                <b>Amount Per Time</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Times Per Day</b>
-            </div>
-            <div class="c-4 c-m-2">
-                <b>Before / After Meal</b>
-            </div>
-            <div class="c-4 c-m-3">
-                <b>Duration</b>
-            </div>
-            <div class="c-12"><hr></div>
-        </div>
-        <div id="presVals">
-            <div class="row">
-                <div class="c-4 c-m-3">
-                    Amoxicillin
-                </div>
-                <div class="c-4 c-m-2">
-                    2
-                </div>
-                <div class="c-4 c-m-2">
-                    3
-                </div>
-                <div class="c-4 c-m-2">
-                    After
-                </div>
-                <div class="c-4 c-m-3">
-                    1 Week(s)
-                </div>
+        </div>  
+
+        <div class="row patientDataRow" style="border-bottom:none;">
+            <div class="c-12 tableCont2" style="padding-left:0px; padding-right:0px;">
+                <table style="width:100%; font-size:0.8em !important;" class="presTable addMedicineRow id="reportTable">
+                    <tr style="height:20px;">
+                        <th style="width:2%">No</th>
+                        <th style="width:23%">Name</th>
+                        <th style="width:12%; text-align:center;">Amount Per Time</th>
+                        <th style="width:12%; text-align:center;">Times Per Day</th>
+                        <th style="width:14%; text-align:center;">After/Before Meal</th>
+                        <th style="width:12%; text-align:center;">Duration</th>
+                    </tr>
+                </table>
+                <table id="presVals" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
+
+                </table>
             </div>
         </div>    
         </div>
@@ -210,24 +175,50 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     $('#noOfPres').html(data[1]);
                     $('.viewPres').click(function(){
                         open(modalViewPres);
-                        getPresInfo(this.id);
+                        getPresInfo($(this));
                     });
                 }
             });
         }
-        function getPresInfo(id){
-            presId = id.split("-");
-            presId = presId[1];
+        function getPresInfo(btn){
+            // presId = id.split("-");
+            // presId = presId[1];
+            // $.ajax({
+            //     url:"../handlers/prescriptionHandler.php",
+            //     method:"POST",
+            //     data:{presID:presId,type:'presInfo'},
+            //     dataType:'JSON',
+            //     success:function(data){
+            //         $("#presMedDet").html(data[0]);
+            //         $("#presNo").html(presId);
+            //         $("#docName").html(data[1]);
+            //         $("#presDate").html(data[2]);
+            //     }
+            // });
+            id = $(btn).attr("presId");
+            patId = $(btn).attr("patId");
+            patName = $(btn).attr("patName");
+            day = $(btn).attr("day");
+            docName=$(btn).attr("docName");
+            if($(btn).attr("note")!="")
+            {
+                $("#commentRowPres").show();
+                $("#commentPres").html($(btn).attr("note"));
+            }
+            else
+            {
+                $("#commentRowPres").hide();
+            }
             $.ajax({
                 url:"../handlers/prescriptionHandler.php",
                 method:"POST",
-                data:{presID:presId,type:'presInfo'},
-                dataType:'JSON',
+                data:{type:'getPresDataTable',presID:id},
                 success:function(data){
-                    $("#presMedDet").html(data[0]);
-                    $("#presNo").html(presId);
-                    $("#docName").html(data[1]);
-                    $("#presDate").html(data[2]);
+                    $("#presVals").html(data);
+                    $("#presId").html(id);
+                    $("#docName").html(docName);
+                    $("#doi").html(day);
+                    open(modalViewPres);
                 }
             });
         }

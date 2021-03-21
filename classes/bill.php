@@ -51,7 +51,7 @@ class bill
         // }
         // else
         // {
-            $data=$db->getData("select b.*, count(pr.med_ID) as noMed from bill b join prescriptions p on b.presId = p.id join prescription_medicine pr on p.id=pr.pres_ID where p.docId='$docID' and b.doi like '$month%'");
+            $data=$db->getData("select b.*, count(pr.med_ID) as noMed from bill b join prescriptions p on b.presId = p.id join prescription_medicine pr on p.id=pr.pres_ID where p.docId='$docID' and b.doi like '$month%' group by b.id");
         // }
         $docCharge=$db->getData("select SUM(docCharge), COUNT(id)  from(select b.* from bill b join prescriptions p on b.presId = p.id join prescription_medicine pr on p.id=pr.pres_ID where p.docId='$docID' and b.doi like '$month%' group by b.id) as totalTable");
         return array($data,$docCharge);

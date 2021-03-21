@@ -321,7 +321,7 @@ body{
     display: block;
     height: 40px;
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -380,7 +380,14 @@ body{
     border: none;
     cursor: pointer;
 }
-.btnNormal:hover, .btnNormal.active{
+.btnNormal:hover{
+    background-color: white;
+    color: #5cc8b1;
+    border:1px solid #5cc8b1;
+    box-shadow: none;
+    outline: none;
+}
+.btnNormal2.active{
     background-color: white;
     color: #5cc8b1;
     border:1px solid #5cc8b1;

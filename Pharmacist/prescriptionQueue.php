@@ -112,6 +112,12 @@ else
                 </div>
                 <div class="c-12"><hr></div>
             </div>  
+            <div class="row" id="commentRowPres">
+                <div class="c-12">
+                    Comment: <span class="answer" id="commentPres"></span>
+                </div>
+                <div class="c-12"><hr></div>
+            </div> 
             <div class="row">
                 <div class="c-4 c-m-2">
                     <b>Med Name</b>

@@ -170,19 +170,29 @@ function getPatientPresIn(){
     $pid = $_POST["patientID"];
     $presData= $prescription->getPatientPres($pid);//getting prescription data of the patient
     if(mysqli_num_rows($presData)){
+    //     while($presRow=mysqli_fetch_array($presData)){
+    //         $docId = $presRow[0];//assigning doctor id
+    //         $docData= $doctor->getDoc($docId);//getting doctor data 
+    //         $itemCount=$prescription->getPresMedCount($presRow[2]);
+    //         $docRow= mysqli_fetch_array($docData);
+    //         $name = $docRow[1].' '.$docRow[2];//concatenating doc name   
+    //         $output.= "<div class='row patientDataRow'>
+    //         <div class='c-12 c-l-3' class='presId' style='text-align:center'>$presRow[2]</div>
+    //         <div class='c-12 c-l-4' class='docName' id='docNameF'>$name</div>
+    //         <div class='c-12 c-l-2'>$itemCount</div>
+    //         <div class='c-3 c-l-2'>$presRow[3]</div>
+    //         <div class='c-12 c-l-1'>
+    //             <button type='button' class='btn btnPatientView viewPres' name='viewPres' patName='$row[0] $row[1]' presId='$row[4]' patId='$row[3]' day='$row[5]' docName='$row[9] $row[10]' note='$row[11]' id='viewPres-$presRow[2]'>View</button>
+    //         </div>
+    //   </div>";
         while($presRow=mysqli_fetch_array($presData)){
-            $docId = $presRow[0];//assigning doctor id
-            $docData= $doctor->getDoc($docId);//getting doctor data 
-            $itemCount=$prescription->getPresMedCount($presRow[2]);
-            $docRow= mysqli_fetch_array($docData);
-            $name = $docRow[1].' '.$docRow[2];//concatenating doc name   
             $output.= "<div class='row patientDataRow'>
-            <div class='c-12 c-l-3' class='presId' style='text-align:center'>$presRow[2]</div>
-            <div class='c-12 c-l-4' class='docName' id='docNameF'>$name</div>
-            <div class='c-12 c-l-2'>$itemCount</div>
-            <div class='c-3 c-l-2'>$presRow[3]</div>
+            <div class='c-12 c-l-3' class='presId' style='text-align:center'>$presRow[4]</div>
+            <div class='c-12 c-l-4' class='docName' id='docNameF'>$presRow[9] $presRow[10]</div>
+            <div class='c-12 c-l-2'>$presRow[8]</div>
+            <div class='c-3 c-l-2'>$presRow[5]</div>
             <div class='c-12 c-l-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres-$presRow[2]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' patName='$presRow[0] $presRow[1]' presId='$presRow[4]' patId='$presRow[3]' day='$presRow[5]' docName='$presRow[9] $presRow[10]' note='$presRow[11]' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";
         }
@@ -225,28 +235,29 @@ function getPatientPresForModal(){
     if(mysqli_num_rows($presData)){
         $presMedRow=mysqli_fetch_array($presData);
         $output.= "
-            <div class='row patientDataRow2 active' id='pres $presMedRow[0]'>
+            <div class='row patientDataRow2 active' id='pres $presMedRow[4]' note='$presMedRow[6]'>
                 <div class='c-12' style='padding-right:0px;'>
-                    <b>ID: </b><span class='presListID'>".$presMedRow[2]."</span><br>
-                    <b>Date: </b><span class='presListDate'>".$presMedRow[3]."</span><br>
+                    <b>ID: </b><span class='presListID'>".$presMedRow[4]."</span><br>
+                    <b>Date: </b><span class='presListDate'>".$presMedRow[5]."</span><br>
                 </div>
             </div> 
             ";
-            $last=$presMedRow[2];
-            $lastDate=$presMedRow[3];
+            $last=$presMedRow[4];
+            $lastDate=$presMedRow[5];
+            $lastComment=$presMedRow[6];
         while($presMedRow=mysqli_fetch_array($presData)){ 
             $output.= "
-            <div class='row patientDataRow2' id='pres $presMedRow[0]'>
+            <div class='row patientDataRow2' id='pres $presMedRow[4]' note='$presMedRow[6]'>
                 <div class='c-12' style='padding-right:0px;'>
-                    <b>ID: </b><span class='presListID'>".$presMedRow[2]."</span><br>
-                    <b>Date: </b><span class='presListDate'>".$presMedRow[3]."</span><br>
+                    <b>ID: </b><span class='presListID'>".$presMedRow[4]."</span><br>
+                    <b>Date: </b><span class='presListDate'>".$presMedRow[5]."</span><br>
                 </div>
             </div> 
             ";
         }
     }
     //echo $output;
-    echo json_encode(array($output,$last,$lastDate));
+    echo json_encode(array($output,$last,$lastDate,$lastComment));
 }
 function getPresDataTable()
 {
@@ -321,7 +332,7 @@ function getTodayPres()
             <div class='c-4' class='patName'>$row[0] $row[1]</div>
             <div class='c-4' class='items'>$row[8]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' patName='$row[0] $row[1]' presId='$row[4]' patId='$row[3]' day='$row[5]' docName='$row[9] $row[10]' note='$row[11]' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
             </div>
             </div>";
             $count+=1;
@@ -347,7 +358,6 @@ function getTodayPresMed()
             <div class="c-4 c-m-2 medBA">'.formatBeforeAfter($row[5]).'</div>
             <div class="c-4 c-m-2 medDura">'.formatDuration($row[6]).'</div>
             </div>';
-
         }
     }
     echo $output;
@@ -427,7 +437,7 @@ function getPresInfo(){
             <div class='c-2' class='items'>$row[8]</div>
             <div class='c-2' class='doi'>$row[5]</div>
             <div class='c-1'>
-                <button type='button' class='btn btnPatientView viewPres' name='viewPres' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
+                <button type='button' class='btn btnPatientView viewPres' name='viewPres' patName='$row[0] $row[1]' presId='$row[4]' patId='$row[3]' day='$row[5]' docName='$row[9] $row[10]' note='$row[11]' id='viewPres~$row[4]~$row[2]~$row[3]~$row[0]~$row[1]~$row[5]~$row[9]~$row[10]'>View</button>
             </div>
             </div>";
             $count+=1;
