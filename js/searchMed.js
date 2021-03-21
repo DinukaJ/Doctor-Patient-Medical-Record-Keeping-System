@@ -168,6 +168,38 @@ $(document).on('click','#addType',function(){
     });
 });
 
+$(document).on('click','#upAddType',function(){
+    $(".medType2").change(function(){
+        if(parseInt($(this).val())<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medType2").removeClass('errorInput');
+            },2000);            
+        }
+    })
+
+    $(".medQTY2").change(function(){
+        if($(this).val()<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medQTY2").removeClass("errorInput");
+            },2000)
+        }
+    });
+
+    $(".medPrice2").change(function(){
+        if($(this).val()<0){
+            $(this).val("");
+            $(this).addClass("errorInput");
+            setTimeout(function(){
+                $(".medPrice2").removeClass("errorInput");
+            },2000)
+        }
+    });
+});
+
 
 //Adding data to the database
 // $('#medAddForm').on('submit',function(e){
