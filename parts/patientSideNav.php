@@ -57,6 +57,12 @@ function getEditProfile($patient)
                 </div>
             </div>
             <div class="row">
+                <div class="c-12 c-m-5" style="padding-bottom:25px;">
+                    Patient Id: 
+                </div>
+                <div class="c-12 c-m-7">
+                    <span id="patientId"></span>
+                </div>
                 <div class="c-12 c-m-5">
                     First Name: 
                 </div>

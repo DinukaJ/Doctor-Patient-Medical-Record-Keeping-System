@@ -9,6 +9,7 @@ $('#editProfilePat').click(()=>{
         data:{patientID:patID,type:'patientData'},
         dataType:'json',
         success:function(data){
+            $("#patientId").html(patID);
             $('#firstName').val(data['fname']);
             $('#lastName').val(data['lname']);
             $('#phone').val(data['phone']);
