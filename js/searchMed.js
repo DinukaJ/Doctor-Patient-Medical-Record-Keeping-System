@@ -168,6 +168,7 @@ $(document).on('click','#addType',function(){
     });
 });
 
+//minus value fix for doc inventory
 $(document).on('click','#upAddType',function(){
     $(".medType2").change(function(){
         if(parseInt($(this).val())<0){
