@@ -222,6 +222,7 @@ function setBillDataModal(id)
 
 function getChart(year,cType)
 {
+    $(".chartjs-size-monitor").remove();
     $("#myChart").html("");
     $("#myChart2").html("");
     $.ajax({
@@ -235,6 +236,9 @@ function getChart(year,cType)
                 backColor="rgba(255, 159, 64, 0.2)";
                 borderColor="rgba(255, 159, 64, 1)";
                 label="All Amount";
+                var ctx = document.getElementById('myChart').getContext('2d');
+                $("#myChart").show();
+                $("#myChart2").hide();
             }
             else if(cType=="docCharge")
             {
@@ -242,15 +246,6 @@ function getChart(year,cType)
                 backColor='rgba(153, 102, 255, 0.2)';
                 borderColor='rgba(153, 102, 255, 1)';
                 label="Doctor Charges";
-            }
-            if(cType=="all")
-            {
-                var ctx = document.getElementById('myChart').getContext('2d');
-                $("#myChart").show();
-                $("#myChart2").hide();
-            }
-            else
-            {
                 var ctx = document.getElementById('myChart2').getContext('2d');
                 $("#myChart2").show();
                 $("#myChart").hide();

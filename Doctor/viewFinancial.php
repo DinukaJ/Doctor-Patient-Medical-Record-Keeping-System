@@ -231,6 +231,8 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             {
                 year=val[0];
                 getChart(year,"all");
+                $("#allAmountsChart").addClass("active");
+                $("#doctorChargesChart").removeClass("active");
             }
             getBillData(docType,docId,$(this).val());
         });
