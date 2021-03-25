@@ -133,12 +133,13 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </select>
                         <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                             <option value="" disabled selected>Duration</option>
+                            <option value="2 d">2 Day(s)</option>
+                            <option value="3 d">3 Day(s)</option>
                             <option value="5 d">5 Day(s)</option>
-                            <option value="6 d">6 Day(s)</option>
                             <option value="1 w">1 Week(s)</option>
                             <option value="2 w">2 Week(s)</option>
-                            <option value="3 w">3 Week(s)</option>
-                            <option value="4 w">4 Week(s)</option>
+                            <option value="1 m">1 Month(s)</option>
+                            <option value="2 m">2 Month(s)</option>
                         </select>
                     </div>
                     <div class="c-12 c-l-3">
