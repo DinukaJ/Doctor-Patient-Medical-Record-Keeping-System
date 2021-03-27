@@ -82,7 +82,7 @@ class prescription
                               join prescription_medicine pm on pm.pres_ID=p.id
                               join medicine m on m.id=pm.med_ID
                               join medtypes mt on m.id=mt.id
-                              where p.id=$id and (status='0' or status='1')");
+                              where p.id='$id' and (p.status='0' or p.status='1')");
         return $data;
     }
     public function deletePresAndMeds($id)

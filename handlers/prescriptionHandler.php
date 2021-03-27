@@ -127,20 +127,15 @@ function getPrescriptionMedicine()
         $data=$pres->getPresMeds($pid);
         while($row=mysqli_fetch_array($data))
         {
-            if($row[5]=="b")
-                $time="Before";
-            else
-                $time="After";
 
-            $duration=str_replace("w","Week(s)",$row[6]);
             $output.='
             <tr>
                 <td style="width:2%">'.$row[1].'</td>
                 <td style="width:23%">'.$row[7].' - '.$row[2].'</td>
                 <td style="width:12%; text-align:center;">'.$row[3].'</td>
-                <td style="width:12%; text-align:center;">'.$row[4].'</td>
-                <td style="width:14%; text-align:center;">'.$time.'</td>
-                <td style="width:12%; text-align:center;">'.$duration.'</td>
+                <td style="width:12%; text-align:center;">'.formatTimes($row[4]).'</td>
+                <td style="width:14%; text-align:center;">'.formatBeforeAfter($row[5]).'</td>
+                <td style="width:12%; text-align:center;">'.formatDuration($row[6]).'</td>
                 <td style="width:25%; text-align:center;"><button value="'.$row[1].'-'.$row[2].'" class="btn delMed" name="deleteMed" id="medid"><i class="fas fa-times"></i></button></td>
             </tr>
             ';
@@ -212,9 +207,9 @@ function getPatientPres(){
             <div class='c-12 c-m-1'></div>
             <div class='c-12 c-m-2' class='medName'>$presMedRow[2]</div>
             <div class='c-12 c-m-2' class='amtPt'>$presMedRow[5]</div>
-            <div class='c-12 c-m-2' class='timePd'>$presMedRow[6]</div>
-            <div class='c-12 c-m-2' class='befAf'>$presMedRow[7]</div>
-            <div class='c-12 c-m-2' class='dura'>$presMedRow[8]</div>
+            <div class='c-12 c-m-2' class='timePd'>".formatTimes($presMedRow[6])."</div>
+            <div class='c-12 c-m-2' class='befAf'>".formatBeforeAfter($presMedRow[7])."</div>
+            <div class='c-12 c-m-2' class='dura'>".formatDuration($presMedRow[8])."</div>
             <div class='c-12 c-m-1'></div>
             </div>";
             $docName=$presMedRow[0]." ".$presMedRow[1];
@@ -286,11 +281,16 @@ function getPresDataTable()
 }
 function formatTimes($t)
 {
-    if($t==1)
+    $t=explode(" ",$t);
+    if($t[0]==1 && $t[1]=="m")
+    {
+        return "1 (Morning)";
+    }
+    else if($t[0]==1 && $t[1]=="n")
     {
         return "1 (Night)";
     }
-    else if($t==2)
+    else if($t[0]==2)
     {
         return "2 (Morning & Night)";
     }

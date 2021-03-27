@@ -113,13 +113,19 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                     <div class="c-12 c-l-3">
                         <select class="input-field medData disable" style="width:49%; display:inline;" name="amountPTime" id="amountPTime" placeholder="Amount Per Time">
                             <option value="" disabled selected>Amount Per Time</option>
-                            <option value="1">1</option>
-                            <option value="1.5">1 1/2</option>
-                            <option value="2">2</option>
+                            <option value="2.5 ml">2.5 ml</option>
+                            <option value="5 ml">5 ml</option>
+                            <option value="7.5 ml">7.5 ml</option>
+                            <option value="1 tab">1 tab</option>
+                            <option value="1/2 tab">1/2 tab</option>
+                            <option value="1 1/2 tab">1 1/2 tab</option>
+                            <option value="2 tab">2 tab</option>
+                            <option value="3 tab">3 tab</option>
                         </select>
                         <select class="input-field medData disable" style="width:49%; display:inline;" name="timesPDay" id="timesPDay" placeholder="Times Per Day">
                             <option value="" disabled selected>Times Per Day</option>
-                            <option value="1">1 (Night)</option>
+                            <option value="1 m">1 (Morning)</option>
+                            <option value="1 n">1 (Night)</option>
                             <option value="2">2 (Morning & Night)</option>
                             <option value="3">3</option>
                         </select>
@@ -133,12 +139,13 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                         </select>
                         <select class="input-field medData disable"  style="width:49%; display:inline;" name="duration" id="duration" placeholder="Duration">
                             <option value="" disabled selected>Duration</option>
+                            <option value="2 d">2 Day(s)</option>
+                            <option value="3 d">3 Day(s)</option>
                             <option value="5 d">5 Day(s)</option>
-                            <option value="6 d">6 Day(s)</option>
                             <option value="1 w">1 Week(s)</option>
                             <option value="2 w">2 Week(s)</option>
-                            <option value="3 w">3 Week(s)</option>
-                            <option value="4 w">4 Week(s)</option>
+                            <option value="1 w">1 Month(s)</option>
+                            <option value="2 m">2 Month(s)</option>
                         </select>
                     </div>
                     <div class="c-12 c-l-3">
