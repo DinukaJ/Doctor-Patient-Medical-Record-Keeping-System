@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 21, 2021 at 10:25 AM
+-- Generation Time: Mar 28, 2021 at 06:25 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -461,7 +461,8 @@ INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`
 ('doc-1', 'p-8', 7, '2021-03-21', 'Test Note', 1),
 ('doc-1', 'p-1', 10, '2021-03-21', '', 1),
 ('doc-1', 'p-1', 11, '2021-03-21', 'Test Note', 0),
-('doc-1', 'p-1', 12, '2021-03-21', '', -1);
+('doc-1', 'p-8', 12, '2021-03-21', '', 0),
+('doc-1', 'p-6', 13, '2021-03-27', 'Test Note', 0);
 
 -- --------------------------------------------------------
 
@@ -474,10 +475,10 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   `pres_ID` int(11) NOT NULL,
   `med_ID` int(11) NOT NULL,
   `medType_ID` varchar(10) NOT NULL,
-  `amtPerTime` float NOT NULL,
-  `timesPerDay` int(1) NOT NULL,
-  `beforeAfter` char(20) NOT NULL,
-  `duration` varchar(15) NOT NULL,
+  `amtPerTime` char(10) NOT NULL,
+  `timesPerDay` char(10) NOT NULL,
+  `beforeAfter` char(10) NOT NULL,
+  `duration` char(10) NOT NULL,
   PRIMARY KEY (`pres_ID`,`med_ID`,`medType_ID`),
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
@@ -488,12 +489,19 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
 --
 
 INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(7, 24, '200mg', 1, 1, 'a', '5 d'),
-(7, 28, '25mg', 2, 2, 'b', '1 w'),
-(10, 24, '200mg', 1, 1, 'a', '5 d'),
-(11, 25, '250mg', 1.5, 1, 'a', '5 d'),
-(11, 27, '150mg', 1, 2, 'a', '5 d'),
-(12, 25, '250mg', 1.5, 1, 'a', '5 d');
+(7, 24, '200mg', '1', '1', 'a', '5 d'),
+(7, 28, '25mg', '2', '2', 'b', '1 w'),
+(10, 24, '200mg', '1', '1', 'a', '5 d'),
+(11, 25, '250mg', '1.5', '1', 'a', '5 d'),
+(11, 27, '150mg', '1', '2', 'a', '5 d'),
+(12, 24, '200mg', '1', '1', 'a', '5 d'),
+(12, 27, '150mg', '2', '3', 'b', '4 w'),
+(12, 28, '25mg', '1.5', '3', 'a', '1 w'),
+(12, 29, '300mg', '1.5', '2', 'b', '6 d'),
+(13, 24, '200mg', '1/2 tab', '1 n', 'a', '2 d'),
+(13, 27, '150mg', '2 tab', '2', 'b', '3 d'),
+(13, 28, '25mg', '3 tab', '3', 'a', '1 w'),
+(13, 29, '300mg', '1 1/2 tab', '3', 'c', '2 m');
 
 --
 -- Constraints for dumped tables
