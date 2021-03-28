@@ -220,7 +220,7 @@ function setBillDataModal(id)
     });
 }
 
-function getChart(year,cType)
+function getChart(year,cType,id)
 {
     $(".chartjs-size-monitor").remove();
     $("#myChart").html("");
@@ -228,7 +228,7 @@ function getChart(year,cType)
     $.ajax({
         url:"../handlers/billHandler.php",
         method:"POST",
-        data:{type:"getChart",year:year,cType:cType},
+        data:{type:"getChart",year:year,cType:cType,docId:id},
         dataType:'json',
         success:function(data){
             if(cType=="all")
@@ -301,16 +301,3 @@ function getChart(year,cType)
         }
     });
 }
-
-$("#allAmountsChart").click(function(){
-    year=$("#selectMonth").val();
-    year=year.split("-")[0];
-    $("#allAmountsChart").addClass("active");
-    $("#doctorChargesChart").removeClass("active");
-    getChart(year,"all");
-});
-$("#doctorChargesChart").click(function(){
-    $("#doctorChargesChart").addClass("active");
-    $("#allAmountsChart").removeClass("active");
-    getChart(year,"docCharge");
-});

@@ -63,16 +63,16 @@ class bill
         return $data;
     }
 
-    public function getChart($year,$cType)
+    public function getChart($year,$cType,$docId)
     {
         $db=new Database();
         if($cType=="all")
         {
-            $data=$db->getData("select sum(amount), MONTH(doi) from bill where YEAR(doi)='$year' group by MONTH(doi)");
+            $data=$db->getData("select sum(b.amount), MONTH(b.doi) from bill b join prescriptions p on b.presId=p.id where YEAR(b.doi)='$year' and p.docId='$docId' group by MONTH(b.doi)");
         }
         else if($cType=="docCharge")
         {
-            $data=$db->getData("select sum(docCharge), MONTH(doi) from bill where YEAR(doi)='$year' group by MONTH(doi)");
+            $data=$db->getData("select sum(b.docCharge), MONTH(b.doi) from bill b join prescriptions p on b.presId=p.id where YEAR(b.doi)='$year' and p.docId='$docId' group by MONTH(b.doi)");
         }
         return $data;
     }

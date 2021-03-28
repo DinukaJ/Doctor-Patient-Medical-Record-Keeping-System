@@ -222,8 +222,9 @@ echo"<input type='hidden' value='$docid' id='docID'>";
         var year="<?php echo date('Y')?>";
         var docType="<?php echo $doctor->getDocType();?>";
         var docId="<?php echo $docid;?>";
+
         getBillData(docType,docId,"");
-        getChart(year,"all");
+        getChart(year,"all",docId);
         $("#selectMonth").change(function(){
             val=$(this).val();
             val=val.split("-");
@@ -235,6 +236,19 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                 $("#doctorChargesChart").removeClass("active");
             }
             getBillData(docType,docId,$(this).val());
+        });
+
+        $("#allAmountsChart").click(function(){
+            year=$("#selectMonth").val();
+            year=year.split("-")[0];
+            $("#allAmountsChart").addClass("active");
+            $("#doctorChargesChart").removeClass("active");
+            getChart(year,"all",docId);
+        });
+        $("#doctorChargesChart").click(function(){
+            $("#doctorChargesChart").addClass("active");
+            $("#allAmountsChart").removeClass("active");
+            getChart(year,"docCharge",docId);
         });
     </script>
 </body>
