@@ -182,11 +182,11 @@ function getPatientPresIn(){
     //   </div>";
         while($presRow=mysqli_fetch_array($presData)){
             $output.= "<div class='row patientDataRow'>
-            <div class='c-12 c-l-3' class='presId' style='text-align:center'>$presRow[4]</div>
-            <div class='c-12 c-l-4' class='docName' id='docNameF'>$presRow[9] $presRow[10]</div>
-            <div class='c-12 c-l-2'>$presRow[8]</div>
-            <div class='c-3 c-l-2'>$presRow[5]</div>
-            <div class='c-12 c-l-1'>
+            <div class='c-3 c-m-3' class='presId' style='text-align:center'>$presRow[4]</div>
+            <div class='c-4 c-m-4' class='docName' id='docNameF'>$presRow[9] $presRow[10]</div>
+            <div class='c-2'>$presRow[8]</div>
+            <div class='c-3 c-m-2'>$presRow[5]</div>
+            <div class='c-12 c-m-1'>
                 <button type='button' class='btn btnPatientView viewPres' name='viewPres' patName='$presRow[0] $presRow[1]' presId='$presRow[4]' patId='$presRow[3]' day='$presRow[5]' docName='$presRow[9] $presRow[10]' note='$presRow[11]' id='viewPres-$presRow[2]'>View</button>
             </div>
       </div>";

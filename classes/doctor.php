@@ -35,30 +35,31 @@ class doctor extends users
     {   
         $db=new Database();
         $passEncry=sha1($pass);
-        $ifExist=$db->getData("select * from doctor where email='$email' and status=1");
-        if(mysqli_num_rows($ifExist)>0)
+        $verifyToken="";
+        $verifyStatus=0; //1-> Verified; -1->Not Verified; -2->Reset Password; 0->No Email
+        if($email!="")
         {
-            return -1;
-        }
-        else
-        {
-            $verifyToken="";
-            $verifyStatus=0; //1-> Verified; -1->Not Verified; -2->Reset Password; 0->No Email
-            if($email!="")
+            $ifExist=$db->getData("select * from doctor where email='$email' and status=1");
+            if(mysqli_num_rows($ifExist)>0)
+            {
+                return -1;
+            }
+            else
             {
                 $verifyToken=getToken(30);
                 $verifyStatus=-1;
                 $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=doc&tk=$verifyToken&email=$email";
                 sendActiveReset($fname, $email, $link, 0);
             }
-            return $db->insert_update_delete("insert into doctor values('$id','$fname','$lname','$phone','$email','$passEncry','','$type','$verifyToken',$verifyStatus)");
         }
+        return $db->insert_update_delete("insert into doctor values('$id','$fname','$lname','$phone','$email','$passEncry','','$type','$verifyToken','$verifyStatus','1')");
+       
     }
     public function updateDoctor($id,$fname,$lname,$phone,$email,$pass)
     {   
         $db=new Database();
         $db->insert_update_delete("delete from docusualdays where docId='$id'");
-        $docData=$this->getDoc($id);
+        $docData=$this->getDoctorData($id);
         $docData=mysqli_fetch_assoc($docData);
         $docEmail=$docData["email"];
         $docVerifyStatus=$docData["verifyStatus"];
@@ -108,11 +109,11 @@ class doctor extends users
     {
         return $this->getFName();
     }
-    public function getDoc($docId){
-        $db= new Database();
-        $data = $db->getData("select * from doctor where id='$docId'");
-        return $data;
-    }
+    // public function getDoc($docId){
+    //     $db= new Database();
+    //     $data = $db->getData("select * from doctor where id='$docId'");
+    //     return $data;
+    // }
     public function getDoctorData($id)
     {
         $db=new Database();
@@ -176,12 +177,12 @@ class doctor extends users
     public function getDoctorList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname from doctor where id like '%$search%' or fname like '%$search%' or lname like '%$search%'");
+        return $db->getData("select id,fname,lname from doctor where (id like '%$search%' or fname like '%$search%' or lname like '%$search%') and status=1");
     } 
     public function getDoctorListPatient($name,$spec)
     {
         $db=new Database();
-        return $db->getData("select DISTINCT d.* from doctor d join docspeciality ds on d.id=ds.docId where (d.fname like '$name%' or d.lname like '$name%') and ds.speciality like '%$spec%'");
+        return $db->getData("select DISTINCT d.* from doctor d join docspeciality ds on d.id=ds.docId where (d.fname like '$name%' or d.lname like '$name%') and ds.speciality like '%$spec%' and status=1");
     }
     public function addSpecDay($id,$specDate,$stat)
     {
@@ -205,6 +206,11 @@ class doctor extends users
     {
         $db=new Database();
         return $db->insert_update_delete("delete from docspecialdays where docId='$id' and date='$specDate'");
+    }
+    public function delDoc($id)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("update doctor set status=0 where id='$id'");
     }
 }
 ?>

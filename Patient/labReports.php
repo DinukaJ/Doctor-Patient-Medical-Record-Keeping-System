@@ -40,7 +40,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 <div class="upperPart">
                 <div class="upperFirst row">
                         <div class="c-l-12">
-                        <h1 style="margin-top:5px">Lab Reports</h1>
+                        <button class="menuBtn" id="menuBtn"><i class="fas fa-bars"></i></button><h1 style="margin-top:5px;display:inline;">Lab Reports</h1>
                         </div>
                     </div>
                    <div class="upperFirst row">  
@@ -62,26 +62,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 </div>
 
                 <!--Adding Reports-->
-                <div id="reportInfo"></div>
-
-                <?php
-                // $res=$patient->getPatients();
-                // $i=1;
-                // while($row=mysqli_fetch_assoc($res))
-                // {
-                //     echo '
-                //     <div class="row patientDataRow">
-                //         <div class="c-11">
-                //             '.$i.'. '.$row['fname'].' '.$row['lname'].'
-                //         </div>
-                //         <div class="c-1">
-                //             <button type="submit" class="btn btnPatientView" name="viewPatient" id="viewPatient">View</button>
-                //         </div>
-                //     </div>
-                //     ';
-                //     $i++;
-                // }
-                ?>           
+                <div id="reportInfo"></div>          
             </div>
         </div>
     </div>
@@ -108,11 +89,11 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
         </div>
         <div class="c-12" style="padding-left:0px; padding-right:0px;">
             <div class="row addMedicineRow" style="padding:5px; margin-left:0px; margin-right:0px;">
-                <div class="c-4">
+                <div class="c-4 c-m-4">
                     <center><b>Report ID: <span id="reportNo"></span></b></center>
                 </div>
-                <div class="c-4"></div>
-                <div class="c-4">
+                <div class="c-0 c-m-4"></div>
+                <div class="c-6 c-m-4">
                     <center><b>Date: <span id="reportDate"></span></b></center>
                 </div>
             </div>

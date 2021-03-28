@@ -37,6 +37,8 @@ if(isset($_POST["type"]))
         removeSpecDay();
     if($_POST["type"]=="docDataModal")
         docDataModal();
+    if($_POST["type"]=="delDoc")
+        delDoc();
 }
 function getDocNewId()
 {
@@ -144,7 +146,7 @@ function searchDoctor()
                 }
             }
             $output.='
-            <div class="c-6 c-m-3">
+            <div class="c-6 c-m-3 c-l-2 docStatusCol">
                 <div class="docBox">
                     <div class="imgSection">
                         <img class="docDp" src="../images/'.$dp.'">
@@ -338,5 +340,12 @@ function docDataModal()
         }
     }
     echo json_encode(array($output1,$output2));
+}
+
+function delDoc()
+{
+    $doctor=new doctor();
+    $id=$_POST["id"];
+    echo $doctor->delDoc($id);
 }
 ?>

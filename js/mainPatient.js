@@ -239,6 +239,12 @@ $("#docNameSearch").on("keydown",function(){
         getDoctors(a,"");
     },100)
 });
+$("#docSpecSearch").on("keydown",function(){
+    setTimeout(function(){
+		a=$("#docSpecSearch").val();
+        getDoctors("",a);
+    },100)
+});
 
 function setDocDataModal(id,dp,docName,docSpec)
 {

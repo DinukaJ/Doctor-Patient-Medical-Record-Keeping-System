@@ -103,11 +103,70 @@ body{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-@media (max-width:767px){
+.mobileMenu{
+    display: none;
+}
+.menuBtn{
+    display: none;
+    background-color: white;
+    border:1px solid #5cc8b1;
+    color: #5cc8b1;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.closeButtonRow{
+    display: none;
+}
+.sideNavClose{
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.docBox .textSection .docName{
+    line-height: 15px;
+    margin-top: 0px;
+}
+@media (max-width:768px){
     .sidePanel.c-12{
-        width: 0px !important;
+        position: absolute;
+        z-index: 10;
+        left:-800px;
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .sidePanelCont{
+        width:85%;
+        height: 100%;
         position: absolute;
         left:-700px;
+        background-color: #c9e8e2;
+        transition: 0.5s;
+    }
+    .mobileMenu{
+        display: block;
+        background-color:#c9e8e2;
+        padding: 10px;
+    }
+    .menuBtn{
+        display:inline;
+        margin-top: 30px;
+    }
+    .sideNavClose{
+        display: block;
+        position: absolute;
+        right: 10px;
+    }
+    .closeButtonRow{
+        display: block;
+        text-align: right;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+    }
+    .docStatus{
+        height: 200px !important;
     }
 }
 .lightHr{
@@ -681,6 +740,13 @@ body{
     border: 1px solid #ced4da;
     color: #495057;
   }
+  .docStatusCol{
+      padding-left:0px !important;
+      padding-right:0px !important ;
+  }
+  #docSpecModal{
+      line-height: 20px;
+  }
   .docBox{
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
@@ -701,6 +767,31 @@ body{
       padding: 10px;
       line-height: 10px;
   }
+  .docSpec{
+      white-space: nowrap;
+      overflow: hidden;
+      padding-top: 2px;
+      padding-bottom: 4px;
+      margin-left: auto;
+      margin-right: auto;
+      text-overflow: ellipsis;
+      max-width: fit-content;
+      text-align: center;
+  }
+  .repCmt{
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    text-overflow: ellipsis;
+    max-width: fit-content;
+    text-align: center;
+  }
+  #modalUpdateDet{
+      z-index: 1000;
+  }
   .imgSection img, .docData img{
     width:100px;
     height:100px;
@@ -710,6 +801,9 @@ body{
   .docData{
       text-align: center;
       line-height: 15px;
+  }
+  #docData{
+      padding-left: 25px;
   }
   .viewDocDates{
       color:#50ac98;
@@ -825,6 +919,11 @@ body{
     flex: 0 0 auto;
     width: auto;
     max-width: 100%;
+}
+.c-0 {
+    -ms-flex: 0 0 0%;
+    flex: 0 0 0%;
+    max-width: 0%;
 }
 .c-1 {
     -ms-flex: 0 0 8.333333%;

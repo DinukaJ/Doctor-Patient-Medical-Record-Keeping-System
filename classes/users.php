@@ -59,7 +59,7 @@ class users{
         $passEncry=sha1($password);
         if($type=="patient")
         {
-            $isPat=$db->getData("select * from patient where (id='$username' OR email='$username') and password='$passEncry'");//Pat#123
+            $isPat=$db->getData("select * from patient where (id='$username' OR email='$username') and password='$passEncry' and status=1");//Pat#123
             if(mysqli_num_rows($isPat))
             {
                 $user=new patient($isPat);
@@ -69,7 +69,7 @@ class users{
         }
         else if($type=="admin")
         {
-            $isDoc=$db->getData("select * from doctor where (id='$username' OR email='$username') and password='$passEncry'"); //Doc#123
+            $isDoc=$db->getData("select * from doctor where (id='$username' OR email='$username') and password='$passEncry' and status=1"); //Doc#123
         
             if(mysqli_num_rows($isDoc))
             {

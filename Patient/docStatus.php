@@ -37,26 +37,21 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
             <?php getSideNav("docStatus")?>
 
             <div class="c-12 c-l-10" style="padding-left:0px; padding-right:0px;">
-                <div class="upperPart">
+                <div class="upperPart docStatus">
                 <div class="upperFirst row">
                     <div class="c-l-12">
-                    <h1 style="margin-top:5px">Doctor Status</h1>
+                    <button class="menuBtn" id="menuBtn"><i class="fas fa-bars"></i></button><h1 style="margin-top:5px;display:inline;">Doctor Status</h1>
                     </div>
                 </div>
                   <div class="upperFirst row">
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-4">
                              <div class="boxSmall wrapper">
-                                 <input class="input-field " id="docNameSearch" placeholder="Enter Doctor Name">
+                                 <input class="input-field " id="docNameSearch" style="width:100%;" placeholder="Enter Doctor Name">
                              </div>
                         </div>
-                        <div class="c-12 c-l-3">
+                        <div class="c-12 c-l-4">
                             <div class="boxSmall">
-                            <input type="date" class="input-field" >
-                            </div>
-                        </div>
-                        <div class="c-12 c-l-6">
-                            <div class="boxSmall">
-                            <input class="input-field " placeholder="Enter Speciality">
+                            <input class="input-field" id="docSpecSearch" style="width:100%;" placeholder="Enter Speciality">
                             </div>
                         </div>
                     </div>
@@ -69,7 +64,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                             </div>
                             <div class="textSection">
                                 <p>Doctor Name</p>
-                                <p>Specialty</p>
+                                <p class="docSpec">Specialty Specialty  Specialty  Specialty  Specialty </p>
                                 <a>View Dates</a>
                             </div>
                         </div>

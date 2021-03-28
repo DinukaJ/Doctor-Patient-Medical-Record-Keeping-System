@@ -14,7 +14,13 @@ function getSideNav($type)
          echo '<div class="c-12 error"><center>Please Verify the Email by Clicking the Link in the Email!</center></div>';
      }
     echo '
-    <div class="c-12 c-l-2 sidePanel">
+    <div class="c-12 c-l-2 sidePanel" id="sidePanelCont">
+     <div class="sidePanelCont">
+        <div class="row closeButtonRow">
+            <div class="c-12">
+                <button class="sideNavClose" id="sideNavClose"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
         <div class="row account2">
             <div class="c-5 dp">
                 <img src="../images/'.$dp.'" width="80%">
@@ -29,6 +35,7 @@ function getSideNav($type)
         <a href="../Patient/prescriptions.php" class="sideLink ';if($type=="prescribe"){echo 'active';} echo'">Prescriptions</a>
         <a href="../Patient/labReports.php" class="sideLink ';if($type=="labRep"){echo 'active';} echo'">Lab Reports</a>
         <a href="../Patient/docStatus.php" class="sideLink ';if($type=="docStatus"){echo 'active';} echo'">Doctor Status</a>
+    </div>
     </div>';
 
 }

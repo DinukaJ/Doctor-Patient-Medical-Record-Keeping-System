@@ -248,7 +248,6 @@ else
 
     <!-- Footer Includes -->
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
-
     <script>
         var modalDoctor=document.getElementById("docFullData");
         var modalDoctorUpdate=document.getElementById("modalUpdateDoc");
@@ -287,7 +286,7 @@ else
 
         var pId="";
         var chkCount=0;
-        //Function to open the patient data modal
+        //Function to open the Doctor data modal
         function doctorDataModal(pId)
         {
             $(".chkDay").prop("checked",false);
@@ -332,7 +331,7 @@ else
                 }
             });
         }
-        //Function to get the added patients
+        //Function to get the added Doctors
         function getDocs(serVal)
         {
             $.ajax({
@@ -502,6 +501,7 @@ else
                 setTimeout(function(){
                     $('#updateStatus').slideUp('slow');
                 },5000);
+                $("#modalUpdateDoc").animate({ scrollTop: 0 });
                 return false;
             }
             else
@@ -517,6 +517,7 @@ else
                     method:"POST",
                     data:$('#docUpForm').serialize()+"&type=upDoc",
                     success:function(data){
+                        $("#modalUpdateDoc").animate({ scrollTop: 0 });
                         $("#updateMedSave").prop("disabled",false);
                         if(data==1){
                             $('#updateStatus').addClass("success");

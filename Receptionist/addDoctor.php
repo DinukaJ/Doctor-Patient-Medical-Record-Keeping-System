@@ -180,6 +180,11 @@ if(!isset($_SESSION["user"]))
             e.preventDefault();
             var errMsg="";
             var x=0;
+            var specialties="";
+            $('.specialtyValue').each(function(i, obj) {
+                    specialties+=$(obj).html()+",";
+                });
+            specialties=specialties.slice(0, -1);
             if($('#firstName').val().match(/^[A-Za-z]+$/)==null)
             {
                 $('#firstName').addClass('errorInput');
@@ -230,6 +235,11 @@ if(!isset($_SESSION["user"]))
             {
                 $('#pass').removeClass('errorInput');
             }
+            if(specialties=="")
+            {
+                errMsg+="<br>At Least One Specialty Must be Added.";
+                x=1;
+            }
             if(chkCount==0)
             {
                 errMsg+="<br>At Least One Day Must be Selected.";
@@ -242,6 +252,7 @@ if(!isset($_SESSION["user"]))
                 $('#updateStatusInfo').addClass('error');
                 $('#updateStatusInfo').html(errMsg);
                 $('#updateStatusInfo').slideDown();
+                $("#rightScroll").animate({ scrollTop: 0 });
                 setTimeout(function(){
                     $('#updateStatusInfo').slideUp('slow');
                 },5000);
@@ -255,16 +266,12 @@ if(!isset($_SESSION["user"]))
                 $('#updateStatusInfo').html("Processing....");
                 $('#updateStatusInfo').slideDown("slow");
                 $("#patSave").prop("disabled",true);
-                var specialties="";
-                $('.specialtyValue').each(function(i, obj) {
-                    specialties+=$(obj).html()+",";
-                });
-                specialties=specialties.slice(0, -1);
                 $.ajax({
                     url:"../handlers/doctorHandler.php",
                     method:"POST",
                     data:$('#newDoc').serialize()+"&type=addDoc&special="+specialties,
                     success:function(data){
+                        $("#rightScroll").animate({ scrollTop: 0 });
                         $("#patSave").prop("disabled",false);
                         if(data==1){
                             $('#updateStatusInfo').addClass("success");

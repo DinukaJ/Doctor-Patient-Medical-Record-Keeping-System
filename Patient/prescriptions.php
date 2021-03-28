@@ -40,7 +40,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                 <div class="upperPart">
                     <div class="upperFirst row">
                         <div class="c-l-12">
-                        <h1 style="margin-top:5px">Prescriptions</h1>
+                        <button class="menuBtn" id="menuBtn"><i class="fas fa-bars"></i></button><h1 style="margin-top:5px;display:inline;">Prescriptions</h1>
                         </div>
                     </div>
                     <div class="upperFirst row">
@@ -52,8 +52,8 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                     </div>
                 </div>
                 <div class='row patientDataRow addMedicineRow'>
-                    <div class='c-3' class='medicId'>Prescription No</div>
-                    <div class='c-4' class='medicName'>Doctor Name</div>
+                    <div class='c-4 c-m-3' class='medicId'>Prescription ID</div>
+                    <div class='c-3 c-m-4' class='medicName'>Doctor Name</div>
                     <div class='c-2' class='medicQty'>Item Count</div>
                     <div class='c-2' class='medicQty'>Date</div>
                     <div class='c-1'>

@@ -48,7 +48,17 @@ else
                 }
                 ?>
                 </h1>
-                <a href="login.php"><button type="button" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button></a>
+                <?php
+                if($type="doc")
+                {
+                    echo '<a href="admin-login.php"><button type="button" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button></a>';
+                }
+                else
+                {
+                    echo '<a href="login.php"><button type="button" class="btn btnLogin" name="loginBtn" id="loginBtn">LOGIN</button></a>';
+                }
+                ?>
+                
             </div>
             </div>
         </div>

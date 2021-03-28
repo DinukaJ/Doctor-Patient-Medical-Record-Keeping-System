@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2021 at 06:25 AM
+-- Generation Time: Mar 28, 2021 at 07:20 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -138,7 +138,10 @@ CREATE TABLE IF NOT EXISTS `docspeciality` (
 
 INSERT INTO `docspeciality` (`docId`, `speciality`) VALUES
 ('doc-1', 'Eye'),
-('doc-1', 'Normal');
+('doc-1', 'Normal'),
+('doc-2', 'Allergists/Immunologists'),
+('doc-2', 'Cardiologists'),
+('doc-2', 'Colon and Rectal Surgeons');
 
 -- --------------------------------------------------------
 
@@ -158,6 +161,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `type` int(11) NOT NULL DEFAULT '0',
   `token` text,
   `verifyStatus` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -165,8 +169,9 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`) VALUES
-('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0);
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`, `status`) VALUES
+('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0, 1),
+('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, 'CExX3OPXS5pl5tSZUNlcJ490LzWGCI', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -197,8 +202,10 @@ INSERT INTO `docusualdays` (`docId`, `day`) VALUES
 ('doc-1', 'Thursday'),
 ('doc-1', 'Tuesday'),
 ('doc-1', 'Wednesday'),
+('doc-2', 'Friday'),
 ('doc-2', 'Monday'),
-('doc-2', 'Sunday');
+('doc-2', 'Sunday'),
+('doc-2', 'Wednesday');
 
 -- --------------------------------------------------------
 
