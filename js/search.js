@@ -30,7 +30,7 @@ ser.addEventListener("keydown", function(e){
 	}
 	else if(e.keyCode==38 && count.value!=0){
 		//Up Arrow
-		if(curr==1)
+		if(curr==1 || curr==0)
 		{
 			curr=count.value;
 		}

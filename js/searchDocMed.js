@@ -1,7 +1,7 @@
 var curr=0;
 var serMed=document.getElementById("medicineCode");
 
-var count=document.getElementById("secount");
+var count=document.getElementById("secountMed");
 
 var val="";
 var entered=false;

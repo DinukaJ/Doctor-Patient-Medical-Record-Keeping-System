@@ -70,31 +70,6 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                             <button type="button" class="btn btnAddPres medData disable viewPatientPrescription" style="margin-top:18px;" name="viewPatientPrescription" id="viewPatientPrescription"><i class="fas fa-prescription-bottle"></i> View Prescriptions</button>
                             <button type="button" class="btn btnAddPres medData disable viewPatientReport" style="margin-top:18px;" name="viewPatientReports" id="viewPatientReports"><i class="fas fa-file-medical-alt"></i> View Reports</button>
                         </div>
-                        <!-- <div class="c-12 c-l-3">
-                            <div class="box">
-                                <ul>
-                                    <li class="title">Recent Prescriptions</li>
-                                    <a><li class="upperClick">Prescription 5</li></a>
-                                    <a><li class="upperClick">Prescription 4</li></a>
-                                    <a><li class="upperClick">Prescription 3</li></a>
-                                    <a><li class="upperClick">Prescription 2</li></a>
-                                    <a><li class="upperClick">Prescription 1</li></a>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="c-12 c-l-3">
-
-                            <div class="box">
-                                <ul>
-                                    <li class="title">Recent Reports</li>
-                                    <a><li class="upperClick">Report 5</li></a>
-                                    <a><li class="upperClick">Report 4</li></a>
-                                    <a><li class="upperClick">Report 3</li></a>
-                                    <a><li class="upperClick">Report 2</li></a>
-                                    <a><li class="upperClick">Report 1</li></a>
-                                </ul>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="row patientDataRow addMedicineRow">
@@ -106,7 +81,7 @@ echo"<input type='hidden' value='$docid' id='docID'>";
                                 <div class='row c-12  searchr se2'>$row[0]</div>
                                 <div class='row c-12  searchr se3'>$row[0]</div>
                                 <div class='row c-12  searchr se4'>$row[0]</div> -->
-                                <input type='hidden' id='secount' value='0'>
+                                <input type='hidden' id='secountMed' value='0'>
                             </div>
                         </div>
                     </div>
@@ -438,7 +413,15 @@ echo"<input type='hidden' value='$docid' id='docID'>";
             
             //Action to perform when add med button clicked
             $("#addToPres").click(function(){
-                addMedicinePrescription();
+                if($("#medicineCode").val()=="" || $("#amountPTime").val()==null || $("#timesPDay").val()==null || $("#ABMeal").val()==null || $("#duration").val()==null)
+                {
+                    alert("Please Fill in Data");
+                }
+                else
+                {
+                    addMedicinePrescription();
+                }
+                
             });
 
             //Handle Cancel Button Operation
