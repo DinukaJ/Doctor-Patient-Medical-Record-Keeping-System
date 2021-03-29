@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2021 at 07:20 PM
+-- Generation Time: Mar 29, 2021 at 08:38 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -40,14 +40,6 @@ CREATE TABLE IF NOT EXISTS `bill` (
   KEY `presId` (`presId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`, `type`) VALUES
-(7, 4, '2021-03-21', '1332.50', '600.00', 'pres'),
-(10, 5, '2021-03-21', '772.50', '600.00', 'pres');
-
 -- --------------------------------------------------------
 
 --
@@ -63,15 +55,6 @@ CREATE TABLE IF NOT EXISTS `billitems` (
   `totPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`billId`,`medId`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `billitems`
---
-
-INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
-(5, 24, '200mg', 5, '172.50'),
-(4, 28, '25mg', 28, '560.00'),
-(4, 24, '200mg', 5, '172.50');
 
 -- --------------------------------------------------------
 
@@ -171,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 
 INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`, `status`) VALUES
 ('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0, 1),
-('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, 'CExX3OPXS5pl5tSZUNlcJ490LzWGCI', 1, 1);
+('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -405,7 +388,8 @@ INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `ag
 ('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0),
 ('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0),
 ('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '084ee8fcabcef7b546229990cf8b09c79443bb3e', 18, 'test', '', 1, '95rLlB5IHrXSqjVZ2cL0YfVOtVfP4O', -1),
-('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1);
+('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1),
+('p-9', 'Namal', 'Silva', '0772905236', 'khdhyansachintha@gmail.com', '94848fcead0d270b0c49b9c171271063f4786926', 52, '', '', 0, 'c3uSA0Y0V9mvlWUxCl9mKvNs8UiC59', -1);
 
 -- --------------------------------------------------------
 
@@ -460,17 +444,6 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   KEY `patientId` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
-('doc-1', 'p-8', 7, '2021-03-21', 'Test Note', 1),
-('doc-1', 'p-1', 10, '2021-03-21', '', 1),
-('doc-1', 'p-1', 11, '2021-03-21', 'Test Note', 0),
-('doc-1', 'p-8', 12, '2021-03-21', '', 0),
-('doc-1', 'p-6', 13, '2021-03-27', 'Test Note', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -490,25 +463,6 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `prescription_medicine`
---
-
-INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(7, 24, '200mg', '1', '1', 'a', '5 d'),
-(7, 28, '25mg', '2', '2', 'b', '1 w'),
-(10, 24, '200mg', '1', '1', 'a', '5 d'),
-(11, 25, '250mg', '1.5', '1', 'a', '5 d'),
-(11, 27, '150mg', '1', '2', 'a', '5 d'),
-(12, 24, '200mg', '1', '1', 'a', '5 d'),
-(12, 27, '150mg', '2', '3', 'b', '4 w'),
-(12, 28, '25mg', '1.5', '3', 'a', '1 w'),
-(12, 29, '300mg', '1.5', '2', 'b', '6 d'),
-(13, 24, '200mg', '1/2 tab', '1 n', 'a', '2 d'),
-(13, 27, '150mg', '2 tab', '2', 'b', '3 d'),
-(13, 28, '25mg', '3 tab', '3', 'a', '1 w'),
-(13, 29, '300mg', '1 1/2 tab', '3', 'c', '2 m');
 
 --
 -- Constraints for dumped tables
