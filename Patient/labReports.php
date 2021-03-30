@@ -112,7 +112,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                         </tr>
                     </table>
                     <table id="patReportData" style="width:100%; font-size:0.8em !important;" class="presTable" id="reportTable">
-         
+<!--          
                         <tr>
                             <td style="width:30%; text-align:center;">1</td>
                             <td style="width:30%; text-align:center;">Med Name</td>
@@ -122,7 +122,7 @@ echo"<input type='hidden' value='$patId' id='patientID'>";
                             <td style="width:30%; text-align:center;">1</td>
                             <td style="width:30%; text-align:center;">Med Name</td>
                             <td style="width:30%; text-align:center;">5</td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>  
