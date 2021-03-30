@@ -101,7 +101,7 @@ class prescription
     public function getTodayPres()
     {
         $db = new Database();
-        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname, pres.note from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId where pres.doi=CURDATE() AND pres.status=-1 group by presM.pres_ID");
+        $data = $db->getData("select p.fname,p.lname,pres.*,COUNT(presM.pres_ID), d.fname,d.lname, pres.note from patient p join prescriptions pres on p.id=pres.patientId join prescription_medicine presM on pres.id = presM.pres_ID join doctor d on d.id=pres.docId where pres.doi=CURDATE() AND pres.status=0 group by presM.pres_ID");
         return $data;
     }
 
