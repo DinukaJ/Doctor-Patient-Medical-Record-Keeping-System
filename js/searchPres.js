@@ -129,9 +129,9 @@ function putPresData(btn){
     data:{type:'getTodayPresMed',id:id},
     success:function(data){
         $("#presVals").html(data);
-        $("#presId").html(id);
-        $("#docName").html(docName);
-        $("#patName").html(patName);
+        $(".presId").html(id);
+        $(".docName").html(docName);
+        $(".patName").html(patName);
         $(".doi").html(day);
         open(modalViewPres);
         //Create the bill
