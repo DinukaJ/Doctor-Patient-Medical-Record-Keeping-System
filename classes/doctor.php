@@ -29,7 +29,7 @@ class doctor extends users
     public function getNewId()
     {
         $db=new Database();
-        return $db->getData("select id from doctor order by id desc limit 1");
+        return $db->getData("select id from doctor order by addedDate desc limit 1");
     }
     public function addDoctor($id,$fname,$lname,$phone,$email,$pass,$type)
     {   
@@ -52,7 +52,7 @@ class doctor extends users
                 sendActiveReset($fname, $email, $link, 0);
             }
         }
-        return $db->insert_update_delete("insert into doctor values('$id','$fname','$lname','$phone','$email','$passEncry','','$type','$verifyToken','$verifyStatus','1')");
+        return $db->insert_update_delete("insert into doctor (id,fname,lname,phone,email,password,dp,type,token,verifyStatus,status,addedDate) values('$id','$fname','$lname','$phone','$email','$passEncry','','$type','$verifyToken','$verifyStatus','1')");
        
     }
     public function updateDoctor($id,$fname,$lname,$phone,$email,$pass)
@@ -177,7 +177,7 @@ class doctor extends users
     public function getDoctorList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname from doctor where (id like '%$search%' or fname like '%$search%' or lname like '%$search%') and status=1");
+        return $db->getData("select id,fname,lname from doctor where (id like '%$search%' or fname like '%$search%' or lname like '%$search%') and status=1 order by addedDate");
     } 
     public function getDoctorListPatient($name,$spec)
     {

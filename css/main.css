@@ -519,6 +519,10 @@ body{
     width: 100%;
     height:40px
 }
+#medInfo, #presData, #presInfo{
+    overflow-y: scroll;
+    max-height: 68vh;
+}
 .btnAddPres:hover,.btnAddPres:focus{
     background-color: white;
     color: #5cc8b1;

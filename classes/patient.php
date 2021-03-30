@@ -17,7 +17,7 @@ class patient extends users
     public function getNewId()
     {
         $db=new Database();
-        return $db->getData("select id from patient order by id desc limit 1");
+        return $db->getData("select id from patient order by addedDate desc limit 1");
     }
     public function addPatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address,$status)
     {   
@@ -39,7 +39,7 @@ class patient extends users
                 $link="http://localhost/GroupProjectUCSC/Doctor-Patient-Medical-Record-Keeping-System/emailConfirm.php?type=pat&tk=$verifyToken&email=$email";
                 sendActiveReset($fname, $email, $link, 0);
             }
-            return $db->insert_update_delete("insert into patient values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','',$status,'$verifyToken',$verifyStatus)");
+            return $db->insert_update_delete("insert into patient (id,fname,lname,phone,email,password,age,address,dp,status,token,verifyStatus) values('$pid','$fname','$lname','$phone','$email','$passEncry','$age','$address','',$status,'$verifyToken','$verifyStatus')");
         }
     }
     public function updatePatient($pid,$fname,$lname,$phone,$age,$email,$pass,$address)
@@ -89,7 +89,7 @@ class patient extends users
     public function getPatients()
     {
         $db=new Database();
-        return $db->getData("select * from patient where status=1");
+        return $db->getData("select * from patient where status=1 order by addedDate");
     }
     public function getTotalPatients()
     {
@@ -157,7 +157,7 @@ class patient extends users
     public function getPatientsList($search)
     {
         $db=new Database();
-        return $db->getData("select id,fname,lname,age from patient where status=1 and (id like '%$search%' or fname like '%$search%' or lname like '%$search%')");
+        return $db->getData("select id,fname,lname,age from patient where status=1 and (id like '%$search%' or fname like '%$search%' or lname like '%$search%') order by addedDate");
     }   
     public function updatePatient_Allergy_IN($patID,$allergy,$IN)
     {

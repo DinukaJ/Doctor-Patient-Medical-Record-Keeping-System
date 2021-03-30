@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2021 at 08:38 AM
+-- Generation Time: Mar 30, 2021 at 04:57 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `type` char(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `token` text,
   `verifyStatus` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
+  `addedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -152,9 +153,9 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`, `status`) VALUES
-('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0, 1),
-('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, '', 1, 1);
+INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`, `status`, `addedDate`) VALUES
+('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0, 1, '2021-03-30 16:55:35'),
+('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, '', 1, 1, '2021-03-30 16:55:36');
 
 -- --------------------------------------------------------
 
@@ -310,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `medicine` (
   `name` varchar(20) NOT NULL,
   `shortCode` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `medicine`
@@ -322,7 +323,11 @@ INSERT INTO `medicine` (`id`, `name`, `shortCode`) VALUES
 (26, 'Phenytoin', 'ph-01'),
 (27, 'Lisnopril', 'lis-01'),
 (28, 'Diclofenac', 'di-01'),
-(29, 'Ranitidine', 'ran-01');
+(29, 'Ranitidine', 'ran-01'),
+(30, 'Atenolol', 'ate-01'),
+(31, 'Metaformin', 'met-01'),
+(32, 'Omeprazole', 'om-01'),
+(33, 'Frusemide', 'fru-01');
 
 -- --------------------------------------------------------
 
@@ -351,7 +356,11 @@ INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (26, '100mg', '50.00', 500, 1),
 (27, '150mg', '12.00', 1500, 1),
 (28, '25mg', '20.00', 1416, 1),
-(29, '300mg', '30.00', 1968, 1);
+(29, '300mg', '30.00', 1968, 1),
+(30, '150mg', '100.00', 2500, 1),
+(31, '250mg', '50.00', 2400, 1),
+(32, '300mg', '25.00', 1000, 1),
+(33, '50mg', '23.00', 2100, 1);
 
 -- --------------------------------------------------------
 
@@ -373,6 +382,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `status` int(11) NOT NULL DEFAULT '1',
   `token` text,
   `verifyStatus` int(11) DEFAULT NULL,
+  `addedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -380,16 +390,17 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `dp`, `status`, `token`, `verifyStatus`) VALUES
-('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'c4a1e9ab9701149995d64bc94a8cac2b1a0ed8f7', 25, '12/21,Seeduwa', NULL, 1, '', 0),
-('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0, '', 0),
-('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1, '', 0),
-('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1, '', 0),
-('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0),
-('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0),
-('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '084ee8fcabcef7b546229990cf8b09c79443bb3e', 18, 'test', '', 1, '95rLlB5IHrXSqjVZ2cL0YfVOtVfP4O', -1),
-('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1),
-('p-9', 'Namal', 'Silva', '0772905236', 'khdhyansachintha@gmail.com', '94848fcead0d270b0c49b9c171271063f4786926', 52, '', '', 0, 'c3uSA0Y0V9mvlWUxCl9mKvNs8UiC59', -1);
+INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `dp`, `status`, `token`, `verifyStatus`, `addedDate`) VALUES
+('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'c4a1e9ab9701149995d64bc94a8cac2b1a0ed8f7', 25, '12/21,Seeduwa', NULL, 1, '', 0, '2021-03-30 16:45:10'),
+('p-10', 'Kiaan', 'Fernando', '0775642213', 'kian@gmail.com', '3e19453fe92a93a8b4c1e199b40ad2e478649c77', 23, '23/1, jaya Road, Colombo', '', 1, 'gF7zOtR5nRJ2ODAv6ID75m4Vv9nuuf', -1, '2021-03-30 16:53:37'),
+('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0, '', 0, '2021-03-30 16:45:10'),
+('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1, '', 0, '2021-03-30 16:45:10'),
+('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1, '', 0, '2021-03-30 16:45:10'),
+('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0, '2021-03-30 16:45:10'),
+('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0, '2021-03-30 16:45:10'),
+('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '084ee8fcabcef7b546229990cf8b09c79443bb3e', 18, 'test', '', 1, '95rLlB5IHrXSqjVZ2cL0YfVOtVfP4O', -1, '2021-03-30 16:45:10'),
+('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1, '2021-03-30 16:45:10'),
+('p-9', 'Namal', 'Silva', '0772905236', 'khdhyansachintha@gmail.com', '94848fcead0d270b0c49b9c171271063f4786926', 52, '', '', 0, 'c3uSA0Y0V9mvlWUxCl9mKvNs8UiC59', -1, '2021-03-30 16:45:15');
 
 -- --------------------------------------------------------
 
@@ -444,6 +455,16 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   KEY `patientId` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
+('doc-2', 'p-8', 1, '2021-03-29', '', -1),
+('doc-2', 'p-6', 2, '2021-03-29', '', -1),
+('doc-2', 'p-6', 3, '2021-03-29', '', 0),
+('doc-1', 'p-6', 4, '2021-03-30', '', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -463,6 +484,17 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
   KEY `med_ID` (`med_ID`),
   KEY `pres_ID` (`pres_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescription_medicine`
+--
+
+INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
+(2, 26, '100mg', '5 ml', '', '', ''),
+(3, 25, '250mg', '5 ml', '1 n', 'a', '3 d'),
+(3, 28, '25mg', '7.5 ml', '1 n', 'a', '2 d'),
+(4, 25, '250mg', '2.5 ml', '1 n', 'a', '2 d'),
+(4, 28, '25mg', '7.5 ml', '1 n', 'a', '2 d');
 
 --
 -- Constraints for dumped tables
