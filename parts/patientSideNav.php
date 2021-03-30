@@ -23,7 +23,7 @@ function getSideNav($type)
         </div>
         <div class="row account2">
             <div class="c-5 dp">
-                <img src="../images/'.$dp.'" width="80%">
+                <img src="../images/'.$dp.'" id="dpImg" width="80%">
             </div>
             <div class="c-7 name">
                 <p class="accountName2">'.$name.'</p>
@@ -41,6 +41,12 @@ function getSideNav($type)
 }
 function getEditProfile($patient)
 {
+    $user=unserialize($_SESSION['user']);
+    $dp="acc.png";
+    if($user->getDP()!="")
+     {  
+         $dp=$user->getDP();
+     }
     echo'
     <!-- The Modal for Update User Details-->
 <div id="modalUpdateDet" class="modal modal2" style="padding-top:40px">
@@ -135,7 +141,7 @@ function getEditProfile($patient)
                     <div class="row">
                         <div class="c-12 c-m-5">
                             Select Profile Picture: <br>
-                            <img src="../images/acc.png" class="accPic" width="20%">
+                            <img src="../images/'.$dp.'" class="accPic" id="accPicPrev" width="20%">
                         </div>
                         <div class="c-12 c-m-7">
                             <input type="file" class="input-field popUpInputs" name="profilePic" id="profilePic" placeholder="" required>
@@ -146,7 +152,7 @@ function getEditProfile($patient)
                     
                         </div>
                         <div class="c-12 c-m-7">
-                            <button type="button" class="btn btnNormal btnUp" id="updatePicture">Update Picture</button>
+                            <button type="submit" class="btn btnNormal btnUp" id="updatePicture">Update Picture</button>
                         </div>
                     </div>
                     </form>

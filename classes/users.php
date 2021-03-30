@@ -183,5 +183,29 @@ class users{
             }
         }
     }
+    public function setUserSession($type, $id)
+    {
+        $db=new Database();
+        if($type=="doctor")
+        {
+            $isDoc=$db->getData("select * from doctor where id='$id' and status=1");
+        
+            if(mysqli_num_rows($isDoc))
+            {
+                $user=new doctor($isDoc);
+                $_SESSION["user"]=serialize($user);
+            }
+        }
+        else if($type=="patient")
+        {
+            $isPat=$db->getData("select * from patient where id='$id' and status=1");
+            if(mysqli_num_rows($isPat))
+            {
+                $user=new patient($isPat);
+                $_SESSION["user"]=serialize($user);
+                return $user;
+            }
+        }
+    }
 }
 ?>

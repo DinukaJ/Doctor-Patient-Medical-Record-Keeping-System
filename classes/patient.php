@@ -208,5 +208,11 @@ class patient extends users
             return $db->insert_update_delete("update patient set password='$passEncry' where id='$patID'");
         }
     }
+
+    public function addImg($dId,$newfilename)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("update patient set dp='$newfilename' where id='$dId'");
+    }
 }
 ?>

@@ -32,6 +32,8 @@ if(isset($_POST["type"]))
         delPat();
     if($_POST["type"]=="upPat")
         upPat();
+    if($_POST["type"]=="imgUp")
+        imgUp();
 }
 function getPatNewId()
 {
@@ -219,5 +221,36 @@ function updatePass(){
     $newPass= $_POST["nPass"];
     $stat = $patient->updatePatientPass($patID,$newPass);
     echo $stat;
+}
+
+function imgUp()
+{
+    session_start();
+    $patient=new patient();
+    $user=unserialize($_SESSION['user']);
+    $filepath='../images/';
+    $dId=$_POST["pId"];
+    if(count($_FILES["file"]["name"])>0)
+    {
+        $file_name=$_FILES["file"]["name"][0];
+        $tmp_name=$_FILES["file"]["tmp_name"][0];
+        $file_array=explode(".",$file_name);
+        $file_extension=end($file_array);
+        $newfilename=$dId.$file_array[0].".".$file_extension;
+
+        $oldDp=$user->getDP();
+        if($oldDp!="")
+            unlink($filepath . "/" . $oldDp);
+
+        $filepath=$filepath.$newfilename;
+
+
+        move_uploaded_file($tmp_name, $filepath);
+        
+        $patient->addImg($dId,$newfilename);
+        $user->setDP($newfilename);
+        $_SESSION["user"]=serialize($user);
+        echo $filepath;
+    }
 }
 ?>

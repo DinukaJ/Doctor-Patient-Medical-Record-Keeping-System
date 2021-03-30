@@ -182,6 +182,28 @@ $('#usrPassUp').on('submit',function(e){
     }
 });
 
+$("#usrProfilePic").on("submit",function(e){
+    e.preventDefault();
+    // $('input[type=file]').files[0].mozFullPath;
+    var dID = $("#docID").val();
+    var form_data = new FormData();
+    form_data.append('file[]', document.getElementById('profilePic').files[0]);
+    form_data.append('docId',dID);
+    form_data.append('type','imgUp');
+    $.ajax({
+        url:"../handlers/doctorHandler.php",
+        method:"POST",
+        data:form_data,
+        contentType:false,
+        cache:false,
+        processData:false,
+        success:function(data){
+            $("#accPicPrev").attr("src",data);
+            $("#dpImg").attr("src",data);
+        }
+    });
+});
+
 function getBillData(docType,docID,month)
 {
     $.ajax({

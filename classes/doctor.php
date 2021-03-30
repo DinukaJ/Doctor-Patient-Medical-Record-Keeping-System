@@ -212,5 +212,11 @@ class doctor extends users
         $db=new Database();
         return $db->insert_update_delete("update doctor set status=0 where id='$id'");
     }
+
+    public function addImg($dId,$newfilename)
+    {
+        $db=new Database();
+        return $db->insert_update_delete("update doctor set dp='$newfilename' where id='$dId'");
+    }
 }
 ?>

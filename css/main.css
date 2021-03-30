@@ -469,8 +469,12 @@ body{
     outline: none;
 }
 .accPic{
-    border-radius: 50px;
+    border-radius: 100px;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
 }
+
 .errStock{
     color: red;
     font-size: 10px;
