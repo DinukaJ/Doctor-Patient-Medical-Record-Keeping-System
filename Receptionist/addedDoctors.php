@@ -526,6 +526,7 @@ else
                             setTimeout(function(){
                                 $('#updateStatus').slideUp("slow");
                             },2000);
+                            getDocs("");
                         }
                         else if(data==-1)
                         {

@@ -119,7 +119,12 @@ else
                                     <option value="U/L">U/L</option>
                                     <option value="S/L">S/L</option>
                                     <option value="C/g">C/g</option>
-                                    <option value="10^3/micro">10^3/micro</option>
+                                    <option value="pg">pg</option>
+                                    <option value="FL">FL</option>
+                                    <option value="10^3/μl">10^3/μl</option>
+                                    <option value="10^6/μl">10^6/μl</option>
+                                    <option value="mm at 1 hr">mm at 1 hr</option>
+                                    <option value="%">%</option>
                                 </select>
                             </div>
                             <div class="c-m-1" style="padding-top:5px;">

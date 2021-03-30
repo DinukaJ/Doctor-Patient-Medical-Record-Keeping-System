@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 30, 2021 at 04:57 PM
+-- Generation Time: Mar 30, 2021 at 06:57 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.3.12
 
@@ -38,7 +38,14 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `type` char(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `presId` (`presId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`presId`, `id`, `doi`, `amount`, `docCharge`, `type`) VALUES
+(1, 1, '2021-03-30', '3307.50', '600.00', 'pres');
 
 -- --------------------------------------------------------
 
@@ -55,6 +62,16 @@ CREATE TABLE IF NOT EXISTS `billitems` (
   `totPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`billId`,`medId`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `billitems`
+--
+
+INSERT INTO `billitems` (`billId`, `medId`, `type`, `qty`, `totPrice`) VALUES
+(1, 30, '150mg', 21, '2100.00'),
+(1, 25, '250mg', 25, '375.00'),
+(1, 24, '200mg', 5, '172.50'),
+(1, 27, '150mg', 5, '60.00');
 
 -- --------------------------------------------------------
 
@@ -154,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `dp`, `type`, `token`, `verifyStatus`, `status`, `addedDate`) VALUES
-('doc-1', 'Rukmal', 'Weerasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', NULL, 1, '', 0, 1, '2021-03-30 16:55:35'),
+('doc-1', 'Ranjith', 'Jayasinghe', '0776386324', '', '746e1b9346e43ecbb92a7fafa0ad838414c69f17', '', 1, '', 0, 1, '2021-03-30 16:55:35'),
 ('doc-2', 'Kavin', 'Dananjaya', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', '', 0, '', 1, 1, '2021-03-30 16:55:36');
 
 -- --------------------------------------------------------
@@ -211,9 +228,7 @@ CREATE TABLE IF NOT EXISTS `labpatientrep` (
 --
 
 INSERT INTO `labpatientrep` (`id`, `pid`, `doi`, `cmt`) VALUES
-(2, 'p-6', '2021-02-08', ''),
-(1, 'p-1', '2020-12-31', ''),
-(3, 'p-8', '2021-03-21', 'Test Comment');
+(1, 'p-2', '2021-03-30', '');
 
 -- --------------------------------------------------------
 
@@ -235,21 +250,24 @@ CREATE TABLE IF NOT EXISTS `labpatientrepdata` (
 --
 
 INSERT INTO `labpatientrepdata` (`repid`, `repTypeId`, `testName`, `result`) VALUES
-(3, 19, 'TRIGLYCERIDES', '40'),
-(3, 19, 'SERIUM CHOLESTEROL', '155'),
-(3, 19, 'HDL-CHOLESTEROL', '50'),
-(2, 19, 'SERIUM CHOLESTEROL', '150'),
-(3, 19, 'CHOLESTEROL/HDL', '5'),
-(3, 19, 'LDL-CHOLESTEROL', '150'),
-(2, 19, 'HDL-CHOLESTEROL', '70'),
-(2, 19, 'LDL-CHOLESTEROL', '200'),
-(2, 19, 'CHOLESTEROL/HDL', '5'),
-(2, 19, 'TRIGLYCERIDES', '40'),
-(1, 19, 'SERIUM CHOLESTEROL', '20'),
-(1, 19, 'TRIGLYCERIDES', '50'),
-(1, 19, 'LDL-CHOLESTEROL', '135'),
-(1, 19, 'HDL-CHOLESTEROL', '60'),
-(1, 19, 'CHOLESTEROL/HDL', '2');
+(1, 26, 'HCT(PCV)', '31.5'),
+(1, 26, 'RDW', '12.2'),
+(1, 26, 'MCV', '91.0'),
+(1, 26, 'RBC', '3.46'),
+(1, 26, 'MCH', '30.9'),
+(1, 26, 'MCHC', '34.0'),
+(1, 25, 'Basophils', '0.03'),
+(1, 25, 'Lymphocytes', '2.89'),
+(1, 25, 'Neutrophils', '3.44'),
+(1, 26, 'Hb', '10.7'),
+(1, 25, 'Monocytes', '0.33'),
+(1, 23, 'WBC', '6.83'),
+(1, 25, 'Eosinophils', '0.15'),
+(1, 24, 'Neutrophils', '50.3'),
+(1, 24, 'Monocytes', '4.8'),
+(1, 24, 'Lymphocytes', '42.3'),
+(1, 24, 'Eosinophils', '2.2'),
+(1, 24, 'Basophils', '0.4');
 
 -- --------------------------------------------------------
 
@@ -262,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `labreport` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `labreport`
@@ -270,9 +288,10 @@ CREATE TABLE IF NOT EXISTS `labreport` (
 
 INSERT INTO `labreport` (`id`, `type`) VALUES
 (19, 'Lipid Profile'),
-(20, 'ESR'),
-(21, 'Urine Profile'),
-(22, 'Liver Profile');
+(23, 'WBC Parameters'),
+(24, 'DC'),
+(25, 'Absolute White Cells Count'),
+(26, 'RBC Parameters');
 
 -- --------------------------------------------------------
 
@@ -297,7 +316,26 @@ INSERT INTO `labreportdata` (`repId`, `testName`, `normalRange`) VALUES
 (19, 'HDL-CHOLESTEROL', '40 - 60~mg/dl'),
 (19, 'LDL-CHOLESTEROL', '< 130~mg/dl'),
 (19, 'SERIUM CHOLESTEROL', '150 - 200~mg/dl'),
-(19, 'TRIGLYCERIDES', '35 - 160~mg/dl');
+(19, 'TRIGLYCERIDES', '35 - 160~mg/dl'),
+(23, 'WBC', '4.0 - 10.0~10^3/Î¼l'),
+(24, 'Basophils', '1 - 2~%'),
+(24, 'Basophils', '< 1~%'),
+(24, 'Eosinophils', '1 - 6~%'),
+(24, 'Lymphocytes', '20 - 40~%'),
+(24, 'Monocytes', '2 - 10~%'),
+(24, 'Neutrophils', '40 - 80~%'),
+(25, 'Basophils', '0.02 - 0.1~10^3/Î¼l'),
+(25, 'Eosinophils', '0.02 - 0.50~10^3/Î¼l'),
+(25, 'Lymphocytes', '1.00 - 3.00~10^3/Î¼l'),
+(25, 'Monocytes', '0.20 - 1.00~10^3/Î¼l'),
+(25, 'Neutrophils', '2.00 - 7.00~10^3/Î¼l'),
+(26, 'Hb', '12.0 - 15.0~g/dl'),
+(26, 'HCT(PCV)', '36.0 - 46.0~%'),
+(26, 'MCH', '27.0 - 32.0~pg'),
+(26, 'MCHC', '31.5 - 34.5~g/dl'),
+(26, 'MCV', '83.0 - 99.0~FL'),
+(26, 'RBC', '3.8 - 4.8~10^6/Î¼l'),
+(26, 'RDW', '11.0 - 14.0~%');
 
 -- --------------------------------------------------------
 
@@ -351,13 +389,13 @@ CREATE TABLE IF NOT EXISTS `medtypes` (
 
 INSERT INTO `medtypes` (`id`, `type`, `price`, `qty`, `status`) VALUES
 (17, '', '200.00', 20, 1),
-(24, '200mg', '34.50', 1891, 1),
-(25, '250mg', '15.00', 1262, 1),
+(24, '200mg', '34.50', 1886, 1),
+(25, '250mg', '15.00', 1237, 1),
 (26, '100mg', '50.00', 500, 1),
-(27, '150mg', '12.00', 1500, 1),
+(27, '150mg', '12.00', 1495, 1),
 (28, '25mg', '20.00', 1416, 1),
 (29, '300mg', '30.00', 1968, 1),
-(30, '150mg', '100.00', 2500, 1),
+(30, '150mg', '100.00', 2479, 1),
 (31, '250mg', '50.00', 2400, 1),
 (32, '300mg', '25.00', 1000, 1),
 (33, '50mg', '23.00', 2100, 1);
@@ -391,16 +429,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
 --
 
 INSERT INTO `patient` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `age`, `address`, `dp`, `status`, `token`, `verifyStatus`, `addedDate`) VALUES
-('p-1', 'Pasindu', 'Dissanayakey', '0771697166', '', 'c4a1e9ab9701149995d64bc94a8cac2b1a0ed8f7', 25, '12/21,Seeduwa', NULL, 1, '', 0, '2021-03-30 16:45:10'),
-('p-10', 'Kiaan', 'Fernando', '0775642213', 'kian@gmail.com', '3e19453fe92a93a8b4c1e199b40ad2e478649c77', 23, '23/1, jaya Road, Colombo', '', 1, 'gF7zOtR5nRJ2ODAv6ID75m4Vv9nuuf', -1, '2021-03-30 16:53:37'),
-('p-2', 'Abc', 'Abc', '6543119774', 'new@gmail.com', '82e84858248a680eb05614695eca57a0be0718cc', 28, 'Abc', NULL, 0, '', 0, '2021-03-30 16:45:10'),
-('p-3', 'Chathura', 'Wanasingha', '0772537849', 'chath_123@gmail.com', '337fc3a69282faa6655820e7a852a1d612f6ca10', 25, 'no.34,Main Street,Colombo', '', 1, '', 0, '2021-03-30 16:45:10'),
-('p-4', 'Hemal', 'Perera', '0714659937', 'hem34@hotmail.com', '312b364a03a06c34c96b9c63aafd2649b4ea411b', 30, 'no.24/3,De mel Street,Negombo.', '', 1, '', 0, '2021-03-30 16:45:10'),
-('p-5', 'Adeesha', 'Weerasingha', '0763749956', 'adee34@yahoo.com', '743d5daad9c062b0eba165c87aff419da517e976', 29, 'no. 27/4H, Galle Road, Colombo.', '', 1, '', 0, '2021-03-30 16:45:10'),
-('p-6', 'Dinuka', 'Sandaruwan', '0772776876', 'dinukasandaruwan.ds@gmail.com', '89f03251116757d99e8fcd330319437a9d7c8a6c', 22, 'test add', '', 1, '', 0, '2021-03-30 16:45:10'),
-('p-7', 'test', 'test', '0772776876', 'dinukasandaruwan.ds@gmail.com', '084ee8fcabcef7b546229990cf8b09c79443bb3e', 18, 'test', '', 1, '95rLlB5IHrXSqjVZ2cL0YfVOtVfP4O', -1, '2021-03-30 16:45:10'),
-('p-8', 'Dhyan', 'Sachintha', '0772905235', 'khdhyansachintha@gmail.com', 'dfb0fd5b4a8a7ee10e943d9b45092bf854711ee5', 25, '', '', 1, 'Oj3XCvbFUttafa4RqdGKvVN2LmLjDo', -1, '2021-03-30 16:45:10'),
-('p-9', 'Namal', 'Silva', '0772905236', 'khdhyansachintha@gmail.com', '94848fcead0d270b0c49b9c171271063f4786926', 52, '', '', 0, 'c3uSA0Y0V9mvlWUxCl9mKvNs8UiC59', -1, '2021-03-30 16:45:15');
+('p-1', 'Kiaan', 'Fernando', '0775642213', 'kian@gmail.com', '3e19453fe92a93a8b4c1e199b40ad2e478649c77', 23, '23/1,Jaya Road, Colombo', '', 1, 'LsNWy5mOb33mNkTaKZT5RfaOlPBPbd', -1, '2021-03-30 18:11:54'),
+('p-2', 'Niya', 'Perera', '0775642453', 'niya34@yahoo.com', 'e74c93604bb83d52f9aef3e638b77bdf5da7a15f', 30, '56/23, Jawatta road, Colombo', '', 1, '0uXvhzH6gAQoZ5YXiZXLuMMgNSciRJ', -1, '2021-03-30 18:14:08');
 
 -- --------------------------------------------------------
 
@@ -414,14 +444,6 @@ CREATE TABLE IF NOT EXISTS `patientallergy` (
   `allergy` varchar(30) NOT NULL,
   PRIMARY KEY (`id`,`allergy`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `patientallergy`
---
-
-INSERT INTO `patientallergy` (`id`, `allergy`) VALUES
-('p-1', 'House Dust Mist'),
-('p-6', 'House Dust Mist');
 
 -- --------------------------------------------------------
 
@@ -460,10 +482,7 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
 --
 
 INSERT INTO `prescriptions` (`docId`, `patientId`, `id`, `doi`, `note`, `status`) VALUES
-('doc-2', 'p-8', 1, '2021-03-29', '', -1),
-('doc-2', 'p-6', 2, '2021-03-29', '', -1),
-('doc-2', 'p-6', 3, '2021-03-29', '', 0),
-('doc-1', 'p-6', 4, '2021-03-30', '', 0);
+('doc-1', 'p-2', 1, '2021-03-30', '', 1);
 
 -- --------------------------------------------------------
 
@@ -490,11 +509,10 @@ CREATE TABLE IF NOT EXISTS `prescription_medicine` (
 --
 
 INSERT INTO `prescription_medicine` (`pres_ID`, `med_ID`, `medType_ID`, `amtPerTime`, `timesPerDay`, `beforeAfter`, `duration`) VALUES
-(2, 26, '100mg', '5 ml', '', '', ''),
-(3, 25, '250mg', '5 ml', '1 n', 'a', '3 d'),
-(3, 28, '25mg', '7.5 ml', '1 n', 'a', '2 d'),
-(4, 25, '250mg', '2.5 ml', '1 n', 'a', '2 d'),
-(4, 28, '25mg', '7.5 ml', '1 n', 'a', '2 d');
+(1, 24, '200mg', '1 tab', '2', 'a', '5 d'),
+(1, 25, '250mg', '5 ml', '1 m', 'b', '5 d'),
+(1, 27, '150mg', '1/2 tab', '1 n', 'a', '5 d'),
+(1, 30, '150mg', '1/2 tab', '3', 'a', '1 w');
 
 --
 -- Constraints for dumped tables

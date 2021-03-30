@@ -311,6 +311,7 @@ $("#upAddNewType").click(function(){
                 {
                     loadTestTypes($("#newReportType").val());
                     $("#newReportType").val("");
+                    $("#typeRowSectionReportAdd").html("");
                 }
             }
         });
