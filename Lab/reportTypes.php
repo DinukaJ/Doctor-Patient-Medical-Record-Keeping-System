@@ -110,6 +110,16 @@ else
                                 <select class="input-field fullWidth unit" name="unit" id="unit">
                                     <option value="mg/dl">mg/dl</option>
                                     <option value="g/dl">g/dl</option>
+                                    <option value="Hg/l">Hg/l</option>
+                                    <option value="Hg/dl">Hg/dl</option>
+                                    <option value="mmol/mol(IFCC)">mmol/mol(IFCC)</option>
+                                    <option value="mIU/L">mIU/L</option>
+                                    <option value="mmol/l">mmol/l</option>
+                                    <option value="mol/l">mol/l</option>
+                                    <option value="U/L">U/L</option>
+                                    <option value="S/L">S/L</option>
+                                    <option value="C/g">C/g</option>
+                                    <option value="10^3/micro">10^3/micro</option>
                                 </select>
                             </div>
                             <div class="c-m-1" style="padding-top:5px;">
