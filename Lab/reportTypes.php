@@ -209,7 +209,8 @@ else
     <?php include_once(dirname( dirname(__FILE__) ).'/parts/footerIncludes.php');?>
     <script>
     //blocking entering minus values in .val2
-    $(".val2").change(function(){
+
+    $(document).on("change",".val2",function(){
         if($(this).val()<0){
             $(this).val("");
             $(this).addClass("errorInput");
